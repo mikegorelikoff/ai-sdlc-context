@@ -1,0 +1,6 @@
+{
+  "event": "SessionStart",
+  "session_id": "session-xyz",
+  "cwd": "/repo",
+  "timestamp": "2026-07-23T00:00:00Z"
+}

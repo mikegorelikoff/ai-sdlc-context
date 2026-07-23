@@ -1,0 +1,5 @@
+{
+  "event": "Stop",
+  "session_id": "session-xyz",
+  "cwd": "/repo"
+}

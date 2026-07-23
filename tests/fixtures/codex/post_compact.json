@@ -1,0 +1,6 @@
+{
+  "event": "PostCompact",
+  "session_id": "session-xyz",
+  "cwd": "/repo",
+  "timestamp": "2026-07-23T00:11:00Z"
+}

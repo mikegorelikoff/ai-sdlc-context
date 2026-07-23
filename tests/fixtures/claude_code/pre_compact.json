@@ -1,0 +1,6 @@
+{
+  "hook_event_name": "PreCompact",
+  "session_id": "session-abc",
+  "cwd": "/repo",
+  "timestamp": "2026-07-23T00:10:00Z"
+}

@@ -1,0 +1,7 @@
+{
+  "hook_event_name": "PostToolUse",
+  "tool_name": "Bash",
+  "tool_input": {"command": "git status"},
+  "session_id": "session-abc",
+  "cwd": "/repo"
+}

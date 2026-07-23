@@ -1,0 +1,6 @@
+{
+  "event": "PreToolUse",
+  "tool": {"name": "read_file", "input": {"path": "dist/bundle.min.js"}},
+  "session_id": "session-xyz",
+  "cwd": "/repo"
+}

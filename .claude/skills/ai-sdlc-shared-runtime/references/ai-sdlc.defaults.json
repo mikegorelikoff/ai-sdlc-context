@@ -1,0 +1,14 @@
+{
+  "schema": "ai-sdlc-config/v1",
+  "values": {
+    "interaction": {
+      "enabled": false,
+      "preferred_name": "",
+      "language": "auto",
+      "response_style": "balanced",
+      "technical_depth": "adaptive",
+      "status_updates": "milestones"
+    }
+  },
+  "protected": []
+}

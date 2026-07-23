@@ -1,0 +1,98 @@
+[
+  {
+    "name": "oversized-generated-file-read",
+    "provider": "claude",
+    "expected_decision": "block",
+    "payload": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Read",
+      "tool_input": {"file_path": "dist/bundle.min.js"},
+      "session_id": "s1",
+      "cwd": "/repo"
+    }
+  },
+  {
+    "name": "oversized-lockfile-read",
+    "provider": "claude",
+    "expected_decision": "block",
+    "payload": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Read",
+      "tool_input": {"file_path": "package-lock.json"},
+      "session_id": "s1",
+      "cwd": "/repo"
+    }
+  },
+  {
+    "name": "unbounded-docker-compose-logs",
+    "provider": "claude",
+    "expected_decision": "block",
+    "payload": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Bash",
+      "tool_input": {"command": "docker compose logs api"},
+      "session_id": "s1",
+      "cwd": "/repo"
+    }
+  },
+  {
+    "name": "unbounded-kubectl-logs",
+    "provider": "claude",
+    "expected_decision": "block",
+    "payload": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Bash",
+      "tool_input": {"command": "kubectl logs my-pod"},
+      "session_id": "s1",
+      "cwd": "/repo"
+    }
+  },
+  {
+    "name": "unbounded-git-log",
+    "provider": "claude",
+    "expected_decision": "block",
+    "payload": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Bash",
+      "tool_input": {"command": "git log -p"},
+      "session_id": "s1",
+      "cwd": "/repo"
+    }
+  },
+  {
+    "name": "unscoped-find",
+    "provider": "claude",
+    "expected_decision": "block",
+    "payload": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Bash",
+      "tool_input": {"command": "find . -type f"},
+      "session_id": "s1",
+      "cwd": "/repo"
+    }
+  },
+  {
+    "name": "scoped-search-allowed",
+    "provider": "claude",
+    "expected_decision": "allow",
+    "payload": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Bash",
+      "tool_input": {"command": "rg \"PaymentService\" src/payment"},
+      "session_id": "s1",
+      "cwd": "/repo"
+    }
+  },
+  {
+    "name": "bounded-docker-compose-logs-allowed",
+    "provider": "claude",
+    "expected_decision": "allow",
+    "payload": {
+      "hook_event_name": "PreToolUse",
+      "tool_name": "Bash",
+      "tool_input": {"command": "docker compose logs --tail 200 api"},
+      "session_id": "s1",
+      "cwd": "/repo"
+    }
+  }
+]

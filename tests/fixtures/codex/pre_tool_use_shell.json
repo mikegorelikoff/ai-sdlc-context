@@ -1,0 +1,6 @@
+{
+  "event": "PreToolUse",
+  "tool": {"name": "shell", "input": {"command": "kubectl logs my-pod"}},
+  "session_id": "session-xyz",
+  "cwd": "/repo"
+}

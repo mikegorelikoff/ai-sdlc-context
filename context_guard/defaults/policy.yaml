@@ -1,0 +1,37 @@
+# Context Guard built-in default policy.
+# Layer precedence (later overrides earlier, field-by-field): this file ->
+# user config -> repo config -> environment overrides.
+version: 1
+
+mode: observe
+
+files:
+  max_full_read_bytes: 200000
+  require_range_above_bytes: 50000
+  deny:
+    - "**/node_modules/**"
+    - "**/vendor/**"
+    - "**/dist/**"
+    - "**/build/**"
+    - "**/coverage/**"
+    - "**/.git/**"
+    - "**/*.min.js"
+    - "**/*.map"
+    - "**/package-lock.json"
+    - "**/yarn.lock"
+    - "**/pnpm-lock.yaml"
+    - "**/Cargo.lock"
+
+commands:
+  maximum_expected_output_lines: 500
+  require_bounds:
+    - "docker logs"
+    - "docker compose logs"
+    - "kubectl logs"
+    - "git log"
+
+search:
+  require_path_scope: true
+  maximum_results: 100
+
+fail_closed_rules: []

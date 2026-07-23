@@ -1,0 +1,6 @@
+{
+  "event": "PostToolUse",
+  "tool": {"name": "shell", "input": {"command": "git status"}},
+  "session_id": "session-xyz",
+  "cwd": "/repo"
+}

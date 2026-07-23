@@ -1,0 +1,53 @@
+feature: 001-context-guard
+workspace: implementation
+flow_mode: quick
+updated_at: 2026-07-23
+source_artifacts[6]{artifact,path}:
+  requirements,requirements.md
+  design,design.md
+  test_cases,test-cases.md
+  qa,qa.md
+  tasks,tasks.md
+  decisions,decision-log.md
+trace[10]{acceptance_id,test_cases,tasks}:
+  AC-001,TC-001/TC-008,17
+  AC-002,TC-002,17
+  AC-003,TC-003/TC-004,17
+  AC-004,TC-005,17
+  AC-005,TC-006/TC-007,17
+  AC-006,TC-011,18
+  AC-007,TC-017,21
+  AC-008,TC-019,21
+  AC-009,TC-020,21
+  AC-010,TC-025,22
+tasks[24]{id,status,refs,tests,depends_on,artifact,decision_ref}:
+  1,done,design.md#Components/design.md#Architecture,none,none,context_guard/ package skeleton; pyproject.toml,TBD
+  2,done,design.md#Interfaces and Contracts,none,1,context_guard/events.py,TBD
+  3,done,design.md#Interfaces and Contracts,none,1,context_guard/decisions.py,TBD
+  4,done,design.md#Data Model/FR-8,none,1,context_guard/defaults/policy.yaml; context_guard/policy_config.py,TBD
+  5,done,FR-3/TC-001/TC-002/TC-008,none,2/3/4,context_guard/policies/files.py,TBD
+  6,done,FR-4/TC-003/TC-004,none,2/3/4,context_guard/policies/commands.py,TBD
+  7,done,FR-5/TC-005/TC-006/TC-007,none,2/3/4,context_guard/policies/searches.py,TBD
+  8,done,FR-19/FR-20/TC-024,none,2/3/4,context_guard/policies/sessions.py,TBD
+  9,done,FR-7/FR-9/FR-10/TC-009/TC-010/TC-011/TC-012,none,5/6/7/8,context_guard/engine.py,TBD
+  10,done,FR-11/TC-016,none,3,context_guard/audit/jsonl.py,TBD
+  11,done,FR-1/TC-013/TC-015,none,2/3,context_guard/adapters/claude_code.py; tests/fixtures/claude_code/*.json,TBD
+  12,done,FR-2/TC-014/TC-015,none,2/3,context_guard/adapters/codex.py; tests/fixtures/codex/*.json,TBD
+  13,done,design.md#Interfaces and Contracts,none,9/10/11/12,context_guard/cli.py (hook subcommand),TBD
+  14,done,FR-12/FR-13/TC-017/TC-018,none,13,context_guard/cli.py (install subcommands); integrations/claude-code/; integrations/codex/,TBD
+  15,done,FR-14/FR-16/FR-18/TC-019/TC-021/TC-023,none,4/13,context_guard/cli.py (validate/doctor/init subcommands),TBD
+  16,done,FR-15/FR-17/TC-020/TC-022,none,13/10,context_guard/cli.py (test/report subcommands),TBD
+  17,done,TC-001/TC-002/TC-003/TC-004/TC-005/TC-006/TC-007/TC-008/AC-001/AC-002/AC-003/AC-004/AC-005,TC-001/TC-002/TC-003/TC-004/TC-005/TC-006/TC-007/TC-008,5/6/7,tests/policies/test_files.py; tests/policies/test_commands.py; tests/policies/test_searches.py,TBD
+  18,done,TC-009/TC-010/TC-011/TC-012/AC-006,TC-011,9,tests/test_engine.py,TBD
+  19,done,TC-013/TC-014/TC-015,none,11/12,tests/adapters/test_claude_code.py; tests/adapters/test_codex.py,TBD
+  20,done,TC-016,none,10,tests/audit/test_jsonl.py,TBD
+  21,done,TC-017/TC-018/TC-019/TC-020/TC-021/TC-022/TC-023/TC-024/AC-007/AC-008/AC-009,TC-017/TC-019/TC-020,14/15/16,tests/cli/test_install.py; tests/cli/test_validate.py; tests/cli/test_test_cmd.py; tests/cli/test_doctor.py; tests/cli/test_report.py; tests/cli/test_init.py; tests/cli/test_sessions.py,TBD
+  22,done,TC-025/NFR-1/AC-010,TC-025,13,tests/perf/test_latency.py,TBD
+  23,done,qa.md#Manual Checks,none,14/15/16,README.md,TBD
+  24,done,FR-8/design.md#Data Model,none,4,docs/policy.md,TBD
+validation_sequence[5]{step,command}:
+  1,check_refinement_context.py --full-flow
+  2,check_clarify.py --full-flow
+  3,check_checklist.py --full-flow
+  4,plan_links.py --check --full-flow
+  5,analyze_spec.py --full-flow && validate_spec.py --full-flow

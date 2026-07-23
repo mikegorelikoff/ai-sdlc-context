@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/mikegorelikoff/ai-sdlc-harness/main/skills/ai-sdlc-shared-runtime/references/ai-sdlc-config.schema.json",
+  "title": "AI SDLC presentation configuration",
+  "type": "object",
+  "required": ["schema", "values"],
+  "properties": {
+    "schema": {"const": "ai-sdlc-config/v1"},
+    "values": {
+      "type": "object",
+      "properties": {"interaction": {"$ref": "#/$defs/interaction"}},
+      "additionalProperties": true
+    },
+    "protected": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "interaction": {
+      "type": "object",
+      "properties": {
+        "enabled": {"type": "boolean"},
+        "preferred_name": {"type": "string", "maxLength": 80, "pattern": "^[^\\u0000-\\u001F\\u007F\\u2028\\u2029]*$"},
+        "language": {"type": "string", "pattern": "^(auto|[A-Za-z]{2,8}(-[A-Za-z0-9]{1,8})*)$"},
+        "response_style": {"enum": ["concise", "balanced", "detailed"]},
+        "technical_depth": {"enum": ["adaptive", "foundational", "practitioner", "expert"]},
+        "status_updates": {"enum": ["minimal", "milestones", "frequent"]}
+      },
+      "additionalProperties": false
+    }
+  }
+}

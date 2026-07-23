@@ -1,0 +1,269 @@
+{
+  "version": 1,
+  "skills": {
+    "ai-sdlc-approvals-sandbox": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-approvals-sandbox/SKILL.md",
+      "computedHash": "d523c12c55830a5799086906d9818f70f96797bd010b44686dd10ab02282a226"
+    },
+    "ai-sdlc-architecture": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-architecture/SKILL.md",
+      "computedHash": "3cd81439893c01d3b377b95852cae4f70902d0dd68e87182563ed993d8ba9823"
+    },
+    "ai-sdlc-ba": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-ba/SKILL.md",
+      "computedHash": "df451775ae7afccea37ac8bc687ed9ef52c025e8c50a3dff06dded6298981592"
+    },
+    "ai-sdlc-backlog-decomposition-and-task-planning": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-backlog-decomposition-and-task-planning/SKILL.md",
+      "computedHash": "2fc123be3afeae774ca5558bf89ff4755e848bb68558de9f696d0627d1bbea1b"
+    },
+    "ai-sdlc-backlog-requirements-gap-review": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-backlog-requirements-gap-review/SKILL.md",
+      "computedHash": "3f0fb7ec4d4c1b0873d253cc12f19a828bd8851dd8340954b70187966d393fec"
+    },
+    "ai-sdlc-branching": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-branching/SKILL.md",
+      "computedHash": "06772a40f2113bd0c50ae4b5522b6d11390e9df65d9f762f04f9a1bf936777d5"
+    },
+    "ai-sdlc-change-impact": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-change-impact/SKILL.md",
+      "computedHash": "803386efd616c2666f28b87bcf0cd687e8a6d164370b57d51b3cdd7d4e97cd27"
+    },
+    "ai-sdlc-change-set": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-change-set/SKILL.md",
+      "computedHash": "1a126a9134093e5c7aceed67e55d6cf27c481b4c90d5f6f31660eb7f6e50bf94"
+    },
+    "ai-sdlc-code-review": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-code-review/SKILL.md",
+      "computedHash": "789eab6370d36c0345aaa5fd43bf5b0cae1745e153cf15fb98588c097a0015ee"
+    },
+    "ai-sdlc-commit-prep": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-commit-prep/SKILL.md",
+      "computedHash": "89e34336a9d87c0e8ed6240e7fd0b530e34e4ee534ab5fd8e5a65160f562bdb0"
+    },
+    "ai-sdlc-conventional-commit": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-conventional-commit/SKILL.md",
+      "computedHash": "46f55d6e226bd96ff15b4bf66d0bbc84c66301366696385f85fe7933b02de8f9"
+    },
+    "ai-sdlc-delivery-graph": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-delivery-graph/SKILL.md",
+      "computedHash": "f7dd175c80fc831a37f56f6d132cf3dd53b23c480002f8fcb0fa97d4506fe49e"
+    },
+    "ai-sdlc-delivery-handoff-review": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-delivery-handoff-review/SKILL.md",
+      "computedHash": "2f28e157da38372ccb690fa119b67a1945973b532fc92206958b60262eb3bc01"
+    },
+    "ai-sdlc-delivery-package-gap-review": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-delivery-package-gap-review/SKILL.md",
+      "computedHash": "9c6c23828eadd5d175674a425c25c973b97ca0f6e84bcc398544bb10582c7104"
+    },
+    "ai-sdlc-delivery-spec-synthesis": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-delivery-spec-synthesis/SKILL.md",
+      "computedHash": "129425dcd20a64d25fcf90cae1a53641fa61a8cf82cbd4701f7fc87d6c3ff0d0"
+    },
+    "ai-sdlc-doctor": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-doctor/SKILL.md",
+      "computedHash": "45bbdee657c4e1c322f3f192d37d4d0b60961fe030dd14e976d1a6f623344a1b"
+    },
+    "ai-sdlc-evidence-council": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-evidence-council/SKILL.md",
+      "computedHash": "3a014f6d24d51c36fc45e499935a1333b55891150481edc020eeaeb9398f6ab7"
+    },
+    "ai-sdlc-goal-capability-and-epic-mapping": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-goal-capability-and-epic-mapping/SKILL.md",
+      "computedHash": "6fcbe4dcfa4ca49605bebc6ea59154aff88af04a02d82f5f648a6825347fd7cb"
+    },
+    "ai-sdlc-host-adapter": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-host-adapter/SKILL.md",
+      "computedHash": "0b1dab85fcffd0f966d6ce9f31e982dd9c18b7aa5836ad8874ca8a3441388a7c"
+    },
+    "ai-sdlc-navigator": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-navigator/SKILL.md",
+      "computedHash": "f82aa2d5cb6c5411e8f496c0e0fba7b3e41882407b2939e6a323d0b48ffbc939"
+    },
+    "ai-sdlc-package-trust": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-package-trust/SKILL.md",
+      "computedHash": "80c5bad7e085d6dd2585d4aae69582afa876eecf2acf73a7fb67e984474257ae"
+    },
+    "ai-sdlc-policy": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-policy/SKILL.md",
+      "computedHash": "6b6a88d70dc223214895127f9f5246a7a943f297ddaf175ce94397de00e36d4d"
+    },
+    "ai-sdlc-prfaq-package-synthesis": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-prfaq-package-synthesis/SKILL.md",
+      "computedHash": "f69117695aad76b1c423cc55754207d4b47eb421d520057256440c6dacc0ce3b"
+    },
+    "ai-sdlc-project-context": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-project-context/SKILL.md",
+      "computedHash": "42d44f26a7cd201d36a4c5d8a40f4340b6e98b335cc91a1a394fb28416c6e8cb"
+    },
+    "ai-sdlc-qa": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-qa/SKILL.md",
+      "computedHash": "01bc58cb938d8fb84ad4cbfebb9a3c83a1fae69c40603f4d5e0f7c5c5ac34173"
+    },
+    "ai-sdlc-qa-requirements-gap-review": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-qa-requirements-gap-review/SKILL.md",
+      "computedHash": "f875036fe2618ee3bcdef510f9074557003863a1c43fcb8e0f2dd62ce73bdfe7"
+    },
+    "ai-sdlc-qa-traceability-and-readiness-review": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-qa-traceability-and-readiness-review/SKILL.md",
+      "computedHash": "4881ed44970b13ff4765bd30df38898415e76f5df0c423adc0db185d936cb264"
+    },
+    "ai-sdlc-quality-lenses": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-quality-lenses/SKILL.md",
+      "computedHash": "7dacbe8c818205eefcae13f2ec603f171bf364c87a05aaf842dcee58ab6ef472"
+    },
+    "ai-sdlc-release-slicing-and-backlog-readiness-review": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-release-slicing-and-backlog-readiness-review/SKILL.md",
+      "computedHash": "dd4e6de7995bb9ae23b26faa458b2d1b7fed9f53d8cc6dffe4a50c0ad54c952e"
+    },
+    "ai-sdlc-requirements-readiness-review": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-requirements-readiness-review/SKILL.md",
+      "computedHash": "03895a3d50853a97548c1ef09f682156eb5fe3875cec5184ae6c11eb006b04c9"
+    },
+    "ai-sdlc-research": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-research/SKILL.md",
+      "computedHash": "b0265b0f481133acde9ba7955d8b57f0d2adf5a7135ae27051f69aa3ad887f3a"
+    },
+    "ai-sdlc-retrospective": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-retrospective/SKILL.md",
+      "computedHash": "04d3f15705881f61001991cece7efb74b83cdb6fe4bf14803336e7c60f83e276"
+    },
+    "ai-sdlc-runtime": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-runtime/SKILL.md",
+      "computedHash": "8b4e65d8e12d35c228446c5873ab456c90f3be821ea83a32487918bb6ab9e8ef"
+    },
+    "ai-sdlc-sdd": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-sdd/SKILL.md",
+      "computedHash": "a4a1aaa637972d9a38144e87b6e6c84e84b1278f9b989833a7782998da5cd8d7"
+    },
+    "ai-sdlc-security-testing": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-security-testing/SKILL.md",
+      "computedHash": "b0ac7bdf0019ab29e86ddb2e072413f4d3322bc6c853543e523313ce072c6f0c"
+    },
+    "ai-sdlc-shared-runtime": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-shared-runtime/SKILL.md",
+      "computedHash": "8b6bdcdb7c2baa71b7fda32a62d1327e4531c680f58f0ae8c24279b9bbeaf4d0"
+    },
+    "ai-sdlc-test-case-and-suite-synthesis": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-test-case-and-suite-synthesis/SKILL.md",
+      "computedHash": "617b6f5ac743e465f93ddd596464470170048933cea0580048b6a17774b9b75d"
+    },
+    "ai-sdlc-test-cases": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-test-cases/SKILL.md",
+      "computedHash": "869dbafb7ed70aad9daf421850c77880ce060a4146a503c6b0816938e4b1e5cf"
+    },
+    "ai-sdlc-test-scope-and-strategy-design": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-test-scope-and-strategy-design/SKILL.md",
+      "computedHash": "084df15e67c28567461ecd8d6dc3567bb28feb1bb32c1df7b27a55b145891738"
+    },
+    "ai-sdlc-user-story-decomposition": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-user-story-decomposition/SKILL.md",
+      "computedHash": "869088f1feaf739ed3be7c84ddd5e147f0216663018087ef6f4cf23976ecf56a"
+    },
+    "ai-sdlc-ux": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-ux/SKILL.md",
+      "computedHash": "95bd2ad03a8d9cd672fbc703e4dd216f4caa60e5cbd06416b697833dcf7f1e81"
+    },
+    "ai-sdlc-validation": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-validation/SKILL.md",
+      "computedHash": "5450f7366106d8f87af811ff7e3e0de41317cd1fbe9be8536afb0bca7b45e9cc"
+    },
+    "ai-sdlc-workflow": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-workflow/SKILL.md",
+      "computedHash": "a11479d3c370276f4feca94c41523bf74ac93af2d81d336879d1c11c463e7474"
+    },
+    "ai-sdlc-working-backwards-discovery": {
+      "source": "mikegorelikoff/ai-sdlc-harness",
+      "sourceType": "github",
+      "skillPath": "skills/ai-sdlc-working-backwards-discovery/SKILL.md",
+      "computedHash": "aff2977a89588c3fea0ebb46856dc506d13f7b7fb2eedd3ec79d7823ec06fe89"
+    }
+  }
+}
