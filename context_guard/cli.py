@@ -15,6 +15,8 @@ from context_guard.adapters import claude_code, codex
 from context_guard.audit import jsonl
 from context_guard.policy_config import DEFAULTS_PATH, REPO_CONFIG_RELATIVE, Policy, PolicyError, load as load_policy
 from context_guard.policies import sessions
+from context_guard.compact import artifact_store
+from context_guard.compact import pipeline as compact_pipeline
 
 _ADAPTERS = {"claude": claude_code, "codex": codex}
 
@@ -162,7 +164,7 @@ def cmd_init(args: argparse.Namespace) -> int:
     return 0
 
 
-def cmd_test(args: argparse.Namespace) -> int:
+def cmd_selftest(args: argparse.Namespace) -> int:
     fixtures_dir = Path(__file__).parent.parent / "tests" / "fixtures"
     manifest_path = fixtures_dir / "manifest.json"
     if not manifest_path.is_file():
@@ -186,6 +188,38 @@ def cmd_test(args: argparse.Namespace) -> int:
 
     print(f"{len(manifest) - failures}/{len(manifest)} fixtures passed")
     return 1 if failures else 0
+
+
+def cmd_compact_test(args: argparse.Namespace) -> int:
+    repo_root = _repo_root()
+    command = list(args.command)
+    if command and command[0] == "--":
+        command = command[1:]
+    if not command:
+        print("context-guard test -- <command> requires a command to run", file=sys.stderr)
+        return 2
+
+    result, _artifact_id = compact_pipeline.run_compact_test(repo_root, command)
+    print(json.dumps(result.to_dict()))
+    return 0
+
+
+def cmd_artifact_show(args: argparse.Namespace) -> int:
+    repo_root = _repo_root()
+    try:
+        if args.fragment:
+            content = artifact_store.read_fragment(repo_root, args.artifact_id, args.fragment)
+            print(content)
+        else:
+            full = artifact_store.read_full(repo_root, args.artifact_id)
+            for name, content in full["files"].items():
+                if name in ("stdout.txt", "stderr.txt", "junit.xml"):
+                    print(f"--- {name} ---")
+                    print(content.decode("utf-8", errors="replace"))
+    except (artifact_store.ArtifactNotFoundError, artifact_store.FragmentNotFoundError) as exc:
+        print(f"Not found: {exc}", file=sys.stderr)
+        return 1
+    return 0
 
 
 def _install(provider: str) -> int:
@@ -253,10 +287,21 @@ def build_parser() -> argparse.ArgumentParser:
     install_parser.set_defaults(func=lambda a: _install(a.provider))
 
     sub.add_parser("validate").set_defaults(func=cmd_validate)
-    sub.add_parser("test").set_defaults(func=cmd_test)
+    sub.add_parser("selftest").set_defaults(func=cmd_selftest)
     sub.add_parser("doctor").set_defaults(func=cmd_doctor)
     sub.add_parser("report").set_defaults(func=cmd_report)
     sub.add_parser("init").set_defaults(func=cmd_init)
+
+    test_parser = sub.add_parser("test")
+    test_parser.add_argument("command", nargs=argparse.REMAINDER)
+    test_parser.set_defaults(func=cmd_compact_test)
+
+    artifact_parser = sub.add_parser("artifact")
+    artifact_sub = artifact_parser.add_subparsers(dest="artifact_command", required=True)
+    show_parser = artifact_sub.add_parser("show")
+    show_parser.add_argument("artifact_id")
+    show_parser.add_argument("--fragment", default=None)
+    show_parser.set_defaults(func=cmd_artifact_show)
 
     return parser
 

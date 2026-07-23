@@ -1,0 +1,48 @@
+feature: 002-compact-runtime
+workspace: implementation
+flow_mode: quick
+updated_at: 2026-07-24
+source_artifacts[6]{artifact,path}:
+  requirements,requirements.md
+  design,design.md
+  test_cases,test-cases.md
+  qa,qa.md
+  tasks,tasks.md
+  decisions,decision-log.md
+trace[8]{acceptance_id,test_cases,tasks}:
+  AC-001,TC-001/TC-002,10
+  AC-002,TC-003,11
+  AC-003,TC-004,11
+  AC-004,TC-005,8
+  AC-005,TC-006,9
+  AC-006,TC-007,19
+  AC-007,TC-008,10
+  AC-008,TC-011,9
+tasks[21]{id,status,refs,tests,depends_on,artifact,decision_ref}:
+  1,done,DEC-002/qa.md#Risk Notes,none,none,context_guard/cli.py (renamed subcommand),TBD
+  2,done,design.md#Components,none,1,context_guard/compact/ package skeleton,TBD
+  3,done,FR-1/TC-014/TC-015,none,2,context_guard/compact/runner.py,TBD
+  4,done,FR-2/FR-8/FR-9/TC-003/TC-004/TC-013,none,2,context_guard/compact/artifact_store.py,TBD
+  5,done,FR-6/FR-7/FR-10/TC-010,none,2,context_guard/compact/result.py,TBD
+  6,done,FR-3/TC-001/TC-012,none,4/5,context_guard/compact/parsers/pytest_junitxml.py,TBD
+  7,done,FR-4/TC-002/TC-009,none,4/5,context_guard/compact/parsers/pytest_text.py,TBD
+  8,done,FR-5/TC-005/AC-004,TC-005,4/5,context_guard/compact/parsers/fallback.py,TBD
+  9,done,FR-11/TC-006/TC-011/AC-005/AC-008,TC-006/TC-011,2,context_guard/compact/ledger.py,TBD
+  10,done,design.md#Architecture/FR-1..FR-11/TC-001/TC-002/TC-005/TC-006/TC-008/AC-001/AC-007,TC-001/TC-002/TC-008,3/4/5/6/7/8/9,context_guard/cli.py (test subcommand),TBD
+  11,done,FR-8/FR-9/TC-003/TC-004/TC-013/AC-002/AC-003,TC-003/TC-004,4/10,context_guard/cli.py (artifact subcommand),TBD
+  12,done,design.md#Components/TC-001/TC-002/TC-007,none,1,tests/fixtures/compact/,TBD
+  13,done,FR-14/TC-007,none,10/12,context_guard/compact/benchmark.py,TBD
+  14,done,DEC-002/qa.md#Regression Targets,none,1,tests/cli/test_test_cmd.py (updated),TBD
+  15,done,TC-001/TC-002/TC-005/TC-009/TC-012,none,6/7/8,tests/compact/parsers/test_pytest_junitxml.py; tests/compact/parsers/test_pytest_text.py; tests/compact/parsers/test_fallback.py,TBD
+  16,done,TC-003/TC-004/TC-013,none,4,tests/compact/test_artifact_store.py,TBD
+  17,done,TC-006/TC-011,none,9,tests/compact/test_ledger.py,TBD
+  18,done,TC-001/TC-002/TC-005/TC-006/TC-008/TC-013/TC-014/TC-015,none,10/11/12,tests/cli/test_compact_test_cmd.py; tests/cli/test_compact_artifact_cmd.py,TBD
+  19,done,TC-007/AC-006,TC-007,13,tests/compact/test_benchmark_ctx01.py,TBD
+  20,done,DEC-002/qa.md#Manual Checks,none,10/11,README.md (updated),TBD
+  21,done,design.md#Data Model/design.md#Architecture,none,13,docs/compact-runtime.md,TBD
+validation_sequence[5]{step,command}:
+  1,check_refinement_context.py --full-flow
+  2,check_clarify.py --full-flow
+  3,check_checklist.py --full-flow
+  4,plan_links.py --check --full-flow
+  5,analyze_spec.py --full-flow && validate_spec.py --full-flow
