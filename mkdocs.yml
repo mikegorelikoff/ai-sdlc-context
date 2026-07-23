@@ -1,0 +1,81 @@
+site_name: Context Guard
+site_description: A local, deterministic hook-based policy engine that reduces avoidable AI coding-agent context growth.
+site_url: https://mikegorelikoff.github.io/ai-sdlc-context/
+repo_url: https://github.com/mikegorelikoff/ai-sdlc-context
+repo_name: mikegorelikoff/ai-sdlc-context
+edit_uri: edit/main/docs/
+docs_dir: docs
+site_dir: site
+use_directory_urls: true
+strict: true
+
+theme:
+  name: material
+  language: en
+  icon:
+    logo: material/source-branch
+    repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: black
+      accent: cyan
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: cyan
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tracking
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/mikegorelikoff/ai-sdlc-context
+      name: Context Guard on GitHub
+
+copyright: Copyright &copy; 2026 Context Guard contributors
+
+nav:
+  - Home: index.md
+  - Policy Reference: policy.md
+  - Compact Runtime: compact-runtime.md

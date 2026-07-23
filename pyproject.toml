@@ -21,6 +21,9 @@ Issues = "https://github.com/mikegorelikoff/ai-sdlc-context/issues"
 dev = [
     "pytest>=7.0",
 ]
+docs = [
+    "mkdocs-material>=9.5",
+]
 
 [project.scripts]
 context-guard = "context_guard.cli:main"
@@ -32,3 +35,4 @@ include = ["context_guard*"]
 markers = [
     "perf: latency benchmark tests (excluded from default runs)",
 ]
+addopts = "--ignore=tests/fixtures/compact"

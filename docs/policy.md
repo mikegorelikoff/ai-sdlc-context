@@ -1,5 +1,7 @@
 # Context Guard Policy Reference
 
+Stage 1 stops a small set of high-cost operations before they ever reach the model: full reads of oversized or generated files, unbounded log/history commands, and unscoped repository search. Every rule below evaluates deterministically — no LLM call is involved in the decision.
+
 ## Configuration layering
 
 Effective policy is resolved in this order, later layers overriding earlier ones field-by-field:
@@ -51,3 +53,7 @@ Per the PRFAQ rollout recommendation, start new installs in `observe`, move to `
 ## Fail-open vs fail-closed
 
 Cost/token-optimization rules (files, commands, search) fail open on any internal error by default — an evaluation failure never blocks a developer's work. `fail_closed_rules` lists rule ids that should block instead of allow on internal error; use this sparingly for genuinely security-adjacent rules, and remember Context Guard is not a security product (see `specs/001-context-guard/requirements.md`).
+
+## Related: Compact Runtime
+
+This page covers Stage 1 (blocking/warning on high-cost operations). For Stage 2 — executing an operation and returning a bounded compact result with drill-down evidence instead of raw output — see [Compact Runtime](compact-runtime.md).
