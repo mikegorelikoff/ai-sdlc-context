@@ -1,5 +1,10 @@
 # Contributing to Context Guard
 
+Documentation changes must follow [AGENTS.md](AGENTS.md), preserve the shared
+six-section navigation and product-family block, update the
+[documentation decision log](docs/project/decision-log.md) for material
+architecture decisions, and pass the documentation contract checks.
+
 Thanks for your interest in contributing. Context Guard is a small, deterministic local tool — contributions that keep it simple, dependency-light, and provider-agnostic are especially welcome.
 
 ## Getting started

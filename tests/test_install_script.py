@@ -38,20 +38,23 @@ def test_installer_fails_clearly_without_python(tmp_path: Path):
     assert "Python 3.10 or newer is required" in result.stderr
 
 
-def test_readme_is_the_complete_user_document():
+def test_readme_is_the_compact_documentation_entry_point():
     text = (ROOT / "README.md").read_text(encoding="utf-8")
 
     for heading in (
-        "## Requirements",
-        "## Install",
-        "## Verify",
-        "## The one policy",
-        "## Use",
-        "## Reproducible examples",
-        "## Update",
-        "## Uninstall",
+        "## Why use it?",
+        "## Quick start",
+        "## Expected first result",
+        "## Product workflow",
+        "## What it does and does not do",
+        "## Documentation paths",
+        "## AI SDLC product family",
+        "## Security and privacy",
+        "## Project status",
+        "## Contributing",
+        "## License",
     ):
         assert heading in text
-    assert "curl -fsSL https://raw.githubusercontent.com/" in text
-    assert not (ROOT / "docs").exists()
-    assert not (ROOT / "mkdocs.yml").exists()
+    assert 'CONTEXT_GUARD_PACKAGE="$PWD" ./install.sh' in text
+    assert (ROOT / "docs" / "index.md").is_file()
+    assert (ROOT / "mkdocs.yml").is_file()

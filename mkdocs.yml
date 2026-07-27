@@ -1,0 +1,117 @@
+site_name: Context Guard
+site_description: Stop predictable context waste while preserving full local evidence for inspection.
+site_url: https://mikegorelikoff.github.io/ai-sdlc-context/
+repo_url: https://github.com/mikegorelikoff/ai-sdlc-context
+repo_name: mikegorelikoff/ai-sdlc-context
+edit_uri: edit/main/docs/
+docs_dir: docs
+site_dir: site
+use_directory_urls: true
+strict: true
+
+theme:
+  name: material
+  language: en
+  icon:
+    logo: material/shield-search
+    repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: black
+      accent: cyan
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: cyan
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.indexes
+    - navigation.path
+    - navigation.prune
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+
+extra_css:
+  - assets/stylesheets/ai-sdlc.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/mikegorelikoff/ai-sdlc-context
+      name: Context Guard on GitHub
+
+copyright: Copyright &copy; 2026 Context Guard contributors
+
+not_in_nav: |
+  guides/measurement.md
+  reference/parsers-measurement.md
+
+nav:
+  - Home: index.md
+  - Start here:
+      - Overview: start-here/index.md
+      - Prerequisites: start-here/prerequisites.md
+      - Install and initialize: start-here/install.md
+      - First run: start-here/first-run.md
+      - Troubleshooting: start-here/troubleshooting.md
+  - How it works:
+      - Overview: how-it-works/index.md
+      - Stage 1 and Stage 2: how-it-works/stages.md
+      - Workflow and rollout: how-it-works/workflow.md
+      - Trust boundaries: how-it-works/trust-boundaries.md
+  - Guides:
+      - Overview: guides/index.md
+      - Safe rollout: guides/safe-rollout.md
+      - Compact command output: guides/compact-output.md
+      - Run the examples: guides/examples.md
+      - Inspect evidence: guides/inspect-evidence.md
+  - Reference:
+      - Overview: reference/index.md
+      - CLI: reference/cli.md
+      - Packaged policy: reference/policy.md
+      - Receipts and artifacts: reference/receipts-artifacts.md
+      - Profiles: reference/profiles.md
+      - Files and environment: reference/files-environment.md
+      - Compatibility: reference/compatibility.md
+  - Project:
+      - Overview: project/index.md
+      - Status and limitations: project/status-limitations.md
+      - Security and privacy: project/security-privacy.md
+      - Contributing: project/contributing.md
+      - Documentation decisions: project/decision-log.md
