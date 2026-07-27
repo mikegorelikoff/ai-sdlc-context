@@ -1,14 +1,7 @@
-"""Layered policy configuration loading and merging.
-
-Precedence (later wins, field-by-field): built-in defaults -> user config ->
-repo config -> environment overrides.
-"""
+"""Load and validate Context Guard's single packaged policy."""
 
 from __future__ import annotations
 
-import copy
-import os
-import tempfile
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -16,11 +9,9 @@ from typing import Any
 import yaml
 
 DEFAULTS_PATH = Path(__file__).parent / "defaults" / "policy.yaml"
-USER_CONFIG_PATH = Path.home() / ".config" / "context-guard" / "policy.yaml"
-REPO_CONFIG_RELATIVE = Path(".context-guard") / "policy.yaml"
 
 _VALID_MODES = {"observe", "warn", "enforce"}
-_VALID_POLICY_VERSIONS = {1, 2}
+_VALID_POLICY_VERSIONS = {2}
 _VALID_PROVIDERS = {"claude", "codex", "any"}
 _VALID_OUTCOMES = {"safety-critical", "required", "irrelevant"}
 _OUTCOME_PRECEDENCE = {"irrelevant": 0, "required": 1, "safety-critical": 2}
@@ -57,7 +48,7 @@ class RelevanceResult:
 
 @dataclass
 class Policy:
-    version: int = 1
+    version: int = 2
     mode: str = "observe"
     files: dict[str, Any] = field(default_factory=dict)
     commands: dict[str, Any] = field(default_factory=dict)
@@ -73,97 +64,7 @@ class Policy:
 
 
 class PolicyError(ValueError):
-    """Raised when a policy YAML layer is structurally invalid."""
-
-
-def new_v2_policy_data() -> dict[str, Any]:
-    """Return new-install policy data without changing the built-in v1 defaults."""
-    data = _read_yaml_layer(DEFAULTS_PATH)
-    data["version"] = 2
-    data["skills"] = {"rules": []}
-    return data
-
-
-def write_new_v2_policy(path: Path) -> None:
-    """Create a v2 policy without overwriting an existing path."""
-    data = new_v2_policy_data()
-    errors = validate_policy_dict(data, str(path))
-    if errors:
-        raise PolicyError("; ".join(errors))
-    path.parent.mkdir(parents=True, exist_ok=True)
-    try:
-        descriptor = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
-        with os.fdopen(descriptor, "w", encoding="utf-8") as stream:
-            yaml.safe_dump(data, stream, sort_keys=False)
-    except FileExistsError as exc:
-        raise PolicyError(
-            f"POLICY_ALREADY_EXISTS at {path}: keep the existing file or migrate it explicitly"
-        ) from exc
-
-
-def migrate_policy_file(path: Path) -> Path | None:
-    """Explicitly migrate a v1 policy with a non-overwritten backup and atomic replace."""
-    data = _read_yaml_layer(path)
-    errors = validate_policy_dict(data, str(path))
-    if errors:
-        raise PolicyError("; ".join(errors))
-    if data.get("version", 1) == 2:
-        return None
-
-    migrated = copy.deepcopy(data)
-    migrated["version"] = 2
-    migrated["skills"] = {"rules": []}
-    errors = validate_policy_dict(migrated, str(path))
-    if errors:
-        raise PolicyError("; ".join(errors))
-
-    original = path.read_bytes()
-    backup = path.with_suffix(path.suffix + ".v1.bak")
-    backup_temp: Path | None = None
-    target_temp: Path | None = None
-    try:
-        with tempfile.NamedTemporaryFile(
-            dir=path.parent, prefix=f".{path.name}.backup-", delete=False
-        ) as stream:
-            backup_temp = Path(stream.name)
-            stream.write(original)
-            stream.flush()
-            os.fsync(stream.fileno())
-        try:
-            os.link(backup_temp, backup)
-        except FileExistsError as exc:
-            raise PolicyError(
-                f"POLICY_BACKUP_EXISTS at {backup}: remove or archive it before migration"
-            ) from exc
-        finally:
-            backup_temp.unlink(missing_ok=True)
-            backup_temp = None
-
-        rendered = yaml.safe_dump(migrated, sort_keys=False)
-        with tempfile.NamedTemporaryFile(
-            mode="w",
-            encoding="utf-8",
-            dir=path.parent,
-            prefix=f".{path.name}.migrate-",
-            delete=False,
-        ) as stream:
-            target_temp = Path(stream.name)
-            stream.write(rendered)
-            stream.flush()
-            os.fsync(stream.fileno())
-        os.chmod(target_temp, path.stat().st_mode & 0o777)
-        candidate = _read_yaml_layer(target_temp)
-        candidate_errors = validate_policy_dict(candidate, str(path))
-        if candidate_errors:
-            raise PolicyError("; ".join(candidate_errors))
-        os.replace(target_temp, path)
-        target_temp = None
-        return backup
-    finally:
-        if backup_temp is not None:
-            backup_temp.unlink(missing_ok=True)
-        if target_temp is not None:
-            target_temp.unlink(missing_ok=True)
+    """Raised when the packaged policy is missing or invalid."""
 
 
 def _read_yaml_layer(path: Path) -> dict[str, Any]:
@@ -188,47 +89,6 @@ def _read_yaml_layer(path: Path) -> dict[str, Any]:
     return data
 
 
-def _merge(base: dict[str, Any], override: dict[str, Any]) -> dict[str, Any]:
-    """Merge one policy layer over another, field-by-field, dict-recursive."""
-    result = copy.deepcopy(base)
-    for key, value in override.items():
-        if isinstance(value, dict) and isinstance(result.get(key), dict):
-            result[key] = _merge(result[key], value)
-        else:
-            result[key] = value
-    return result
-
-
-def _merge_policy_layer(base: dict[str, Any], override: dict[str, Any]) -> dict[str, Any]:
-    """Merge a policy layer, replacing same-id skill rules as whole objects."""
-    base_without_skills = {key: value for key, value in base.items() if key != "skills"}
-    override_without_skills = {key: value for key, value in override.items() if key != "skills"}
-    result = _merge(base_without_skills, override_without_skills)
-
-    ordered: dict[str, dict[str, Any]] = {}
-    for source in (base, override):
-        skills = source.get("skills", {})
-        if not isinstance(skills, dict):
-            continue
-        rules = skills.get("rules", [])
-        if not isinstance(rules, list):
-            continue
-        for rule in rules:
-            if isinstance(rule, dict) and isinstance(rule.get("id"), str):
-                ordered[rule["id"]] = copy.deepcopy(rule)
-    if ordered or "skills" in base or "skills" in override:
-        result["skills"] = {"rules": list(ordered.values())}
-    return result
-
-
-def _env_overrides() -> dict[str, Any]:
-    overrides: dict[str, Any] = {}
-    mode = os.environ.get("CONTEXT_GUARD_MODE")
-    if mode:
-        overrides["mode"] = mode
-    return overrides
-
-
 def validate_policy_dict(data: dict[str, Any], source: str = "<policy>") -> list[str]:
     """Return a list of schema errors for a merged policy dict, empty when valid."""
     errors: list[str] = []
@@ -237,7 +97,7 @@ def validate_policy_dict(data: dict[str, Any], source: str = "<policy>") -> list
         errors.append(f"POLICY_INVALID_TYPE at {source}:version: version must be an integer")
     elif version not in _VALID_POLICY_VERSIONS:
         errors.append(
-            f"POLICY_UNSUPPORTED_VERSION at {source}:version: use version 1 or 2"
+            f"POLICY_UNSUPPORTED_VERSION at {source}:version: use version 2"
         )
 
     mode = data.get("mode", "observe")
@@ -446,51 +306,20 @@ def skill_rule_conflicts(policy: Policy) -> tuple[tuple[str, str], ...]:
 
 
 def load(repo_root: Path | None = None) -> Policy:
-    """Load and merge all policy layers into a validated Policy object.
-
-    Raises PolicyError when any layer is structurally invalid or the merged
-    result fails schema validation.
-    """
-    repo_root = repo_root or Path.cwd()
-    layers: list[tuple[str, Path]] = [
-        ("defaults", DEFAULTS_PATH),
-        ("user", USER_CONFIG_PATH),
-        ("repo", repo_root / REPO_CONFIG_RELATIVE),
-    ]
-
-    merged: dict[str, Any] = {}
-    sources: list[str] = []
-    for name, path in layers:
-        layer_data = _read_yaml_layer(path)
-        if layer_data:
-            sources.append(f"{name}:{path}")
-        layer_errors = validate_policy_dict(layer_data, str(path))
-        # Partial override layers inherit version from earlier layers.
-        layer_errors = [
-            error
-            for error in layer_errors
-            if not ("POLICY_REQUIRES_V2" in error and "version" not in layer_data)
-        ]
-        if layer_errors:
-            raise PolicyError("; ".join(layer_errors))
-        merged = _merge_policy_layer(merged, layer_data)
-
-    env = _env_overrides()
-    if env:
-        sources.append("env")
-        merged = _merge_policy_layer(merged, env)
-
-    errors = validate_policy_dict(merged, "effective")
+    """Load the single packaged policy; ``repo_root`` is ignored for API compatibility."""
+    del repo_root
+    data = _read_yaml_layer(DEFAULTS_PATH)
+    errors = validate_policy_dict(data, str(DEFAULTS_PATH))
     if errors:
         raise PolicyError("; ".join(errors))
 
     return Policy(
-        version=merged.get("version", 1),
-        mode=merged.get("mode", "observe"),
-        files=merged.get("files", {}),
-        commands=merged.get("commands", {}),
-        search=merged.get("search", {}),
-        fail_closed_rules=list(merged.get("fail_closed_rules", [])),
-        skill_rules=_skill_rules(merged),
-        sources=sources,
+        version=data["version"],
+        mode=data.get("mode", "observe"),
+        files=data.get("files", {}),
+        commands=data.get("commands", {}),
+        search=data.get("search", {}),
+        fail_closed_rules=list(data.get("fail_closed_rules", [])),
+        skill_rules=_skill_rules(data),
+        sources=[f"packaged:{DEFAULTS_PATH}"],
     )

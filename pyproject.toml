@@ -22,15 +22,15 @@ Issues = "https://github.com/mikegorelikoff/ai-sdlc-context/issues"
 dev = [
     "pytest>=7.0",
 ]
-docs = [
-    "mkdocs-material>=9.5",
-]
 
 [project.scripts]
 context-guard = "context_guard.cli:main"
 
 [tool.setuptools.packages.find]
 include = ["context_guard*"]
+
+[tool.setuptools.package-data]
+context_guard = ["defaults/*.yaml"]
 
 [tool.pytest.ini_options]
 markers = [

@@ -15,14 +15,14 @@ Python 3.10+ is required.
 
 ## Project structure
 
-See `specs/001-context-guard/design.md` for the architecture and `docs/policy.md` for the policy schema. Requirements, design, test cases, QA plan, and tasks for the current feature set live under `specs/001-context-guard/`.
+See `specs/001-context-guard/design.md` for the architecture and `README.md` for the policy. Requirements, design, test cases, QA plan, and tasks for the current feature set live under `specs/001-context-guard/`.
 
 ## Making a change
 
 1. Open an issue describing the bug or proposal before large changes, so scope can be agreed on first.
 2. Keep provider-specific parsing isolated to `context_guard/adapters/`; the engine and policy modules must stay provider-agnostic.
 3. Add or update tests under `tests/` for any behavior change. Run `python3 -m pytest tests/ -q` (and `-m perf` for the latency benchmark) before opening a PR.
-4. Update `docs/policy.md` and `README.md` when you change the policy schema or CLI surface.
+4. Update `README.md` when you change the policy schema or CLI surface.
 5. Keep commits focused; explain the *why* in the commit message and PR description.
 
 ## Reporting bugs / requesting features

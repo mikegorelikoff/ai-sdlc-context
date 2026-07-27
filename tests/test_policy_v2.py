@@ -1,161 +1,69 @@
 from pathlib import Path
 
 import pytest
+import yaml
 
 from context_guard import policy_config
 from context_guard.policy_config import PolicyError, classify_skill, skill_rule_conflicts
 
 
-def _write(path: Path, text: str) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(text, encoding="utf-8")
-
-
-def test_v2_exact_irrelevant_match(monkeypatch, tmp_path: Path):
-    user = tmp_path / "user.yaml"
-    repo = tmp_path / "repo"
-    _write(
-        user,
-        """
-version: 2
-skills:
-  rules:
-    - id: unused-test-skill
-      provider: any
-      skill: test.unused
-      outcome: irrelevant
-      reason_code: task-does-not-use-skill
-""",
+def test_load_uses_exactly_one_packaged_policy(tmp_path: Path, monkeypatch):
+    (tmp_path / ".context-guard").mkdir()
+    (tmp_path / ".context-guard" / "policy.yaml").write_text(
+        "version: 2\nmode: enforce\nskills:\n  rules: []\n",
+        encoding="utf-8",
     )
-    monkeypatch.setattr(policy_config, "USER_CONFIG_PATH", user)
-
-    policy = policy_config.load(repo)
-
-    assert policy.version == 2
-    assert classify_skill(policy, provider="claude", skill="test.unused").outcome == "irrelevant"
-    assert classify_skill(policy, provider="claude", skill="test.unused-extra").outcome == "required"
-
-
-def test_same_id_later_layer_replaces_whole_rule(monkeypatch, tmp_path: Path):
-    user = tmp_path / "user.yaml"
-    repo = tmp_path / "repo"
-    _write(
-        user,
-        """
-version: 2
-skills:
-  rules:
-    - id: shared
-      provider: claude
-      skill: test.skill
-      outcome: irrelevant
-      task_ids: [TASK-1]
-      reason_code: user-rule
-""",
+    user_policy = tmp_path / ".config" / "context-guard" / "policy.yaml"
+    user_policy.parent.mkdir(parents=True)
+    user_policy.write_text(
+        "version: 2\nmode: warn\nskills:\n  rules: []\n",
+        encoding="utf-8",
     )
-    _write(
-        repo / policy_config.REPO_CONFIG_RELATIVE,
-        """
-version: 2
-skills:
-  rules:
-    - id: shared
-      provider: any
-      skill: test.skill
-      outcome: required
-""",
-    )
-    monkeypatch.setattr(policy_config, "USER_CONFIG_PATH", user)
-
-    policy = policy_config.load(repo)
-
-    assert len(policy.skill_rules) == 1
-    assert policy.skill_rules[0].task_ids == ()
-    assert policy.skill_rules[0].reason_code is None
-    assert classify_skill(policy, provider="codex", skill="test.skill").outcome == "required"
-
-
-def test_disabled_rule_does_not_classify(monkeypatch, tmp_path: Path):
-    user = tmp_path / "user.yaml"
-    _write(
-        user,
-        """
-version: 2
-skills:
-  rules:
-    - id: disabled
-      enabled: false
-      provider: any
-      skill: test.skill
-      outcome: irrelevant
-""",
-    )
-    monkeypatch.setattr(policy_config, "USER_CONFIG_PATH", user)
-
-    result = classify_skill(policy_config.load(tmp_path), provider="codex", skill="test.skill")
-
-    assert result.outcome == "required"
-    assert result.rule_ids == ()
-
-
-def test_required_precedes_irrelevant(monkeypatch, tmp_path: Path):
-    user = tmp_path / "user.yaml"
-    _write(
-        user,
-        """
-version: 2
-skills:
-  rules:
-    - id: broad
-      provider: any
-      skill: test.skill
-      outcome: irrelevant
-    - id: codex-required
-      provider: codex
-      skill: test.skill
-      outcome: required
-""",
-    )
-    monkeypatch.setattr(policy_config, "USER_CONFIG_PATH", user)
+    monkeypatch.setenv("CONTEXT_GUARD_MODE", "enforce")
+    monkeypatch.setattr(Path, "home", lambda: tmp_path)
 
     policy = policy_config.load(tmp_path)
 
-    assert classify_skill(policy, provider="claude", skill="test.skill").outcome == "irrelevant"
-    assert classify_skill(policy, provider="codex", skill="test.skill").outcome == "required"
-    assert skill_rule_conflicts(policy) == (("broad", "codex-required"),)
+    packaged = yaml.safe_load(policy_config.DEFAULTS_PATH.read_text(encoding="utf-8"))
+    assert policy.version == 2
+    assert policy.mode == packaged["mode"] == "observe"
+    assert policy.files == packaged["files"]
+    assert policy.sources == [f"packaged:{policy_config.DEFAULTS_PATH}"]
+
+
+def test_packaged_policy_has_one_empty_skill_rule_set():
+    policy = policy_config.load()
+
+    assert policy.skill_rules == ()
+    assert classify_skill(policy, provider="claude", skill="test.unused").outcome == "required"
+    assert skill_rule_conflicts(policy) == ()
 
 
 @pytest.mark.parametrize(
     ("content", "code", "path"),
     [
+        ("version: 1\n", "POLICY_UNSUPPORTED_VERSION", "version"),
         ("version: 3\n", "POLICY_UNSUPPORTED_VERSION", "version"),
         (
-            "version: 2\nskills:\n  rules:\n    - id: x\n      provider: any\n      skill: x\n"
-            "      outcome: maybe\n",
+            "version: 2\nskills:\n  rules:\n    - id: x\n      provider: any\n"
+            "      skill: x\n      outcome: maybe\n",
             "POLICY_INVALID_VALUE",
             "skills.rules[0].outcome",
         ),
         (
-            "version: 2\nskills:\n  rules:\n    - id: x\n      provider: any\n      skill: x\n"
-            "      outcome: required\n      surprise: true\n",
+            "version: 2\nskills:\n  rules:\n    - id: x\n      provider: any\n"
+            "      skill: x\n      outcome: required\n      surprise: true\n",
             "POLICY_UNKNOWN_FIELD",
             "skills.rules[0].surprise",
         ),
-        (
-            "version: 2\nskills:\n  rules:\n    - id: x\n      provider: any\n      skill: x\n"
-            "      outcome: required\n    - id: x\n      provider: any\n      skill: y\n"
-            "      outcome: irrelevant\n",
-            "POLICY_DUPLICATE_RULE_ID",
-            "skills.rules[1].id",
-        ),
     ],
 )
-def test_v2_validation_has_stable_code_and_path(
-    monkeypatch, tmp_path: Path, content: str, code: str, path: str
+def test_policy_validation_has_stable_code_and_path(
+    tmp_path: Path, monkeypatch, content: str, code: str, path: str
 ):
-    user = tmp_path / "user.yaml"
-    _write(user, content)
-    monkeypatch.setattr(policy_config, "USER_CONFIG_PATH", user)
+    candidate = tmp_path / "policy.yaml"
+    candidate.write_text(content, encoding="utf-8")
+    monkeypatch.setattr(policy_config, "DEFAULTS_PATH", candidate)
 
     with pytest.raises(PolicyError) as error:
         policy_config.load(tmp_path)
@@ -164,17 +72,15 @@ def test_v2_validation_has_stable_code_and_path(
     assert path in str(error.value)
 
 
-def test_v1_policy_remains_compatible(monkeypatch, tmp_path: Path):
-    user = tmp_path / "missing-user.yaml"
-    monkeypatch.setattr(policy_config, "USER_CONFIG_PATH", user)
-    _write(
-        tmp_path / policy_config.REPO_CONFIG_RELATIVE,
-        "version: 1\nmode: enforce\nfiles:\n  max_full_read_bytes: 123\n",
-    )
+def test_cli_exposes_no_policy_creation_or_migration(capsys):
+    from context_guard import cli
 
-    policy = policy_config.load(tmp_path)
+    with pytest.raises(SystemExit) as init_exit:
+        cli.main(["init"])
+    with pytest.raises(SystemExit) as migrate_exit:
+        cli.main(["migrate-policy"])
 
-    assert policy.version == 1
-    assert policy.mode == "enforce"
-    assert policy.files["max_full_read_bytes"] == 123
-    assert policy.skill_rules == ()
+    assert init_exit.value.code == 2
+    assert migrate_exit.value.code == 2
+    error = capsys.readouterr().err
+    assert "invalid choice" in error

@@ -1,0 +1,36 @@
+feature: 005-simple-install-policy-docs
+workspace: implementation
+flow_mode: quick
+updated_at: 2026-07-27
+source_artifacts[6]{artifact,path}:
+  requirements,requirements.md
+  design,design.md
+  test_cases,test-cases.md
+  qa,qa.md
+  tasks,tasks.md
+  decisions,decision-log.md
+trace[10]{acceptance_id,test_cases,tasks}:
+  AC-001,TC-001,T001/T003/T004
+  AC-002,TC-002,T001/T003/T004
+  AC-003,TC-003,T001/T003/T004
+  AC-004,TC-004,T002/T003/T004
+  AC-005,TC-005,T002/T003/T004
+  AC-006,TC-006,T004/T005
+  AC-007,TC-007,T004/T005
+  AC-008,TC-008,T006/T004
+  AC-009,TC-009,T007/T003/T004
+  AC-010,TC-010,T007/T003/T004
+tasks[7]{id,status,refs,tests,depends_on,artifact,decision_ref}:
+  T001,done,FR-001/FR-002/AC-001/AC-002/AC-003/TC-001/TC-002/TC-003,TC-001/TC-002/TC-003,none,context_guard/policy_config.py; context_guard/defaults/policy.yaml; context_guard/cli.py,TBD
+  T002,done,FR-003/AC-004/AC-005/TC-004/TC-005,TC-004/TC-005,T001,install.sh,TBD
+  T006,done,FR-006/AC-008/TC-008,TC-008,T001,context_guard/compact/ledger.py; context_guard/compact/pipeline.py; context_guard/cli.py,TBD
+  T007,done,FR-007/FR-008/AC-009/AC-010/TC-009/TC-010,TC-009/TC-010,T002/T006,context_guard/compact/command_proxy.py; context_guard/adapters/claude_code.py,TBD
+  T003,done,AC-001/AC-002/AC-003/AC-004/AC-005/AC-009/AC-010/TC-001/TC-002/TC-003/TC-004/TC-005/TC-009/TC-010,TC-001/TC-002/TC-003/TC-004/TC-005/TC-009/TC-010,T001/T002/T007,tests/test_policy_v2.py; tests/test_install_script.py; tests/cli/test_command_proxy_cmd.py; tests/compact/test_command_proxy.py,TBD
+  T004,done,AC-001/AC-002/AC-003/AC-004/AC-005/AC-006/AC-007/AC-008/AC-009/AC-010/TC-001/TC-002/TC-003/TC-004/TC-005/TC-006/TC-007/TC-008/TC-009/TC-010,TC-001/TC-002/TC-003/TC-004/TC-005/TC-006/TC-007/TC-008/TC-009/TC-010,T003,specs/005-simple-install-policy-docs/validation.md; specs/005-simple-install-policy-docs/_ai_sdlc/validation-receipt.json,TBD
+  T005,done,FR-004/FR-005/AC-006/AC-007/TC-006/TC-007,TC-006/TC-007,T002/T007,README.md; removed docs/ and mkdocs.yml,TBD
+validation_sequence[5]{step,command}:
+  1,check_refinement_context.py --full-flow
+  2,check_clarify.py --full-flow
+  3,check_checklist.py --full-flow
+  4,plan_links.py --check --full-flow
+  5,analyze_spec.py --full-flow && validate_spec.py --full-flow

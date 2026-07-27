@@ -20,16 +20,15 @@ from context_guard import quality
 from context_guard.adapters import claude_code, codex
 from context_guard.audit import jsonl
 from context_guard.policy_config import (
-    REPO_CONFIG_RELATIVE,
     Policy,
     PolicyError,
     load as load_policy,
-    migrate_policy_file,
     skill_rule_conflicts,
-    write_new_v2_policy,
 )
 from context_guard.policies import sessions
 from context_guard.compact import artifact_store
+from context_guard.compact import command_proxy
+from context_guard.compact import ledger as compact_ledger
 from context_guard.compact import pipeline as compact_pipeline
 
 _ADAPTERS = {"claude": claude_code, "codex": codex}
@@ -84,7 +83,19 @@ def cmd_hook(args: argparse.Namespace) -> int:
         if decision.status == decisions.BLOCK or decision.would_have == decisions.BLOCK:
             sessions.record_prevented(repo_root, event.session_id, bytes_estimate=1)
 
-    output = adapter.render(decision)
+    rewritten = None
+    if (
+        args.provider == "claude"
+        and event.event_name == "PreToolUse"
+        and event.command
+        and decision.status != decisions.BLOCK
+    ):
+        rewritten = command_proxy.rewrite(event.command)
+    output = (
+        claude_code.render_rewrite(event, rewritten)
+        if rewritten is not None
+        else adapter.render(decision)
+    )
     print(json.dumps(output))
 
     _write_audit(
@@ -165,35 +176,8 @@ def cmd_doctor(args: argparse.Namespace) -> int:
 
 def cmd_report(args: argparse.Namespace) -> int:
     summary = jsonl.summarize(jsonl.default_log_path(_repo_root()))
+    summary["compact_runtime"] = compact_ledger.summarize(_repo_root())
     print(json.dumps(summary, indent=2))
-    return 0
-
-
-def cmd_init(args: argparse.Namespace) -> int:
-    repo_root = _repo_root()
-    target = repo_root / REPO_CONFIG_RELATIVE
-    if target.is_file():
-        print(f"Policy already exists at {target}; not overwriting.", file=sys.stderr)
-        return 0
-    write_new_v2_policy(target)
-    print(f"Created default policy at {target}")
-    return 0
-
-
-def cmd_migrate_policy(args: argparse.Namespace) -> int:
-    target = _repo_root() / REPO_CONFIG_RELATIVE
-    if not target.is_file():
-        print(f"No repository policy found at {target}", file=sys.stderr)
-        return 1
-    try:
-        backup = migrate_policy_file(target)
-    except PolicyError as exc:
-        print(f"Policy migration failed: {exc}", file=sys.stderr)
-        return 1
-    if backup is None:
-        print(f"Policy already uses version 2 at {target}; no changes made.")
-    else:
-        print(f"Migrated policy to version 2 at {target}; backup: {backup}")
     return 0
 
 
@@ -685,6 +669,18 @@ def cmd_compact_test(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_compact_run(args: argparse.Namespace) -> int:
+    command = list(args.command)
+    if command and command[0] == "--":
+        command = command[1:]
+    if not command:
+        print("context-guard run -- <command> requires a command to run", file=sys.stderr)
+        return 2
+    result = command_proxy.run(_repo_root(), command)
+    print(result.output)
+    return result.exit_code
+
+
 def cmd_artifact_show(args: argparse.Namespace) -> int:
     repo_root = _repo_root()
     try:
@@ -771,8 +767,7 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("selftest").set_defaults(func=cmd_selftest)
     sub.add_parser("doctor").set_defaults(func=cmd_doctor)
     sub.add_parser("report").set_defaults(func=cmd_report)
-    sub.add_parser("init").set_defaults(func=cmd_init)
-    sub.add_parser("migrate-policy").set_defaults(func=cmd_migrate_policy)
+    sub.add_parser("gain").set_defaults(func=cmd_report)
 
     inventory_parser = sub.add_parser("inventory")
     inventory_parser.add_argument("--provider", required=True, choices=["claude", "codex"])
@@ -955,6 +950,10 @@ def build_parser() -> argparse.ArgumentParser:
     test_parser = sub.add_parser("test")
     test_parser.add_argument("command", nargs=argparse.REMAINDER)
     test_parser.set_defaults(func=cmd_compact_test)
+
+    run_parser = sub.add_parser("run")
+    run_parser.add_argument("command", nargs=argparse.REMAINDER)
+    run_parser.set_defaults(func=cmd_compact_run)
 
     artifact_parser = sub.add_parser("artifact")
     artifact_sub = artifact_parser.add_subparsers(dest="artifact_command", required=True)

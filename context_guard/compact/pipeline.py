@@ -68,6 +68,12 @@ def run_compact_test(repo_root: Path, command: list[str]) -> tuple[CompactResult
 
     artifact_store.write(repo_root, "test", artifact_id, files, fragments=fragments)
 
+    raw_output_bytes = len(raw.stdout) + len(raw.stderr)
+    compact_output_bytes = len(
+        json.dumps(
+            result.to_dict(), sort_keys=True, separators=(",", ":")
+        ).encode("utf-8")
+    )
     ledger.record(
         repo_root,
         command=" ".join(command),
@@ -75,7 +81,16 @@ def run_compact_test(repo_root: Path, command: list[str]) -> tuple[CompactResult
         artifact_kind="test",
         artifact_id=artifact_id,
         status=result.status,
-        summary={"tests": result.tests, "failed_count": len(result.failures)},
+        summary={
+            "tests": result.tests,
+            "failed_count": len(result.failures),
+            "raw_output_bytes": raw_output_bytes,
+            "compact_output_bytes": compact_output_bytes,
+            "estimated_input_tokens_saved": max(
+                raw_output_bytes - compact_output_bytes, 0
+            )
+            // 4,
+        },
         timestamp=raw.timestamp,
     )
 

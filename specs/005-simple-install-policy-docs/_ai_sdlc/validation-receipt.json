@@ -1,0 +1,90 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "tests/run_pytest.py",
+        "-q"
+      ],
+      "duration_ms": 6038,
+      "exit_code": 0,
+      "id": "V001",
+      "output_limited": false,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 340,
+      "stdout_sha256": "63c8e62bd160e2a1179fdc754a0a666182292d78447f40e3269fd4ad9d29a87a",
+      "trace_ids": [
+        "AC-001",
+        "AC-002",
+        "AC-003",
+        "AC-004",
+        "AC-005",
+        "AC-008",
+        "AC-009",
+        "AC-010",
+        "TC-001",
+        "TC-002",
+        "TC-003",
+        "TC-004",
+        "TC-005",
+        "TC-008",
+        "TC-009",
+        "TC-010"
+      ]
+    },
+    {
+      "argv": [
+        "python3",
+        ".agents/skills/ai-sdlc-sdd/scripts/validate_spec.py",
+        "specs/005-simple-install-policy-docs",
+        "--quick-flow"
+      ],
+      "duration_ms": 72,
+      "exit_code": 0,
+      "id": "V003",
+      "output_limited": false,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 56,
+      "stdout_sha256": "742835625b81b687b94dfc789fe4a46e4710ed4f0feac6539dde48875f7f2910",
+      "trace_ids": [
+        "DEC-001",
+        "DEC-002"
+      ]
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "duration_ms": 20,
+      "exit_code": 0,
+      "id": "V004",
+      "output_limited": false,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trace_ids": [
+        "AC-006",
+        "AC-007",
+        "DEC-001",
+        "DEC-002"
+      ]
+    }
+  ],
+  "environment": {
+    "platform": "macOS-26.3.1-arm64-arm-64bit",
+    "python": "3.9.6"
+  },
+  "evidence_trust": "local-structural-not-authenticated",
+  "executed_at": "2026-07-27T20:04:29.319839Z",
+  "plan_path": "specs/005-simple-install-policy-docs/_ai_sdlc/validation-plan.json",
+  "plan_sha256": "6279c991cc69bc3af3d7090f5163cd89a84ec7929386a34b2539ca50f566d2a2",
+  "receipt_fingerprint": "768a4183d7217efdb18c25e7607481be80ee70d3a914b030edb547859a22b133",
+  "revision": "4f4df25e39fc97b5fb72682f360125dbae984913",
+  "schema": "ai-sdlc-validation-receipt/v1",
+  "workspace_fingerprint": "f5152d1eb3816e0b08e12317c98b3c8cee6096a12a78a6c06405ef725c38a160"
+}
