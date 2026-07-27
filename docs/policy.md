@@ -42,6 +42,74 @@ search:
 fail_closed_rules: []                # rule ids that block (instead of allow) on internal evaluation errors
 ```
 
+Version 1 remains supported and is interpreted as having no skill-relevance
+rules. New relevance policies use version 2:
+
+```yaml
+version: 2
+
+skills:
+  rules:
+    - id: test-tools-not-needed
+      enabled: true
+      provider: any                  # claude | codex | any
+      skill: organization.test-tools # exact authoritative identity
+      outcome: irrelevant            # safety-critical | required | irrelevant
+      task_ids: [DOCS-ONLY]           # optional exact selectors
+      repositories: [docs-site]       # optional exact selectors
+      reason_code: task-excludes-tests
+```
+
+Rules are merged across layers by `id`. A later same-ID rule replaces the
+entire earlier rule; omitted fields are not inherited. `enabled: false`
+disables the rule. Duplicate IDs within one layer and unknown fields are
+invalid.
+
+Classification uses exact skill identities and the precedence
+`safety-critical` > `required` > `irrelevant`. Only an exact, enabled,
+unconflicted `irrelevant` match may reduce visibility. Unknown identities,
+selector mismatches, and conflicts keep the skill required.
+
+Validation errors include a stable code and dotted field path, for example
+`POLICY_INVALID_VALUE at ...:skills.rules[0].provider`. Future policy versions
+are rejected. Existing version-1 files load without being rewritten; migration
+to version 2 is explicit.
+
+`context-guard init` creates a version-2 repository policy and never overwrites
+an existing file. To migrate an existing repository policy explicitly:
+
+```bash
+context-guard validate
+context-guard migrate-policy
+context-guard validate
+```
+
+Migration validates the version-1 source, creates a byte-identical
+`policy.yaml.v1.bak` without overwriting an existing backup, validates the
+version-2 candidate, and atomically replaces `policy.yaml`. Running it against
+an existing version-2 policy is a no-op.
+
+## Provider preflight and inventory
+
+The read-only inventory command performs version/surface preflight, reads the
+authoritative user skill root twice, and emits only identities and digests:
+
+```bash
+context-guard inventory --provider claude --version 2.1.218 --surface cli
+context-guard inventory --provider codex --version 0.144.1 --surface cli
+```
+
+Claude reads `~/.claude/skills/*/SKILL.md`; Codex reads
+`~/.agents/skills/*/SKILL.md`. Supported MVP surfaces are Claude Code CLI and
+Codex CLI/app-server at or above the pinned versions. Other versions or
+surfaces return `unsupported`.
+
+Each record contains provider, user scope, frontmatter name, canonical locator,
+canonical metadata digest, body digest, and exact identity. Raw skill
+instructions and descriptive metadata are never printed. Duplicate names,
+missing/invalid frontmatter, read failures, or a changed second read return
+`uncertain` with an empty usable inventory and no fingerprint.
+
 ## Modes
 
 - `observe`: never blocks; the audit log records what *would* have happened (`would_have` field logic in `decisions.py`).

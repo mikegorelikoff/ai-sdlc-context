@@ -40,5 +40,11 @@ context-guard test -- pytest   # Compact Runtime: run a test command, get a comp
 ## Where to go next
 
 - [Policy Reference](policy.md) — the full Stage 1 policy schema, modes, and config layering.
+- [Decision Receipts](receipts.md) — local privacy-safe decision evidence, inspection, deletion, and retention.
+- [Claude Guarded Profiles](claude-profile.md) — verified pre-session skill visibility, leases, and safe restoration.
+- [Codex Guarded Profiles](codex-profile.md) — dedicated reversible profiles using current user-skill configuration.
+- [Quality Runner](quality-runner.md) — frozen baseline/guarded fixtures and hard gates before token measurement.
+- [Claude Cache-Token Measurement](claude-measurement.md) — deduplicated local cache usage, exact paired statistics, and the 30% gate.
+- [Codex Cached-Input Measurement](codex-measurement.md) — exact events, cumulative deltas, paired statistics, and the 30% gate.
 - [Compact Runtime Reference](compact-runtime.md) — Stage 2's artifact store, ledger, and parser chain.
 - [Source on GitHub](https://github.com/mikegorelikoff/ai-sdlc-context) — requirements, design, and test-case packages live under `specs/`.

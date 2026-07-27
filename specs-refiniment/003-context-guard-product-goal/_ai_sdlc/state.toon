@@ -1,0 +1,41 @@
+feature: 003-context-guard-product-goal
+workspace: refinement
+current_stage: delivery_handoff
+active_skill:
+flow_mode: default
+updated_at: 2026-07-27
+decision_log: specs-refiniment/003-context-guard-product-goal/decision-log.md
+
+stages[26]{id,skill,status,workspace,artifacts,decision_ref}:
+  discovery,ai-sdlc-working-backwards-discovery,done,refinement,specs-refiniment/003-context-guard-product-goal/discovery.md,DEC-004
+  prfaq,ai-sdlc-prfaq-package-synthesis,done,refinement,specs-refiniment/003-context-guard-product-goal/prfaq.md,DEC-006
+  delivery_package_gap_review,ai-sdlc-delivery-package-gap-review,done,refinement,specs-refiniment/003-context-guard-product-goal/delivery-gap-review.md,DEC-007
+  requirements_readiness,ai-sdlc-requirements-readiness-review,done,refinement,specs-refiniment/003-context-guard-product-goal/requirements-readiness.md,DEC-013
+  goal_epic_mapping,ai-sdlc-goal-capability-and-epic-mapping,done,refinement,specs-refiniment/003-context-guard-product-goal/goal-capability-map.md,DEC-014
+  backlog_gap_review,ai-sdlc-backlog-requirements-gap-review,done,refinement,specs-refiniment/003-context-guard-product-goal/backlog-gap-review.md,DEC-024
+  backlog_decomposition,ai-sdlc-backlog-decomposition-and-task-planning,done,refinement,specs-refiniment/003-context-guard-product-goal/backlog.md,DEC-024
+  story_decomposition,ai-sdlc-user-story-decomposition,done,refinement,specs-refiniment/003-context-guard-product-goal/user-stories.md,DEC-024
+  release_slicing,ai-sdlc-release-slicing-and-backlog-readiness-review,done,refinement,specs-refiniment/003-context-guard-product-goal/release-slicing.md,DEC-025
+  ba_context,ai-sdlc-ba,done,refinement,specs-refiniment/003-context-guard-product-goal/business-context.md,DEC-025
+  delivery_spec,ai-sdlc-delivery-spec-synthesis,done,refinement,specs-refiniment/003-context-guard-product-goal/delivery-spec.md,DEC-026
+  qa_plan,ai-sdlc-qa,done,refinement,specs-refiniment/003-context-guard-product-goal/qa.md,DEC-026
+  qa_gap_review,ai-sdlc-qa-requirements-gap-review,done,refinement,specs-refiniment/003-context-guard-product-goal/qa-gap-review.md,DEC-026
+  test_strategy,ai-sdlc-test-scope-and-strategy-design,done,refinement,specs-refiniment/003-context-guard-product-goal/qa-strategy.md,DEC-026
+  test_cases,ai-sdlc-test-cases,done,refinement,specs-refiniment/003-context-guard-product-goal/test-cases.md,DEC-026
+  test_suite,ai-sdlc-test-case-and-suite-synthesis,done,refinement,specs-refiniment/003-context-guard-product-goal/test-suite.md,DEC-026
+  qa_traceability,ai-sdlc-qa-traceability-and-readiness-review,done,refinement,specs-refiniment/003-context-guard-product-goal/qa-readiness.md,DEC-026
+  delivery_handoff,ai-sdlc-delivery-handoff-review,done,refinement,specs-refiniment/003-context-guard-product-goal/delivery-handoff-review.md,DEC-027
+  branching,ai-sdlc-branching,not_started,implementation,branch-plan.md,
+  sdd,ai-sdlc-sdd,not_started,implementation,specs/003-context-guard-product-goal,
+  validation,ai-sdlc-validation,not_started,implementation,validation.md,
+  code_review,ai-sdlc-code-review,not_started,implementation,code-review.md,
+  security_testing,ai-sdlc-security-testing,not_started,implementation,security-review.md,
+  commit_prep,ai-sdlc-commit-prep,not_started,implementation,commit-readiness.md,
+  conventional_commit,ai-sdlc-conventional-commit,not_started,implementation,commit-message.md,
+  approvals_sandbox,ai-sdlc-approvals-sandbox,not_applicable,utility,approval-plan.md,
+
+skips[4]{stage,reason,decision_ref,flow_mode}:
+  ba_context,Existing README; product documentation; and implementation requirements are sufficient evidence for a first-pass product-goal BA refinement; stakeholder validation remains required.,,quick
+  qa_plan,QA work is limited to GAP-003 pilot quality-evaluator definition; it does not authorize downstream delivery or release readiness.,DEC-010,quick
+  qa_plan,The QA plan is review-ready; pilot execution and release signoff remain blocked pending runner implementation; provider evidence; and GAP-004.,DEC-010,quick
+  test_strategy,Test-strategy work is limited to GAP-004 provider-specific measurement-contract definition and does not authorize release or savings claims.,,quick

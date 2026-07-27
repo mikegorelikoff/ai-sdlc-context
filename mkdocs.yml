@@ -78,4 +78,10 @@ copyright: Copyright &copy; 2026 Context Guard contributors
 nav:
   - Home: index.md
   - Policy Reference: policy.md
+  - Decision Receipts: receipts.md
+  - Claude Guarded Profiles: claude-profile.md
+  - Codex Guarded Profiles: codex-profile.md
+  - Quality Runner: quality-runner.md
+  - Claude Cache-Token Measurement: claude-measurement.md
+  - Codex Cached-Input Measurement: codex-measurement.md
   - Compact Runtime: compact-runtime.md

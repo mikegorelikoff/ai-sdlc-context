@@ -1,0 +1,15 @@
+schema: ai-sdlc-change-impact/v1
+feature_root: /Users/mikegorelikov/ai-sdlc-context/specs/003-context-guard-product-goal
+flow_mode: full
+
+changes[1]{id,changed_ref,source_path,source_line,detail}:
+  CHG-001,FR-012,requirements.md,109,Current official Codex documentation places user-authored skills under $HOME/.agents/skills and disables them through absolute-path [[skills.config]] entries in $HOME/.codex/config.toml; the earlier $HOME/.codex/skills inventory root is stale.
+
+affected_artifacts[2]{change_id,changed_ref,artifact,line,evidence,skill,stage,stage_status}:
+  CHG-001,FR-012,plan.md,98,- [x] T007: Implement provider/version/surface preflight and stable authoritative inventory.; refs: FR-011;  FR-012;  FR-013;  FR-014;  FR-015;  AC-010;  AC-011;  AC-012;  AC-013;  AC-014;  DSR-101; output: context_guard/inventory.py;  context_guard/cli.py,ai-sdlc-sdd,sdd,done
+  CHG-001,FR-012,tasks.md,146,Refs: FR-011;  FR-012;  FR-013;  FR-014;  FR-015;  AC-010;  AC-011;  AC-012;  AC-013;  AC-014;  DSR-101,ai-sdlc-sdd,sdd,done
+
+reopen_actions[1]{stage,skill,stage_status,action,changed_ref,reason,evidence_path,evidence_line,expected_artifact}:
+  sdd,ai-sdlc-sdd,done,reopen,FR-012,2 downstream artifact(s) retain trace FR-012,plan.md,98,plan.md/tasks.md
+
+blockers[0]{message}:
