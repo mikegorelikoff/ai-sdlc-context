@@ -68,3 +68,17 @@ def render(decision: decisions.Decision) -> dict[str, Any]:
             }
         }
     return {}
+
+
+def render_rewrite(event: events.Event, command: str) -> dict[str, Any]:
+    """Render Claude Code's documented PreToolUse updatedInput response."""
+    tool_input = dict(event.raw.get("tool_input", {}) or {})
+    tool_input["command"] = command
+    return {
+        "hookSpecificOutput": {
+            "hookEventName": "PreToolUse",
+            "permissionDecision": "allow",
+            "permissionDecisionReason": "Context Guard compact-output rewrite",
+            "updatedInput": tool_input,
+        }
+    }

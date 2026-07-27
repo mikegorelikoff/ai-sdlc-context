@@ -9,7 +9,8 @@ def test_doctor_reports_python_and_policy_status(tmp_path: Path, monkeypatch, ca
     output = capsys.readouterr().out
     assert "Python:" in output
     assert "Policy resolution: OK" in output
-    assert "version=1" in output
+    assert "version=2" in output
+    assert "packaged:" in output
     assert "conflicts=0" in output
     assert "Claude Code hooks installed: False" in output
     assert "Codex hooks installed: False" in output

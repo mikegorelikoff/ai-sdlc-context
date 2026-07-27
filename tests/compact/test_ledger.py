@@ -38,3 +38,25 @@ def test_multiple_records_accumulate(tmp_path: Path):
 
 def test_no_ledger_file_returns_empty_list(tmp_path: Path):
     assert ledger.all_rows(tmp_path) == []
+
+
+def test_summarize_reports_output_reduction_without_billing_claim(tmp_path: Path):
+    ledger.record(
+        tmp_path,
+        command="pytest",
+        commit=None,
+        artifact_kind="test",
+        artifact_id="test-001",
+        status="passed",
+        summary={"raw_output_bytes": 1000, "compact_output_bytes": 200},
+        timestamp="2026-07-27T00:00:00Z",
+    )
+
+    summary = ledger.summarize(tmp_path)
+
+    assert summary["invocations"] == 1
+    assert summary["measured_invocations"] == 1
+    assert summary["saved_output_bytes"] == 800
+    assert summary["output_reduction_percent"] == 80.0
+    assert summary["estimated_input_tokens_saved"] == 200
+    assert "not a provider-reported" in summary["note"]

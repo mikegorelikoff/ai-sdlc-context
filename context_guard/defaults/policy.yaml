@@ -1,7 +1,5 @@
-# Context Guard built-in default policy.
-# Layer precedence (later overrides earlier, field-by-field): this file ->
-# user config -> repo config -> environment overrides.
-version: 1
+# Context Guard's single policy.
+version: 2
 
 mode: observe
 
@@ -35,3 +33,6 @@ search:
   maximum_results: 100
 
 fail_closed_rules: []
+
+skills:
+  rules: []

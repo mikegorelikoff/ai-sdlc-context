@@ -63,3 +63,13 @@ def test_render_allow_decision():
 def test_render_warn_decision():
     rendered = claude_code.render(decisions.warn("careful", "rule-y"))
     assert rendered["hookSpecificOutput"]["permissionDecision"] == "allow"
+
+
+def test_render_rewrite_updates_bash_command():
+    event = claude_code.parse(_load("pre_tool_use_bash.json"))
+    rendered = claude_code.render_rewrite(
+        event, "context-guard run -- docker compose logs api"
+    )
+    output = rendered["hookSpecificOutput"]
+    assert output["permissionDecision"] == "allow"
+    assert output["updatedInput"]["command"].startswith("context-guard run --")

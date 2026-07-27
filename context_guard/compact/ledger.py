@@ -78,3 +78,48 @@ def all_rows(repo_root: Path) -> list[dict[str, Any]]:
         return [dict(zip(columns, row)) for row in cursor.fetchall()]
     finally:
         conn.close()
+
+
+def summarize(repo_root: Path) -> dict[str, Any]:
+    """Aggregate local compact-output savings without claiming provider billing."""
+    raw_bytes = 0
+    compact_bytes = 0
+    measured_invocations = 0
+    by_status: dict[str, int] = {}
+    for row in all_rows(repo_root):
+        status = str(row["status"])
+        by_status[status] = by_status.get(status, 0) + 1
+        try:
+            summary = json.loads(row["summary_json"])
+        except (json.JSONDecodeError, TypeError):
+            continue
+        raw = summary.get("raw_output_bytes")
+        compact = summary.get("compact_output_bytes")
+        if (
+            isinstance(raw, int)
+            and not isinstance(raw, bool)
+            and raw >= 0
+            and isinstance(compact, int)
+            and not isinstance(compact, bool)
+            and compact >= 0
+        ):
+            raw_bytes += raw
+            compact_bytes += compact
+            measured_invocations += 1
+
+    saved_bytes = max(raw_bytes - compact_bytes, 0)
+    reduction = round((saved_bytes / raw_bytes) * 100, 2) if raw_bytes else None
+    return {
+        "invocations": len(all_rows(repo_root)),
+        "measured_invocations": measured_invocations,
+        "by_status": by_status,
+        "raw_output_bytes": raw_bytes,
+        "compact_output_bytes": compact_bytes,
+        "saved_output_bytes": saved_bytes,
+        "output_reduction_percent": reduction,
+        "estimated_input_tokens_saved": saved_bytes // 4,
+        "note": (
+            "Estimated tokens use bytes/4. Output reduction is not a provider-reported "
+            "token count or billing reduction."
+        ),
+    }

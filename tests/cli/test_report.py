@@ -14,6 +14,7 @@ def test_report_summarizes_audit_log(tmp_path: Path, monkeypatch, capsys):
     output = json.loads(capsys.readouterr().out)
     assert output["total_events"] == 1
     assert "estimate" in output["note"]
+    assert output["compact_runtime"]["invocations"] == 0
 
 
 def test_report_with_no_audit_log(tmp_path: Path, monkeypatch, capsys):
@@ -21,3 +22,13 @@ def test_report_with_no_audit_log(tmp_path: Path, monkeypatch, capsys):
     assert cli.main(["report"]) == 0
     output = json.loads(capsys.readouterr().out)
     assert output["total_events"] == 0
+
+
+def test_gain_is_an_alias_for_report(tmp_path: Path, monkeypatch, capsys):
+    monkeypatch.chdir(tmp_path)
+
+    assert cli.main(["gain"]) == 0
+
+    output = json.loads(capsys.readouterr().out)
+    assert output["compact_runtime"]["raw_output_bytes"] == 0
+    assert "billing reduction" in output["compact_runtime"]["note"]
