@@ -40,6 +40,10 @@ def test_installer_fails_clearly_without_python(tmp_path: Path):
 
 def test_readme_is_the_compact_documentation_entry_point():
     text = (ROOT / "README.md").read_text(encoding="utf-8")
+    one_line_install = (
+        "curl -fsSL https://raw.githubusercontent.com/mikegorelikoff/"
+        "ai-sdlc-context/main/install.sh | bash"
+    )
 
     for heading in (
         "## Why use it?",
@@ -55,6 +59,10 @@ def test_readme_is_the_compact_documentation_entry_point():
         "## License",
     ):
         assert heading in text
-    assert 'CONTEXT_GUARD_PACKAGE="$PWD" ./install.sh' in text
+    assert one_line_install in text
+    assert one_line_install in (ROOT / "docs" / "index.md").read_text(encoding="utf-8")
+    assert one_line_install in (
+        ROOT / "docs" / "start-here" / "install.md"
+    ).read_text(encoding="utf-8")
     assert (ROOT / "docs" / "index.md").is_file()
     assert (ROOT / "mkdocs.yml").is_file()

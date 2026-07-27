@@ -25,8 +25,8 @@ are explained before policy internals.
 
 ## Product-specific decisions
 
-- Local source installation is primary; remote shell execution is optional and
-  carries an explicit trust warning.
+- The one-line remote installer is primary; a local source checkout remains
+  the review-first alternative, and both paths carry explicit trust guidance.
 - The fixed packaged observe policy is documented rather than implying local
   mode overrides.
 - Claude and Codex measurement material is hidden from primary navigation but
@@ -43,3 +43,12 @@ next-step separation. No text, commands, branding, or assets were copied.
 
 Exact evidence is recorded in the workspace
 `.docs-unification/validation-report.md`.
+
+## One-line installation
+
+On 2026-07-28, the existing remote `install.sh` pipeline became the primary
+install action in README, Home, and Start here. It remains one state-changing
+command followed by separate validation, self-test, and report commands. The
+documentation retains the local-clone alternative and states that the shorter
+path follows `main`, downloads through GitHub and pip, and changes user-level
+provider configuration.

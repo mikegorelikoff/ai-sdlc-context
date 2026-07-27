@@ -1,7 +1,7 @@
 # Install and initialize
 
-This guide installs Context Guard from reviewed local source and initializes
-Claude Code and Codex hooks.
+This guide installs Context Guard with one command and initializes Claude Code
+and Codex hooks. It also provides a review-first local alternative.
 
 ## Goal
 
@@ -10,13 +10,25 @@ configurations while retaining the packaged observe policy.
 
 ## When to use it
 
-Use this for a first evaluation or a repeatable update from a source checkout.
+Use this for a first evaluation or a repeatable update.
 
 ## Prerequisites
 
-Complete the [prerequisites](prerequisites.md) and review `install.sh`.
+Complete the [prerequisites](prerequisites.md). Review the remote
+[`install.sh`](https://github.com/mikegorelikoff/ai-sdlc-context/blob/main/install.sh)
+before executing it.
 
 ## Procedure
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/mikegorelikoff/ai-sdlc-context/main/install.sh | bash
+```
+
+This one-line path follows the changing default branch and downloads through
+GitHub and pip. Use it only after accepting those trust boundaries.
+
+For a review-first install, clone the repository and point the same installer
+at the local checkout:
 
 ```bash
 git clone https://github.com/mikegorelikoff/ai-sdlc-context.git
@@ -54,15 +66,3 @@ configuration backup process; do not delete unrelated settings.
 ## Next step
 
 Run the [first self-test and report](first-run.md).
-
-### Optional remote convenience
-
-The remote pipeline is shorter but executes a changing script from the
-repository default branch:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/mikegorelikoff/ai-sdlc-context/main/install.sh | bash
-```
-
-Use it only after reviewing that exact script and accepting the GitHub and pip
-trust boundary.

@@ -21,20 +21,25 @@ repository. The packaged policy starts in observe mode.
 
 ## Quick start
 
-Review a local clone, then install from that source:
+Install and initialize both supported provider hooks with one command:
 
 ```bash
-git clone https://github.com/mikegorelikoff/ai-sdlc-context.git
-cd ai-sdlc-context
-CONTEXT_GUARD_PACKAGE="$PWD" ./install.sh
+curl -fsSL https://raw.githubusercontent.com/mikegorelikoff/ai-sdlc-context/main/install.sh | bash
+```
+
+Then verify the observe-mode installation:
+
+```bash
 context-guard validate
 context-guard selftest
 context-guard report
 ```
 
 The installer creates a private virtual environment, installs the CLI, and
-initializes Claude Code and Codex hooks. It modifies user configuration; read
-the [installation guide](docs/start-here/install.md) before running it.
+initializes Claude Code and Codex hooks. It downloads changing code from
+GitHub and pip and modifies user configuration; review
+[`install.sh`](install.sh) and the [installation guide](docs/start-here/install.md)
+before running it.
 
 ## Expected first result
 

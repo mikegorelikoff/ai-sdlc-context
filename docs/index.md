@@ -46,21 +46,26 @@ captures full command output locally and emits a smaller result. The packaged
 
 ## Five-minute first success
 
-Review and install from a local clone:
+Install and initialize Context Guard with one command:
 
 ```bash
-git clone https://github.com/mikegorelikoff/ai-sdlc-context.git
-cd ai-sdlc-context
-CONTEXT_GUARD_PACKAGE="$PWD" ./install.sh
+curl -fsSL https://raw.githubusercontent.com/mikegorelikoff/ai-sdlc-context/main/install.sh | bash
+```
+
+Then verify the observe-mode installation:
+
+```bash
 context-guard validate
 context-guard selftest
 context-guard report
 ```
 
 The installer initializes hooks for both providers and changes files under
-`~/.claude/`, `~/.codex/`, and `~/.local/`. Success requires a `packaged:`
-policy source, a self-test summary with no `FAIL`, and a JSON report. An empty
-report is valid before the hooks observe normal activity.
+`~/.claude/`, `~/.codex/`, and `~/.local/`. Review the remote script before
+running it because the command follows `main` and downloads through GitHub and
+pip. Success requires a `packaged:` policy source, a self-test summary with no
+`FAIL`, and a JSON report. An empty report is valid before the hooks observe
+normal activity.
 
 Use [the full first-run guide](start-here/first-run.md) to check each result
 and understand rollback before evaluating enforcement.

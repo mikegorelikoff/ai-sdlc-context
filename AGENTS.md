@@ -13,6 +13,8 @@ the repository specifications.
 - README order is product name, outcome, badges, description, Why use it?,
   Quick start, expected result, workflow, scope, documentation paths, product
   family, security/privacy, status, contributing, license.
+- Keep the primary install action in README, Home, and Start here to one shell
+  command; put validation and self-test commands in a separate step.
 - Use the guide template: Goal; When to use it; Prerequisites; Procedure;
   Verify; Troubleshooting; Next step.
 - Start here is canonical for install and first run; How it works for Stage 1,

@@ -1,13 +1,14 @@
 # Start here
 
-Use this section to install Context Guard from a reviewable local clone,
-initialize provider hooks, validate the packaged policy, run the bundled
-self-test, and inspect the first local report.
+Use this section to run the one-line installer, initialize provider hooks,
+validate the packaged policy, run the bundled self-test, and inspect the first
+local report. A reviewable local-clone path remains available when your trust
+policy does not permit remote shell pipelines.
 
 ## Recommended path
 
 1. Check the [prerequisites](prerequisites.md).
-2. [Install and initialize](install.md) in the default observe mode.
+2. [Run the one-line installer](install.md) in the default observe mode.
 3. Follow the [first run](first-run.md).
 4. Read [safe rollout](../guides/safe-rollout.md) before considering warn or
    enforce.

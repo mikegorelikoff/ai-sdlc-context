@@ -14,3 +14,5 @@ All notable changes to this project will be documented in this file.
 - Aligned the visual system with AI SDLC Harness and AI SDLC Metrics.
 - Added documentation governance, contract tests, pinned dependencies, and a
   validated Pages workflow.
+- Made the one-line installer the primary onboarding action while retaining a
+  review-first local-clone alternative.
