@@ -35,6 +35,8 @@ context-guard validate         # checks policy schema + hook install status
 context-guard selftest         # runs the bundled fixture smoke tests
 
 context-guard test -- pytest   # Compact Runtime: run a test command, get a compact result
+
+python3 examples/run_demo.py --check  # reproducible Claude + Codex example
 ```
 
 ## Where to go next
@@ -46,5 +48,6 @@ context-guard test -- pytest   # Compact Runtime: run a test command, get a comp
 - [Quality Runner](quality-runner.md) — frozen baseline/guarded fixtures and hard gates before token measurement.
 - [Claude Cache-Token Measurement](claude-measurement.md) — deduplicated local cache usage, exact paired statistics, and the 30% gate.
 - [Codex Cached-Input Measurement](codex-measurement.md) — exact events, cumulative deltas, paired statistics, and the 30% gate.
+- [Real-world Examples](real-world-examples.md) — executable fixture evidence, real local commands, and proof levels.
 - [Compact Runtime Reference](compact-runtime.md) — Stage 2's artifact store, ledger, and parser chain.
 - [Source on GitHub](https://github.com/mikegorelikoff/ai-sdlc-context) — requirements, design, and test-case packages live under `specs/`.

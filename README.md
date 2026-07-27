@@ -29,7 +29,14 @@ context-guard selftest         # runs the bundled fixture smoke tests
 context-guard test -- pytest              # run a test command; get a compact result + artifact reference
 context-guard artifact show <id>          # inspect the full stored evidence for an artifact
 context-guard artifact show <id> --fragment <fragment-id>  # drill down to one exact fragment
+
+# Reproducible Claude + Codex profile and cache-token example:
+python3 examples/run_demo.py --check
 ```
+
+See [Real-world examples](docs/real-world-examples.md) for reproducible output,
+real local inventory/profile commands, and the distinction between fixture,
+single-pair, and qualified 5×3 evidence.
 
 ## CLI reference
 
@@ -53,7 +60,7 @@ Week 2: warn     — surface warnings without blocking
 Week 3+: enforce — block for the rule groups that proved low-noise
 ```
 
-See `docs/policy.md` for the full policy schema, `docs/compact-runtime.md` for Compact Runtime's artifact/ledger/parser design, and `specs/001-context-guard/` and `specs/002-compact-runtime/` for the requirements, design, and test-case packages this implementation was built from. The rendered docs site is published at https://mikegorelikoff.github.io/ai-sdlc-context/ (build locally with `pip install .[docs] && mkdocs serve`).
+See `docs/policy.md` for the full policy schema, `docs/compact-runtime.md` for Compact Runtime's artifact/ledger/parser design, [Real-world examples](docs/real-world-examples.md) for executable Claude/Codex demonstrations, and `specs/` for the requirements, design, and test-case packages this implementation was built from. The rendered docs site is published at https://mikegorelikoff.github.io/ai-sdlc-context/ (build locally with `pip install .[docs] && mkdocs serve`).
 
 ## Contributing
 

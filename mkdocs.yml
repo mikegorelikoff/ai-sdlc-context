@@ -84,4 +84,5 @@ nav:
   - Quality Runner: quality-runner.md
   - Claude Cache-Token Measurement: claude-measurement.md
   - Codex Cached-Input Measurement: codex-measurement.md
+  - Real-world Examples: real-world-examples.md
   - Compact Runtime: compact-runtime.md

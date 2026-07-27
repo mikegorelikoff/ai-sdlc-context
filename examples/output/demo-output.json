@@ -1,0 +1,129 @@
+{
+  "claude": {
+    "inventory": {
+      "fingerprint_present": true,
+      "reason_code": "stable-inventory",
+      "skill_count": 3,
+      "skill_names": [
+        "manual",
+        "needed",
+        "unused"
+      ],
+      "status": "supported"
+    },
+    "measurement": {
+      "cache_creation_tokens": 1200,
+      "cache_read_tokens": 3800,
+      "cache_tokens": 5000,
+      "duplicate_rows": 0,
+      "eligible_rows": 2,
+      "reason_code": "claude-cache-window-valid",
+      "source_fingerprint": "a742e55b7de332e335616f489bd0ba52970887e9dc9b57c114511c9a848c36f1",
+      "status": "measurable"
+    },
+    "negative_pair_example": {
+      "baseline_cache_tokens": 5000,
+      "guarded_cache_tokens": 6000,
+      "outcome": "regression-visible",
+      "reduction_percent": -20
+    },
+    "paired_example": {
+      "baseline_cache_tokens": 5000,
+      "guarded_cache_tokens": 3000,
+      "reduction_denominator": 5,
+      "reduction_numerator": 2,
+      "reduction_percent": 40
+    },
+    "profile_lifecycle": {
+      "apply_status": "reduced",
+      "baseline_restored": true,
+      "receipt_action": "reduced",
+      "receipt_status": "reduced",
+      "restore_status": "restored"
+    },
+    "profile_plan": {
+      "explicit_skill_preserved": "manual",
+      "fresh_session_required": true,
+      "overrides": {
+        "unused": "user-invocable-only"
+      },
+      "status": "reduced"
+    },
+    "provider_version": "2.1.218"
+  },
+  "codex": {
+    "cumulative_boundary_example": {
+      "end_cached_input_tokens": 4200,
+      "measured_delta": 3200,
+      "measurement_mode": "cumulative-boundary",
+      "start_cached_input_tokens": 1000
+    },
+    "inventory": {
+      "fingerprint_present": true,
+      "reason_code": "stable-inventory",
+      "skill_count": 3,
+      "skill_names": [
+        "manual",
+        "needed",
+        "unused"
+      ],
+      "status": "supported"
+    },
+    "measurement": {
+      "cached_input_tokens": 4200,
+      "measurement_mode": "exact-event",
+      "reason_code": "codex-turn-completed-valid",
+      "source_fingerprint": "2c685bc2a1a38f6be9b08a211839d85582436c37eb1361dda4732d3fe4a9d759",
+      "status": "measurable"
+    },
+    "negative_pair_example": {
+      "baseline_cached_input_tokens": 4200,
+      "guarded_cached_input_tokens": 5040,
+      "outcome": "regression-visible",
+      "reduction_percent": -20
+    },
+    "paired_example": {
+      "baseline_cached_input_tokens": 4200,
+      "guarded_cached_input_tokens": 2520,
+      "reduction_denominator": 5,
+      "reduction_numerator": 2,
+      "reduction_percent": 40
+    },
+    "profile_lifecycle": {
+      "apply_status": "reduced",
+      "baseline_restored": true,
+      "restore_status": "restored"
+    },
+    "profile_plan": {
+      "disabled_skills": [
+        "unused"
+      ],
+      "explicit_skill_preserved": "manual",
+      "fresh_process_required": true,
+      "status": "reduced"
+    },
+    "provider_version": "0.144.1"
+  },
+  "evidence_kind": "deterministic-fixture",
+  "fail_closed_examples": {
+    "missing_quality_evidence": {
+      "measurement_allowed": false,
+      "reason_code": "missing-quality-evidence"
+    },
+    "stale_inventory": {
+      "reason_code": "stale-inventory",
+      "savings_credit_allowed": false,
+      "status": "uncertain"
+    },
+    "unsupported_provider_version": {
+      "reason_code": "unsupported-version",
+      "status": "unsupported"
+    }
+  },
+  "privacy": {
+    "absolute_user_paths_persisted": false,
+    "prompts_or_responses_persisted": false,
+    "raw_logs_persisted": false
+  },
+  "schema": "context-guard-example/v1"
+}

@@ -1,0 +1,2 @@
+{"type":"thread.started","thread_id":"demo-codex"}
+{"type":"turn.completed","usage":{"input_tokens":6000,"cached_input_tokens":4200,"output_tokens":500},"items":[{"type":"agent_message","text":"fixture private content that must never be copied to demo output"}]}
