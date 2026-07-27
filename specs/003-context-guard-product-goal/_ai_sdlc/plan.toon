@@ -1,0 +1,102 @@
+feature: 003-context-guard-product-goal
+workspace: implementation
+flow_mode: full
+updated_at: 2026-07-27
+source_artifacts[6]{artifact,path}:
+  requirements,requirements.md
+  design,design.md
+  test_cases,test-cases.md
+  qa,qa.md
+  tasks,tasks.md
+  decisions,decision-log.md
+trace[63]{acceptance_id,test_cases,tasks}:
+  AC-001,TC-001,T001/T003
+  AC-002,TC-002,T001/T003
+  AC-003,TC-003,T001/T003
+  AC-004,TC-004,T001/T003
+  AC-005,TC-005,T001/T003
+  AC-006,TC-006,T003/T004
+  AC-007,TC-007,T005
+  AC-008,TC-008,T005
+  AC-009,TC-009,T005
+  AC-010,TC-010,T007
+  AC-011,TC-011,T007
+  AC-012,TC-012,T007
+  AC-013,TC-013,T007
+  AC-014,TC-014,T007
+  AC-015,TC-015,T009
+  AC-016,TC-016,T009
+  AC-017,TC-017,T009
+  AC-018,TC-018,T009
+  AC-019,TC-019,T009
+  AC-020,TC-020,T009
+  AC-021,TC-021,T011
+  AC-022,TC-022,T011
+  AC-023,TC-023,T011
+  AC-024,TC-024,T011
+  AC-025,TC-025,T011
+  AC-026,TC-026,T011
+  AC-027,TC-027,T011
+  AC-028,TC-028,T013
+  AC-029,TC-029,T013
+  AC-030,TC-030,T013
+  AC-031,TC-031,T013
+  AC-032,TC-032,T013
+  AC-033,TC-033,T013
+  AC-034,TC-034,T013
+  AC-035,TC-035,T013
+  AC-036,TC-036,T013
+  AC-037,TC-037,T015
+  AC-038,TC-038,T015
+  AC-039,TC-039,T015
+  AC-040,TC-040,T015
+  AC-041,TC-041,T015
+  AC-042,TC-042,T015
+  AC-043,TC-043,T015
+  AC-044,TC-044,T015
+  AC-045,TC-045,T015
+  AC-046,TC-046,T017
+  AC-047,TC-047,T017
+  AC-048,TC-048,T017
+  AC-049,TC-049,T017
+  AC-050,TC-050,T017
+  AC-051,TC-051,T017
+  AC-052,TC-052,T017
+  AC-053,TC-053,T019
+  AC-054,TC-054,T019
+  AC-055,TC-055,T019
+  AC-056,TC-056,T019
+  AC-057,TC-057,T019
+  AC-058,TC-058,T019
+  AC-059,TC-059,T019
+  AC-060,TC-060,T019
+  AC-061,TC-061,T019
+  AC-062,TC-062,T019
+  AC-063,TC-063,T019
+tasks[20]{id,status,refs,tests,depends_on,artifact,decision_ref}:
+  T001,done,AC-001/AC-002/AC-003/AC-004/AC-005,TC-001/TC-002/TC-003/TC-004/TC-005,none,context_guard/policy_config.py,TBD
+  T002,done,TC-001/TC-002/TC-003/TC-004/TC-005/TC-006,none,none,tests/test_policy_v2.py; tests/cli/test_validate.py,TBD
+  T005,done,AC-007/AC-008/AC-009,TC-007/TC-008/TC-009,none,context_guard/policy_config.py; context_guard/cli.py,TBD
+  T006,done,TC-007/TC-008/TC-009,none,none,tests/cli/test_init.py; tests/cli/test_migrate_policy.py,TBD
+  T007,done,FR-011/FR-012/FR-013/FR-014/FR-015/AC-010/AC-011/AC-012/AC-013/AC-014/DSR-101,TC-010/TC-011/TC-012/TC-013/TC-014,none,context_guard/inventory.py; context_guard/cli.py,TBD
+  T008,done,TC-010/TC-011/TC-012/TC-013/TC-014,none,T007,tests/test_inventory.py; tests/cli/test_inventory.py,TBD
+  T009,done,FR-016/FR-017/FR-018/FR-019/FR-020/FR-021/FR-022/FR-023/FR-024/AC-015/AC-016/AC-017/AC-018/AC-019/AC-020/DSR-301/DSR-302,TC-015/TC-016/TC-017/TC-018/TC-019/TC-020,none,context_guard/receipts.py; context_guard/cli.py,TBD
+  T010,done,TC-015/TC-016/TC-017/TC-018/TC-019/TC-020,none,T009,tests/test_receipts.py; tests/cli/test_receipt_cmd.py,TBD
+  T011,done,FR-025/FR-026/FR-027/FR-028/FR-029/FR-030/FR-031/FR-032/FR-033/FR-034/AC-021/AC-022/AC-023/AC-024/AC-025/AC-026/AC-027/DSR-201,TC-021/TC-022/TC-023/TC-024/TC-025/TC-026/TC-027,none,context_guard/claude_profile.py; context_guard/cli.py,TBD
+  T012,done,TC-021/TC-022/TC-023/TC-024/TC-025/TC-026/TC-027,none,T011,tests/test_claude_profile.py; tests/cli/test_claude_profile_cmd.py,TBD
+  T013,done,FR-035/FR-036/FR-037/FR-038/FR-039/FR-040/FR-041/FR-042/FR-043/FR-044/AC-028/AC-029/AC-030/AC-031/AC-032/AC-033/AC-034/AC-035/AC-036/DSR-401/DSR-402,TC-028/TC-029/TC-030/TC-031/TC-032/TC-033/TC-034/TC-035/TC-036,none,context_guard/quality.py; context_guard/cli.py,TBD
+  T014,done,TC-028/TC-029/TC-030/TC-031/TC-032/TC-033/TC-034/TC-035/TC-036,none,T013,tests/test_quality.py; tests/cli/test_quality_cmd.py,TBD
+  T015,done,FR-045/FR-046/FR-047/FR-048/FR-049/FR-050/FR-051/FR-052/FR-053/FR-054/FR-055/AC-037/AC-038/AC-039/AC-040/AC-041/AC-042/AC-043/AC-044/AC-045/DSR-501/DEC-004,TC-037/TC-038/TC-039/TC-040/TC-041/TC-042/TC-043/TC-044/TC-045,T013/T014,context_guard/claude_measurement.py; context_guard/cli.py; docs/claude-measurement.md,TBD
+  T016,done,TC-037/TC-038/TC-039/TC-040/TC-041/TC-042/TC-043/TC-044/TC-045,none,T015,tests/test_claude_measurement.py; tests/cli/test_claude_measurement_cmd.py,TBD
+  T017,done,FR-012/FR-056/FR-057/FR-058/FR-059/FR-060/FR-061/FR-062/FR-063/FR-075/AC-046/AC-047/AC-048/AC-049/AC-050/AC-051/AC-052/DSR-101/DSR-202/DEC-005,TC-046/TC-047/TC-048/TC-049/TC-050/TC-051/TC-052,T007/T009,context_guard/inventory.py; context_guard/codex_profile.py; context_guard/cli.py; docs/codex-profile.md,TBD
+  T018,done,TC-046/TC-047/TC-048/TC-049/TC-050/TC-051/TC-052,none,T017,tests/test_inventory.py; tests/test_codex_profile.py; tests/cli/test_codex_profile_cmd.py,TBD
+  T019,done,FR-064/FR-065/FR-066/FR-067/FR-068/FR-069/FR-070/FR-071/FR-072/FR-073/FR-074/AC-053/AC-054/AC-055/AC-056/AC-057/AC-058/AC-059/AC-060/AC-061/AC-062/AC-063/DSR-502/DEC-005,TC-053/TC-054/TC-055/TC-056/TC-057/TC-058/TC-059/TC-060/TC-061/TC-062/TC-063,T014/T017,context_guard/codex_measurement.py; context_guard/cli.py; docs/codex-measurement.md,TBD
+  T020,done,TC-053/TC-054/TC-055/TC-056/TC-057/TC-058/TC-059/TC-060/TC-061/TC-062/TC-063,none,T019,tests/test_codex_measurement.py; tests/cli/test_codex_measurement_cmd.py,TBD
+  T003,done,AC-001/AC-002/AC-003/AC-004/AC-005/AC-006/TC-001/TC-002/TC-003/TC-004/TC-005/TC-006,TC-001/TC-002/TC-003/TC-004/TC-005/TC-006,T001/T002,specs/003-context-guard-product-goal/_ai_sdlc/validation-receipt.json,TBD
+  T004,done,FR-001/FR-002/FR-003/FR-005/FR-007/AC-006,TC-006,T001,docs/policy.md,TBD
+validation_sequence[5]{step,command}:
+  1,check_refinement_context.py --full-flow
+  2,check_clarify.py --full-flow
+  3,check_checklist.py --full-flow
+  4,plan_links.py --check --full-flow
+  5,analyze_spec.py --full-flow && validate_spec.py --full-flow

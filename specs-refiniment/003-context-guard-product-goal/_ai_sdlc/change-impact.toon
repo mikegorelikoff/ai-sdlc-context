@@ -1,0 +1,24 @@
+schema: ai-sdlc-change-impact/v1
+feature_root: /Users/mikegorelikov/ai-sdlc-context/specs-refiniment/003-context-guard-product-goal
+flow_mode: full
+
+changes[3]{id,changed_ref,source_path,source_line,detail}:
+  CHG-024,DEC-024,decision-log.md,54,Product and Engineering accepted the version-2 layered YAML policy contract;  resolving POL-401 and the S-103 implementation-readiness exception.
+  CHG-025,POL-401,decision-log.md,54,The previously open policy-authoring contract now has an accepted schema;  locations;  validation;  layering;  compatibility;  and migration disposition.
+  CHG-026,S-103,decision-log.md,54,The policy-authoring story no longer has a missing product rule and can move from blocked to ready for downstream refinement.
+
+affected_artifacts[5]{change_id,changed_ref,artifact,line,evidence,skill,stage,stage_status}:
+  CHG-025,POL-401,backlog-gap-review.md,112,- POL-401 remains Major: backlog work must explicitly define policy schema;  default location;  validation and conflict diagnostics;  version compatibility and migration;  and maintainer-facing acceptance behavior.,ai-sdlc-backlog-requirements-gap-review,backlog_gap_review,done
+  CHG-025,POL-401,backlog.md,110,- Policy-authoring work under POL-401 must define schema;  default location;  supported rules;  validation and conflict diagnostics;  version compatibility;  migration;  and maintainer acceptance behavior before its stories become implementation-ready.,ai-sdlc-backlog-decomposition-and-task-planning,backlog_decomposition,done
+  CHG-026,S-103,backlog.md,184,| S-103 | EPIC-001 | F-102 | Repository maintainer | As a maintainer;  I can author and validate a versioned local relevance policy with actionable errors. | Control relevance safely | P0 / Slice 1 | Yes | AC-S103 | S-102 | POL-401 detail required |,ai-sdlc-backlog-decomposition-and-task-planning,backlog_decomposition,done
+  CHG-025,POL-401,user-stories.md,114,- POL-401 remains unresolved: S-103 cannot become implementation-ready until Product and Engineering accept policy schema;  default location;  diagnostics;  compatibility;  and migration behavior.,ai-sdlc-user-story-decomposition,story_decomposition,done
+  CHG-026,S-103,user-stories.md,114,- POL-401 remains unresolved: S-103 cannot become implementation-ready until Product and Engineering accept policy schema;  default location;  diagnostics;  compatibility;  and migration behavior.,ai-sdlc-user-story-decomposition,story_decomposition,done
+
+reopen_actions[5]{stage,skill,stage_status,action,changed_ref,reason,evidence_path,evidence_line,expected_artifact}:
+  backlog_gap_review,ai-sdlc-backlog-requirements-gap-review,done,reopen,POL-401,1 downstream artifact(s) retain trace POL-401,backlog-gap-review.md,112,backlog-gap-review.md
+  backlog_decomposition,ai-sdlc-backlog-decomposition-and-task-planning,done,reopen,POL-401,1 downstream artifact(s) retain trace POL-401,backlog.md,110,backlog.md
+  backlog_decomposition,ai-sdlc-backlog-decomposition-and-task-planning,done,reopen,S-103,1 downstream artifact(s) retain trace S-103,backlog.md,184,backlog.md
+  story_decomposition,ai-sdlc-user-story-decomposition,done,reopen,POL-401,1 downstream artifact(s) retain trace POL-401,user-stories.md,114,user-stories.md
+  story_decomposition,ai-sdlc-user-story-decomposition,done,reopen,S-103,1 downstream artifact(s) retain trace S-103,user-stories.md,114,user-stories.md
+
+blockers[0]{message}:

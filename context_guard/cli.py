@@ -5,15 +5,29 @@ from __future__ import annotations
 import argparse
 import dataclasses
 import json
-import shutil
 import sys
 from pathlib import Path
 from typing import Any
 
 from context_guard import decisions, engine, events
+from context_guard import inventory as skill_inventory
+from context_guard import receipts
+from context_guard import claude_profile
+from context_guard import claude_measurement
+from context_guard import codex_profile
+from context_guard import codex_measurement
+from context_guard import quality
 from context_guard.adapters import claude_code, codex
 from context_guard.audit import jsonl
-from context_guard.policy_config import DEFAULTS_PATH, REPO_CONFIG_RELATIVE, Policy, PolicyError, load as load_policy
+from context_guard.policy_config import (
+    REPO_CONFIG_RELATIVE,
+    Policy,
+    PolicyError,
+    load as load_policy,
+    migrate_policy_file,
+    skill_rule_conflicts,
+    write_new_v2_policy,
+)
 from context_guard.policies import sessions
 from context_guard.compact import artifact_store
 from context_guard.compact import pipeline as compact_pipeline
@@ -133,7 +147,10 @@ def cmd_doctor(args: argparse.Namespace) -> int:
     print(f"Python: {sys.version.split()[0]}")
     try:
         policy = load_policy(repo_root)
-        print(f"Policy resolution: OK (mode={policy.mode})")
+        print(
+            f"Policy resolution: OK (version={policy.version}, mode={policy.mode}, "
+            f"skill_rules={len(policy.skill_rules)}, conflicts={len(skill_rule_conflicts(policy))})"
+        )
         for source in policy.sources or ["defaults only"]:
             print(f"  - {source}")
     except PolicyError as exc:
@@ -158,9 +175,473 @@ def cmd_init(args: argparse.Namespace) -> int:
     if target.is_file():
         print(f"Policy already exists at {target}; not overwriting.", file=sys.stderr)
         return 0
-    target.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copyfile(DEFAULTS_PATH, target)
+    write_new_v2_policy(target)
     print(f"Created default policy at {target}")
+    return 0
+
+
+def cmd_migrate_policy(args: argparse.Namespace) -> int:
+    target = _repo_root() / REPO_CONFIG_RELATIVE
+    if not target.is_file():
+        print(f"No repository policy found at {target}", file=sys.stderr)
+        return 1
+    try:
+        backup = migrate_policy_file(target)
+    except PolicyError as exc:
+        print(f"Policy migration failed: {exc}", file=sys.stderr)
+        return 1
+    if backup is None:
+        print(f"Policy already uses version 2 at {target}; no changes made.")
+    else:
+        print(f"Migrated policy to version 2 at {target}; backup: {backup}")
+    return 0
+
+
+def cmd_inventory(args: argparse.Namespace) -> int:
+    home = args.home or Path.home()
+    result = skill_inventory.read_inventory(
+        home,
+        provider=args.provider,
+        version=args.version,
+        surface=args.surface,
+    )
+    print(json.dumps(result.to_dict(), sort_keys=True))
+    return 0 if result.status == "supported" else 1
+
+
+def cmd_receipt_inspect(args: argparse.Namespace) -> int:
+    try:
+        result = receipts.inspect_receipt(_repo_root(), args.run_id)
+    except receipts.ReceiptError as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    print(json.dumps(result, sort_keys=True))
+    return 0
+
+
+def cmd_receipt_delete(args: argparse.Namespace) -> int:
+    try:
+        deleted = receipts.delete_receipt(_repo_root(), args.run_id)
+    except receipts.ReceiptError as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    print(json.dumps({"deleted": deleted, "run_id": args.run_id}, sort_keys=True))
+    return 0 if deleted else 1
+
+
+def cmd_receipt_prune(args: argparse.Namespace) -> int:
+    try:
+        result = receipts.prune_receipts(_repo_root(), retention_days=args.days)
+    except receipts.ReceiptError as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    print(json.dumps(result.to_dict(), sort_keys=True))
+    return 0
+
+
+def _classifications(values: list[str]) -> dict[str, str]:
+    result: dict[str, str] = {}
+    for value in values:
+        name, separator, classification = value.partition("=")
+        if not separator or not name or not classification:
+            raise claude_profile.ClaudeProfileError(
+                "classifications must use NAME=CLASSIFICATION"
+            )
+        if name in result:
+            raise claude_profile.ClaudeProfileError(f"duplicate classification for {name}")
+        result[name] = classification
+    return result
+
+
+def _skill_paths(values: list[str]) -> dict[str, Path]:
+    result: dict[str, Path] = {}
+    for value in values:
+        name, separator, path = value.partition("=")
+        if not separator or not name or not path:
+            raise codex_profile.CodexProfileError("skills must use NAME=ABSOLUTE_SKILL_PATH")
+        if name in result:
+            raise codex_profile.CodexProfileError(f"duplicate skill path for {name}")
+        result[name] = Path(path)
+    return result
+
+
+def cmd_claude_profile_apply(args: argparse.Namespace) -> int:
+    try:
+        result = claude_profile.apply_profile(
+            _repo_root(),
+            args.settings,
+            run_id=args.run_id,
+            version=args.version,
+            surface=args.surface,
+            classifications=_classifications(args.classification),
+            explicit_invocations=args.explicit,
+            inventory_fingerprint=args.inventory_fingerprint,
+            bypass=args.bypass,
+        )
+    except (claude_profile.ClaudeProfileError, receipts.ReceiptError, OSError) as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    print(json.dumps(result.to_dict(), sort_keys=True))
+    return 0 if result.status in {"reduced", "full-load"} else 1
+
+
+def cmd_claude_profile_restore(args: argparse.Namespace) -> int:
+    try:
+        result = claude_profile.restore_profile(
+            _repo_root(),
+            args.settings,
+            run_id=args.run_id,
+            version=args.version,
+            surface=args.surface,
+        )
+    except (claude_profile.ClaudeProfileError, receipts.ReceiptError, OSError) as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    print(json.dumps(result.to_dict(), sort_keys=True))
+    return 0 if result.status == "restored" else 1
+
+
+def cmd_claude_profile_recover(args: argparse.Namespace) -> int:
+    try:
+        result = claude_profile.recover_profile(
+            _repo_root(),
+            args.settings,
+            run_id=args.run_id,
+            version=args.version,
+            surface=args.surface,
+        )
+    except (claude_profile.ClaudeProfileError, receipts.ReceiptError, OSError) as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    print(json.dumps(result.to_dict(), sort_keys=True))
+    return 0 if result.status == "restored" else 1
+
+
+def cmd_claude_profile_status(args: argparse.Namespace) -> int:
+    print(json.dumps(claude_profile.profile_status(_repo_root(), args.settings), sort_keys=True))
+    return 0
+
+
+def cmd_codex_profile_apply(args: argparse.Namespace) -> int:
+    try:
+        result = codex_profile.apply_profile(
+            _repo_root(),
+            args.home,
+            profile=args.profile,
+            run_id=args.run_id,
+            version=args.version,
+            surface=args.surface,
+            classifications=_classifications(args.classification),
+            skill_paths=_skill_paths(args.skill),
+            explicit_invocations=args.explicit,
+            inventory_fingerprint=args.inventory_fingerprint,
+            bypass=args.bypass,
+        )
+    except (
+        claude_profile.ClaudeProfileError,
+        codex_profile.CodexProfileError,
+        receipts.ReceiptError,
+        OSError,
+    ) as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    print(json.dumps(result.to_dict(), sort_keys=True))
+    return 0 if result.status in {"reduced", "full-load"} else 1
+
+
+def cmd_codex_profile_restore(args: argparse.Namespace) -> int:
+    try:
+        result = codex_profile.restore_profile(
+            _repo_root(), args.home, profile=args.profile, run_id=args.run_id,
+            version=args.version, surface=args.surface
+        )
+    except (codex_profile.CodexProfileError, receipts.ReceiptError, OSError) as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    print(json.dumps(result.to_dict(), sort_keys=True))
+    return 0 if result.status == "restored" else 1
+
+
+def cmd_codex_profile_recover(args: argparse.Namespace) -> int:
+    try:
+        result = codex_profile.recover_profile(
+            _repo_root(), args.home, profile=args.profile, run_id=args.run_id,
+            version=args.version, surface=args.surface
+        )
+    except (codex_profile.CodexProfileError, receipts.ReceiptError, OSError) as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    print(json.dumps(result.to_dict(), sort_keys=True))
+    return 0 if result.status == "restored" else 1
+
+
+def cmd_codex_profile_status(args: argparse.Namespace) -> int:
+    try:
+        result = codex_profile.profile_status(_repo_root(), args.home, args.profile)
+    except codex_profile.CodexProfileError as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    print(json.dumps(result, sort_keys=True))
+    return 0
+
+
+def _json_object(path: Path) -> dict[str, Any]:
+    value = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(value, dict):
+        raise quality.QualityError(f"{path} must contain a JSON object")
+    return value
+
+
+def cmd_quality_validate_suite(args: argparse.Namespace) -> int:
+    try:
+        manifests = [
+            quality.QualityManifest.from_dict(_json_object(path)) for path in args.manifests
+        ]
+        validated = quality.validate_suite(manifests)
+    except (OSError, json.JSONDecodeError, quality.QualityError) as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    print(
+        json.dumps(
+            {
+                "valid": True,
+                "fixtures": [manifest.fixture_id for manifest in validated],
+                "manifest_fingerprints": [manifest.fingerprint for manifest in validated],
+            },
+            sort_keys=True,
+        )
+    )
+    return 0
+
+
+def cmd_quality_evaluate(args: argparse.Namespace) -> int:
+    try:
+        manifest = quality.QualityManifest.from_dict(_json_object(args.manifest))
+        baseline = quality.AttemptEvidence.from_dict(_json_object(args.baseline))
+        guarded = quality.AttemptEvidence.from_dict(_json_object(args.guarded))
+        evaluation = quality.QualityLedger(_repo_root()).record_evaluation(
+            manifest, baseline, guarded, run_id=args.run_id
+        )
+    except (OSError, json.JSONDecodeError, quality.QualityError, receipts.ReceiptError) as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    print(json.dumps(evaluation.to_dict(), sort_keys=True))
+    return 0 if evaluation.valid else 1
+
+
+def cmd_quality_authorize(args: argparse.Namespace) -> int:
+    try:
+        authorization = quality.QualityLedger(_repo_root()).authorize(args.pair_id)
+    except quality.QualityError as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    print(json.dumps(authorization.to_dict(), sort_keys=True))
+    return 0 if authorization.allowed else 1
+
+
+def cmd_quality_invalidate(args: argparse.Namespace) -> int:
+    try:
+        authorization = quality.QualityLedger(_repo_root()).invalidate(
+            args.pair_id, run_id=args.run_id, reason_code=args.reason
+        )
+    except (quality.QualityError, receipts.ReceiptError) as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    print(json.dumps(authorization.to_dict(), sort_keys=True))
+    return 0
+
+
+def cmd_claude_measurement_extract(args: argparse.Namespace) -> int:
+    try:
+        result = claude_measurement.extract_run(
+            _repo_root(),
+            args.source,
+            run_id=args.run_id,
+            quality_pair_id=args.quality_pair,
+            fixture_kind=args.fixture_kind,
+            role=args.role,
+            provider_version=args.version,
+            model=args.model,
+            session_id=args.session_id,
+        )
+        claude_measurement.MeasurementLedger(_repo_root()).record_run(result)
+    except (
+        claude_measurement.ClaudeMeasurementError,
+        quality.QualityError,
+        receipts.ReceiptError,
+        OSError,
+    ) as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    print(json.dumps(result.to_dict(), sort_keys=True))
+    return 0
+
+
+def cmd_claude_measurement_pair(args: argparse.Namespace) -> int:
+    try:
+        baseline = claude_measurement.ClaudeRunMeasurement.from_dict(
+            _json_object(args.baseline)
+        )
+        guarded = claude_measurement.ClaudeRunMeasurement.from_dict(
+            _json_object(args.guarded)
+        )
+        result = claude_measurement.compare_pair(
+            _repo_root(),
+            baseline,
+            guarded,
+            pair_id=args.pair_id,
+            execution_order=args.execution_order,
+        )
+        claude_measurement.MeasurementLedger(_repo_root()).record_pair(result)
+    except (
+        json.JSONDecodeError,
+        quality.QualityError,
+        claude_measurement.ClaudeMeasurementError,
+        receipts.ReceiptError,
+        OSError,
+    ) as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    print(json.dumps(result.to_dict(), sort_keys=True))
+    return 0
+
+
+def cmd_claude_measurement_qualify(args: argparse.Namespace) -> int:
+    try:
+        pairs = [
+            claude_measurement.ClaudePairMeasurement.from_dict(_json_object(path))
+            for path in args.pairs
+        ]
+        result = claude_measurement.qualify(
+            _repo_root(), pairs, qualification_id=args.qualification_id
+        )
+        claude_measurement.MeasurementLedger(_repo_root()).record_qualification(result)
+    except (
+        json.JSONDecodeError,
+        quality.QualityError,
+        claude_measurement.ClaudeMeasurementError,
+        receipts.ReceiptError,
+        OSError,
+    ) as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    print(json.dumps(result.to_dict(), sort_keys=True))
+    return 0 if result.passed else 1
+
+
+def cmd_claude_measurement_ledger(args: argparse.Namespace) -> int:
+    try:
+        records = claude_measurement.MeasurementLedger(_repo_root()).records()
+    except claude_measurement.ClaudeMeasurementError as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    print(json.dumps(list(records), sort_keys=True))
+    return 0
+
+
+def _record_codex_run(result: codex_measurement.CodexRunMeasurement) -> int:
+    codex_measurement.MeasurementLedger(_repo_root()).record_run(result)
+    print(json.dumps(result.to_dict(), sort_keys=True))
+    return 0
+
+
+def cmd_codex_measurement_exact(args: argparse.Namespace) -> int:
+    try:
+        result = codex_measurement.extract_exact_run(
+            _repo_root(), args.source, run_id=args.run_id,
+            quality_pair_id=args.quality_pair, fixture_kind=args.fixture_kind,
+            role=args.role, provider_version=args.version, model=args.model,
+            thread_id=args.thread_id
+        )
+        return _record_codex_run(result)
+    except (
+        codex_measurement.CodexMeasurementError,
+        quality.QualityError,
+        receipts.ReceiptError,
+        OSError,
+    ) as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+
+
+def cmd_codex_measurement_cumulative(args: argparse.Namespace) -> int:
+    try:
+        result = codex_measurement.measure_cumulative_run(
+            _repo_root(), run_id=args.run_id, quality_pair_id=args.quality_pair,
+            fixture_kind=args.fixture_kind, role=args.role,
+            provider_version=args.version, model=args.model,
+            thread_id=args.thread_id, start_boundary_id=args.start_boundary,
+            end_boundary_id=args.end_boundary,
+            start_cached_input_tokens=args.start_cached_input,
+            end_cached_input_tokens=args.end_cached_input
+        )
+        return _record_codex_run(result)
+    except (
+        codex_measurement.CodexMeasurementError,
+        quality.QualityError,
+        receipts.ReceiptError,
+        OSError,
+    ) as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+
+
+def cmd_codex_measurement_pair(args: argparse.Namespace) -> int:
+    try:
+        baseline = codex_measurement.CodexRunMeasurement.from_dict(
+            _json_object(args.baseline)
+        )
+        guarded = codex_measurement.CodexRunMeasurement.from_dict(
+            _json_object(args.guarded)
+        )
+        result = codex_measurement.compare_pair(
+            _repo_root(), baseline, guarded, pair_id=args.pair_id,
+            execution_order=args.execution_order
+        )
+        codex_measurement.MeasurementLedger(_repo_root()).record_pair(result)
+    except (
+        json.JSONDecodeError,
+        codex_measurement.CodexMeasurementError,
+        quality.QualityError,
+        receipts.ReceiptError,
+        OSError,
+    ) as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    print(json.dumps(result.to_dict(), sort_keys=True))
+    return 0
+
+
+def cmd_codex_measurement_qualify(args: argparse.Namespace) -> int:
+    try:
+        pairs = [
+            codex_measurement.CodexPairMeasurement.from_dict(_json_object(path))
+            for path in args.pairs
+        ]
+        result = codex_measurement.qualify(
+            _repo_root(), pairs, qualification_id=args.qualification_id
+        )
+        codex_measurement.MeasurementLedger(_repo_root()).record_qualification(result)
+    except (
+        json.JSONDecodeError,
+        codex_measurement.CodexMeasurementError,
+        quality.QualityError,
+        receipts.ReceiptError,
+        OSError,
+    ) as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    print(json.dumps(result.to_dict(), sort_keys=True))
+    return 0 if result.passed else 1
+
+
+def cmd_codex_measurement_ledger(args: argparse.Namespace) -> int:
+    try:
+        records = codex_measurement.MeasurementLedger(_repo_root()).records()
+    except codex_measurement.CodexMeasurementError as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    print(json.dumps(list(records), sort_keys=True))
     return 0
 
 
@@ -291,6 +772,185 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("doctor").set_defaults(func=cmd_doctor)
     sub.add_parser("report").set_defaults(func=cmd_report)
     sub.add_parser("init").set_defaults(func=cmd_init)
+    sub.add_parser("migrate-policy").set_defaults(func=cmd_migrate_policy)
+
+    inventory_parser = sub.add_parser("inventory")
+    inventory_parser.add_argument("--provider", required=True, choices=["claude", "codex"])
+    inventory_parser.add_argument("--version", required=True)
+    inventory_parser.add_argument("--surface", required=True)
+    inventory_parser.add_argument("--home", type=Path)
+    inventory_parser.set_defaults(func=cmd_inventory)
+
+    receipt_parser = sub.add_parser("receipt")
+    receipt_sub = receipt_parser.add_subparsers(dest="receipt_command", required=True)
+    receipt_inspect = receipt_sub.add_parser("inspect")
+    receipt_inspect.add_argument("run_id")
+    receipt_inspect.set_defaults(func=cmd_receipt_inspect)
+    receipt_delete = receipt_sub.add_parser("delete")
+    receipt_delete.add_argument("run_id")
+    receipt_delete.set_defaults(func=cmd_receipt_delete)
+    receipt_prune = receipt_sub.add_parser("prune")
+    receipt_prune.add_argument("--days", type=int, default=receipts.DEFAULT_RETENTION_DAYS)
+    receipt_prune.set_defaults(func=cmd_receipt_prune)
+
+    claude_profile_parser = sub.add_parser("claude-profile")
+    claude_profile_sub = claude_profile_parser.add_subparsers(
+        dest="claude_profile_command", required=True
+    )
+    claude_apply = claude_profile_sub.add_parser("apply")
+    claude_apply.add_argument("settings", type=Path)
+    claude_apply.add_argument("--run-id", required=True)
+    claude_apply.add_argument("--version", required=True)
+    claude_apply.add_argument("--surface", default="cli")
+    claude_apply.add_argument("--classification", action="append", default=[])
+    claude_apply.add_argument("--explicit", action="append", default=[])
+    claude_apply.add_argument("--inventory-fingerprint", required=True)
+    claude_apply.add_argument("--bypass", action="store_true")
+    claude_apply.set_defaults(func=cmd_claude_profile_apply)
+
+    for name, func in (
+        ("restore", cmd_claude_profile_restore),
+        ("recover", cmd_claude_profile_recover),
+    ):
+        action = claude_profile_sub.add_parser(name)
+        action.add_argument("settings", type=Path)
+        action.add_argument("--run-id", required=True)
+        action.add_argument("--version", required=True)
+        action.add_argument("--surface", default="cli")
+        action.set_defaults(func=func)
+
+    claude_status = claude_profile_sub.add_parser("status")
+    claude_status.add_argument("settings", type=Path)
+    claude_status.set_defaults(func=cmd_claude_profile_status)
+
+    codex_profile_parser = sub.add_parser("codex-profile")
+    codex_profile_sub = codex_profile_parser.add_subparsers(
+        dest="codex_profile_command", required=True
+    )
+    codex_apply = codex_profile_sub.add_parser("apply")
+    codex_apply.add_argument("--home", required=True, type=Path)
+    codex_apply.add_argument("--profile", required=True)
+    codex_apply.add_argument("--run-id", required=True)
+    codex_apply.add_argument("--version", required=True)
+    codex_apply.add_argument("--surface", default="cli", choices=["cli", "app-server"])
+    codex_apply.add_argument("--classification", action="append", default=[])
+    codex_apply.add_argument("--skill", action="append", default=[])
+    codex_apply.add_argument("--explicit", action="append", default=[])
+    codex_apply.add_argument("--inventory-fingerprint", required=True)
+    codex_apply.add_argument("--bypass", action="store_true")
+    codex_apply.set_defaults(func=cmd_codex_profile_apply)
+    for name, func in (
+        ("restore", cmd_codex_profile_restore),
+        ("recover", cmd_codex_profile_recover),
+    ):
+        action = codex_profile_sub.add_parser(name)
+        action.add_argument("--home", required=True, type=Path)
+        action.add_argument("--profile", required=True)
+        action.add_argument("--run-id", required=True)
+        action.add_argument("--version", required=True)
+        action.add_argument("--surface", default="cli", choices=["cli", "app-server"])
+        action.set_defaults(func=func)
+    codex_status = codex_profile_sub.add_parser("status")
+    codex_status.add_argument("--home", required=True, type=Path)
+    codex_status.add_argument("--profile", required=True)
+    codex_status.set_defaults(func=cmd_codex_profile_status)
+
+    quality_parser = sub.add_parser("quality")
+    quality_sub = quality_parser.add_subparsers(dest="quality_command", required=True)
+    quality_suite = quality_sub.add_parser("validate-suite")
+    quality_suite.add_argument("manifests", nargs="+", type=Path)
+    quality_suite.set_defaults(func=cmd_quality_validate_suite)
+    quality_evaluate = quality_sub.add_parser("evaluate")
+    quality_evaluate.add_argument("--manifest", required=True, type=Path)
+    quality_evaluate.add_argument("--baseline", required=True, type=Path)
+    quality_evaluate.add_argument("--guarded", required=True, type=Path)
+    quality_evaluate.add_argument("--run-id", required=True)
+    quality_evaluate.set_defaults(func=cmd_quality_evaluate)
+    quality_authorize = quality_sub.add_parser("authorize")
+    quality_authorize.add_argument("pair_id")
+    quality_authorize.set_defaults(func=cmd_quality_authorize)
+    quality_invalidate = quality_sub.add_parser("invalidate")
+    quality_invalidate.add_argument("pair_id")
+    quality_invalidate.add_argument("--run-id", required=True)
+    quality_invalidate.add_argument("--reason", required=True)
+    quality_invalidate.set_defaults(func=cmd_quality_invalidate)
+
+    measurement_parser = sub.add_parser("claude-measurement")
+    measurement_sub = measurement_parser.add_subparsers(
+        dest="claude_measurement_command", required=True
+    )
+    measurement_extract = measurement_sub.add_parser("extract")
+    measurement_extract.add_argument("source", type=Path)
+    measurement_extract.add_argument("--run-id", required=True)
+    measurement_extract.add_argument("--quality-pair", required=True)
+    measurement_extract.add_argument(
+        "--fixture-kind", required=True, choices=sorted(claude_measurement.FIXTURE_KINDS)
+    )
+    measurement_extract.add_argument("--role", required=True, choices=["baseline", "guarded"])
+    measurement_extract.add_argument("--version", required=True)
+    measurement_extract.add_argument("--model", required=True)
+    measurement_extract.add_argument("--session-id", required=True)
+    measurement_extract.set_defaults(func=cmd_claude_measurement_extract)
+    measurement_pair = measurement_sub.add_parser("pair")
+    measurement_pair.add_argument("--baseline", required=True, type=Path)
+    measurement_pair.add_argument("--guarded", required=True, type=Path)
+    measurement_pair.add_argument("--pair-id", required=True)
+    measurement_pair.add_argument(
+        "--execution-order",
+        required=True,
+        choices=["baseline-first", "guarded-first"],
+    )
+    measurement_pair.set_defaults(func=cmd_claude_measurement_pair)
+    measurement_qualify = measurement_sub.add_parser("qualify")
+    measurement_qualify.add_argument("pairs", nargs="+", type=Path)
+    measurement_qualify.add_argument("--qualification-id", required=True)
+    measurement_qualify.set_defaults(func=cmd_claude_measurement_qualify)
+    measurement_sub.add_parser("ledger").set_defaults(func=cmd_claude_measurement_ledger)
+
+    codex_measurement_parser = sub.add_parser("codex-measurement")
+    codex_measurement_sub = codex_measurement_parser.add_subparsers(
+        dest="codex_measurement_command", required=True
+    )
+
+    def add_codex_measurement_context(action: argparse.ArgumentParser) -> None:
+        action.add_argument("--run-id", required=True)
+        action.add_argument("--quality-pair", required=True)
+        action.add_argument(
+            "--fixture-kind", required=True,
+            choices=sorted(codex_measurement.FIXTURE_KINDS)
+        )
+        action.add_argument("--role", required=True, choices=["baseline", "guarded"])
+        action.add_argument("--version", required=True)
+        action.add_argument("--model", required=True)
+        action.add_argument("--thread-id", required=True)
+
+    codex_exact = codex_measurement_sub.add_parser("exact")
+    codex_exact.add_argument("source", type=Path)
+    add_codex_measurement_context(codex_exact)
+    codex_exact.set_defaults(func=cmd_codex_measurement_exact)
+    codex_cumulative = codex_measurement_sub.add_parser("cumulative")
+    add_codex_measurement_context(codex_cumulative)
+    codex_cumulative.add_argument("--start-boundary", required=True)
+    codex_cumulative.add_argument("--end-boundary", required=True)
+    codex_cumulative.add_argument("--start-cached-input", required=True, type=int)
+    codex_cumulative.add_argument("--end-cached-input", required=True, type=int)
+    codex_cumulative.set_defaults(func=cmd_codex_measurement_cumulative)
+    codex_pair = codex_measurement_sub.add_parser("pair")
+    codex_pair.add_argument("--baseline", required=True, type=Path)
+    codex_pair.add_argument("--guarded", required=True, type=Path)
+    codex_pair.add_argument("--pair-id", required=True)
+    codex_pair.add_argument(
+        "--execution-order", required=True,
+        choices=["baseline-first", "guarded-first"]
+    )
+    codex_pair.set_defaults(func=cmd_codex_measurement_pair)
+    codex_qualify = codex_measurement_sub.add_parser("qualify")
+    codex_qualify.add_argument("pairs", nargs="+", type=Path)
+    codex_qualify.add_argument("--qualification-id", required=True)
+    codex_qualify.set_defaults(func=cmd_codex_measurement_qualify)
+    codex_measurement_sub.add_parser("ledger").set_defaults(
+        func=cmd_codex_measurement_ledger
+    )
 
     test_parser = sub.add_parser("test")
     test_parser.add_argument("command", nargs=argparse.REMAINDER)
