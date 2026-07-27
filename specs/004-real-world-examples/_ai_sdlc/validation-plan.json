@@ -1,0 +1,20 @@
+{
+  "schema": "ai-sdlc-validation-command-plan/v1",
+  "commands": [
+    {
+      "id": "V001",
+      "argv": ["python3", "examples/run_demo.py", "--check"],
+      "trace_ids": ["AC-001", "AC-002", "AC-003", "AC-004", "AC-006", "TC-001", "TC-002", "TC-003", "TC-004", "TC-005", "TC-006", "TC-007"]
+    },
+    {
+      "id": "V002",
+      "argv": ["python3", "tests/run_pytest.py", "-q"],
+      "trace_ids": ["AC-001", "AC-002", "AC-003", "AC-004", "AC-005", "AC-006", "AC-007", "TC-001", "TC-002", "TC-003", "TC-004", "TC-005", "TC-006", "TC-007"]
+    },
+    {
+      "id": "V005",
+      "argv": ["git", "diff", "--check"],
+      "trace_ids": ["DEC-001"]
+    }
+  ]
+}

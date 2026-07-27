@@ -1,0 +1,2 @@
+{"type":"thread.started","thread_id":"demo-codex-regression"}
+{"type":"turn.completed","usage":{"input_tokens":7000,"cached_input_tokens":5040,"output_tokens":500},"items":[{"type":"agent_message","text":"regression fixture private content that must never be copied to demo output"}]}

@@ -1,0 +1,94 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "examples/run_demo.py",
+        "--check"
+      ],
+      "duration_ms": 187,
+      "exit_code": 0,
+      "id": "V001",
+      "output_limited": false,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 3589,
+      "stdout_sha256": "2fdc84a3086c29949cffe2eaa2d72ebfcea3b0b6e290ac22a92e610454738033",
+      "trace_ids": [
+        "AC-001",
+        "AC-002",
+        "AC-003",
+        "AC-004",
+        "AC-006",
+        "TC-001",
+        "TC-002",
+        "TC-003",
+        "TC-004",
+        "TC-005",
+        "TC-006",
+        "TC-007"
+      ]
+    },
+    {
+      "argv": [
+        "python3",
+        "tests/run_pytest.py",
+        "-q"
+      ],
+      "duration_ms": 7853,
+      "exit_code": 0,
+      "id": "V002",
+      "output_limited": false,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 340,
+      "stdout_sha256": "50c708f69707d360ec6c11d2c5e908261b4d438c34cc6a06a300e48da2ae36fe",
+      "trace_ids": [
+        "AC-001",
+        "AC-002",
+        "AC-003",
+        "AC-004",
+        "AC-005",
+        "AC-006",
+        "AC-007",
+        "TC-001",
+        "TC-002",
+        "TC-003",
+        "TC-004",
+        "TC-005",
+        "TC-006",
+        "TC-007"
+      ]
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "duration_ms": 19,
+      "exit_code": 0,
+      "id": "V005",
+      "output_limited": false,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trace_ids": [
+        "DEC-001"
+      ]
+    }
+  ],
+  "environment": {
+    "platform": "macOS-26.3.1-arm64-arm-64bit",
+    "python": "3.9.6"
+  },
+  "evidence_trust": "local-structural-not-authenticated",
+  "executed_at": "2026-07-27T15:57:09.309851Z",
+  "plan_path": "specs/004-real-world-examples/_ai_sdlc/validation-plan.json",
+  "plan_sha256": "43162b4e461fb5e74cef7a40b7246668a5e36bbc326054f5f549e2c99b760ff0",
+  "receipt_fingerprint": "d28d8e66561a10ced24a383ece7a0084d1566b92b115737da2456bf12ba38d1a",
+  "revision": "c27477fbf342eec23fccd3be2419a3605b376df4",
+  "schema": "ai-sdlc-validation-receipt/v1",
+  "workspace_fingerprint": "3ecd9df9a865419a6d40087f07f63d374f386ec57493ae3d000f7cde9cc9a47f"
+}
