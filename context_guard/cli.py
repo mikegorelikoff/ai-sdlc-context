@@ -5,9 +5,15 @@ from __future__ import annotations
 import argparse
 import dataclasses
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Any
+
+try:
+    import tomllib
+except ModuleNotFoundError:  # pragma: no cover - Python 3.10 compatibility
+    import tomli as tomllib
 
 from context_guard import decisions, engine, events
 from context_guard import inventory as skill_inventory
@@ -737,18 +743,61 @@ def _install_codex(repo_root: Path) -> int:
     path = repo_root / CODEX_CONFIG_PATH
     path.parent.mkdir(parents=True, exist_ok=True)
     existing = path.read_text(encoding="utf-8") if path.is_file() else ""
-    if _MARKER in existing:
+
+    # Migrate the flat assignments emitted by Context Guard 0.1.1. Codex
+    # expects each event and command to be represented by nested array tables.
+    for event_name in _CODEX_HOOK_EVENTS:
+        legacy_assignment = re.compile(
+            rf"(?m)^[ \t]*{re.escape(event_name)}[ \t]*="
+            rf"[^\n]*{re.escape(_MARKER)}[^\n]*(?:\n|$)"
+        )
+        existing = legacy_assignment.sub("", existing)
+
+    missing_events = [
+        event_name
+        for event_name in _CODEX_HOOK_EVENTS
+        if not _codex_hook_is_installed(existing, event_name)
+    ]
+    if not missing_events:
         print(f"Codex hooks already installed in {path}")
         return 0
 
     lines = [existing.rstrip("\n")] if existing.strip() else []
-    lines.append("")
-    lines.append("[hooks]")
-    for event_name in _CODEX_HOOK_EVENTS:
-        lines.append(f'{event_name} = "context-guard hook codex"  # {_MARKER}')
+    for event_name in missing_events:
+        lines.extend(
+            [
+                "",
+                f"[[hooks.{event_name}]]",
+                "",
+                f"[[hooks.{event_name}.hooks]]",
+                'type = "command"',
+                f'command = "context-guard hook codex"  # {_MARKER}',
+            ]
+        )
     path.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
     print(f"Installed Codex hooks into {path}")
     return 0
+
+
+def _codex_hook_is_installed(config: str, event_name: str) -> bool:
+    try:
+        parsed = tomllib.loads(config)
+    except tomllib.TOMLDecodeError:
+        return False
+
+    entries = parsed.get("hooks", {}).get(event_name, [])
+    if not isinstance(entries, list):
+        return False
+    return any(
+        isinstance(entry, dict)
+        and any(
+            isinstance(hook, dict)
+            and hook.get("type") == "command"
+            and hook.get("command") == "context-guard hook codex"
+            for hook in entry.get("hooks", [])
+        )
+        for entry in entries
+    )
 
 
 def build_parser() -> argparse.ArgumentParser:
