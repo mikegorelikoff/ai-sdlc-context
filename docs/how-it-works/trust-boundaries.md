@@ -15,7 +15,9 @@ stdout and stderr, which may contain sensitive content.
 
 The installer creates a private environment under
 `~/.local/share/context-guard`, a command under `~/.local/bin`, and hook entries
-under `~/.claude/settings.json` and `~/.codex/config.toml`.
+under `~/.claude/settings.json` and `~/.codex/config.toml`. When Python 3.10+
+or `venv` is missing, it can also invoke a detected system package manager;
+that step may request `sudo` and changes system-managed packages.
 
 ## What Context Guard does not control
 

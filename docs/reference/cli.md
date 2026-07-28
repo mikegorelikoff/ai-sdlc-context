@@ -1,6 +1,6 @@
 # CLI reference
 
-This page lists the top-level commands exposed by Context Guard `0.1.1`.
+This page lists the top-level commands exposed by Context Guard `0.1.2`.
 Run `context-guard <command> --help` for nested actions and arguments.
 
 | Command | Contract |
@@ -22,7 +22,7 @@ Run `context-guard <command> --help` for nested actions and arguments.
 | `run -- <command>` | Run an explicit command through compact output. |
 | `artifact show` | Retrieve a complete artifact or one fragment. |
 
-There is no `context-guard sessions` command in version `0.1.1`.
+There is no `context-guard sessions` command in version `0.1.2`.
 
 Exit behavior is command-specific. Validation, self-test, missing artifacts,
 invalid inputs, and wrapped command failures return nonzero results. `run`

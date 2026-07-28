@@ -39,7 +39,9 @@ CONTEXT_GUARD_PACKAGE="$PWD" ./install.sh
 The script creates `~/.local/share/context-guard/venv`, links
 `~/.local/bin/context-guard`, runs `context-guard install claude`, runs
 `context-guard install codex`, and validates the policy. It preserves unrelated
-configuration and is designed to be repeatable.
+configuration and is designed to be repeatable. If Python 3.10+ or its `venv`
+support is missing, it installs the dependency through Homebrew, APT, DNF,
+YUM, APK, Pacman, or Zypper. Linux package managers may request `sudo`.
 
 If `~/.local/bin` is not on `PATH`, add it for the current shell:
 

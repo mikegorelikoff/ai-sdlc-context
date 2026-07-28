@@ -1,6 +1,6 @@
 # Status and limitations
 
-Context Guard is currently package version `0.1.1`. Evaluate it against your
+Context Guard is currently package version `0.1.2`. Evaluate it against your
 provider versions, hook surfaces, repositories, and data-handling requirements.
 
 ## Verified behavior

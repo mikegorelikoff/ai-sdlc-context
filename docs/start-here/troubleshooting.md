@@ -10,7 +10,7 @@ that location matches the installer output.
 
 ## Policy does not validate
 
-Run `context-guard validate`. Version `0.1.1` loads the single packaged policy;
+Run `context-guard validate`. Version `0.1.2` loads the single packaged policy;
 user, repository, and environment overrides are not supported. Reinstall from
 the reviewed source instead of creating an undocumented local policy.
 

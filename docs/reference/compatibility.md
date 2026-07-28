@@ -1,7 +1,9 @@
 # Compatibility
 
-Context Guard `0.1.1` requires Python 3.10 or newer. The installer targets
-macOS or Linux with Bash, curl, Python `venv`, and user-level write access.
+Context Guard `0.1.2` requires Python 3.10 or newer. The installer targets
+macOS or Linux with Bash, curl, and user-level write access. When Python or
+`venv` is missing, it supports Homebrew, APT, DNF, YUM, APK, Pacman, and
+Zypper dependency installation.
 
 The CLI supports Claude Code and Codex provider adapters. Inventory and profile
 actions apply provider-version and surface preflight checks defined in source.

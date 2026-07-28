@@ -32,7 +32,7 @@ if a self-test fails or evidence cannot be inspected.
 
 ## Troubleshooting
 
-If local configuration appears to override policy, stop: version `0.1.1` does
+If local configuration appears to override policy, stop: version `0.1.2` does
 not support such overrides. If a provider misses events, treat the gap as a
 compatibility limitation.
 

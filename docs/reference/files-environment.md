@@ -23,4 +23,4 @@ Installer environment overrides are `CONTEXT_GUARD_INSTALL_ROOT`,
 `CONTEXT_GUARD_PACKAGE`.
 
 `CONTEXT_GUARD_MODE` and local policy files do not override the packaged policy
-in version `0.1.1`.
+in version `0.1.2`.

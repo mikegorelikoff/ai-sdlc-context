@@ -52,3 +52,12 @@ command followed by separate validation, self-test, and report commands. The
 documentation retains the local-clone alternative and states that the shorter
 path follows `main`, downloads through GitHub and pip, and changes user-level
 provider configuration.
+
+## Dependency bootstrap
+
+On 2026-07-28, the installer began detecting and installing missing Python
+3.10+ and `venv` dependencies through Homebrew or a supported Linux package
+manager. Automatic bootstrap was selected over a hard failure to make the
+one-line installation complete on fresh systems. Documentation now makes the
+possible package-manager and `sudo` changes explicit; Bash and curl remain
+bootstrap prerequisites for the remote pipeline itself.

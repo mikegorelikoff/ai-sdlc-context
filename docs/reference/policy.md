@@ -1,6 +1,6 @@
 # Packaged policy reference
 
-Context Guard `0.1.1` loads exactly one version 2 policy from
+Context Guard `0.1.2` loads exactly one version 2 policy from
 `context_guard/defaults/policy.yaml`. Repository files, user files, and
 environment variables do not override it.
 

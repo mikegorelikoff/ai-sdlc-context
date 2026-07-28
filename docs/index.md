@@ -42,7 +42,7 @@ the provider, model, billing system, or every tool operation.
 [Stage 1](how-it-works/stages.md#stage-1-policy-hooks) evaluates recognized
 file-read, command, and search events. [Stage 2](how-it-works/stages.md#stage-2-compact-runtime)
 captures full command output locally and emits a smaller result. The packaged
-`0.1.1` policy starts in observe mode.
+`0.1.2` policy starts in observe mode.
 
 ## Five-minute first success
 

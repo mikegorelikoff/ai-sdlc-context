@@ -21,8 +21,10 @@ data behavior.
 ## Configuration and authority
 
 Installation changes provider hook configuration and user-level executable
-paths. Review diffs and keep configuration backups. Policy changes, warn or
-enforce rollout, retention, sharing, and deletion require a human owner.
+paths. If Python or `venv` is missing, it can invoke Homebrew or a supported
+Linux package manager and may request `sudo`. Review the installer and keep
+configuration backups. Policy changes, warn or enforce rollout, retention,
+sharing, and deletion require a human owner.
 
 ## Reporting
 

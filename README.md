@@ -36,8 +36,10 @@ context-guard report
 ```
 
 The installer creates a private virtual environment, installs the CLI, and
-initializes Claude Code and Codex hooks. It downloads changing code from
-GitHub and pip and modifies user configuration; review
+initializes Claude Code and Codex hooks. If Python 3.10+ or `venv` is missing,
+it uses a detected Homebrew or supported Linux package manager and may request
+`sudo`. It downloads changing code from GitHub and pip and modifies user and
+possibly system configuration; review
 [`install.sh`](install.sh) and the [installation guide](docs/start-here/install.md)
 before running it.
 
@@ -104,7 +106,7 @@ through [SECURITY.md](SECURITY.md).
 
 ## Project status
 
-The package version is `0.1.1`. The packaged version 2 policy is fixed to
+The package version is `0.1.2`. The packaged version 2 policy is fixed to
 observe mode and is not overridden by repository files, user files, or
 environment variables. Review [limitations](docs/project/status-limitations.md)
 before advancing beyond an evaluation.

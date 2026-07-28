@@ -13,7 +13,7 @@ while retaining full local evidence.
 5. [CLI reference](../reference/cli.md)
 
 The default first path is observe mode. Warn and enforce are supported policy
-modes, but version `0.1.1` loads one packaged policy and does not accept user,
+modes, but version `0.1.2` loads one packaged policy and does not accept user,
 repository, or environment overrides. Advancing a mode therefore requires a
 reviewed packaged-policy change, not an ad hoc local file.
 
