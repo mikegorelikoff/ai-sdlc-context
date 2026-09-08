@@ -1,0 +1,495 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Review complete; resolve the reported blocker before delivery.\nEvidence: brd.md:16\n\nprimary: Delivery impact: Stories remain ambiguous; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nfailures: Workflow rule: Workflow rule; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: brd.md:16; Required action: Resolve the primary finding before handoff.\nactions: Owner: Engineer; Next action: Validate workflow rule with its owning workflow; Expected evidence: brd.md:16.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-delivery-package-gap-review for payment-retry delivery: happy",
+      "required_facts": [
+        "brd.md:16",
+        "Retry settlement",
+        "Stories remain ambiguous"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "brd.md:16",
+            "Next action": "Define replay outcome",
+            "Owner": "Engineer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "brd.md:16",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED",
+            "Workflow rule": "Workflow rule"
+          }
+        ],
+        "primary": [
+          {
+            "Delivery impact": "Stories remain ambiguous",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Review complete; resolve the reported blocker before delivery.",
+          "Evidence": "brd.md:16",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Partial missing rule / delivery impact entities coverage; one dependency remains unverified.\nEvidence: brd.md:16\n\nprimary: Delivery impact: Stories remain ambiguous; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nprimary: Delivery impact: Stories remain ambiguous [pending case]; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nfailures: Workflow rule: Workflow rule; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: brd.md:16; Required action: Resolve the primary finding before handoff.\nactions: Owner: Engineer; Next action: Validate workflow rule with its owning workflow; Expected evidence: brd.md:16.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-delivery-package-gap-review for payment-retry delivery: partial",
+      "required_facts": [
+        "brd.md:16",
+        "Retry settlement",
+        "Stories remain ambiguous"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "brd.md:16",
+            "Next action": "Define replay outcome",
+            "Owner": "Engineer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "brd.md:16",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED",
+            "Workflow rule": "Workflow rule"
+          }
+        ],
+        "primary": [
+          {
+            "Delivery impact": "Stories remain ambiguous",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          },
+          {
+            "Delivery impact": "Stories remain ambiguous [pending case]",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "brd.md:16",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited missing rule / delivery impact entities review; source freshness must be confirmed.\nEvidence: brd.md:16\n\nprimary: Delivery impact: Stories remain ambiguous; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nactions: Owner: Engineer; Next action: Validate workflow rule with its owning workflow; Expected evidence: brd.md:16.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-delivery-package-gap-review for payment-retry delivery: warning",
+      "required_facts": [
+        "brd.md:16",
+        "Retry settlement",
+        "Stories remain ambiguous"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "brd.md:16",
+            "Next action": "Define replay outcome",
+            "Owner": "Engineer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "brd.md:16",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED",
+            "Workflow rule": "Workflow rule"
+          }
+        ],
+        "primary": [
+          {
+            "Delivery impact": "Stories remain ambiguous",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Review complete with a blocking finding and a source-freshness warning.",
+          "Evidence": "brd.md:16",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Workflow rule is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Workflow rule: Workflow rule; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide workflow rule.\nactions: Owner: Engineer; Next action: Provide workflow rule; Expected evidence: Validated workflow rule.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-delivery-package-gap-review for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated workflow rule"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated workflow rule",
+            "Next action": "Provide workflow rule",
+            "Owner": "Engineer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide workflow rule",
+            "Status": "BLOCKED",
+            "Workflow rule": "Workflow rule"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Workflow rule is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Workflow rule is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Workflow rule: Workflow rule; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide workflow rule.\nclarifications: Missing workflow rule: Workflow rule; Why required: Determines workflow; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Engineer; Next action: Provide workflow rule; Expected evidence: Validated workflow rule.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-delivery-package-gap-review for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated workflow rule"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated workflow rule",
+            "Next action": "Provide workflow rule",
+            "Owner": "Engineer"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing workflow rule": "Workflow rule",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines workflow"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide workflow rule",
+            "Status": "BLOCKED",
+            "Workflow rule": "Workflow rule"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Workflow rule is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: 20 missing rule / delivery impact entities rows; 20 blocking findings; showing the first 8; full evidence linked.\nEvidence: brd.md:16\n\nprimary: Delivery impact: Stories remain ambiguous #1; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nprimary: Delivery impact: Stories remain ambiguous #2; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nprimary: Delivery impact: Stories remain ambiguous #3; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nprimary: Delivery impact: Stories remain ambiguous #4; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nprimary: Delivery impact: Stories remain ambiguous #5; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nprimary: Delivery impact: Stories remain ambiguous #6; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nprimary: Delivery impact: Stories remain ambiguous #7; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nprimary: Delivery impact: Stories remain ambiguous #8; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nprimary: Delivery impact: Stories remain ambiguous #9; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nprimary: Delivery impact: Stories remain ambiguous #10; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nprimary: Delivery impact: Stories remain ambiguous #11; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nprimary: Delivery impact: Stories remain ambiguous #12; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nprimary: Delivery impact: Stories remain ambiguous #13; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nprimary: Delivery impact: Stories remain ambiguous #14; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nprimary: Delivery impact: Stories remain ambiguous #15; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nprimary: Delivery impact: Stories remain ambiguous #16; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nprimary: Delivery impact: Stories remain ambiguous #17; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nprimary: Delivery impact: Stories remain ambiguous #18; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nprimary: Delivery impact: Stories remain ambiguous #19; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nprimary: Delivery impact: Stories remain ambiguous #20; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nfailures: Workflow rule: Workflow rule; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: brd.md:16; Required action: Resolve the primary finding before handoff.\nactions: Owner: Engineer; Next action: Validate workflow rule with its owning workflow; Expected evidence: brd.md:16.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-delivery-package-gap-review for payment-retry delivery: large",
+      "required_facts": [
+        "brd.md:16",
+        "Retry settlement",
+        "Stories remain ambiguous #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "brd.md:16",
+            "Next action": "Define replay outcome",
+            "Owner": "Engineer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "brd.md:16",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED",
+            "Workflow rule": "Workflow rule"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Delivery impact": "Stories remain ambiguous #1",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          },
+          {
+            "Delivery impact": "Stories remain ambiguous #2",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          },
+          {
+            "Delivery impact": "Stories remain ambiguous #3",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          },
+          {
+            "Delivery impact": "Stories remain ambiguous #4",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          },
+          {
+            "Delivery impact": "Stories remain ambiguous #5",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          },
+          {
+            "Delivery impact": "Stories remain ambiguous #6",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          },
+          {
+            "Delivery impact": "Stories remain ambiguous #7",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          },
+          {
+            "Delivery impact": "Stories remain ambiguous #8",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          },
+          {
+            "Delivery impact": "Stories remain ambiguous #9",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          },
+          {
+            "Delivery impact": "Stories remain ambiguous #10",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          },
+          {
+            "Delivery impact": "Stories remain ambiguous #11",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          },
+          {
+            "Delivery impact": "Stories remain ambiguous #12",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          },
+          {
+            "Delivery impact": "Stories remain ambiguous #13",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          },
+          {
+            "Delivery impact": "Stories remain ambiguous #14",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          },
+          {
+            "Delivery impact": "Stories remain ambiguous #15",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          },
+          {
+            "Delivery impact": "Stories remain ambiguous #16",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          },
+          {
+            "Delivery impact": "Stories remain ambiguous #17",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          },
+          {
+            "Delivery impact": "Stories remain ambiguous #18",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          },
+          {
+            "Delivery impact": "Stories remain ambiguous #19",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          },
+          {
+            "Delivery impact": "Stories remain ambiguous #20",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 workflow records; 20 blockers; 8 shown; inspect the linked full artifact.",
+          "Evidence": "brd.md:16",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: One workflow result; scope and evidence are explicit.\nEvidence: brd.md:16\n\nprimary: Delivery impact: Stories remain ambiguous; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement.\nfailures: Workflow rule: Workflow rule; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: brd.md:16; Required action: Resolve the primary finding before handoff.\nactions: Owner: Engineer; Next action: Validate workflow rule with its owning workflow; Expected evidence: brd.md:16.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-delivery-package-gap-review for payment-retry delivery: small",
+      "required_facts": [
+        "brd.md:16",
+        "Retry settlement",
+        "Stories remain ambiguous"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "brd.md:16",
+            "Next action": "Define replay outcome",
+            "Owner": "Engineer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "brd.md:16",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED",
+            "Workflow rule": "Workflow rule"
+          }
+        ],
+        "primary": [
+          {
+            "Delivery impact": "Stories remain ambiguous",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One workflow result; scope and evidence are explicit.",
+          "Evidence": "brd.md:16",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Review complete; resolve the reported blocker before delivery.\nEvidence: brd.md:16\n\nprimary: Delivery impact: Stories remain ambiguous; Evidence: brd.md:16; Missing rule: Duplicate callback behavior; Required action: Define replay outcome; Workflow: Retry settlement | перенос\nстроки.\nfailures: Workflow rule: Workflow rule; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: brd.md:16; Required action: Resolve the primary finding before handoff.\nactions: Owner: Engineer; Next action: Validate workflow rule with its owning workflow; Expected evidence: brd.md:16.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-delivery-package-gap-review for payment-retry delivery: edge",
+      "required_facts": [
+        "brd.md:16",
+        "Retry settlement | перенос\nстроки",
+        "Stories remain ambiguous"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "brd.md:16",
+            "Next action": "Define replay outcome",
+            "Owner": "Engineer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "brd.md:16",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED",
+            "Workflow rule": "Workflow rule"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Delivery impact": "Stories remain ambiguous",
+            "Evidence": "brd.md:16",
+            "Missing rule": "Duplicate callback behavior",
+            "Required action": "Define replay outcome",
+            "Workflow": "Retry settlement | перенос\nстроки"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Review complete; resolve the reported blocker before delivery.",
+          "Evidence": "brd.md:16",
+          "Status": "BLOCKED"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-delivery-package-gap-review"
+}

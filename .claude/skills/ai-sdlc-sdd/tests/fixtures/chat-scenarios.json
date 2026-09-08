@@ -1,0 +1,444 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared change / requirement id entities; listed evidence satisfies this skill check.\nEvidence: plan.toon:12\n\nprimary: Artifact: design.md; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nactions: Owner: Engineer; Next action: Validate approved behavior with its owning workflow; Expected evidence: plan.toon:12.\n\nsecondary: Component: Confirm component for payment retry; Responsibility: Confirm responsibility for payment retry; Decision: Confirm decision for payment retry; Dependency: Confirm dependency for payment retry; Evidence: plan.toon:12.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-sdd for payment-retry delivery: happy",
+      "required_facts": [
+        "plan.toon:12",
+        "design.md"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "plan.toon:12",
+            "Next action": "Validate approved behavior with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Artifact": "design.md",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared artifact result; evidence supports the reported result.",
+          "Evidence": "plan.toon:12",
+          "Status": "PASS"
+        },
+        "secondary": [
+          {
+            "Component": "Retry worker",
+            "Responsibility": "Deduplicate repeated payment requests",
+            "Decision": "Reuse the payment ledger",
+            "Dependency": "Payment store",
+            "Evidence": "plan.toon:12"
+          }
+        ]
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Partial change / requirement id entities coverage; one dependency remains unverified.\nEvidence: plan.toon:12\n\nprimary: Artifact: design.md; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nprimary: Artifact: design.md [pending case]; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nactions: Owner: Engineer; Next action: Validate approved behavior with its owning workflow; Expected evidence: plan.toon:12.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-sdd for payment-retry delivery: partial",
+      "required_facts": [
+        "plan.toon:12",
+        "design.md"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "plan.toon:12",
+            "Next action": "Validate approved behavior with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Artifact": "design.md",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          },
+          {
+            "Artifact": "design.md [pending case]",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "plan.toon:12",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited change / requirement id entities review; source freshness must be confirmed.\nEvidence: plan.toon:12\n\nprimary: Artifact: design.md; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nactions: Owner: Engineer; Next action: Validate approved behavior with its owning workflow; Expected evidence: plan.toon:12.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-sdd for payment-retry delivery: warning",
+      "required_facts": [
+        "plan.toon:12",
+        "design.md"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "plan.toon:12",
+            "Next action": "Validate approved behavior with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Artifact": "design.md",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Result has limited source freshness; confirm it before downstream use.",
+          "Evidence": "plan.toon:12",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Approved behavior is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Approved behavior: Approved behavior; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide approved behavior.\nactions: Owner: Engineer; Next action: Provide approved behavior; Expected evidence: Validated approved behavior.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-sdd for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated approved behavior"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated approved behavior",
+            "Next action": "Provide approved behavior",
+            "Owner": "Engineer"
+          }
+        ],
+        "failures": [
+          {
+            "Approved behavior": "Approved behavior",
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide approved behavior",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Approved behavior is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Approved behavior is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Approved behavior: Approved behavior; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide approved behavior.\nclarifications: Missing approved behavior: Approved behavior; Why required: Determines artifact; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Engineer; Next action: Provide approved behavior; Expected evidence: Validated approved behavior.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-sdd for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated approved behavior"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated approved behavior",
+            "Next action": "Provide approved behavior",
+            "Owner": "Engineer"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing approved behavior": "Approved behavior",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines artifact"
+          }
+        ],
+        "failures": [
+          {
+            "Approved behavior": "Approved behavior",
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide approved behavior",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Approved behavior is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: 20 change / requirement id entities rows; showing the first 8; full evidence linked.\nEvidence: plan.toon:12\n\nprimary: Artifact: design.md #1; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nprimary: Artifact: design.md #2; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nprimary: Artifact: design.md #3; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nprimary: Artifact: design.md #4; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nprimary: Artifact: design.md #5; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nprimary: Artifact: design.md #6; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nprimary: Artifact: design.md #7; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nprimary: Artifact: design.md #8; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nprimary: Artifact: design.md #9; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nprimary: Artifact: design.md #10; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nprimary: Artifact: design.md #11; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nprimary: Artifact: design.md #12; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nprimary: Artifact: design.md #13; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nprimary: Artifact: design.md #14; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nprimary: Artifact: design.md #15; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nprimary: Artifact: design.md #16; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nprimary: Artifact: design.md #17; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nprimary: Artifact: design.md #18; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nprimary: Artifact: design.md #19; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nprimary: Artifact: design.md #20; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nactions: Owner: Engineer; Next action: Validate approved behavior with its owning workflow; Expected evidence: plan.toon:12.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-sdd for payment-retry delivery: large",
+      "required_facts": [
+        "plan.toon:12",
+        "design.md #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "plan.toon:12",
+            "Next action": "Validate approved behavior with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Artifact": "design.md #1",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          },
+          {
+            "Artifact": "design.md #2",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          },
+          {
+            "Artifact": "design.md #3",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          },
+          {
+            "Artifact": "design.md #4",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          },
+          {
+            "Artifact": "design.md #5",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          },
+          {
+            "Artifact": "design.md #6",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          },
+          {
+            "Artifact": "design.md #7",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          },
+          {
+            "Artifact": "design.md #8",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          },
+          {
+            "Artifact": "design.md #9",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          },
+          {
+            "Artifact": "design.md #10",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          },
+          {
+            "Artifact": "design.md #11",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          },
+          {
+            "Artifact": "design.md #12",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          },
+          {
+            "Artifact": "design.md #13",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          },
+          {
+            "Artifact": "design.md #14",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          },
+          {
+            "Artifact": "design.md #15",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          },
+          {
+            "Artifact": "design.md #16",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          },
+          {
+            "Artifact": "design.md #17",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          },
+          {
+            "Artifact": "design.md #18",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          },
+          {
+            "Artifact": "design.md #19",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          },
+          {
+            "Artifact": "design.md #20",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 artifact records; 8 shown; inspect the linked full artifact.",
+          "Evidence": "plan.toon:12",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: One artifact result; scope and evidence are explicit.\nEvidence: plan.toon:12\n\nprimary: Artifact: design.md; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nactions: Owner: Engineer; Next action: Validate approved behavior with its owning workflow; Expected evidence: plan.toon:12.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-sdd for payment-retry delivery: small",
+      "required_facts": [
+        "plan.toon:12",
+        "design.md"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "plan.toon:12",
+            "Next action": "Validate approved behavior with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Artifact": "design.md",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One artifact result; scope and evidence are explicit.",
+          "Evidence": "plan.toon:12",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared change / requirement id entities; listed evidence satisfies this skill check.\nEvidence: plan.toon:12\n\nprimary: Artifact: design.md | перенос\nстроки; Change: Specify retry identity; Evidence: plan.toon:12; Requirement ID: AC-001; Validation: PASS.\nactions: Owner: Engineer; Next action: Validate approved behavior with its owning workflow; Expected evidence: plan.toon:12.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-sdd for payment-retry delivery: edge",
+      "required_facts": [
+        "plan.toon:12",
+        "design.md | перенос\nстроки"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "plan.toon:12",
+            "Next action": "Validate approved behavior with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Artifact": "design.md | перенос\nстроки",
+            "Change": "Specify retry identity",
+            "Evidence": "plan.toon:12",
+            "Requirement ID": "AC-001",
+            "Validation": "PASS"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared change / requirement id entities; listed evidence satisfies this skill check.",
+          "Evidence": "plan.toon:12",
+          "Status": "PASS"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-sdd"
+}

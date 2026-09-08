@@ -1,0 +1,39 @@
+{
+  "clarification": [
+    "Missing review artifact",
+    "Why required",
+    "Known evidence",
+    "Options"
+  ],
+  "example": {
+    "Evidence": "requirements.md:25",
+    "Finding": "Retry limit unspecified",
+    "Lens": "edge-case-hunt",
+    "Next action": "Define retry cap",
+    "Requirement ID": "AC-002",
+    "Severity": "HIGH"
+  },
+  "failure": [
+    "Review artifact",
+    "Status",
+    "Blocker",
+    "Evidence",
+    "Required action"
+  ],
+  "hide": "Secrets, raw logs, complete journals and unneeded internal tool steps. Keep full detail in the owning native artifact.",
+  "native_exception": "Keep machine artifacts, code, commands and diffs native; presentation does not replace validation.",
+  "primary": [
+    "Lens",
+    "Severity",
+    "Finding",
+    "Requirement ID",
+    "Evidence",
+    "Next action"
+  ],
+  "priority": "Show unresolved blockers before nonblocking findings; a completed review is not delivery approval.",
+  "required_input": "Review artifact",
+  "rows": "individual lens records",
+  "schema": "ai-sdlc-chat-contract/v1",
+  "secondary": [],
+  "skill": "ai-sdlc-quality-lenses"
+}

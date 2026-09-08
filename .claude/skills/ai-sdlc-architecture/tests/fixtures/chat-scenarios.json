@@ -1,0 +1,443 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared responsibility / decision entities; listed evidence satisfies this skill check.\nEvidence: design.md:42\n\nprimary: Component: Retry worker; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nactions: Owner: Engineer; Next action: Validate architecture constraint with its owning workflow; Expected evidence: design.md:42.\n\nsecondary: Decision ID: DEC-001; Alternative: Create a new retry queue; Consequence: Additional operational ownership; Evidence: design.md:42.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-architecture for payment-retry delivery: happy",
+      "required_facts": [
+        "design.md:42",
+        "Retry worker"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "design.md:42",
+            "Next action": "Validate architecture constraint with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Component": "Retry worker",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared component result; evidence supports the reported result.",
+          "Evidence": "design.md:42",
+          "Status": "PASS"
+        },
+        "secondary": [
+          {
+            "Decision ID": "DEC-001",
+            "Alternative": "Create a separate retry queue",
+            "Consequence": "Adds an independently operated component",
+            "Evidence": "design.md:42"
+          }
+        ]
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Partial responsibility / decision entities coverage; one dependency remains unverified.\nEvidence: design.md:42\n\nprimary: Component: Retry worker; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nprimary: Component: Retry worker [pending case]; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nactions: Owner: Engineer; Next action: Validate architecture constraint with its owning workflow; Expected evidence: design.md:42.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-architecture for payment-retry delivery: partial",
+      "required_facts": [
+        "design.md:42",
+        "Retry worker"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "design.md:42",
+            "Next action": "Validate architecture constraint with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Component": "Retry worker",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          },
+          {
+            "Component": "Retry worker [pending case]",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "design.md:42",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited responsibility / decision entities review; source freshness must be confirmed.\nEvidence: design.md:42\n\nprimary: Component: Retry worker; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nactions: Owner: Engineer; Next action: Validate architecture constraint with its owning workflow; Expected evidence: design.md:42.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-architecture for payment-retry delivery: warning",
+      "required_facts": [
+        "design.md:42",
+        "Retry worker"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "design.md:42",
+            "Next action": "Validate architecture constraint with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Component": "Retry worker",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Result has limited source freshness; confirm it before downstream use.",
+          "Evidence": "design.md:42",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Architecture constraint is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Architecture constraint: Architecture constraint; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide architecture constraint.\nactions: Owner: Engineer; Next action: Provide architecture constraint; Expected evidence: Validated architecture constraint.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-architecture for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated architecture constraint"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated architecture constraint",
+            "Next action": "Provide architecture constraint",
+            "Owner": "Engineer"
+          }
+        ],
+        "failures": [
+          {
+            "Architecture constraint": "Architecture constraint",
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide architecture constraint",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Architecture constraint is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Architecture constraint is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Architecture constraint: Architecture constraint; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide architecture constraint.\nclarifications: Missing architecture constraint: Architecture constraint; Why required: Determines component; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Engineer; Next action: Provide architecture constraint; Expected evidence: Validated architecture constraint.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-architecture for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated architecture constraint"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated architecture constraint",
+            "Next action": "Provide architecture constraint",
+            "Owner": "Engineer"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing architecture constraint": "Architecture constraint",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines component"
+          }
+        ],
+        "failures": [
+          {
+            "Architecture constraint": "Architecture constraint",
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide architecture constraint",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Architecture constraint is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: 20 responsibility / decision entities rows; showing the first 8; full evidence linked.\nEvidence: design.md:42\n\nprimary: Component: Retry worker #1; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nprimary: Component: Retry worker #2; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nprimary: Component: Retry worker #3; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nprimary: Component: Retry worker #4; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nprimary: Component: Retry worker #5; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nprimary: Component: Retry worker #6; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nprimary: Component: Retry worker #7; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nprimary: Component: Retry worker #8; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nprimary: Component: Retry worker #9; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nprimary: Component: Retry worker #10; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nprimary: Component: Retry worker #11; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nprimary: Component: Retry worker #12; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nprimary: Component: Retry worker #13; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nprimary: Component: Retry worker #14; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nprimary: Component: Retry worker #15; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nprimary: Component: Retry worker #16; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nprimary: Component: Retry worker #17; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nprimary: Component: Retry worker #18; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nprimary: Component: Retry worker #19; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nprimary: Component: Retry worker #20; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nactions: Owner: Engineer; Next action: Validate architecture constraint with its owning workflow; Expected evidence: design.md:42.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-architecture for payment-retry delivery: large",
+      "required_facts": [
+        "design.md:42",
+        "Retry worker #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "design.md:42",
+            "Next action": "Validate architecture constraint with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Component": "Retry worker #1",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          },
+          {
+            "Component": "Retry worker #2",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          },
+          {
+            "Component": "Retry worker #3",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          },
+          {
+            "Component": "Retry worker #4",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          },
+          {
+            "Component": "Retry worker #5",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          },
+          {
+            "Component": "Retry worker #6",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          },
+          {
+            "Component": "Retry worker #7",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          },
+          {
+            "Component": "Retry worker #8",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          },
+          {
+            "Component": "Retry worker #9",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          },
+          {
+            "Component": "Retry worker #10",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          },
+          {
+            "Component": "Retry worker #11",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          },
+          {
+            "Component": "Retry worker #12",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          },
+          {
+            "Component": "Retry worker #13",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          },
+          {
+            "Component": "Retry worker #14",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          },
+          {
+            "Component": "Retry worker #15",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          },
+          {
+            "Component": "Retry worker #16",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          },
+          {
+            "Component": "Retry worker #17",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          },
+          {
+            "Component": "Retry worker #18",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          },
+          {
+            "Component": "Retry worker #19",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          },
+          {
+            "Component": "Retry worker #20",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 component records; 8 shown; inspect the linked full artifact.",
+          "Evidence": "design.md:42",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: One component result; scope and evidence are explicit.\nEvidence: design.md:42\n\nprimary: Component: Retry worker; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nactions: Owner: Engineer; Next action: Validate architecture constraint with its owning workflow; Expected evidence: design.md:42.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-architecture for payment-retry delivery: small",
+      "required_facts": [
+        "design.md:42",
+        "Retry worker"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "design.md:42",
+            "Next action": "Validate architecture constraint with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Component": "Retry worker",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One component result; scope and evidence are explicit.",
+          "Evidence": "design.md:42",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared responsibility / decision entities; listed evidence satisfies this skill check.\nEvidence: design.md:42\n\nprimary: Component: Retry worker | перенос\nстроки; Decision: Reuse ledger; Dependency: Payment store; Evidence: design.md:42; Responsibility: Deduplicate deliveries.\nactions: Owner: Engineer; Next action: Validate architecture constraint with its owning workflow; Expected evidence: design.md:42.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-architecture for payment-retry delivery: edge",
+      "required_facts": [
+        "design.md:42",
+        "Retry worker | перенос\nстроки"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "design.md:42",
+            "Next action": "Validate architecture constraint with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Component": "Retry worker | перенос\nстроки",
+            "Decision": "Reuse ledger",
+            "Dependency": "Payment store",
+            "Evidence": "design.md:42",
+            "Responsibility": "Deduplicate deliveries"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared responsibility / decision entities; listed evidence satisfies this skill check.",
+          "Evidence": "design.md:42",
+          "Status": "PASS"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-architecture"
+}

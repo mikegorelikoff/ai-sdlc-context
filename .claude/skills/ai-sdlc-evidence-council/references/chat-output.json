@@ -1,0 +1,37 @@
+{
+  "clarification": [
+    "Missing reviewer evidence",
+    "Why required",
+    "Known evidence",
+    "Options"
+  ],
+  "example": {
+    "Agreement / conflict": "Agreement",
+    "Evidence": "DEC-001",
+    "Position": "Use existing ledger",
+    "Reviewer mode": "Simulated perspectives",
+    "Topic": "Retry storage"
+  },
+  "failure": [
+    "Reviewer evidence",
+    "Status",
+    "Blocker",
+    "Evidence",
+    "Required action"
+  ],
+  "hide": "Secrets, raw logs, complete journals and unneeded internal tool steps. Keep full detail in the owning native artifact.",
+  "native_exception": "Keep machine artifacts, code, commands and diffs native; presentation does not replace validation.",
+  "primary": [
+    "Topic",
+    "Position",
+    "Agreement / conflict",
+    "Reviewer mode",
+    "Evidence"
+  ],
+  "priority": "Show the user decision before detail; preserve source order and explicit authority.",
+  "required_input": "Reviewer evidence",
+  "rows": "individual topic records",
+  "schema": "ai-sdlc-chat-contract/v1",
+  "secondary": [],
+  "skill": "ai-sdlc-evidence-council"
+}

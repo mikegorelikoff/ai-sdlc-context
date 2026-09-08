@@ -1,0 +1,37 @@
+{
+  "clarification": [
+    "Missing repository root",
+    "Why required",
+    "Known evidence",
+    "Options"
+  ],
+  "example": {
+    "Context fact": "Test command",
+    "Freshness": "Current",
+    "Source": "pyproject.toml:20",
+    "Use": "Verify AC-001",
+    "Value": "pytest tests/payments"
+  },
+  "failure": [
+    "Repository root",
+    "Status",
+    "Blocker",
+    "Evidence",
+    "Required action"
+  ],
+  "hide": "Secrets, raw logs, complete journals and unneeded internal tool steps. Keep full detail in the owning native artifact.",
+  "native_exception": "Keep machine artifacts, code, commands and diffs native; presentation does not replace validation.",
+  "primary": [
+    "Context fact",
+    "Value",
+    "Source",
+    "Freshness",
+    "Use"
+  ],
+  "priority": "Show the user decision before detail; preserve source order and explicit authority.",
+  "required_input": "Repository root",
+  "rows": "individual context fact records",
+  "schema": "ai-sdlc-chat-contract/v1",
+  "secondary": [],
+  "skill": "ai-sdlc-project-context"
+}

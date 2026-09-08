@@ -1,0 +1,441 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared finding / confidence entities; listed evidence satisfies this skill check.\nEvidence: schema.sql:18\n\nprimary: Confidence: High; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nactions: Owner: Engineer; Next action: Validate research question with its owning workflow; Expected evidence: schema.sql:18.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-research for payment-retry delivery: happy",
+      "required_facts": [
+        "schema.sql:18",
+        "Can ledger deduplicate retries?",
+        "High"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "schema.sql:18",
+            "Next action": "Validate research question with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Confidence": "High",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared question result; evidence supports the reported result.",
+          "Evidence": "schema.sql:18",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Partial finding / confidence entities coverage; one dependency remains unverified.\nEvidence: schema.sql:18\n\nprimary: Confidence: High; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nprimary: Confidence: High [pending case]; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nactions: Owner: Engineer; Next action: Validate research question with its owning workflow; Expected evidence: schema.sql:18.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-research for payment-retry delivery: partial",
+      "required_facts": [
+        "schema.sql:18",
+        "Can ledger deduplicate retries?",
+        "High"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "schema.sql:18",
+            "Next action": "Validate research question with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Confidence": "High",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          },
+          {
+            "Confidence": "High [pending case]",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "schema.sql:18",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited finding / confidence entities review; source freshness must be confirmed.\nEvidence: schema.sql:18\n\nprimary: Confidence: High; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nactions: Owner: Engineer; Next action: Validate research question with its owning workflow; Expected evidence: schema.sql:18.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-research for payment-retry delivery: warning",
+      "required_facts": [
+        "schema.sql:18",
+        "Can ledger deduplicate retries?",
+        "High"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "schema.sql:18",
+            "Next action": "Validate research question with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Confidence": "High",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Result has limited source freshness; confirm it before downstream use.",
+          "Evidence": "schema.sql:18",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Research question is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Research question: Research question; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide research question.\nactions: Owner: Engineer; Next action: Provide research question; Expected evidence: Validated research question.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-research for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated research question"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated research question",
+            "Next action": "Provide research question",
+            "Owner": "Engineer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide research question",
+            "Research question": "Research question",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Research question is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Research question is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Research question: Research question; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide research question.\nclarifications: Missing research question: Research question; Why required: Determines question; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Engineer; Next action: Provide research question; Expected evidence: Validated research question.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-research for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated research question"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated research question",
+            "Next action": "Provide research question",
+            "Owner": "Engineer"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing research question": "Research question",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines question"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide research question",
+            "Research question": "Research question",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Research question is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: 20 finding / confidence entities rows; showing the first 8; full evidence linked.\nEvidence: schema.sql:18\n\nprimary: Confidence: High #1; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nprimary: Confidence: High #2; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nprimary: Confidence: High #3; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nprimary: Confidence: High #4; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nprimary: Confidence: High #5; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nprimary: Confidence: High #6; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nprimary: Confidence: High #7; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nprimary: Confidence: High #8; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nprimary: Confidence: High #9; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nprimary: Confidence: High #10; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nprimary: Confidence: High #11; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nprimary: Confidence: High #12; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nprimary: Confidence: High #13; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nprimary: Confidence: High #14; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nprimary: Confidence: High #15; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nprimary: Confidence: High #16; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nprimary: Confidence: High #17; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nprimary: Confidence: High #18; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nprimary: Confidence: High #19; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nprimary: Confidence: High #20; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nactions: Owner: Engineer; Next action: Validate research question with its owning workflow; Expected evidence: schema.sql:18.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-research for payment-retry delivery: large",
+      "required_facts": [
+        "schema.sql:18",
+        "Can ledger deduplicate retries?",
+        "High #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "schema.sql:18",
+            "Next action": "Validate research question with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Confidence": "High #1",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          },
+          {
+            "Confidence": "High #2",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          },
+          {
+            "Confidence": "High #3",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          },
+          {
+            "Confidence": "High #4",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          },
+          {
+            "Confidence": "High #5",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          },
+          {
+            "Confidence": "High #6",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          },
+          {
+            "Confidence": "High #7",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          },
+          {
+            "Confidence": "High #8",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          },
+          {
+            "Confidence": "High #9",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          },
+          {
+            "Confidence": "High #10",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          },
+          {
+            "Confidence": "High #11",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          },
+          {
+            "Confidence": "High #12",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          },
+          {
+            "Confidence": "High #13",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          },
+          {
+            "Confidence": "High #14",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          },
+          {
+            "Confidence": "High #15",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          },
+          {
+            "Confidence": "High #16",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          },
+          {
+            "Confidence": "High #17",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          },
+          {
+            "Confidence": "High #18",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          },
+          {
+            "Confidence": "High #19",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          },
+          {
+            "Confidence": "High #20",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 question records; 8 shown; inspect the linked full artifact.",
+          "Evidence": "schema.sql:18",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: One question result; scope and evidence are explicit.\nEvidence: schema.sql:18\n\nprimary: Confidence: High; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries?.\nactions: Owner: Engineer; Next action: Validate research question with its owning workflow; Expected evidence: schema.sql:18.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-research for payment-retry delivery: small",
+      "required_facts": [
+        "schema.sql:18",
+        "Can ledger deduplicate retries?",
+        "High"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "schema.sql:18",
+            "Next action": "Validate research question with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Confidence": "High",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries?"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One question result; scope and evidence are explicit.",
+          "Evidence": "schema.sql:18",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared finding / confidence entities; listed evidence satisfies this skill check.\nEvidence: schema.sql:18\n\nprimary: Confidence: High; Evidence: schema.sql:18; Finding: Unique key already stored; Limitation: Retention window unknown; Question: Can ledger deduplicate retries? | перенос\nстроки.\nactions: Owner: Engineer; Next action: Validate research question with its owning workflow; Expected evidence: schema.sql:18.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-research for payment-retry delivery: edge",
+      "required_facts": [
+        "schema.sql:18",
+        "Can ledger deduplicate retries? | перенос\nстроки",
+        "High"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "schema.sql:18",
+            "Next action": "Validate research question with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Confidence": "High",
+            "Evidence": "schema.sql:18",
+            "Finding": "Unique key already stored",
+            "Limitation": "Retention window unknown",
+            "Question": "Can ledger deduplicate retries? | перенос\nстроки"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared finding / confidence entities; listed evidence satisfies this skill check.",
+          "Evidence": "schema.sql:18",
+          "Status": "PASS"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-research"
+}

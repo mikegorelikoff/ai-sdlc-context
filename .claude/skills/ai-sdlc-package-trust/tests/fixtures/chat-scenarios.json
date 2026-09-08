@@ -1,0 +1,442 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared expected / observed entities; listed evidence satisfies this skill check.\nEvidence: manifest.json\n\nprimary: Control: Archive checksum; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nactions: Owner: Engineer; Next action: Validate package manifest with its owning workflow; Expected evidence: manifest.json.\n\nsecondary: Metric: Confirm metric for payment retry; Count: Confirm count for payment retry; Evidence: manifest.json.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-package-trust for payment-retry delivery: happy",
+      "required_facts": [
+        "manifest.json",
+        "Archive checksum"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "manifest.json",
+            "Next action": "Validate package manifest with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Control": "Archive checksum",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared control result; evidence supports the reported result.",
+          "Evidence": "manifest.json",
+          "Status": "PASS"
+        },
+        "secondary": [
+          {
+            "Metric": "Controls evaluated",
+            "Count": "1",
+            "Evidence": "manifest.json"
+          }
+        ]
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Partial expected / observed entities coverage; one dependency remains unverified.\nEvidence: manifest.json\n\nprimary: Control: Archive checksum; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nprimary: Control: Archive checksum [pending case]; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nactions: Owner: Engineer; Next action: Validate package manifest with its owning workflow; Expected evidence: manifest.json.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-package-trust for payment-retry delivery: partial",
+      "required_facts": [
+        "manifest.json",
+        "Archive checksum"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "manifest.json",
+            "Next action": "Validate package manifest with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Control": "Archive checksum",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          },
+          {
+            "Control": "Archive checksum [pending case]",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "manifest.json",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited expected / observed entities review; source freshness must be confirmed.\nEvidence: manifest.json\n\nprimary: Control: Archive checksum; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nactions: Owner: Engineer; Next action: Validate package manifest with its owning workflow; Expected evidence: manifest.json.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-package-trust for payment-retry delivery: warning",
+      "required_facts": [
+        "manifest.json",
+        "Archive checksum"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "manifest.json",
+            "Next action": "Validate package manifest with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Control": "Archive checksum",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Result has limited source freshness; confirm it before downstream use.",
+          "Evidence": "manifest.json",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Package manifest is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Package manifest: Package manifest; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide package manifest.\nactions: Owner: Engineer; Next action: Provide package manifest; Expected evidence: Validated package manifest.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-package-trust for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated package manifest"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated package manifest",
+            "Next action": "Provide package manifest",
+            "Owner": "Engineer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Package manifest": "Package manifest",
+            "Required action": "Provide package manifest",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Package manifest is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Package manifest is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Package manifest: Package manifest; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide package manifest.\nclarifications: Missing package manifest: Package manifest; Why required: Determines control; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Engineer; Next action: Provide package manifest; Expected evidence: Validated package manifest.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-package-trust for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated package manifest"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated package manifest",
+            "Next action": "Provide package manifest",
+            "Owner": "Engineer"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing package manifest": "Package manifest",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines control"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Package manifest": "Package manifest",
+            "Required action": "Provide package manifest",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Package manifest is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: 20 expected / observed entities rows; showing the first 8; full evidence linked.\nEvidence: manifest.json\n\nprimary: Control: Archive checksum #1; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nprimary: Control: Archive checksum #2; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nprimary: Control: Archive checksum #3; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nprimary: Control: Archive checksum #4; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nprimary: Control: Archive checksum #5; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nprimary: Control: Archive checksum #6; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nprimary: Control: Archive checksum #7; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nprimary: Control: Archive checksum #8; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nprimary: Control: Archive checksum #9; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nprimary: Control: Archive checksum #10; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nprimary: Control: Archive checksum #11; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nprimary: Control: Archive checksum #12; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nprimary: Control: Archive checksum #13; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nprimary: Control: Archive checksum #14; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nprimary: Control: Archive checksum #15; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nprimary: Control: Archive checksum #16; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nprimary: Control: Archive checksum #17; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nprimary: Control: Archive checksum #18; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nprimary: Control: Archive checksum #19; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nprimary: Control: Archive checksum #20; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nactions: Owner: Engineer; Next action: Validate package manifest with its owning workflow; Expected evidence: manifest.json.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-package-trust for payment-retry delivery: large",
+      "required_facts": [
+        "manifest.json",
+        "Archive checksum #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "manifest.json",
+            "Next action": "Validate package manifest with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Control": "Archive checksum #1",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          },
+          {
+            "Control": "Archive checksum #2",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          },
+          {
+            "Control": "Archive checksum #3",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          },
+          {
+            "Control": "Archive checksum #4",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          },
+          {
+            "Control": "Archive checksum #5",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          },
+          {
+            "Control": "Archive checksum #6",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          },
+          {
+            "Control": "Archive checksum #7",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          },
+          {
+            "Control": "Archive checksum #8",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          },
+          {
+            "Control": "Archive checksum #9",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          },
+          {
+            "Control": "Archive checksum #10",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          },
+          {
+            "Control": "Archive checksum #11",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          },
+          {
+            "Control": "Archive checksum #12",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          },
+          {
+            "Control": "Archive checksum #13",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          },
+          {
+            "Control": "Archive checksum #14",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          },
+          {
+            "Control": "Archive checksum #15",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          },
+          {
+            "Control": "Archive checksum #16",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          },
+          {
+            "Control": "Archive checksum #17",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          },
+          {
+            "Control": "Archive checksum #18",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          },
+          {
+            "Control": "Archive checksum #19",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          },
+          {
+            "Control": "Archive checksum #20",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 control records; 8 shown; inspect the linked full artifact.",
+          "Evidence": "manifest.json",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: One control result; scope and evidence are explicit.\nEvidence: manifest.json\n\nprimary: Control: Archive checksum; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nactions: Owner: Engineer; Next action: Validate package manifest with its owning workflow; Expected evidence: manifest.json.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-package-trust for payment-retry delivery: small",
+      "required_facts": [
+        "manifest.json",
+        "Archive checksum"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "manifest.json",
+            "Next action": "Validate package manifest with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Control": "Archive checksum",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One control result; scope and evidence are explicit.",
+          "Evidence": "manifest.json",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared expected / observed entities; listed evidence satisfies this skill check.\nEvidence: manifest.json\n\nprimary: Control: Archive checksum | перенос\nстроки; Decision: PASS; Evidence: manifest.json; Expected: Published SHA-256; Observed: Matching digest.\nactions: Owner: Engineer; Next action: Validate package manifest with its owning workflow; Expected evidence: manifest.json.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-package-trust for payment-retry delivery: edge",
+      "required_facts": [
+        "manifest.json",
+        "Archive checksum | перенос\nстроки"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "manifest.json",
+            "Next action": "Validate package manifest with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Control": "Archive checksum | перенос\nстроки",
+            "Decision": "PASS",
+            "Evidence": "manifest.json",
+            "Expected": "Published SHA-256",
+            "Observed": "Matching digest"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared expected / observed entities; listed evidence satisfies this skill check.",
+          "Evidence": "manifest.json",
+          "Status": "PASS"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-package-trust"
+}

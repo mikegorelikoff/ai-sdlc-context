@@ -1,0 +1,462 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared requirement id / scenario entities; listed evidence satisfies this skill check.\nEvidence: test-cases.md:12\n\nprimary: Evidence: test-cases.md:12; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nactions: Owner: QA; Next action: Validate qa strategy with its owning workflow; Expected evidence: test-cases.md:12.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-test-case-and-suite-synthesis for payment-retry delivery: happy",
+      "required_facts": [
+        "test-cases.md:12",
+        "TC-001"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "test-cases.md:12",
+            "Next action": "Validate qa strategy with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "test-cases.md:12",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared test id result; evidence supports the reported result.",
+          "Evidence": "test-cases.md:12",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Partial requirement id / scenario entities coverage; one dependency remains unverified.\nEvidence: test-cases.md:12\n\nprimary: Evidence: test-cases.md:12; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nprimary: Evidence: test-cases.md:12 [pending case]; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nactions: Owner: QA; Next action: Validate qa strategy with its owning workflow; Expected evidence: test-cases.md:12.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-test-case-and-suite-synthesis for payment-retry delivery: partial",
+      "required_facts": [
+        "test-cases.md:12",
+        "TC-001"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "test-cases.md:12",
+            "Next action": "Validate qa strategy with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "test-cases.md:12",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Evidence": "test-cases.md:12 [pending case]",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "test-cases.md:12",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited requirement id / scenario entities review; source freshness must be confirmed.\nEvidence: test-cases.md:12\n\nprimary: Evidence: test-cases.md:12; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nactions: Owner: QA; Next action: Validate qa strategy with its owning workflow; Expected evidence: test-cases.md:12.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-test-case-and-suite-synthesis for payment-retry delivery: warning",
+      "required_facts": [
+        "test-cases.md:12",
+        "TC-001"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "test-cases.md:12",
+            "Next action": "Validate qa strategy with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "test-cases.md:12",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Result has limited source freshness; confirm it before downstream use.",
+          "Evidence": "test-cases.md:12",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: QA strategy is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: QA strategy: QA strategy; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide qa strategy.\nactions: Owner: QA; Next action: Provide qa strategy; Expected evidence: Validated qa strategy.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-test-case-and-suite-synthesis for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated qa strategy"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated qa strategy",
+            "Next action": "Provide qa strategy",
+            "Owner": "QA"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "QA strategy": "QA strategy",
+            "Required action": "Provide qa strategy",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "QA strategy is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: QA strategy is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: QA strategy: QA strategy; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide qa strategy.\nclarifications: Missing qa strategy: QA strategy; Why required: Determines test id; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: QA; Next action: Provide qa strategy; Expected evidence: Validated qa strategy.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-test-case-and-suite-synthesis for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated qa strategy"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated qa strategy",
+            "Next action": "Provide qa strategy",
+            "Owner": "QA"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing qa strategy": "QA strategy",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines test id"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "QA strategy": "QA strategy",
+            "Required action": "Provide qa strategy",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "QA strategy is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: 20 requirement id / scenario entities rows; showing the first 8; full evidence linked.\nEvidence: test-cases.md:12\n\nprimary: Evidence: test-cases.md:12 #1; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nprimary: Evidence: test-cases.md:12 #2; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nprimary: Evidence: test-cases.md:12 #3; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nprimary: Evidence: test-cases.md:12 #4; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nprimary: Evidence: test-cases.md:12 #5; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nprimary: Evidence: test-cases.md:12 #6; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nprimary: Evidence: test-cases.md:12 #7; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nprimary: Evidence: test-cases.md:12 #8; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nprimary: Evidence: test-cases.md:12 #9; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nprimary: Evidence: test-cases.md:12 #10; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nprimary: Evidence: test-cases.md:12 #11; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nprimary: Evidence: test-cases.md:12 #12; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nprimary: Evidence: test-cases.md:12 #13; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nprimary: Evidence: test-cases.md:12 #14; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nprimary: Evidence: test-cases.md:12 #15; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nprimary: Evidence: test-cases.md:12 #16; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nprimary: Evidence: test-cases.md:12 #17; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nprimary: Evidence: test-cases.md:12 #18; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nprimary: Evidence: test-cases.md:12 #19; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nprimary: Evidence: test-cases.md:12 #20; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nactions: Owner: QA; Next action: Validate qa strategy with its owning workflow; Expected evidence: test-cases.md:12.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-test-case-and-suite-synthesis for payment-retry delivery: large",
+      "required_facts": [
+        "test-cases.md:12",
+        "TC-001",
+        "test-cases.md:12 #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "test-cases.md:12",
+            "Next action": "Validate qa strategy with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Evidence": "test-cases.md:12 #1",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Evidence": "test-cases.md:12 #2",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Evidence": "test-cases.md:12 #3",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Evidence": "test-cases.md:12 #4",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Evidence": "test-cases.md:12 #5",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Evidence": "test-cases.md:12 #6",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Evidence": "test-cases.md:12 #7",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Evidence": "test-cases.md:12 #8",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Evidence": "test-cases.md:12 #9",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Evidence": "test-cases.md:12 #10",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Evidence": "test-cases.md:12 #11",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Evidence": "test-cases.md:12 #12",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Evidence": "test-cases.md:12 #13",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Evidence": "test-cases.md:12 #14",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Evidence": "test-cases.md:12 #15",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Evidence": "test-cases.md:12 #16",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Evidence": "test-cases.md:12 #17",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Evidence": "test-cases.md:12 #18",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Evidence": "test-cases.md:12 #19",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Evidence": "test-cases.md:12 #20",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 test id records; 8 shown; inspect the linked full artifact.",
+          "Evidence": "test-cases.md:12",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: One test id result; scope and evidence are explicit.\nEvidence: test-cases.md:12\n\nprimary: Evidence: test-cases.md:12; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001.\nactions: Owner: QA; Next action: Validate qa strategy with its owning workflow; Expected evidence: test-cases.md:12.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-test-case-and-suite-synthesis for payment-retry delivery: small",
+      "required_facts": [
+        "test-cases.md:12",
+        "TC-001"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "test-cases.md:12",
+            "Next action": "Validate qa strategy with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "test-cases.md:12",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One test id result; scope and evidence are explicit.",
+          "Evidence": "test-cases.md:12",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared requirement id / scenario entities; listed evidence satisfies this skill check.\nEvidence: test-cases.md:12\n\nprimary: Evidence: test-cases.md:12; Expected result: One ledger entry; Requirement ID: AC-001; Scenario: Duplicate callback; Suite: Regression; Test ID: TC-001 | перенос\nстроки.\nactions: Owner: QA; Next action: Validate qa strategy with its owning workflow; Expected evidence: test-cases.md:12.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-test-case-and-suite-synthesis for payment-retry delivery: edge",
+      "required_facts": [
+        "test-cases.md:12",
+        "TC-001 | перенос\nстроки"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "test-cases.md:12",
+            "Next action": "Validate qa strategy with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "test-cases.md:12",
+            "Expected result": "One ledger entry",
+            "Requirement ID": "AC-001",
+            "Scenario": "Duplicate callback",
+            "Suite": "Regression",
+            "Test ID": "TC-001 | перенос\nстроки"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared requirement id / scenario entities; listed evidence satisfies this skill check.",
+          "Evidence": "test-cases.md:12",
+          "Status": "PASS"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-test-case-and-suite-synthesis"
+}

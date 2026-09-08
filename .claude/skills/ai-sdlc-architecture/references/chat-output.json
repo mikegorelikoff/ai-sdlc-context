@@ -1,0 +1,42 @@
+{
+  "clarification": [
+    "Missing architecture constraint",
+    "Why required",
+    "Known evidence",
+    "Options"
+  ],
+  "example": {
+    "Component": "Retry worker",
+    "Decision": "Reuse ledger",
+    "Dependency": "Payment store",
+    "Evidence": "design.md:42",
+    "Responsibility": "Deduplicate deliveries"
+  },
+  "failure": [
+    "Architecture constraint",
+    "Status",
+    "Blocker",
+    "Evidence",
+    "Required action"
+  ],
+  "hide": "Secrets, raw logs, complete journals and unneeded internal tool steps. Keep full detail in the owning native artifact.",
+  "native_exception": "Keep machine artifacts, code, commands and diffs native; presentation does not replace validation.",
+  "primary": [
+    "Component",
+    "Responsibility",
+    "Decision",
+    "Dependency",
+    "Evidence"
+  ],
+  "priority": "Show the user decision before detail; preserve source order and explicit authority.",
+  "required_input": "Architecture constraint",
+  "rows": "individual component records",
+  "schema": "ai-sdlc-chat-contract/v1",
+  "secondary": [
+    "Decision ID",
+    "Alternative",
+    "Consequence",
+    "Evidence"
+  ],
+  "skill": "ai-sdlc-architecture"
+}

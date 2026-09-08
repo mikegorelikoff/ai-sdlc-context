@@ -1,0 +1,435 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared value / source entities; listed evidence satisfies this skill check.\nEvidence: fixture.toon:1\n\nprimary: Context fact: Test command; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nactions: Owner: Engineer; Next action: Validate repository root with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-project-context for payment-retry delivery: happy",
+      "required_facts": [
+        "fixture.toon:1",
+        "Test command"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate repository root with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Context fact": "Test command",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared context fact result; evidence supports the reported result.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Partial value / source entities coverage; one dependency remains unverified.\nEvidence: fixture.toon:1\n\nprimary: Context fact: Test command; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nprimary: Context fact: Test command [pending case]; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nactions: Owner: Engineer; Next action: Validate repository root with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-project-context for payment-retry delivery: partial",
+      "required_facts": [
+        "fixture.toon:1",
+        "Test command"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate repository root with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Context fact": "Test command",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          },
+          {
+            "Context fact": "Test command [pending case]",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "fixture.toon:1",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited value / source entities review; source freshness must be confirmed.\nEvidence: fixture.toon:1\n\nprimary: Context fact: Test command; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nactions: Owner: Engineer; Next action: Validate repository root with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-project-context for payment-retry delivery: warning",
+      "required_facts": [
+        "fixture.toon:1",
+        "Test command"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate repository root with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Context fact": "Test command",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Result has limited source freshness; confirm it before downstream use.",
+          "Evidence": "fixture.toon:1",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Repository root is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Repository root: Repository root; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide repository root.\nactions: Owner: Engineer; Next action: Provide repository root; Expected evidence: Validated repository root.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-project-context for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated repository root"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated repository root",
+            "Next action": "Provide repository root",
+            "Owner": "Engineer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Repository root": "Repository root",
+            "Required action": "Provide repository root",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Repository root is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Repository root is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Repository root: Repository root; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide repository root.\nclarifications: Missing repository root: Repository root; Why required: Determines context fact; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Engineer; Next action: Provide repository root; Expected evidence: Validated repository root.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-project-context for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated repository root"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated repository root",
+            "Next action": "Provide repository root",
+            "Owner": "Engineer"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing repository root": "Repository root",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines context fact"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Repository root": "Repository root",
+            "Required action": "Provide repository root",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Repository root is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: 20 value / source entities rows; showing the first 8; full evidence linked.\nEvidence: fixture.toon:1\n\nprimary: Context fact: Test command #1; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nprimary: Context fact: Test command #2; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nprimary: Context fact: Test command #3; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nprimary: Context fact: Test command #4; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nprimary: Context fact: Test command #5; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nprimary: Context fact: Test command #6; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nprimary: Context fact: Test command #7; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nprimary: Context fact: Test command #8; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nprimary: Context fact: Test command #9; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nprimary: Context fact: Test command #10; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nprimary: Context fact: Test command #11; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nprimary: Context fact: Test command #12; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nprimary: Context fact: Test command #13; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nprimary: Context fact: Test command #14; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nprimary: Context fact: Test command #15; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nprimary: Context fact: Test command #16; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nprimary: Context fact: Test command #17; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nprimary: Context fact: Test command #18; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nprimary: Context fact: Test command #19; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nprimary: Context fact: Test command #20; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nactions: Owner: Engineer; Next action: Validate repository root with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-project-context for payment-retry delivery: large",
+      "required_facts": [
+        "fixture.toon:1",
+        "Test command #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate repository root with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Context fact": "Test command #1",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          },
+          {
+            "Context fact": "Test command #2",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          },
+          {
+            "Context fact": "Test command #3",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          },
+          {
+            "Context fact": "Test command #4",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          },
+          {
+            "Context fact": "Test command #5",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          },
+          {
+            "Context fact": "Test command #6",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          },
+          {
+            "Context fact": "Test command #7",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          },
+          {
+            "Context fact": "Test command #8",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          },
+          {
+            "Context fact": "Test command #9",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          },
+          {
+            "Context fact": "Test command #10",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          },
+          {
+            "Context fact": "Test command #11",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          },
+          {
+            "Context fact": "Test command #12",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          },
+          {
+            "Context fact": "Test command #13",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          },
+          {
+            "Context fact": "Test command #14",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          },
+          {
+            "Context fact": "Test command #15",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          },
+          {
+            "Context fact": "Test command #16",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          },
+          {
+            "Context fact": "Test command #17",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          },
+          {
+            "Context fact": "Test command #18",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          },
+          {
+            "Context fact": "Test command #19",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          },
+          {
+            "Context fact": "Test command #20",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 context fact records; 8 shown; inspect the linked full artifact.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: One context fact result; scope and evidence are explicit.\nEvidence: fixture.toon:1\n\nprimary: Context fact: Test command; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nactions: Owner: Engineer; Next action: Validate repository root with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-project-context for payment-retry delivery: small",
+      "required_facts": [
+        "fixture.toon:1",
+        "Test command"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate repository root with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Context fact": "Test command",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One context fact result; scope and evidence are explicit.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared value / source entities; listed evidence satisfies this skill check.\nEvidence: fixture.toon:1\n\nprimary: Context fact: Test command | перенос\nстроки; Freshness: Current; Source: pyproject.toml:20; Use: Verify AC-001; Value: pytest tests/payments.\nactions: Owner: Engineer; Next action: Validate repository root with its owning workflow; Expected evidence: fixture.toon:1.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-project-context for payment-retry delivery: edge",
+      "required_facts": [
+        "fixture.toon:1",
+        "Test command | перенос\nстроки"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate repository root with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Context fact": "Test command | перенос\nстроки",
+            "Freshness": "Current",
+            "Source": "pyproject.toml:20",
+            "Use": "Verify AC-001",
+            "Value": "pytest tests/payments"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared value / source entities; listed evidence satisfies this skill check.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PASS"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-project-context"
+}

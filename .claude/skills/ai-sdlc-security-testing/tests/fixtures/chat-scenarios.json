@@ -1,0 +1,500 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Review complete; resolve the reported blocker before delivery.\nEvidence: handler.py:42\n\nprimary: Evidence: handler.py:42; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nfailures: Trust boundary: Trust boundary; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: handler.py:42; Required action: Resolve the primary finding before handoff.\nactions: Owner: QA; Next action: Validate trust boundary with its owning workflow; Expected evidence: handler.py:42.\n\nsecondary: Source: Confirm source for payment retry; Supported claim: Confirm supported claim for payment retry; Freshness: Confirm freshness for payment retry; Evidence: handler.py:42.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-security-testing for payment-retry delivery: happy",
+      "required_facts": [
+        "handler.py:42",
+        "HIGH"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "handler.py:42",
+            "Next action": "Validate trust boundary with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "handler.py:42",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED",
+            "Trust boundary": "Trust boundary"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "handler.py:42",
+            "Finding": "Ownership check absent",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Review complete; resolve the reported blocker before delivery.",
+          "Evidence": "handler.py:42",
+          "Status": "BLOCKED"
+        },
+        "secondary": [
+          {
+            "Source": "provider-contract.md:12",
+            "Supported claim": "Idempotency key prevents duplicate charges",
+            "Freshness": "Snapshot supplied for this scenario",
+            "Evidence": "handler.py:42"
+          }
+        ]
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Partial trust boundary / finding entities coverage; one dependency remains unverified.\nEvidence: handler.py:42\n\nprimary: Evidence: handler.py:42; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nprimary: Evidence: handler.py:42 [pending case]; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nfailures: Trust boundary: Trust boundary; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: handler.py:42; Required action: Resolve the primary finding before handoff.\nactions: Owner: QA; Next action: Validate trust boundary with its owning workflow; Expected evidence: handler.py:42.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-security-testing for payment-retry delivery: partial",
+      "required_facts": [
+        "handler.py:42",
+        "Ownership check absent (case 1)",
+        "handler.py:42"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "handler.py:42",
+            "Next action": "Validate trust boundary with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "handler.py:42",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED",
+            "Trust boundary": "Trust boundary"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "handler.py:42",
+            "Finding": "Ownership check absent (case 1)",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          },
+          {
+            "Evidence": "handler.py:42 [pending case]",
+            "Finding": "Ownership check absent (case 2)",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "handler.py:42",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited trust boundary / finding entities review; source freshness must be confirmed.\nEvidence: handler.py:42\n\nprimary: Evidence: handler.py:42; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nactions: Owner: QA; Next action: Validate trust boundary with its owning workflow; Expected evidence: handler.py:42.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-security-testing for payment-retry delivery: warning",
+      "required_facts": [
+        "handler.py:42",
+        "HIGH"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "handler.py:42",
+            "Next action": "Validate trust boundary with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "handler.py:42",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED",
+            "Trust boundary": "Trust boundary"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "handler.py:42",
+            "Finding": "Ownership check absent",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Review complete with a blocking finding and a source-freshness warning.",
+          "Evidence": "handler.py:42",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Trust boundary is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Trust boundary: Trust boundary; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide trust boundary.\nactions: Owner: QA; Next action: Provide trust boundary; Expected evidence: Validated trust boundary.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-security-testing for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated trust boundary"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated trust boundary",
+            "Next action": "Provide trust boundary",
+            "Owner": "QA"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide trust boundary",
+            "Status": "BLOCKED",
+            "Trust boundary": "Trust boundary"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Trust boundary is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Trust boundary is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Trust boundary: Trust boundary; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide trust boundary.\nclarifications: Missing trust boundary: Trust boundary; Why required: Determines severity; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: QA; Next action: Provide trust boundary; Expected evidence: Validated trust boundary.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-security-testing for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated trust boundary"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated trust boundary",
+            "Next action": "Provide trust boundary",
+            "Owner": "QA"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing trust boundary": "Trust boundary",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines severity"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide trust boundary",
+            "Status": "BLOCKED",
+            "Trust boundary": "Trust boundary"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Trust boundary is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: 20 trust boundary / finding entities rows; 20 blocking findings; showing the first 8; full evidence linked.\nEvidence: handler.py:42\n\nprimary: Evidence: handler.py:42 #1; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nprimary: Evidence: handler.py:42 #2; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nprimary: Evidence: handler.py:42 #3; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nprimary: Evidence: handler.py:42 #4; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nprimary: Evidence: handler.py:42 #5; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nprimary: Evidence: handler.py:42 #6; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nprimary: Evidence: handler.py:42 #7; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nprimary: Evidence: handler.py:42 #8; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nprimary: Evidence: handler.py:42 #9; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nprimary: Evidence: handler.py:42 #10; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nprimary: Evidence: handler.py:42 #11; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nprimary: Evidence: handler.py:42 #12; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nprimary: Evidence: handler.py:42 #13; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nprimary: Evidence: handler.py:42 #14; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nprimary: Evidence: handler.py:42 #15; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nprimary: Evidence: handler.py:42 #16; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nprimary: Evidence: handler.py:42 #17; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nprimary: Evidence: handler.py:42 #18; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nprimary: Evidence: handler.py:42 #19; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nprimary: Evidence: handler.py:42 #20; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nfailures: Trust boundary: Trust boundary; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: handler.py:42; Required action: Resolve the primary finding before handoff.\nactions: Owner: QA; Next action: Validate trust boundary with its owning workflow; Expected evidence: handler.py:42.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-security-testing for payment-retry delivery: large",
+      "required_facts": [
+        "handler.py:42",
+        "Ownership check absent (case 1)",
+        "handler.py:42"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "handler.py:42",
+            "Next action": "Validate trust boundary with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "handler.py:42",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED",
+            "Trust boundary": "Trust boundary"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Evidence": "handler.py:42 #1",
+            "Finding": "Ownership check absent (case 1)",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          },
+          {
+            "Evidence": "handler.py:42 #2",
+            "Finding": "Ownership check absent (case 2)",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          },
+          {
+            "Evidence": "handler.py:42 #3",
+            "Finding": "Ownership check absent (case 3)",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          },
+          {
+            "Evidence": "handler.py:42 #4",
+            "Finding": "Ownership check absent (case 4)",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          },
+          {
+            "Evidence": "handler.py:42 #5",
+            "Finding": "Ownership check absent (case 5)",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          },
+          {
+            "Evidence": "handler.py:42 #6",
+            "Finding": "Ownership check absent (case 6)",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          },
+          {
+            "Evidence": "handler.py:42 #7",
+            "Finding": "Ownership check absent (case 7)",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          },
+          {
+            "Evidence": "handler.py:42 #8",
+            "Finding": "Ownership check absent (case 8)",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          },
+          {
+            "Evidence": "handler.py:42 #9",
+            "Finding": "Ownership check absent (case 9)",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          },
+          {
+            "Evidence": "handler.py:42 #10",
+            "Finding": "Ownership check absent (case 10)",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          },
+          {
+            "Evidence": "handler.py:42 #11",
+            "Finding": "Ownership check absent (case 11)",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          },
+          {
+            "Evidence": "handler.py:42 #12",
+            "Finding": "Ownership check absent (case 12)",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          },
+          {
+            "Evidence": "handler.py:42 #13",
+            "Finding": "Ownership check absent (case 13)",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          },
+          {
+            "Evidence": "handler.py:42 #14",
+            "Finding": "Ownership check absent (case 14)",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          },
+          {
+            "Evidence": "handler.py:42 #15",
+            "Finding": "Ownership check absent (case 15)",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          },
+          {
+            "Evidence": "handler.py:42 #16",
+            "Finding": "Ownership check absent (case 16)",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          },
+          {
+            "Evidence": "handler.py:42 #17",
+            "Finding": "Ownership check absent (case 17)",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          },
+          {
+            "Evidence": "handler.py:42 #18",
+            "Finding": "Ownership check absent (case 18)",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          },
+          {
+            "Evidence": "handler.py:42 #19",
+            "Finding": "Ownership check absent (case 19)",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          },
+          {
+            "Evidence": "handler.py:42 #20",
+            "Finding": "Ownership check absent (case 20)",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 severity records; 20 blockers; 8 shown; inspect the linked full artifact.",
+          "Evidence": "handler.py:42",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: One severity result; scope and evidence are explicit.\nEvidence: handler.py:42\n\nprimary: Evidence: handler.py:42; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH; Trust boundary: Tenant lookup.\nfailures: Trust boundary: Trust boundary; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: handler.py:42; Required action: Resolve the primary finding before handoff.\nactions: Owner: QA; Next action: Validate trust boundary with its owning workflow; Expected evidence: handler.py:42.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-security-testing for payment-retry delivery: small",
+      "required_facts": [
+        "handler.py:42",
+        "HIGH"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "handler.py:42",
+            "Next action": "Validate trust boundary with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "handler.py:42",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED",
+            "Trust boundary": "Trust boundary"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "handler.py:42",
+            "Finding": "Ownership check absent",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One severity result; scope and evidence are explicit.",
+          "Evidence": "handler.py:42",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Review complete; resolve the reported blocker before delivery.\nEvidence: handler.py:42\n\nprimary: Evidence: handler.py:42; Finding: Ownership check absent; Remediation: Constrain lookup to tenant; Severity: HIGH | перенос\nстроки; Trust boundary: Tenant lookup.\nfailures: Trust boundary: Trust boundary; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: handler.py:42; Required action: Resolve the primary finding before handoff.\nactions: Owner: QA; Next action: Validate trust boundary with its owning workflow; Expected evidence: handler.py:42.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-security-testing for payment-retry delivery: edge",
+      "required_facts": [
+        "handler.py:42",
+        "Ownership check absent | перенос\nстроки",
+        "handler.py:42"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "handler.py:42",
+            "Next action": "Validate trust boundary with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "handler.py:42",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED",
+            "Trust boundary": "Trust boundary"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "handler.py:42",
+            "Finding": "Ownership check absent | перенос\nстроки",
+            "Remediation": "Constrain lookup to tenant",
+            "Severity": "HIGH",
+            "Trust boundary": "Tenant lookup"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Review complete; resolve the reported blocker before delivery.",
+          "Evidence": "handler.py:42",
+          "Status": "BLOCKED"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-security-testing"
+}

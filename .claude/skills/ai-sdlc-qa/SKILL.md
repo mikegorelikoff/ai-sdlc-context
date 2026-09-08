@@ -47,7 +47,7 @@ description: AI SDLC QA workflow. Use when an AI assistant is asked for QA plann
 
 ### 0.3 Output Rules
 
-- Keep output structured with headings and bullets.
+- Apply this skill’s Chat Output Contract to user-facing chat; keep native artifacts unchanged.
 - Make findings, gaps, risks, and blockers explicit.
 - Tie recommendations to evidence from the provided artifact, `specs-refiniment/<feature-name>/<file.md>` workspace, or user context.
 - Include role ownership when the output creates follow-up work for BA, QA, Dev, PM, or Delivery.
@@ -172,33 +172,8 @@ Produce QA acceptance, regression, manual-check, and signoff evidence for AI SDL
 
 ## Output Spec
 
-Use this format:
-
-```text
-QA plan:
-- Change boundary: one sentence.
-
-Acceptance scenarios:
-- QA-001:
-  Actor: role or system.
-  Setup: required state.
-  Action: user/API/system action.
-  Expected result: observable result.
-  Evidence: automated test | manual check | not yet covered.
-  Risk: high | medium | low and reason.
-
-Regression targets:
-- Existing behavior and why it is at risk.
-
-Validation evidence:
-- command -> passed | failed | skipped: reason.
-
-Manual checks:
-- Check, environment, expected result, and owner if known.
-
-Signoff:
-- Ready | blocked | partial, with reason.
-```
+For user-facing chat, use this skill’s Chat Output Contract. Preserve the
+owning artifacts, exact validation evidence, scope and unresolved risks.
 
 Quality gate:
 
@@ -242,3 +217,15 @@ Reject this because it lacks setup, action, expected result, evidence, and risk.
 - Do not select broad test suites by default; use `$ai-sdlc-validation`.
 - Do not approve product scope; use `$ai-sdlc-ba` for unresolved business decisions.
 - Do not claim release readiness when validation, manual checks, or signoff are incomplete.
+
+## Chat Output Contract
+
+Primary: Scenario ID / Actor / setup / Action / Expected result / Execution status / Evidence; secondary: Regression target / Risk / Execution status / Evidence.
+Rows represent individual scenario id records. Show the user decision before detail; preserve source order and explicit authority.
+Summary: Status / Decision / Evidence. Failure: Acceptance outcome / Status / Blocker / Evidence / Required action.
+Clarification: Missing acceptance outcome / Why required / Known evidence / Options. Next action: Owner / Next action / Expected evidence.
+Use PASS, FAIL, WARNING, BLOCKED, PENDING, N/A only for chat statuses; preserve native domain states.
+At most six columns, eight preview rows and 180 characters per cell; link full evidence and state omitted totals.
+No duplicate prose. Keep code, commands, commit messages and machine handoffs native.
+Apply [this skill’s schema and examples](references/chat-output.json) before any user-facing result, warning or question.
+Use the sibling `ai-sdlc-shared-runtime/scripts/chat_output.py` to render/check; [shared limits](../ai-sdlc-shared-runtime/references/chat-output.md) bound repair and preserve native outputs.

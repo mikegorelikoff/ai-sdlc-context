@@ -147,3 +147,15 @@ because they scale” is invalid without evidence, boundary, alternatives, or tr
 - Do not replace SDD requirements, tests, tasks, or decisions.
 - Do not hide unresolved architecture risks.
 - Use `$ai-sdlc-change-impact` when an accepted design changes downstream work.
+
+## Chat Output Contract
+
+Primary: Component / Responsibility / Decision / Dependency / Evidence; secondary: Decision ID / Alternative / Consequence / Evidence.
+Rows represent individual component records. Show the user decision before detail; preserve source order and explicit authority.
+Summary: Status / Decision / Evidence. Failure: Architecture constraint / Status / Blocker / Evidence / Required action.
+Clarification: Missing architecture constraint / Why required / Known evidence / Options. Next action: Owner / Next action / Expected evidence.
+Use PASS, FAIL, WARNING, BLOCKED, PENDING, N/A only for chat statuses; preserve native domain states.
+At most six columns, eight preview rows and 180 characters per cell; link full evidence and state omitted totals.
+No duplicate prose. Keep code, commands, commit messages and machine handoffs native.
+Apply [this skill’s schema and examples](references/chat-output.json) before any user-facing result, warning or question.
+Use the sibling `ai-sdlc-shared-runtime/scripts/chat_output.py` to render/check; [shared limits](../ai-sdlc-shared-runtime/references/chat-output.md) bound repair and preserve native outputs.

@@ -1,8 +1,19 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+## v0.1.3 - 2026-09-08
 
-## Unreleased
+### Changed
+
+- Bound test discovery to source test directories so a documentation build cannot
+  cause duplicate collection from generated `site/` copies.
+
+- Give all 44 Context Guard skills individual table-first chat contracts, domain-specific
+  result/failure/clarification tables, compact evidence and owned next actions.
+  Keep native artifacts and lifecycle authority unchanged.
+- Add bounded deterministic chat rendering and structural evaluation, eight
+  captured simulation scenarios per skill, negative tests and semantic review.
+  Simulations are explicitly distinguished from live model evaluations.
+
 
 ## 0.1.2 - 2026-07-28
 

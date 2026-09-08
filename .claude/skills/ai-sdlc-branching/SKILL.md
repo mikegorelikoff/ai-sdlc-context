@@ -47,7 +47,7 @@ description: AI SDLC Git-flow branching workflow. Use when an AI assistant start
 
 ### 0.3 Output Rules
 
-- Keep output structured with headings and bullets.
+- Apply this skill’s Chat Output Contract to user-facing chat; keep native artifacts unchanged.
 - Make findings, gaps, risks, and blockers explicit.
 - Tie recommendations to evidence from the provided artifact, repository, `specs-refiniment/<feature-name>/<file.md>` workspace, or user context.
 - Include role ownership when the output creates follow-up work for BA, QA, Dev, PM, or Delivery.
@@ -198,21 +198,8 @@ to validation and commit prep without mixing unrelated changes.
 
 ## Output Spec
 
-Use this branch handoff report when branch state matters:
-
-```text
-Branching:
-- Task: user-visible task name
-- Change size: small | medium | large
-- Spec: specs/NNN-short-feature-name | none
-- Base branch: resolved branch | blocked with reason
-- Base refresh: pulled latest resolved base | reused existing task branch | blocked
-- Current branch: branch-name
-- Expected branch: branch-name
-- Action: already correct | created | reused with reason | blocked
-- Dirty tree: clean | related files listed | unrelated/unclear blocker
-- Next phase: implementation | validation | commit-prep
-```
+For user-facing chat, use this skill’s Chat Output Contract. Preserve the
+owning artifacts, exact validation evidence, scope and unresolved risks.
 
 Quality gate:
 
@@ -226,35 +213,8 @@ Quality gate:
 
 Valid medium-work start:
 
-```text
-Branching:
-- Task: AI SDLC Git-flow branching skill and workflow update
-- Change size: medium
-- Spec: specs/191-branching-workflow
-- Base branch: main (origin/HEAD)
-- Base refresh: pulled latest resolved base
-- Current branch: main
-- Expected branch: feature/191-branching-workflow
-- Action: created
-- Dirty tree: clean
-- Next phase: implementation
-```
-
-Valid small fix:
-
-```text
-Branching:
-- Task: fix typo in validation warning
-- Change size: small
-- Spec: none
-- Base branch: main (repository default)
-- Base refresh: pulled latest resolved base
-- Current branch: main
-- Expected branch: fix/validation-warning-typo
-- Action: created
-- Dirty tree: clean
-- Next phase: implementation
-```
+Chat example: use the normal, warning and blocked examples in
+`references/chat-examples.md`; their evidence comes from explicit scenario fixtures.
 
 Invalid counter-example:
 
@@ -292,3 +252,15 @@ mutation for implementation work.
 - Do not decide validation commands; use `$ai-sdlc-validation`.
 - Do not stage files or create commits; use `$ai-sdlc-commit-prep`.
 - Do not draft commit messages; use `$ai-sdlc-conventional-commit`.
+
+## Chat Output Contract
+
+Primary: Current branch / Expected branch / Base revision / Worktree / Decision.
+Rows represent individual current branch records. Show the user decision before detail; preserve source order and explicit authority.
+Summary: Status / Decision / Evidence. Failure: Task scope / Status / Blocker / Evidence / Required action.
+Clarification: Missing task scope / Why required / Known evidence / Options. Next action: Owner / Next action / Expected evidence.
+Use PASS, FAIL, WARNING, BLOCKED, PENDING, N/A only for chat statuses; preserve native domain states.
+At most six columns, eight preview rows and 180 characters per cell; link full evidence and state omitted totals.
+No duplicate prose. Keep code, commands, commit messages and machine handoffs native.
+Apply [this skill’s schema and examples](references/chat-output.json) before any user-facing result, warning or question.
+Use the sibling `ai-sdlc-shared-runtime/scripts/chat_output.py` to render/check; [shared limits](../ai-sdlc-shared-runtime/references/chat-output.md) bound repair and preserve native outputs.

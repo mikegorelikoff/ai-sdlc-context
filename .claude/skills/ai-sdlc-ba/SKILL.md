@@ -47,7 +47,7 @@ description: AI SDLC business analysis workflow. Use when an AI assistant needs 
 
 ### 0.3 Output Rules
 
-- Keep output structured with headings and bullets.
+- Apply this skill’s Chat Output Contract to user-facing chat; keep native artifacts unchanged.
 - Make findings, gaps, risks, and blockers explicit.
 - Tie recommendations to evidence from the provided artifact, `specs-refiniment/<feature-name>/<file.md>` workspace, stakeholder context, or user-provided source material.
 - Include role ownership when the output creates follow-up work for BA, QA, Dev, PM, or Delivery.
@@ -187,28 +187,8 @@ Convert a vague AI SDLC feature, refactor, or workflow request into requirements
 
 ## Output Spec
 
-Use this format for visible BA output or requirements-ready notes:
-
-```text
-Business context:
-- Goal: one sentence.
-- Problem: one sentence.
-- Actors: actor list.
-- Current behavior: concrete observed behavior.
-- Desired behavior: concrete target behavior.
-
-Rules and constraints:
-- Rule: When condition, the system must outcome.
-- Constraint: limit, dependency, policy, or compatibility requirement.
-- Assumption: unverified statement that must be validated or accepted.
-- Out of scope: explicit exclusion.
-
-Acceptance criteria:
-- AC-001: Given setup, when action, then observable result.
-
-Open questions:
-- Question: decision needed, why it matters, owner if known.
-```
+For user-facing chat, use this skill’s Chat Output Contract. Preserve the
+owning artifacts, exact validation evidence, scope and unresolved risks.
 
 Quality gate:
 
@@ -225,17 +205,8 @@ Add better BitGo wallet support.
 
 After:
 
-```text
-Business context:
-- Goal: Let operations view BitGo enterprise wallet details before initiating transfers.
-- Problem: Operators cannot verify wallet scope and enterprise linkage from the current setup screen.
-- Actors: operations user, BitGo integration, AI SDLC API.
-- Current behavior: The UI shows configured provider status without wallet-level enterprise details.
-- Desired behavior: The UI shows enterprise-linked wallet details required for transfer readiness review.
-
-Acceptance criteria:
-- AC-001: Given an organization with BitGo configured, when an operations user opens custodian setup, then the response includes enterprise ID, wallet IDs, and display labels.
-```
+Chat example: use the normal, warning and blocked examples in
+`references/chat-examples.md`; their evidence comes from explicit scenario fixtures.
 
 Invalid counter-example:
 
@@ -259,3 +230,15 @@ Reject this because it has no actor, trigger, or observable result.
 - Do not design APIs, schemas, data models, or package boundaries; use `$ai-sdlc-sdd` and architecture guidance for design.
 - Do not write implementation tasks except when translating accepted BA output into requirements context.
 - Do not claim assumptions are confirmed without evidence from the user, artifact, `specs-refiniment/<feature-name>/<file.md>`, code, or docs.
+
+## Chat Output Contract
+
+Primary: Requirement ID / Actor / Business rule / Acceptance / Evidence; secondary: Assumption / Validation question / Owner / Evidence.
+Rows represent individual requirement id records. Show the user decision before detail; preserve source order and explicit authority.
+Summary: Status / Decision / Evidence. Failure: Business actor / Status / Blocker / Evidence / Required action.
+Clarification: Missing business actor / Why required / Known evidence / Options. Next action: Owner / Next action / Expected evidence.
+Use PASS, FAIL, WARNING, BLOCKED, PENDING, N/A only for chat statuses; preserve native domain states.
+At most six columns, eight preview rows and 180 characters per cell; link full evidence and state omitted totals.
+No duplicate prose. Keep code, commands, commit messages and machine handoffs native.
+Apply [this skill’s schema and examples](references/chat-output.json) before any user-facing result, warning or question.
+Use the sibling `ai-sdlc-shared-runtime/scripts/chat_output.py` to render/check; [shared limits](../ai-sdlc-shared-runtime/references/chat-output.md) bound repair and preserve native outputs.

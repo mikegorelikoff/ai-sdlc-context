@@ -1,0 +1,449 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared actor / capability entities; listed evidence satisfies this skill check.\nEvidence: fixture.toon:1\n\nprimary: Actor: Operator; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nactions: Owner: Product owner; Next action: Validate business goal with its owning workflow; Expected evidence: fixture.toon:1.\n\nsecondary: Capability: Idempotent retry; Dependency: Confirm dependency for payment retry; Owner: Delivery owner; Evidence: fixture.toon:1.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-goal-capability-and-epic-mapping for payment-retry delivery: happy",
+      "required_facts": [
+        "fixture.toon:1",
+        "Reduce duplicate charges",
+        "Operator"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate business goal with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Actor": "Operator",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared goal result; evidence supports the reported result.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PASS"
+        },
+        "secondary": [
+          {
+            "Capability": "Idempotent retry",
+            "Dependency": "Payment store",
+            "Owner": "Product owner",
+            "Evidence": "fixture.toon:1"
+          }
+        ]
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Partial actor / capability entities coverage; one dependency remains unverified.\nEvidence: fixture.toon:1\n\nprimary: Actor: Operator; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nprimary: Actor: Operator [pending case]; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nactions: Owner: Product owner; Next action: Validate business goal with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-goal-capability-and-epic-mapping for payment-retry delivery: partial",
+      "required_facts": [
+        "fixture.toon:1",
+        "Reduce duplicate charges",
+        "Operator"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate business goal with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Actor": "Operator",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          },
+          {
+            "Actor": "Operator [pending case]",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "fixture.toon:1",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited actor / capability entities review; source freshness must be confirmed.\nEvidence: fixture.toon:1\n\nprimary: Actor: Operator; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nactions: Owner: Product owner; Next action: Validate business goal with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-goal-capability-and-epic-mapping for payment-retry delivery: warning",
+      "required_facts": [
+        "fixture.toon:1",
+        "Reduce duplicate charges",
+        "Operator"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate business goal with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Actor": "Operator",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Result has limited source freshness; confirm it before downstream use.",
+          "Evidence": "fixture.toon:1",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Business goal is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Business goal: Business goal; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide business goal.\nactions: Owner: Product owner; Next action: Provide business goal; Expected evidence: Validated business goal.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-goal-capability-and-epic-mapping for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated business goal"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated business goal",
+            "Next action": "Provide business goal",
+            "Owner": "Product owner"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Business goal": "Business goal",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide business goal",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Business goal is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Business goal is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Business goal: Business goal; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide business goal.\nclarifications: Missing business goal: Business goal; Why required: Determines goal; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Product owner; Next action: Provide business goal; Expected evidence: Validated business goal.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-goal-capability-and-epic-mapping for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated business goal"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated business goal",
+            "Next action": "Provide business goal",
+            "Owner": "Product owner"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing business goal": "Business goal",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines goal"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Business goal": "Business goal",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide business goal",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Business goal is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: 20 actor / capability entities rows; showing the first 8; full evidence linked.\nEvidence: fixture.toon:1\n\nprimary: Actor: Operator #1; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nprimary: Actor: Operator #2; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nprimary: Actor: Operator #3; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nprimary: Actor: Operator #4; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nprimary: Actor: Operator #5; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nprimary: Actor: Operator #6; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nprimary: Actor: Operator #7; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nprimary: Actor: Operator #8; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nprimary: Actor: Operator #9; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nprimary: Actor: Operator #10; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nprimary: Actor: Operator #11; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nprimary: Actor: Operator #12; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nprimary: Actor: Operator #13; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nprimary: Actor: Operator #14; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nprimary: Actor: Operator #15; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nprimary: Actor: Operator #16; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nprimary: Actor: Operator #17; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nprimary: Actor: Operator #18; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nprimary: Actor: Operator #19; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nprimary: Actor: Operator #20; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nactions: Owner: Product owner; Next action: Validate business goal with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-goal-capability-and-epic-mapping for payment-retry delivery: large",
+      "required_facts": [
+        "fixture.toon:1",
+        "Reduce duplicate charges",
+        "Operator #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate business goal with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Actor": "Operator #1",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          },
+          {
+            "Actor": "Operator #2",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          },
+          {
+            "Actor": "Operator #3",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          },
+          {
+            "Actor": "Operator #4",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          },
+          {
+            "Actor": "Operator #5",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          },
+          {
+            "Actor": "Operator #6",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          },
+          {
+            "Actor": "Operator #7",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          },
+          {
+            "Actor": "Operator #8",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          },
+          {
+            "Actor": "Operator #9",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          },
+          {
+            "Actor": "Operator #10",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          },
+          {
+            "Actor": "Operator #11",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          },
+          {
+            "Actor": "Operator #12",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          },
+          {
+            "Actor": "Operator #13",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          },
+          {
+            "Actor": "Operator #14",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          },
+          {
+            "Actor": "Operator #15",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          },
+          {
+            "Actor": "Operator #16",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          },
+          {
+            "Actor": "Operator #17",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          },
+          {
+            "Actor": "Operator #18",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          },
+          {
+            "Actor": "Operator #19",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          },
+          {
+            "Actor": "Operator #20",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 goal records; 8 shown; inspect the linked full artifact.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: One goal result; scope and evidence are explicit.\nEvidence: fixture.toon:1\n\nprimary: Actor: Operator; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges; Success measure: No duplicate ledger entry.\nactions: Owner: Product owner; Next action: Validate business goal with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-goal-capability-and-epic-mapping for payment-retry delivery: small",
+      "required_facts": [
+        "fixture.toon:1",
+        "Reduce duplicate charges",
+        "Operator"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate business goal with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Actor": "Operator",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges",
+            "Success measure": "No duplicate ledger entry"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One goal result; scope and evidence are explicit.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared actor / capability entities; listed evidence satisfies this skill check.\nEvidence: fixture.toon:1\n\nprimary: Actor: Operator; Capability: Idempotent retry; Epic: EP-001; Goal: Reduce duplicate charges | перенос\nстроки; Success measure: No duplicate ledger entry.\nactions: Owner: Product owner; Next action: Validate business goal with its owning workflow; Expected evidence: fixture.toon:1.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-goal-capability-and-epic-mapping for payment-retry delivery: edge",
+      "required_facts": [
+        "fixture.toon:1",
+        "Reduce duplicate charges | перенос\nстроки",
+        "Operator"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate business goal with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Actor": "Operator",
+            "Capability": "Idempotent retry",
+            "Epic": "EP-001",
+            "Goal": "Reduce duplicate charges | перенос\nстроки",
+            "Success measure": "No duplicate ledger entry"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared actor / capability entities; listed evidence satisfies this skill check.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PASS"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-goal-capability-and-epic-mapping"
+}

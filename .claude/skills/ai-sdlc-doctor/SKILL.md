@@ -107,3 +107,15 @@ actions, compatibility blockers, and deterministic identity.
 - Do not install dependencies or modify the installation.
 - Do not execute remediation, backup, migration, apply, or rollback actions.
 - Do not hide incompatible or destructive changes behind an aggregate status.
+
+## Chat Output Contract
+
+Primary: Check / Installed state / Expected state / Status / Remediation.
+Rows represent individual check records. Show the user decision before detail; preserve source order and explicit authority.
+Summary: Status / Decision / Evidence. Failure: Installation root / Status / Blocker / Evidence / Required action.
+Clarification: Missing installation root / Why required / Known evidence / Options. Next action: Owner / Next action / Expected evidence.
+Use PASS, FAIL, WARNING, BLOCKED, PENDING, N/A only for chat statuses; preserve native domain states.
+At most six columns, eight preview rows and 180 characters per cell; link full evidence and state omitted totals.
+No duplicate prose. Keep code, commands, commit messages and machine handoffs native.
+Apply [this skill’s schema and examples](references/chat-output.json) before any user-facing result, warning or question.
+Use the sibling `ai-sdlc-shared-runtime/scripts/chat_output.py` to render/check; [shared limits](../ai-sdlc-shared-runtime/references/chat-output.md) bound repair and preserve native outputs.

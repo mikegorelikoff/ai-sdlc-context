@@ -1,0 +1,449 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: PENDING\nDecision: Prepared problem / proposed outcome entities; owner decision or execution remains pending.\nEvidence: fixture.toon:1\n\nprimary: Business evidence: interview.md:12; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nactions: Owner: Product owner; Next action: Validate validated discovery with its owning workflow; Expected evidence: fixture.toon:1.\n\nsecondary: FAQ topic: Confirm faq topic for payment retry; Answer: Confirm answer for payment retry; Evidence: fixture.toon:1; Unresolved choice: Confirm unresolved choice for payment retry.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-prfaq-package-synthesis for payment-retry delivery: happy",
+      "required_facts": [
+        "fixture.toon:1",
+        "Operator",
+        "interview.md:12"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate validated discovery with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Business evidence": "interview.md:12",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared customer result; owner decision or execution remains pending.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PENDING"
+        },
+        "secondary": [
+          {
+            "FAQ topic": "Payment retries",
+            "Answer": "A retry reuses the original payment identity",
+            "Evidence": "fixture.toon:1",
+            "Unresolved choice": "None within approved retry scope"
+          }
+        ]
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Partial problem / proposed outcome entities coverage; one dependency remains unverified.\nEvidence: fixture.toon:1\n\nprimary: Business evidence: interview.md:12; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nprimary: Business evidence: interview.md:12 [pending case]; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nactions: Owner: Product owner; Next action: Validate validated discovery with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-prfaq-package-synthesis for payment-retry delivery: partial",
+      "required_facts": [
+        "fixture.toon:1",
+        "Operator",
+        "interview.md:12"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate validated discovery with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Business evidence": "interview.md:12",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          },
+          {
+            "Business evidence": "interview.md:12 [pending case]",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "fixture.toon:1",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited problem / proposed outcome entities review; source freshness must be confirmed.\nEvidence: fixture.toon:1\n\nprimary: Business evidence: interview.md:12; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nactions: Owner: Product owner; Next action: Validate validated discovery with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-prfaq-package-synthesis for payment-retry delivery: warning",
+      "required_facts": [
+        "fixture.toon:1",
+        "Operator",
+        "interview.md:12"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate validated discovery with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Business evidence": "interview.md:12",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Result has limited source freshness; confirm it before downstream use.",
+          "Evidence": "fixture.toon:1",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Validated discovery is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Validated discovery: Validated discovery; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide validated discovery.\nactions: Owner: Product owner; Next action: Provide validated discovery; Expected evidence: Validated validated discovery.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-prfaq-package-synthesis for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated validated discovery"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated validated discovery",
+            "Next action": "Provide validated discovery",
+            "Owner": "Product owner"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide validated discovery",
+            "Status": "BLOCKED",
+            "Validated discovery": "Validated discovery"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Validated discovery is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Validated discovery is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Validated discovery: Validated discovery; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide validated discovery.\nclarifications: Missing validated discovery: Validated discovery; Why required: Determines customer; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Product owner; Next action: Provide validated discovery; Expected evidence: Validated validated discovery.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-prfaq-package-synthesis for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated validated discovery"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated validated discovery",
+            "Next action": "Provide validated discovery",
+            "Owner": "Product owner"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing validated discovery": "Validated discovery",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines customer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide validated discovery",
+            "Status": "BLOCKED",
+            "Validated discovery": "Validated discovery"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Validated discovery is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PENDING\nDecision: 20 problem / proposed outcome entities rows; showing the first 8; full evidence linked.\nEvidence: fixture.toon:1\n\nprimary: Business evidence: interview.md:12 #1; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nprimary: Business evidence: interview.md:12 #2; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nprimary: Business evidence: interview.md:12 #3; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nprimary: Business evidence: interview.md:12 #4; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nprimary: Business evidence: interview.md:12 #5; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nprimary: Business evidence: interview.md:12 #6; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nprimary: Business evidence: interview.md:12 #7; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nprimary: Business evidence: interview.md:12 #8; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nprimary: Business evidence: interview.md:12 #9; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nprimary: Business evidence: interview.md:12 #10; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nprimary: Business evidence: interview.md:12 #11; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nprimary: Business evidence: interview.md:12 #12; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nprimary: Business evidence: interview.md:12 #13; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nprimary: Business evidence: interview.md:12 #14; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nprimary: Business evidence: interview.md:12 #15; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nprimary: Business evidence: interview.md:12 #16; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nprimary: Business evidence: interview.md:12 #17; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nprimary: Business evidence: interview.md:12 #18; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nprimary: Business evidence: interview.md:12 #19; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nprimary: Business evidence: interview.md:12 #20; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nactions: Owner: Product owner; Next action: Validate validated discovery with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-prfaq-package-synthesis for payment-retry delivery: large",
+      "required_facts": [
+        "fixture.toon:1",
+        "Operator",
+        "interview.md:12 #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate validated discovery with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Business evidence": "interview.md:12 #1",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          },
+          {
+            "Business evidence": "interview.md:12 #2",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          },
+          {
+            "Business evidence": "interview.md:12 #3",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          },
+          {
+            "Business evidence": "interview.md:12 #4",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          },
+          {
+            "Business evidence": "interview.md:12 #5",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          },
+          {
+            "Business evidence": "interview.md:12 #6",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          },
+          {
+            "Business evidence": "interview.md:12 #7",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          },
+          {
+            "Business evidence": "interview.md:12 #8",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          },
+          {
+            "Business evidence": "interview.md:12 #9",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          },
+          {
+            "Business evidence": "interview.md:12 #10",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          },
+          {
+            "Business evidence": "interview.md:12 #11",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          },
+          {
+            "Business evidence": "interview.md:12 #12",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          },
+          {
+            "Business evidence": "interview.md:12 #13",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          },
+          {
+            "Business evidence": "interview.md:12 #14",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          },
+          {
+            "Business evidence": "interview.md:12 #15",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          },
+          {
+            "Business evidence": "interview.md:12 #16",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          },
+          {
+            "Business evidence": "interview.md:12 #17",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          },
+          {
+            "Business evidence": "interview.md:12 #18",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          },
+          {
+            "Business evidence": "interview.md:12 #19",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          },
+          {
+            "Business evidence": "interview.md:12 #20",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 customer records; 8 shown; inspect the linked full artifact.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PENDING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PENDING\nDecision: One customer result; scope and evidence are explicit.\nEvidence: fixture.toon:1\n\nprimary: Business evidence: interview.md:12; Customer: Operator; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nactions: Owner: Product owner; Next action: Validate validated discovery with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-prfaq-package-synthesis for payment-retry delivery: small",
+      "required_facts": [
+        "fixture.toon:1",
+        "Operator",
+        "interview.md:12"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate validated discovery with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Business evidence": "interview.md:12",
+            "Customer": "Operator",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One customer result; scope and evidence are explicit.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PENDING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PENDING\nDecision: Prepared problem / proposed outcome entities; owner decision or execution remains pending.\nEvidence: fixture.toon:1\n\nprimary: Business evidence: interview.md:12; Customer: Operator | перенос\nстроки; Open decision: Retry window; Problem: Manual duplicate refunds; Proposed outcome: One charge per request key.\nactions: Owner: Product owner; Next action: Validate validated discovery with its owning workflow; Expected evidence: fixture.toon:1.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-prfaq-package-synthesis for payment-retry delivery: edge",
+      "required_facts": [
+        "fixture.toon:1",
+        "Operator | перенос\nстроки",
+        "interview.md:12"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate validated discovery with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Business evidence": "interview.md:12",
+            "Customer": "Operator | перенос\nстроки",
+            "Open decision": "Retry window",
+            "Problem": "Manual duplicate refunds",
+            "Proposed outcome": "One charge per request key"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared problem / proposed outcome entities; owner decision or execution remains pending.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PENDING"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-prfaq-package-synthesis"
+}

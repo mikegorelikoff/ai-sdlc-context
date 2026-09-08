@@ -1,0 +1,449 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared actor / business rule entities; listed evidence satisfies this skill check.\nEvidence: interview.md:12\n\nprimary: Acceptance: One charge per key; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nactions: Owner: Product owner; Next action: Validate business actor with its owning workflow; Expected evidence: interview.md:12.\n\nsecondary: Assumption: Confirm assumption for payment retry; Validation question: Confirm validation question for payment retry; Owner: Delivery owner; Evidence: interview.md:12.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-ba for payment-retry delivery: happy",
+      "required_facts": [
+        "interview.md:12",
+        "REQ-001",
+        "One charge per key"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "interview.md:12",
+            "Next action": "Validate business actor with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Acceptance": "One charge per key",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared requirement id result; evidence supports the reported result.",
+          "Evidence": "interview.md:12",
+          "Status": "PASS"
+        },
+        "secondary": [
+          {
+            "Assumption": "Payment providers honor idempotency keys",
+            "Validation question": "Does the provider retain retry keys for 24 hours?",
+            "Owner": "Product owner",
+            "Evidence": "interview.md:12"
+          }
+        ]
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Partial actor / business rule entities coverage; one dependency remains unverified.\nEvidence: interview.md:12\n\nprimary: Acceptance: One charge per key; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nprimary: Acceptance: One charge per key [pending case]; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nactions: Owner: Product owner; Next action: Validate business actor with its owning workflow; Expected evidence: interview.md:12.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-ba for payment-retry delivery: partial",
+      "required_facts": [
+        "interview.md:12",
+        "REQ-001",
+        "One charge per key"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "interview.md:12",
+            "Next action": "Validate business actor with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Acceptance": "One charge per key",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          },
+          {
+            "Acceptance": "One charge per key [pending case]",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "interview.md:12",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited actor / business rule entities review; source freshness must be confirmed.\nEvidence: interview.md:12\n\nprimary: Acceptance: One charge per key; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nactions: Owner: Product owner; Next action: Validate business actor with its owning workflow; Expected evidence: interview.md:12.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-ba for payment-retry delivery: warning",
+      "required_facts": [
+        "interview.md:12",
+        "REQ-001",
+        "One charge per key"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "interview.md:12",
+            "Next action": "Validate business actor with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Acceptance": "One charge per key",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Result has limited source freshness; confirm it before downstream use.",
+          "Evidence": "interview.md:12",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Business actor is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Business actor: Business actor; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide business actor.\nactions: Owner: Product owner; Next action: Provide business actor; Expected evidence: Validated business actor.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-ba for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated business actor"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated business actor",
+            "Next action": "Provide business actor",
+            "Owner": "Product owner"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Business actor": "Business actor",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide business actor",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Business actor is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Business actor is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Business actor: Business actor; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide business actor.\nclarifications: Missing business actor: Business actor; Why required: Determines requirement id; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Product owner; Next action: Provide business actor; Expected evidence: Validated business actor.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-ba for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated business actor"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated business actor",
+            "Next action": "Provide business actor",
+            "Owner": "Product owner"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing business actor": "Business actor",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines requirement id"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Business actor": "Business actor",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide business actor",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Business actor is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: 20 actor / business rule entities rows; showing the first 8; full evidence linked.\nEvidence: interview.md:12\n\nprimary: Acceptance: One charge per key #1; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nprimary: Acceptance: One charge per key #2; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nprimary: Acceptance: One charge per key #3; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nprimary: Acceptance: One charge per key #4; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nprimary: Acceptance: One charge per key #5; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nprimary: Acceptance: One charge per key #6; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nprimary: Acceptance: One charge per key #7; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nprimary: Acceptance: One charge per key #8; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nprimary: Acceptance: One charge per key #9; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nprimary: Acceptance: One charge per key #10; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nprimary: Acceptance: One charge per key #11; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nprimary: Acceptance: One charge per key #12; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nprimary: Acceptance: One charge per key #13; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nprimary: Acceptance: One charge per key #14; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nprimary: Acceptance: One charge per key #15; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nprimary: Acceptance: One charge per key #16; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nprimary: Acceptance: One charge per key #17; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nprimary: Acceptance: One charge per key #18; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nprimary: Acceptance: One charge per key #19; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nprimary: Acceptance: One charge per key #20; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nactions: Owner: Product owner; Next action: Validate business actor with its owning workflow; Expected evidence: interview.md:12.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-ba for payment-retry delivery: large",
+      "required_facts": [
+        "interview.md:12",
+        "REQ-001",
+        "One charge per key #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "interview.md:12",
+            "Next action": "Validate business actor with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Acceptance": "One charge per key #1",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          },
+          {
+            "Acceptance": "One charge per key #2",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          },
+          {
+            "Acceptance": "One charge per key #3",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          },
+          {
+            "Acceptance": "One charge per key #4",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          },
+          {
+            "Acceptance": "One charge per key #5",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          },
+          {
+            "Acceptance": "One charge per key #6",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          },
+          {
+            "Acceptance": "One charge per key #7",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          },
+          {
+            "Acceptance": "One charge per key #8",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          },
+          {
+            "Acceptance": "One charge per key #9",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          },
+          {
+            "Acceptance": "One charge per key #10",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          },
+          {
+            "Acceptance": "One charge per key #11",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          },
+          {
+            "Acceptance": "One charge per key #12",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          },
+          {
+            "Acceptance": "One charge per key #13",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          },
+          {
+            "Acceptance": "One charge per key #14",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          },
+          {
+            "Acceptance": "One charge per key #15",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          },
+          {
+            "Acceptance": "One charge per key #16",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          },
+          {
+            "Acceptance": "One charge per key #17",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          },
+          {
+            "Acceptance": "One charge per key #18",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          },
+          {
+            "Acceptance": "One charge per key #19",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          },
+          {
+            "Acceptance": "One charge per key #20",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 requirement id records; 8 shown; inspect the linked full artifact.",
+          "Evidence": "interview.md:12",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: One requirement id result; scope and evidence are explicit.\nEvidence: interview.md:12\n\nprimary: Acceptance: One charge per key; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001.\nactions: Owner: Product owner; Next action: Validate business actor with its owning workflow; Expected evidence: interview.md:12.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-ba for payment-retry delivery: small",
+      "required_facts": [
+        "interview.md:12",
+        "REQ-001",
+        "One charge per key"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "interview.md:12",
+            "Next action": "Validate business actor with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Acceptance": "One charge per key",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One requirement id result; scope and evidence are explicit.",
+          "Evidence": "interview.md:12",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared actor / business rule entities; listed evidence satisfies this skill check.\nEvidence: interview.md:12\n\nprimary: Acceptance: One charge per key; Actor: Operator; Business rule: Retry preserves payment identity; Evidence: interview.md:12; Requirement ID: REQ-001 | перенос\nстроки.\nactions: Owner: Product owner; Next action: Validate business actor with its owning workflow; Expected evidence: interview.md:12.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-ba for payment-retry delivery: edge",
+      "required_facts": [
+        "interview.md:12",
+        "REQ-001 | перенос\nстроки",
+        "One charge per key"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "interview.md:12",
+            "Next action": "Validate business actor with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Acceptance": "One charge per key",
+            "Actor": "Operator",
+            "Business rule": "Retry preserves payment identity",
+            "Evidence": "interview.md:12",
+            "Requirement ID": "REQ-001 | перенос\nстроки"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared actor / business rule entities; listed evidence satisfies this skill check.",
+          "Evidence": "interview.md:12",
+          "Status": "PASS"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-ba"
+}

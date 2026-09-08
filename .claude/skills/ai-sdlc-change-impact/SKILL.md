@@ -169,3 +169,15 @@ which durable source changed or which downstream artifacts are stale.
 - Do not treat filename similarity or model intuition as impact evidence.
 - Do not approve recovery actions on behalf of artifact owners.
 - Use `$ai-sdlc-navigator` when the owning workflow is unclear.
+
+## Chat Output Contract
+
+Primary: Changed reference / Affected artifact / Staleness / Evidence / Reopen action.
+Rows represent individual changed reference records. Show unresolved blockers before nonblocking findings; a completed review is not delivery approval.
+Summary: Status / Decision / Evidence. Failure: Changed reference / Status / Blocker / Evidence / Required action.
+Clarification: Missing changed reference / Why required / Known evidence / Options. Next action: Owner / Next action / Expected evidence.
+Use PASS, FAIL, WARNING, BLOCKED, PENDING, N/A only for chat statuses; preserve native domain states.
+At most six columns, eight preview rows and 180 characters per cell; link full evidence and state omitted totals.
+No duplicate prose. Keep code, commands, commit messages and machine handoffs native.
+Apply [this skill’s schema and examples](references/chat-output.json) before any user-facing result, warning or question.
+Use the sibling `ai-sdlc-shared-runtime/scripts/chat_output.py` to render/check; [shared limits](../ai-sdlc-shared-runtime/references/chat-output.md) bound repair and preserve native outputs.

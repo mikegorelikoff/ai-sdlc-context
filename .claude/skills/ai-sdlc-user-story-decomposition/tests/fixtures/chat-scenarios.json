@@ -1,0 +1,441 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared actor / desired outcome entities; listed evidence satisfies this skill check.\nEvidence: fixture.toon:1\n\nprimary: Acceptance: AC-001; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nactions: Owner: Product owner; Next action: Validate accepted workflow with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-user-story-decomposition for payment-retry delivery: happy",
+      "required_facts": [
+        "fixture.toon:1",
+        "ST-001",
+        "AC-001"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate accepted workflow with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Acceptance": "AC-001",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared story id result; evidence supports the reported result.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Partial actor / desired outcome entities coverage; one dependency remains unverified.\nEvidence: fixture.toon:1\n\nprimary: Acceptance: AC-001; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nprimary: Acceptance: AC-001 [pending case]; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nactions: Owner: Product owner; Next action: Validate accepted workflow with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-user-story-decomposition for payment-retry delivery: partial",
+      "required_facts": [
+        "fixture.toon:1",
+        "ST-001",
+        "AC-001"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate accepted workflow with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Acceptance": "AC-001",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          },
+          {
+            "Acceptance": "AC-001 [pending case]",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "fixture.toon:1",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited actor / desired outcome entities review; source freshness must be confirmed.\nEvidence: fixture.toon:1\n\nprimary: Acceptance: AC-001; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nactions: Owner: Product owner; Next action: Validate accepted workflow with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-user-story-decomposition for payment-retry delivery: warning",
+      "required_facts": [
+        "fixture.toon:1",
+        "ST-001",
+        "AC-001"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate accepted workflow with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Acceptance": "AC-001",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Result has limited source freshness; confirm it before downstream use.",
+          "Evidence": "fixture.toon:1",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Accepted workflow is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Accepted workflow: Accepted workflow; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide accepted workflow.\nactions: Owner: Product owner; Next action: Provide accepted workflow; Expected evidence: Validated accepted workflow.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-user-story-decomposition for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated accepted workflow"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated accepted workflow",
+            "Next action": "Provide accepted workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "failures": [
+          {
+            "Accepted workflow": "Accepted workflow",
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide accepted workflow",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Accepted workflow is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Accepted workflow is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Accepted workflow: Accepted workflow; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide accepted workflow.\nclarifications: Missing accepted workflow: Accepted workflow; Why required: Determines story id; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Product owner; Next action: Provide accepted workflow; Expected evidence: Validated accepted workflow.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-user-story-decomposition for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated accepted workflow"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated accepted workflow",
+            "Next action": "Provide accepted workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing accepted workflow": "Accepted workflow",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines story id"
+          }
+        ],
+        "failures": [
+          {
+            "Accepted workflow": "Accepted workflow",
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide accepted workflow",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Accepted workflow is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: 20 actor / desired outcome entities rows; showing the first 8; full evidence linked.\nEvidence: fixture.toon:1\n\nprimary: Acceptance: AC-001 #1; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nprimary: Acceptance: AC-001 #2; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nprimary: Acceptance: AC-001 #3; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nprimary: Acceptance: AC-001 #4; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nprimary: Acceptance: AC-001 #5; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nprimary: Acceptance: AC-001 #6; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nprimary: Acceptance: AC-001 #7; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nprimary: Acceptance: AC-001 #8; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nprimary: Acceptance: AC-001 #9; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nprimary: Acceptance: AC-001 #10; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nprimary: Acceptance: AC-001 #11; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nprimary: Acceptance: AC-001 #12; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nprimary: Acceptance: AC-001 #13; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nprimary: Acceptance: AC-001 #14; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nprimary: Acceptance: AC-001 #15; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nprimary: Acceptance: AC-001 #16; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nprimary: Acceptance: AC-001 #17; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nprimary: Acceptance: AC-001 #18; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nprimary: Acceptance: AC-001 #19; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nprimary: Acceptance: AC-001 #20; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nactions: Owner: Product owner; Next action: Validate accepted workflow with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-user-story-decomposition for payment-retry delivery: large",
+      "required_facts": [
+        "fixture.toon:1",
+        "ST-001",
+        "AC-001 #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate accepted workflow with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Acceptance": "AC-001 #1",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          },
+          {
+            "Acceptance": "AC-001 #2",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          },
+          {
+            "Acceptance": "AC-001 #3",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          },
+          {
+            "Acceptance": "AC-001 #4",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          },
+          {
+            "Acceptance": "AC-001 #5",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          },
+          {
+            "Acceptance": "AC-001 #6",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          },
+          {
+            "Acceptance": "AC-001 #7",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          },
+          {
+            "Acceptance": "AC-001 #8",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          },
+          {
+            "Acceptance": "AC-001 #9",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          },
+          {
+            "Acceptance": "AC-001 #10",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          },
+          {
+            "Acceptance": "AC-001 #11",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          },
+          {
+            "Acceptance": "AC-001 #12",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          },
+          {
+            "Acceptance": "AC-001 #13",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          },
+          {
+            "Acceptance": "AC-001 #14",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          },
+          {
+            "Acceptance": "AC-001 #15",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          },
+          {
+            "Acceptance": "AC-001 #16",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          },
+          {
+            "Acceptance": "AC-001 #17",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          },
+          {
+            "Acceptance": "AC-001 #18",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          },
+          {
+            "Acceptance": "AC-001 #19",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          },
+          {
+            "Acceptance": "AC-001 #20",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 story id records; 8 shown; inspect the linked full artifact.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: One story id result; scope and evidence are explicit.\nEvidence: fixture.toon:1\n\nprimary: Acceptance: AC-001; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001.\nactions: Owner: Product owner; Next action: Validate accepted workflow with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-user-story-decomposition for payment-retry delivery: small",
+      "required_facts": [
+        "fixture.toon:1",
+        "ST-001",
+        "AC-001"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate accepted workflow with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Acceptance": "AC-001",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One story id result; scope and evidence are explicit.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared actor / desired outcome entities; listed evidence satisfies this skill check.\nEvidence: fixture.toon:1\n\nprimary: Acceptance: AC-001; Actor: Operator; Dependency: Ledger unique key; Desired outcome: Retry without duplicate charge; Story ID: ST-001 | перенос\nстроки.\nactions: Owner: Product owner; Next action: Validate accepted workflow with its owning workflow; Expected evidence: fixture.toon:1.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-user-story-decomposition for payment-retry delivery: edge",
+      "required_facts": [
+        "fixture.toon:1",
+        "ST-001 | перенос\nстроки",
+        "AC-001"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate accepted workflow with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Acceptance": "AC-001",
+            "Actor": "Operator",
+            "Dependency": "Ledger unique key",
+            "Desired outcome": "Retry without duplicate charge",
+            "Story ID": "ST-001 | перенос\nстроки"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared actor / desired outcome entities; listed evidence satisfies this skill check.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PASS"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-user-story-decomposition"
+}

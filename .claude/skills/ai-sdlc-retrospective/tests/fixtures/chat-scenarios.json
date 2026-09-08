@@ -1,0 +1,449 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared evidence / improvement proposal entities; listed evidence satisfies this skill check.\nEvidence: incident.md:8\n\nprimary: Decision status: Proposed; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nactions: Owner: Engineer; Next action: Validate observation evidence with its owning workflow; Expected evidence: incident.md:8.\n\nsecondary: Proposal: Confirm proposal for payment retry; Decision reference: Confirm decision reference for payment retry; Next action: Confirm retry policy; Owner: QA.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-retrospective for payment-retry delivery: happy",
+      "required_facts": [
+        "incident.md:8",
+        "Retries lack scenario coverage",
+        "Proposed"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "incident.md:8",
+            "Next action": "Validate observation evidence with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Decision status": "Proposed",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared observation result; evidence supports the reported result.",
+          "Evidence": "incident.md:8",
+          "Status": "PASS"
+        },
+        "secondary": [
+          {
+            "Proposal": "Add concurrency check to the retry suite",
+            "Decision reference": "DEC-001",
+            "Next action": "Add TC-002 concurrency coverage",
+            "Owner": "QA"
+          }
+        ]
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Partial evidence / improvement proposal entities coverage; one dependency remains unverified.\nEvidence: incident.md:8\n\nprimary: Decision status: Proposed; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nprimary: Decision status: Proposed [pending case]; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nactions: Owner: Engineer; Next action: Validate observation evidence with its owning workflow; Expected evidence: incident.md:8.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-retrospective for payment-retry delivery: partial",
+      "required_facts": [
+        "incident.md:8",
+        "Retries lack scenario coverage",
+        "Proposed"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "incident.md:8",
+            "Next action": "Validate observation evidence with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Decision status": "Proposed",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          },
+          {
+            "Decision status": "Proposed [pending case]",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "incident.md:8",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited evidence / improvement proposal entities review; source freshness must be confirmed.\nEvidence: incident.md:8\n\nprimary: Decision status: Proposed; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nactions: Owner: Engineer; Next action: Validate observation evidence with its owning workflow; Expected evidence: incident.md:8.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-retrospective for payment-retry delivery: warning",
+      "required_facts": [
+        "incident.md:8",
+        "Retries lack scenario coverage",
+        "Proposed"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "incident.md:8",
+            "Next action": "Validate observation evidence with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Decision status": "Proposed",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Result has limited source freshness; confirm it before downstream use.",
+          "Evidence": "incident.md:8",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Observation evidence is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Observation evidence: Observation evidence; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide observation evidence.\nactions: Owner: Engineer; Next action: Provide observation evidence; Expected evidence: Validated observation evidence.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-retrospective for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated observation evidence"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated observation evidence",
+            "Next action": "Provide observation evidence",
+            "Owner": "Engineer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Observation evidence": "Observation evidence",
+            "Required action": "Provide observation evidence",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Observation evidence is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Observation evidence is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Observation evidence: Observation evidence; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide observation evidence.\nclarifications: Missing observation evidence: Observation evidence; Why required: Determines observation; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Engineer; Next action: Provide observation evidence; Expected evidence: Validated observation evidence.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-retrospective for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated observation evidence"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated observation evidence",
+            "Next action": "Provide observation evidence",
+            "Owner": "Engineer"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing observation evidence": "Observation evidence",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines observation"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Observation evidence": "Observation evidence",
+            "Required action": "Provide observation evidence",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Observation evidence is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: 20 evidence / improvement proposal entities rows; showing the first 8; full evidence linked.\nEvidence: incident.md:8\n\nprimary: Decision status: Proposed #1; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nprimary: Decision status: Proposed #2; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nprimary: Decision status: Proposed #3; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nprimary: Decision status: Proposed #4; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nprimary: Decision status: Proposed #5; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nprimary: Decision status: Proposed #6; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nprimary: Decision status: Proposed #7; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nprimary: Decision status: Proposed #8; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nprimary: Decision status: Proposed #9; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nprimary: Decision status: Proposed #10; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nprimary: Decision status: Proposed #11; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nprimary: Decision status: Proposed #12; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nprimary: Decision status: Proposed #13; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nprimary: Decision status: Proposed #14; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nprimary: Decision status: Proposed #15; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nprimary: Decision status: Proposed #16; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nprimary: Decision status: Proposed #17; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nprimary: Decision status: Proposed #18; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nprimary: Decision status: Proposed #19; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nprimary: Decision status: Proposed #20; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nactions: Owner: Engineer; Next action: Validate observation evidence with its owning workflow; Expected evidence: incident.md:8.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-retrospective for payment-retry delivery: large",
+      "required_facts": [
+        "incident.md:8",
+        "Retries lack scenario coverage",
+        "Proposed #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "incident.md:8",
+            "Next action": "Validate observation evidence with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Decision status": "Proposed #1",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          },
+          {
+            "Decision status": "Proposed #2",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          },
+          {
+            "Decision status": "Proposed #3",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          },
+          {
+            "Decision status": "Proposed #4",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          },
+          {
+            "Decision status": "Proposed #5",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          },
+          {
+            "Decision status": "Proposed #6",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          },
+          {
+            "Decision status": "Proposed #7",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          },
+          {
+            "Decision status": "Proposed #8",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          },
+          {
+            "Decision status": "Proposed #9",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          },
+          {
+            "Decision status": "Proposed #10",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          },
+          {
+            "Decision status": "Proposed #11",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          },
+          {
+            "Decision status": "Proposed #12",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          },
+          {
+            "Decision status": "Proposed #13",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          },
+          {
+            "Decision status": "Proposed #14",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          },
+          {
+            "Decision status": "Proposed #15",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          },
+          {
+            "Decision status": "Proposed #16",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          },
+          {
+            "Decision status": "Proposed #17",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          },
+          {
+            "Decision status": "Proposed #18",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          },
+          {
+            "Decision status": "Proposed #19",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          },
+          {
+            "Decision status": "Proposed #20",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 observation records; 8 shown; inspect the linked full artifact.",
+          "Evidence": "incident.md:8",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: One observation result; scope and evidence are explicit.\nEvidence: incident.md:8\n\nprimary: Decision status: Proposed; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage; Owner: QA.\nactions: Owner: Engineer; Next action: Validate observation evidence with its owning workflow; Expected evidence: incident.md:8.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-retrospective for payment-retry delivery: small",
+      "required_facts": [
+        "incident.md:8",
+        "Retries lack scenario coverage",
+        "Proposed"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "incident.md:8",
+            "Next action": "Validate observation evidence with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Decision status": "Proposed",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage",
+            "Owner": "QA"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One observation result; scope and evidence are explicit.",
+          "Evidence": "incident.md:8",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared evidence / improvement proposal entities; listed evidence satisfies this skill check.\nEvidence: incident.md:8\n\nprimary: Decision status: Proposed; Evidence: incident.md:8; Improvement proposal: Add replay fixture; Observation: Retries lack scenario coverage | перенос\nстроки; Owner: QA.\nactions: Owner: Engineer; Next action: Validate observation evidence with its owning workflow; Expected evidence: incident.md:8.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-retrospective for payment-retry delivery: edge",
+      "required_facts": [
+        "incident.md:8",
+        "Retries lack scenario coverage | перенос\nстроки",
+        "Proposed"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "incident.md:8",
+            "Next action": "Validate observation evidence with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Decision status": "Proposed",
+            "Evidence": "incident.md:8",
+            "Improvement proposal": "Add replay fixture",
+            "Observation": "Retries lack scenario coverage | перенос\nстроки",
+            "Owner": "QA"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared evidence / improvement proposal entities; listed evidence satisfies this skill check.",
+          "Evidence": "incident.md:8",
+          "Status": "PASS"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-retrospective"
+}

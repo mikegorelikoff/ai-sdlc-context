@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "context-guard"
-version = "0.1.2"
+version = "0.1.3"
 description = "Local deterministic hook-based policy engine that reduces avoidable AI coding-agent context growth."
 readme = "README.md"
 license = { text = "Apache-2.0" }
@@ -33,6 +33,8 @@ include = ["context_guard*"]
 context_guard = ["defaults/*.yaml"]
 
 [tool.pytest.ini_options]
+# Collect source tests, including docs checks, never generated site copies.
+testpaths = ["tests", "docs/tests"]
 markers = [
     "perf: latency benchmark tests (excluded from default runs)",
 ]

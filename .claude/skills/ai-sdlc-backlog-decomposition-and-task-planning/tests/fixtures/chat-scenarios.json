@@ -1,0 +1,449 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared story / scope entities; listed evidence satisfies this skill check.\nEvidence: fixture.toon:1\n\nprimary: Depends on: DEC-001; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nactions: Owner: Product owner; Next action: Validate approved epic with its owning workflow; Expected evidence: fixture.toon:1.\n\nsecondary: Story ID: Confirm story id for payment retry; Actor: Confirm actor for payment retry; Outcome: Confirm outcome for payment retry; Acceptance: Confirm acceptance for payment retry.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-backlog-decomposition-and-task-planning for payment-retry delivery: happy",
+      "required_facts": [
+        "fixture.toon:1",
+        "T001",
+        "DEC-001"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate approved epic with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Depends on": "DEC-001",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared task id result; evidence supports the reported result.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PASS"
+        },
+        "secondary": [
+          {
+            "Story ID": "US-001",
+            "Actor": "Customer",
+            "Outcome": "Retry without a second charge",
+            "Acceptance": "TC-001 produces one charge"
+          }
+        ]
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Partial story / scope entities coverage; one dependency remains unverified.\nEvidence: fixture.toon:1\n\nprimary: Depends on: DEC-001; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nprimary: Depends on: DEC-001 [pending case]; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nactions: Owner: Product owner; Next action: Validate approved epic with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-backlog-decomposition-and-task-planning for payment-retry delivery: partial",
+      "required_facts": [
+        "fixture.toon:1",
+        "T001",
+        "DEC-001"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate approved epic with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Depends on": "DEC-001",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          },
+          {
+            "Depends on": "DEC-001 [pending case]",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "fixture.toon:1",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited story / scope entities review; source freshness must be confirmed.\nEvidence: fixture.toon:1\n\nprimary: Depends on: DEC-001; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nactions: Owner: Product owner; Next action: Validate approved epic with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-backlog-decomposition-and-task-planning for payment-retry delivery: warning",
+      "required_facts": [
+        "fixture.toon:1",
+        "T001",
+        "DEC-001"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate approved epic with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Depends on": "DEC-001",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Result has limited source freshness; confirm it before downstream use.",
+          "Evidence": "fixture.toon:1",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Approved epic is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Approved epic: Approved epic; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide approved epic.\nactions: Owner: Product owner; Next action: Provide approved epic; Expected evidence: Validated approved epic.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-backlog-decomposition-and-task-planning for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated approved epic"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated approved epic",
+            "Next action": "Provide approved epic",
+            "Owner": "Product owner"
+          }
+        ],
+        "failures": [
+          {
+            "Approved epic": "Approved epic",
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide approved epic",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Approved epic is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Approved epic is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Approved epic: Approved epic; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide approved epic.\nclarifications: Missing approved epic: Approved epic; Why required: Determines task id; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Product owner; Next action: Provide approved epic; Expected evidence: Validated approved epic.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-backlog-decomposition-and-task-planning for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated approved epic"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated approved epic",
+            "Next action": "Provide approved epic",
+            "Owner": "Product owner"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing approved epic": "Approved epic",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines task id"
+          }
+        ],
+        "failures": [
+          {
+            "Approved epic": "Approved epic",
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide approved epic",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Approved epic is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: 20 story / scope entities rows; showing the first 8; full evidence linked.\nEvidence: fixture.toon:1\n\nprimary: Depends on: DEC-001 #1; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nprimary: Depends on: DEC-001 #2; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nprimary: Depends on: DEC-001 #3; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nprimary: Depends on: DEC-001 #4; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nprimary: Depends on: DEC-001 #5; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nprimary: Depends on: DEC-001 #6; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nprimary: Depends on: DEC-001 #7; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nprimary: Depends on: DEC-001 #8; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nprimary: Depends on: DEC-001 #9; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nprimary: Depends on: DEC-001 #10; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nprimary: Depends on: DEC-001 #11; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nprimary: Depends on: DEC-001 #12; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nprimary: Depends on: DEC-001 #13; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nprimary: Depends on: DEC-001 #14; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nprimary: Depends on: DEC-001 #15; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nprimary: Depends on: DEC-001 #16; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nprimary: Depends on: DEC-001 #17; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nprimary: Depends on: DEC-001 #18; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nprimary: Depends on: DEC-001 #19; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nprimary: Depends on: DEC-001 #20; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nactions: Owner: Product owner; Next action: Validate approved epic with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-backlog-decomposition-and-task-planning for payment-retry delivery: large",
+      "required_facts": [
+        "fixture.toon:1",
+        "T001",
+        "DEC-001 #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate approved epic with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Depends on": "DEC-001 #1",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          },
+          {
+            "Depends on": "DEC-001 #2",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          },
+          {
+            "Depends on": "DEC-001 #3",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          },
+          {
+            "Depends on": "DEC-001 #4",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          },
+          {
+            "Depends on": "DEC-001 #5",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          },
+          {
+            "Depends on": "DEC-001 #6",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          },
+          {
+            "Depends on": "DEC-001 #7",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          },
+          {
+            "Depends on": "DEC-001 #8",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          },
+          {
+            "Depends on": "DEC-001 #9",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          },
+          {
+            "Depends on": "DEC-001 #10",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          },
+          {
+            "Depends on": "DEC-001 #11",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          },
+          {
+            "Depends on": "DEC-001 #12",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          },
+          {
+            "Depends on": "DEC-001 #13",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          },
+          {
+            "Depends on": "DEC-001 #14",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          },
+          {
+            "Depends on": "DEC-001 #15",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          },
+          {
+            "Depends on": "DEC-001 #16",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          },
+          {
+            "Depends on": "DEC-001 #17",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          },
+          {
+            "Depends on": "DEC-001 #18",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          },
+          {
+            "Depends on": "DEC-001 #19",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          },
+          {
+            "Depends on": "DEC-001 #20",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 task id records; 8 shown; inspect the linked full artifact.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: One task id result; scope and evidence are explicit.\nEvidence: fixture.toon:1\n\nprimary: Depends on: DEC-001; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001; Verification: TC-001.\nactions: Owner: Product owner; Next action: Validate approved epic with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-backlog-decomposition-and-task-planning for payment-retry delivery: small",
+      "required_facts": [
+        "fixture.toon:1",
+        "T001",
+        "DEC-001"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate approved epic with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Depends on": "DEC-001",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001",
+            "Verification": "TC-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One task id result; scope and evidence are explicit.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared story / scope entities; listed evidence satisfies this skill check.\nEvidence: fixture.toon:1\n\nprimary: Depends on: DEC-001; Scope: Add idempotency lookup; Story: ST-001; Task ID: T001 | перенос\nстроки; Verification: TC-001.\nactions: Owner: Product owner; Next action: Validate approved epic with its owning workflow; Expected evidence: fixture.toon:1.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-backlog-decomposition-and-task-planning for payment-retry delivery: edge",
+      "required_facts": [
+        "fixture.toon:1",
+        "T001 | перенос\nстроки",
+        "DEC-001"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate approved epic with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Depends on": "DEC-001",
+            "Scope": "Add idempotency lookup",
+            "Story": "ST-001",
+            "Task ID": "T001 | перенос\nстроки",
+            "Verification": "TC-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared story / scope entities; listed evidence satisfies this skill check.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PASS"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-backlog-decomposition-and-task-planning"
+}

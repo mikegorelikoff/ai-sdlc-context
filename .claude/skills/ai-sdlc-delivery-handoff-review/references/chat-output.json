@@ -1,0 +1,37 @@
+{
+  "clarification": [
+    "Missing delivery package",
+    "Why required",
+    "Known evidence",
+    "Options"
+  ],
+  "example": {
+    "Decision": "BLOCKED",
+    "Delivery gate": "Ownership",
+    "Evidence": "delivery-spec.md:40",
+    "Gap": "Support owner absent",
+    "Required action": "Name escalation owner"
+  },
+  "failure": [
+    "Delivery package",
+    "Status",
+    "Blocker",
+    "Evidence",
+    "Required action"
+  ],
+  "hide": "Secrets, raw logs, complete journals and unneeded internal tool steps. Keep full detail in the owning native artifact.",
+  "native_exception": "Keep machine artifacts, code, commands and diffs native; presentation does not replace validation.",
+  "primary": [
+    "Delivery gate",
+    "Decision",
+    "Gap",
+    "Evidence",
+    "Required action"
+  ],
+  "priority": "Show unresolved blockers before nonblocking findings; a completed review is not delivery approval.",
+  "required_input": "Delivery package",
+  "rows": "individual delivery gate records",
+  "schema": "ai-sdlc-chat-contract/v1",
+  "secondary": [],
+  "skill": "ai-sdlc-delivery-handoff-review"
+}

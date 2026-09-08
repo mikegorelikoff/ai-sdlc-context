@@ -1,0 +1,37 @@
+{
+  "clarification": [
+    "Missing requirement source",
+    "Why required",
+    "Known evidence",
+    "Options"
+  ],
+  "example": {
+    "Evidence": "requirements.md:25",
+    "Required action": "Define timeout limit",
+    "Requirement ID": "AC-002",
+    "Risk": "Cannot assert deadline",
+    "Testability gap": "Timeout lacks upper bound"
+  },
+  "failure": [
+    "Requirement source",
+    "Status",
+    "Blocker",
+    "Evidence",
+    "Required action"
+  ],
+  "hide": "Secrets, raw logs, complete journals and unneeded internal tool steps. Keep full detail in the owning native artifact.",
+  "native_exception": "Keep machine artifacts, code, commands and diffs native; presentation does not replace validation.",
+  "primary": [
+    "Requirement ID",
+    "Testability gap",
+    "Risk",
+    "Evidence",
+    "Required action"
+  ],
+  "priority": "Show unresolved blockers before nonblocking findings; a completed review is not delivery approval.",
+  "required_input": "Requirement source",
+  "rows": "individual requirement id records",
+  "schema": "ai-sdlc-chat-contract/v1",
+  "secondary": [],
+  "skill": "ai-sdlc-qa-requirements-gap-review"
+}

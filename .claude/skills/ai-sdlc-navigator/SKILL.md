@@ -276,3 +276,15 @@ Reject this because explicit feature identity is authoritative.
 - Do not choose validation commands; use `$ai-sdlc-validation`.
 - Do not resolve product or technical decisions; route to the owning skill and
   decision log.
+
+## Chat Output Contract
+
+Primary: Rank / Next skill / Reason / Expected artifact / Evidence.
+Rows represent individual rank records. Show the user decision before detail; preserve source order and explicit authority.
+Summary: Status / Decision / Evidence. Failure: Requested feature / Status / Blocker / Evidence / Required action.
+Clarification: Missing requested feature / Why required / Known evidence / Options. Next action: Owner / Next action / Expected evidence.
+Use PASS, FAIL, WARNING, BLOCKED, PENDING, N/A only for chat statuses; preserve native domain states.
+At most six columns, eight preview rows and 180 characters per cell; link full evidence and state omitted totals.
+No duplicate prose. Keep code, commands, commit messages and machine handoffs native.
+Apply [this skill’s schema and examples](references/chat-output.json) before any user-facing result, warning or question.
+Use the sibling `ai-sdlc-shared-runtime/scripts/chat_output.py` to render/check; [shared limits](../ai-sdlc-shared-runtime/references/chat-output.md) bound repair and preserve native outputs.

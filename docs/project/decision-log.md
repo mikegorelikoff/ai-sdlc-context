@@ -61,3 +61,16 @@ manager. Automatic bootstrap was selected over a hard failure to make the
 one-line installation complete on fresh systems. Documentation now makes the
 possible package-manager and `sudo` changes explicit; Bash and curl remain
 bootstrap prerequisites for the remote pipeline itself.
+
+## 2026-09-08 — Per-skill chat presentation contracts
+
+Each of the 44 Context Guard skills owns its semantic table columns and failure
+format. The shared helper handles bounded rendering and structural checks only;
+it cannot grant approval, advance lifecycle state or replace native artifacts.
+Evidence remains attached to results, and large previews retain exact totals and
+the full artifact reference.
+
+The contract registry (`evals/chat/registry.md`) records each design and its eight
+executed simulation scenarios. Baselines are authored simulations, not recorded
+provider runs; semantic review by the implementing assistant is recorded separately.
+Normal product tests execute output regression checks.

@@ -1,0 +1,441 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared included stories / dependency entities; listed evidence satisfies this skill check.\nEvidence: backlog.md:30\n\nprimary: Dependency: Ledger migration; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nactions: Owner: Product owner; Next action: Validate release constraint with its owning workflow; Expected evidence: backlog.md:30.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-release-slicing-and-backlog-readiness-review for payment-retry delivery: happy",
+      "required_facts": [
+        "backlog.md:30",
+        "Pilot",
+        "Ledger migration"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "backlog.md:30",
+            "Next action": "Validate release constraint with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Dependency": "Ledger migration",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared release slice result; evidence supports the reported result.",
+          "Evidence": "backlog.md:30",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Partial included stories / dependency entities coverage; one dependency remains unverified.\nEvidence: backlog.md:30\n\nprimary: Dependency: Ledger migration; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nprimary: Dependency: Ledger migration [pending case]; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nactions: Owner: Product owner; Next action: Validate release constraint with its owning workflow; Expected evidence: backlog.md:30.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-release-slicing-and-backlog-readiness-review for payment-retry delivery: partial",
+      "required_facts": [
+        "backlog.md:30",
+        "Pilot",
+        "Ledger migration"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "backlog.md:30",
+            "Next action": "Validate release constraint with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Dependency": "Ledger migration",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          },
+          {
+            "Dependency": "Ledger migration [pending case]",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "backlog.md:30",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited included stories / dependency entities review; source freshness must be confirmed.\nEvidence: backlog.md:30\n\nprimary: Dependency: Ledger migration; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nactions: Owner: Product owner; Next action: Validate release constraint with its owning workflow; Expected evidence: backlog.md:30.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-release-slicing-and-backlog-readiness-review for payment-retry delivery: warning",
+      "required_facts": [
+        "backlog.md:30",
+        "Pilot",
+        "Ledger migration"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "backlog.md:30",
+            "Next action": "Validate release constraint with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Dependency": "Ledger migration",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Result has limited source freshness; confirm it before downstream use.",
+          "Evidence": "backlog.md:30",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Release constraint is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Release constraint: Release constraint; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide release constraint.\nactions: Owner: Product owner; Next action: Provide release constraint; Expected evidence: Validated release constraint.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-release-slicing-and-backlog-readiness-review for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated release constraint"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated release constraint",
+            "Next action": "Provide release constraint",
+            "Owner": "Product owner"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Release constraint": "Release constraint",
+            "Required action": "Provide release constraint",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Release constraint is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Release constraint is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Release constraint: Release constraint; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide release constraint.\nclarifications: Missing release constraint: Release constraint; Why required: Determines release slice; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Product owner; Next action: Provide release constraint; Expected evidence: Validated release constraint.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-release-slicing-and-backlog-readiness-review for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated release constraint"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated release constraint",
+            "Next action": "Provide release constraint",
+            "Owner": "Product owner"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing release constraint": "Release constraint",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines release slice"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Release constraint": "Release constraint",
+            "Required action": "Provide release constraint",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Release constraint is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: 20 included stories / dependency entities rows; showing the first 8; full evidence linked.\nEvidence: backlog.md:30\n\nprimary: Dependency: Ledger migration #1; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nprimary: Dependency: Ledger migration #2; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nprimary: Dependency: Ledger migration #3; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nprimary: Dependency: Ledger migration #4; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nprimary: Dependency: Ledger migration #5; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nprimary: Dependency: Ledger migration #6; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nprimary: Dependency: Ledger migration #7; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nprimary: Dependency: Ledger migration #8; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nprimary: Dependency: Ledger migration #9; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nprimary: Dependency: Ledger migration #10; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nprimary: Dependency: Ledger migration #11; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nprimary: Dependency: Ledger migration #12; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nprimary: Dependency: Ledger migration #13; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nprimary: Dependency: Ledger migration #14; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nprimary: Dependency: Ledger migration #15; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nprimary: Dependency: Ledger migration #16; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nprimary: Dependency: Ledger migration #17; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nprimary: Dependency: Ledger migration #18; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nprimary: Dependency: Ledger migration #19; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nprimary: Dependency: Ledger migration #20; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nactions: Owner: Product owner; Next action: Validate release constraint with its owning workflow; Expected evidence: backlog.md:30.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-release-slicing-and-backlog-readiness-review for payment-retry delivery: large",
+      "required_facts": [
+        "backlog.md:30",
+        "Pilot",
+        "Ledger migration #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "backlog.md:30",
+            "Next action": "Validate release constraint with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Dependency": "Ledger migration #1",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          },
+          {
+            "Dependency": "Ledger migration #2",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          },
+          {
+            "Dependency": "Ledger migration #3",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          },
+          {
+            "Dependency": "Ledger migration #4",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          },
+          {
+            "Dependency": "Ledger migration #5",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          },
+          {
+            "Dependency": "Ledger migration #6",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          },
+          {
+            "Dependency": "Ledger migration #7",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          },
+          {
+            "Dependency": "Ledger migration #8",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          },
+          {
+            "Dependency": "Ledger migration #9",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          },
+          {
+            "Dependency": "Ledger migration #10",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          },
+          {
+            "Dependency": "Ledger migration #11",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          },
+          {
+            "Dependency": "Ledger migration #12",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          },
+          {
+            "Dependency": "Ledger migration #13",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          },
+          {
+            "Dependency": "Ledger migration #14",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          },
+          {
+            "Dependency": "Ledger migration #15",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          },
+          {
+            "Dependency": "Ledger migration #16",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          },
+          {
+            "Dependency": "Ledger migration #17",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          },
+          {
+            "Dependency": "Ledger migration #18",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          },
+          {
+            "Dependency": "Ledger migration #19",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          },
+          {
+            "Dependency": "Ledger migration #20",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 release slice records; 8 shown; inspect the linked full artifact.",
+          "Evidence": "backlog.md:30",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: One release slice result; scope and evidence are explicit.\nEvidence: backlog.md:30\n\nprimary: Dependency: Ledger migration; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot.\nactions: Owner: Product owner; Next action: Validate release constraint with its owning workflow; Expected evidence: backlog.md:30.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-release-slicing-and-backlog-readiness-review for payment-retry delivery: small",
+      "required_facts": [
+        "backlog.md:30",
+        "Pilot",
+        "Ledger migration"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "backlog.md:30",
+            "Next action": "Validate release constraint with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "primary": [
+          {
+            "Dependency": "Ledger migration",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One release slice result; scope and evidence are explicit.",
+          "Evidence": "backlog.md:30",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared included stories / dependency entities; listed evidence satisfies this skill check.\nEvidence: backlog.md:30\n\nprimary: Dependency: Ledger migration; Evidence: backlog.md:30; Exit criterion: TC-001 passes; Included stories: ST-001; Release slice: Pilot | перенос\nстроки.\nactions: Owner: Product owner; Next action: Validate release constraint with its owning workflow; Expected evidence: backlog.md:30.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-release-slicing-and-backlog-readiness-review for payment-retry delivery: edge",
+      "required_facts": [
+        "backlog.md:30",
+        "Pilot | перенос\nстроки",
+        "Ledger migration"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "backlog.md:30",
+            "Next action": "Validate release constraint with its owning workflow",
+            "Owner": "Product owner"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Dependency": "Ledger migration",
+            "Evidence": "backlog.md:30",
+            "Exit criterion": "TC-001 passes",
+            "Included stories": "ST-001",
+            "Release slice": "Pilot | перенос\nстроки"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared included stories / dependency entities; listed evidence satisfies this skill check.",
+          "Evidence": "backlog.md:30",
+          "Status": "PASS"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-release-slicing-and-backlog-readiness-review"
+}

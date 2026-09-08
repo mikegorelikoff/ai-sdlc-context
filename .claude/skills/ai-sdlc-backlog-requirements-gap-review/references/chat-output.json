@@ -1,0 +1,37 @@
+{
+  "clarification": [
+    "Missing planning scope",
+    "Why required",
+    "Known evidence",
+    "Options"
+  ],
+  "example": {
+    "Evidence": "brief.md:18",
+    "Gap": "Region rollout unspecified",
+    "Impact": "Cannot slice pilot",
+    "Planning dimension": "MVP boundary",
+    "Required action": "Confirm pilot region"
+  },
+  "failure": [
+    "Planning scope",
+    "Status",
+    "Blocker",
+    "Evidence",
+    "Required action"
+  ],
+  "hide": "Secrets, raw logs, complete journals and unneeded internal tool steps. Keep full detail in the owning native artifact.",
+  "native_exception": "Keep machine artifacts, code, commands and diffs native; presentation does not replace validation.",
+  "primary": [
+    "Planning dimension",
+    "Gap",
+    "Impact",
+    "Evidence",
+    "Required action"
+  ],
+  "priority": "Show unresolved blockers before nonblocking findings; a completed review is not delivery approval.",
+  "required_input": "Planning scope",
+  "rows": "individual planning dimension records",
+  "schema": "ai-sdlc-chat-contract/v1",
+  "secondary": [],
+  "skill": "ai-sdlc-backlog-requirements-gap-review"
+}

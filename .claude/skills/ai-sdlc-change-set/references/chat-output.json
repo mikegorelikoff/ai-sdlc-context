@@ -1,0 +1,37 @@
+{
+  "clarification": [
+    "Missing change target",
+    "Why required",
+    "Known evidence",
+    "Options"
+  ],
+  "example": {
+    "Authority": "Preview only",
+    "Before / after": "Retry once / reuse key",
+    "Evidence": "delta.toon:8",
+    "Operation": "Replace AC-001",
+    "Target": "requirements.md"
+  },
+  "failure": [
+    "Change target",
+    "Status",
+    "Blocker",
+    "Evidence",
+    "Required action"
+  ],
+  "hide": "Secrets, raw logs, complete journals and unneeded internal tool steps. Keep full detail in the owning native artifact.",
+  "native_exception": "Keep machine artifacts, code, commands and diffs native; presentation does not replace validation.",
+  "primary": [
+    "Target",
+    "Operation",
+    "Before / after",
+    "Authority",
+    "Evidence"
+  ],
+  "priority": "Show the user decision before detail; preserve source order and explicit authority.",
+  "required_input": "Change target",
+  "rows": "individual target records",
+  "schema": "ai-sdlc-chat-contract/v1",
+  "secondary": [],
+  "skill": "ai-sdlc-change-set"
+}

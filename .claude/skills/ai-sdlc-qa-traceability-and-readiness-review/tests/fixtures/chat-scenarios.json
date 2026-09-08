@@ -1,0 +1,467 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared test id / suite entities; listed evidence satisfies this skill check.\nEvidence: traceability.md:9\n\nprimary: Blocker: None; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nactions: Owner: QA; Next action: Validate test suite with its owning workflow; Expected evidence: traceability.md:9.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-qa-traceability-and-readiness-review for payment-retry delivery: happy",
+      "required_facts": [
+        "traceability.md:9",
+        "AC-001",
+        "None"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "traceability.md:9",
+            "Next action": "Validate test suite with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "primary": [
+          {
+            "Blocker": "None",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared requirement id result; evidence supports the reported result.",
+          "Evidence": "traceability.md:9",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Partial test id / suite entities coverage; one dependency remains unverified.\nEvidence: traceability.md:9\n\nprimary: Blocker: None; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nprimary: Blocker: None [pending case]; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nactions: Owner: QA; Next action: Validate test suite with its owning workflow; Expected evidence: traceability.md:9.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-qa-traceability-and-readiness-review for payment-retry delivery: partial",
+      "required_facts": [
+        "traceability.md:9",
+        "AC-001",
+        "None"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "traceability.md:9",
+            "Next action": "Validate test suite with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "primary": [
+          {
+            "Blocker": "None",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Blocker": "None [pending case]",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "traceability.md:9",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited test id / suite entities review; source freshness must be confirmed.\nEvidence: traceability.md:9\n\nprimary: Blocker: None; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nactions: Owner: QA; Next action: Validate test suite with its owning workflow; Expected evidence: traceability.md:9.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-qa-traceability-and-readiness-review for payment-retry delivery: warning",
+      "required_facts": [
+        "traceability.md:9",
+        "AC-001",
+        "None"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "traceability.md:9",
+            "Next action": "Validate test suite with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "primary": [
+          {
+            "Blocker": "None",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Result has limited source freshness; confirm it before downstream use.",
+          "Evidence": "traceability.md:9",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Test suite is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Test suite: Test suite; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide test suite.\nactions: Owner: QA; Next action: Provide test suite; Expected evidence: Validated test suite.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-qa-traceability-and-readiness-review for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated test suite"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated test suite",
+            "Next action": "Provide test suite",
+            "Owner": "QA"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide test suite",
+            "Status": "BLOCKED",
+            "Test suite": "Test suite"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Test suite is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Test suite is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Test suite: Test suite; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide test suite.\nclarifications: Missing test suite: Test suite; Why required: Determines requirement id; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: QA; Next action: Provide test suite; Expected evidence: Validated test suite.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-qa-traceability-and-readiness-review for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated test suite"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated test suite",
+            "Next action": "Provide test suite",
+            "Owner": "QA"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing test suite": "Test suite",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines requirement id"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide test suite",
+            "Status": "BLOCKED",
+            "Test suite": "Test suite"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Test suite is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: 20 test id / suite entities rows; showing the first 8; full evidence linked.\nEvidence: traceability.md:9\n\nprimary: Blocker: None #1; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nprimary: Blocker: None #2; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nprimary: Blocker: None #3; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nprimary: Blocker: None #4; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nprimary: Blocker: None #5; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nprimary: Blocker: None #6; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nprimary: Blocker: None #7; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nprimary: Blocker: None #8; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nprimary: Blocker: None #9; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nprimary: Blocker: None #10; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nprimary: Blocker: None #11; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nprimary: Blocker: None #12; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nprimary: Blocker: None #13; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nprimary: Blocker: None #14; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nprimary: Blocker: None #15; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nprimary: Blocker: None #16; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nprimary: Blocker: None #17; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nprimary: Blocker: None #18; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nprimary: Blocker: None #19; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nprimary: Blocker: None #20; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nactions: Owner: QA; Next action: Validate test suite with its owning workflow; Expected evidence: traceability.md:9.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-qa-traceability-and-readiness-review for payment-retry delivery: large",
+      "required_facts": [
+        "traceability.md:9",
+        "AC-001",
+        "None #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "traceability.md:9",
+            "Next action": "Validate test suite with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Blocker": "None #1",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Blocker": "None #2",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Blocker": "None #3",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Blocker": "None #4",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Blocker": "None #5",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Blocker": "None #6",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Blocker": "None #7",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Blocker": "None #8",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Blocker": "None #9",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Blocker": "None #10",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Blocker": "None #11",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Blocker": "None #12",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Blocker": "None #13",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Blocker": "None #14",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Blocker": "None #15",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Blocker": "None #16",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Blocker": "None #17",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Blocker": "None #18",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Blocker": "None #19",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          },
+          {
+            "Blocker": "None #20",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 requirement id records; 8 shown; inspect the linked full artifact.",
+          "Evidence": "traceability.md:9",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: One requirement id result; scope and evidence are explicit.\nEvidence: traceability.md:9\n\nprimary: Blocker: None; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001; Suite: Regression; Test ID: TC-001.\nactions: Owner: QA; Next action: Validate test suite with its owning workflow; Expected evidence: traceability.md:9.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-qa-traceability-and-readiness-review for payment-retry delivery: small",
+      "required_facts": [
+        "traceability.md:9",
+        "AC-001",
+        "None"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "traceability.md:9",
+            "Next action": "Validate test suite with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "primary": [
+          {
+            "Blocker": "None",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One requirement id result; scope and evidence are explicit.",
+          "Evidence": "traceability.md:9",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared test id / suite entities; listed evidence satisfies this skill check.\nEvidence: traceability.md:9\n\nprimary: Blocker: None; Coverage status: PASS; Evidence: traceability.md:9; Requirement ID: AC-001 | перенос\nстроки; Suite: Regression; Test ID: TC-001.\nactions: Owner: QA; Next action: Validate test suite with its owning workflow; Expected evidence: traceability.md:9.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-qa-traceability-and-readiness-review for payment-retry delivery: edge",
+      "required_facts": [
+        "traceability.md:9",
+        "AC-001 | перенос\nстроки",
+        "None"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "traceability.md:9",
+            "Next action": "Validate test suite with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Blocker": "None",
+            "Coverage status": "PASS",
+            "Evidence": "traceability.md:9",
+            "Requirement ID": "AC-001 | перенос\nстроки",
+            "Suite": "Regression",
+            "Test ID": "TC-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared test id / suite entities; listed evidence satisfies this skill check.",
+          "Evidence": "traceability.md:9",
+          "Status": "PASS"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-qa-traceability-and-readiness-review"
+}

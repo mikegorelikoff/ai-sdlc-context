@@ -1,0 +1,37 @@
+{
+  "clarification": [
+    "Missing host capability",
+    "Why required",
+    "Known evidence",
+    "Options"
+  ],
+  "example": {
+    "Capability": "Read repository",
+    "Evidence": "adapter.toon:9",
+    "Fallback": "Direct read",
+    "Host mapping": "git diff",
+    "Operation": "inspect diff"
+  },
+  "failure": [
+    "Host capability",
+    "Status",
+    "Blocker",
+    "Evidence",
+    "Required action"
+  ],
+  "hide": "Secrets, raw logs, complete journals and unneeded internal tool steps. Keep full detail in the owning native artifact.",
+  "native_exception": "Keep machine artifacts, code, commands and diffs native; presentation does not replace validation.",
+  "primary": [
+    "Operation",
+    "Host mapping",
+    "Capability",
+    "Fallback",
+    "Evidence"
+  ],
+  "priority": "Show the user decision before detail; preserve source order and explicit authority.",
+  "required_input": "Host capability",
+  "rows": "individual operation records",
+  "schema": "ai-sdlc-chat-contract/v1",
+  "secondary": [],
+  "skill": "ai-sdlc-host-adapter"
+}

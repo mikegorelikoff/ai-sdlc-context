@@ -1,0 +1,42 @@
+{
+  "clarification": [
+    "Missing validated discovery",
+    "Why required",
+    "Known evidence",
+    "Options"
+  ],
+  "example": {
+    "Business evidence": "interview.md:12",
+    "Customer": "Operator",
+    "Open decision": "Retry window",
+    "Problem": "Manual duplicate refunds",
+    "Proposed outcome": "One charge per request key"
+  },
+  "failure": [
+    "Validated discovery",
+    "Status",
+    "Blocker",
+    "Evidence",
+    "Required action"
+  ],
+  "hide": "Secrets, raw logs, complete journals and unneeded internal tool steps. Keep full detail in the owning native artifact.",
+  "native_exception": "Keep machine artifacts, code, commands and diffs native; presentation does not replace validation.",
+  "primary": [
+    "Customer",
+    "Problem",
+    "Proposed outcome",
+    "Business evidence",
+    "Open decision"
+  ],
+  "priority": "Show the user decision before detail; preserve source order and explicit authority.",
+  "required_input": "Validated discovery",
+  "rows": "individual customer records",
+  "schema": "ai-sdlc-chat-contract/v1",
+  "secondary": [
+    "FAQ topic",
+    "Answer",
+    "Evidence",
+    "Unresolved choice"
+  ],
+  "skill": "ai-sdlc-prfaq-package-synthesis"
+}

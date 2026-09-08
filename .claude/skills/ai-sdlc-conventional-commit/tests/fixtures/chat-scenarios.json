@@ -1,0 +1,436 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared specification / task id entities; listed evidence satisfies this skill check.\nEvidence: commit-message.txt\n\nprimary: Evidence: commit-message.txt; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nactions: Owner: Engineer; Next action: Validate change summary with its owning workflow; Expected evidence: commit-message.txt.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-conventional-commit for payment-retry delivery: happy",
+      "required_facts": [
+        "commit-message.txt",
+        "fix(payments): deduplicate retries"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "commit-message.txt",
+            "Next action": "Validate change summary with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "commit-message.txt",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared subject result; evidence supports the reported result.",
+          "Evidence": "commit-message.txt",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Partial specification / task id entities coverage; one dependency remains unverified.\nEvidence: commit-message.txt\n\nprimary: Evidence: commit-message.txt; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nprimary: Evidence: commit-message.txt [pending case]; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nactions: Owner: Engineer; Next action: Validate change summary with its owning workflow; Expected evidence: commit-message.txt.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-conventional-commit for payment-retry delivery: partial",
+      "required_facts": [
+        "commit-message.txt",
+        "fix(payments): deduplicate retries"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "commit-message.txt",
+            "Next action": "Validate change summary with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "commit-message.txt",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          },
+          {
+            "Evidence": "commit-message.txt [pending case]",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "commit-message.txt",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited specification / task id entities review; source freshness must be confirmed.\nEvidence: commit-message.txt\n\nprimary: Evidence: commit-message.txt; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nactions: Owner: Engineer; Next action: Validate change summary with its owning workflow; Expected evidence: commit-message.txt.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-conventional-commit for payment-retry delivery: warning",
+      "required_facts": [
+        "commit-message.txt",
+        "fix(payments): deduplicate retries"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "commit-message.txt",
+            "Next action": "Validate change summary with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "commit-message.txt",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Result has limited source freshness; confirm it before downstream use.",
+          "Evidence": "commit-message.txt",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Change summary is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Change summary: Change summary; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide change summary.\nactions: Owner: Engineer; Next action: Provide change summary; Expected evidence: Validated change summary.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-conventional-commit for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated change summary"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated change summary",
+            "Next action": "Provide change summary",
+            "Owner": "Engineer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Change summary": "Change summary",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide change summary",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Change summary is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Change summary is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Change summary: Change summary; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide change summary.\nclarifications: Missing change summary: Change summary; Why required: Determines subject; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Engineer; Next action: Provide change summary; Expected evidence: Validated change summary.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-conventional-commit for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated change summary"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated change summary",
+            "Next action": "Provide change summary",
+            "Owner": "Engineer"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing change summary": "Change summary",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines subject"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Change summary": "Change summary",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide change summary",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Change summary is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: 20 specification / task id entities rows; showing the first 8; full evidence linked.\nEvidence: commit-message.txt\n\nprimary: Evidence: commit-message.txt #1; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nprimary: Evidence: commit-message.txt #2; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nprimary: Evidence: commit-message.txt #3; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nprimary: Evidence: commit-message.txt #4; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nprimary: Evidence: commit-message.txt #5; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nprimary: Evidence: commit-message.txt #6; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nprimary: Evidence: commit-message.txt #7; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nprimary: Evidence: commit-message.txt #8; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nprimary: Evidence: commit-message.txt #9; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nprimary: Evidence: commit-message.txt #10; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nprimary: Evidence: commit-message.txt #11; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nprimary: Evidence: commit-message.txt #12; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nprimary: Evidence: commit-message.txt #13; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nprimary: Evidence: commit-message.txt #14; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nprimary: Evidence: commit-message.txt #15; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nprimary: Evidence: commit-message.txt #16; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nprimary: Evidence: commit-message.txt #17; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nprimary: Evidence: commit-message.txt #18; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nprimary: Evidence: commit-message.txt #19; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nprimary: Evidence: commit-message.txt #20; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nactions: Owner: Engineer; Next action: Validate change summary with its owning workflow; Expected evidence: commit-message.txt.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-conventional-commit for payment-retry delivery: large",
+      "required_facts": [
+        "commit-message.txt",
+        "fix(payments): deduplicate retries",
+        "commit-message.txt #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "commit-message.txt",
+            "Next action": "Validate change summary with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Evidence": "commit-message.txt #1",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          },
+          {
+            "Evidence": "commit-message.txt #2",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          },
+          {
+            "Evidence": "commit-message.txt #3",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          },
+          {
+            "Evidence": "commit-message.txt #4",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          },
+          {
+            "Evidence": "commit-message.txt #5",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          },
+          {
+            "Evidence": "commit-message.txt #6",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          },
+          {
+            "Evidence": "commit-message.txt #7",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          },
+          {
+            "Evidence": "commit-message.txt #8",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          },
+          {
+            "Evidence": "commit-message.txt #9",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          },
+          {
+            "Evidence": "commit-message.txt #10",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          },
+          {
+            "Evidence": "commit-message.txt #11",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          },
+          {
+            "Evidence": "commit-message.txt #12",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          },
+          {
+            "Evidence": "commit-message.txt #13",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          },
+          {
+            "Evidence": "commit-message.txt #14",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          },
+          {
+            "Evidence": "commit-message.txt #15",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          },
+          {
+            "Evidence": "commit-message.txt #16",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          },
+          {
+            "Evidence": "commit-message.txt #17",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          },
+          {
+            "Evidence": "commit-message.txt #18",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          },
+          {
+            "Evidence": "commit-message.txt #19",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          },
+          {
+            "Evidence": "commit-message.txt #20",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 subject records; 8 shown; inspect the linked full artifact.",
+          "Evidence": "commit-message.txt",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: One subject result; scope and evidence are explicit.\nEvidence: commit-message.txt\n\nprimary: Evidence: commit-message.txt; Specification: specs/payments; Subject: fix(payments): deduplicate retries; Task ID: T001; Validation: PASS.\nactions: Owner: Engineer; Next action: Validate change summary with its owning workflow; Expected evidence: commit-message.txt.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-conventional-commit for payment-retry delivery: small",
+      "required_facts": [
+        "commit-message.txt",
+        "fix(payments): deduplicate retries"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "commit-message.txt",
+            "Next action": "Validate change summary with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "commit-message.txt",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One subject result; scope and evidence are explicit.",
+          "Evidence": "commit-message.txt",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared specification / task id entities; listed evidence satisfies this skill check.\nEvidence: commit-message.txt\n\nprimary: Evidence: commit-message.txt; Specification: specs/payments; Subject: fix(payments): deduplicate retries | перенос\nстроки; Task ID: T001; Validation: PASS.\nactions: Owner: Engineer; Next action: Validate change summary with its owning workflow; Expected evidence: commit-message.txt.\n\nfix(payments): preserve explicit zero\n\nSpec: specs/payments\nTask: T001\nValidation: 12 tests passed\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-conventional-commit for payment-retry delivery: edge",
+      "required_facts": [
+        "commit-message.txt",
+        "fix(payments): deduplicate retries | перенос\nстроки"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "commit-message.txt",
+            "Next action": "Validate change summary with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "native": [
+          {
+            "content": "fix(payments): preserve explicit zero\n\nSpec: specs/payments\nTask: T001\nValidation: 12 tests passed",
+            "language": "text"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "commit-message.txt",
+            "Specification": "specs/payments",
+            "Subject": "fix(payments): deduplicate retries | перенос\nстроки",
+            "Task ID": "T001",
+            "Validation": "PASS"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared specification / task id entities; listed evidence satisfies this skill check.",
+          "Evidence": "commit-message.txt",
+          "Status": "PASS"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-conventional-commit"
+}

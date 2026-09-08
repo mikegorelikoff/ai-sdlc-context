@@ -1,0 +1,449 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared disposition / reason entities; listed evidence satisfies this skill check.\nEvidence: validation.md:8\n\nprimary: Disposition: Include; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nactions: Owner: Maintainer; Next action: Validate commit scope with its owning workflow; Expected evidence: validation.md:8.\n\nsecondary: Commit: Confirm commit for payment retry; Branch: Confirm branch for payment retry; Task ID: Confirm task id for payment retry; Evidence: validation.md:8.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-commit-prep for payment-retry delivery: happy",
+      "required_facts": [
+        "validation.md:8",
+        "src/payments.py",
+        "Include"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "validation.md:8",
+            "Next action": "Validate commit scope with its owning workflow",
+            "Owner": "Maintainer"
+          }
+        ],
+        "primary": [
+          {
+            "Disposition": "Include",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared path group result; evidence supports the reported result.",
+          "Evidence": "validation.md:8",
+          "Status": "PASS"
+        },
+        "secondary": [
+          {
+            "Commit": "abc1234 (simulated)",
+            "Branch": "feature/payment-retry",
+            "Task ID": "T001",
+            "Evidence": "validation.md:8"
+          }
+        ]
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Partial disposition / reason entities coverage; one dependency remains unverified.\nEvidence: validation.md:8\n\nprimary: Disposition: Include; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nprimary: Disposition: Include [pending case]; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nactions: Owner: Maintainer; Next action: Validate commit scope with its owning workflow; Expected evidence: validation.md:8.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-commit-prep for payment-retry delivery: partial",
+      "required_facts": [
+        "validation.md:8",
+        "src/payments.py",
+        "Include"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "validation.md:8",
+            "Next action": "Validate commit scope with its owning workflow",
+            "Owner": "Maintainer"
+          }
+        ],
+        "primary": [
+          {
+            "Disposition": "Include",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          },
+          {
+            "Disposition": "Include [pending case]",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "validation.md:8",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited disposition / reason entities review; source freshness must be confirmed.\nEvidence: validation.md:8\n\nprimary: Disposition: Include; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nactions: Owner: Maintainer; Next action: Validate commit scope with its owning workflow; Expected evidence: validation.md:8.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-commit-prep for payment-retry delivery: warning",
+      "required_facts": [
+        "validation.md:8",
+        "src/payments.py",
+        "Include"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "validation.md:8",
+            "Next action": "Validate commit scope with its owning workflow",
+            "Owner": "Maintainer"
+          }
+        ],
+        "primary": [
+          {
+            "Disposition": "Include",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Result has limited source freshness; confirm it before downstream use.",
+          "Evidence": "validation.md:8",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Commit scope is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Commit scope: Commit scope; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide commit scope.\nactions: Owner: Maintainer; Next action: Provide commit scope; Expected evidence: Validated commit scope.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-commit-prep for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated commit scope"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated commit scope",
+            "Next action": "Provide commit scope",
+            "Owner": "Maintainer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Commit scope": "Commit scope",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide commit scope",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Commit scope is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Commit scope is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Commit scope: Commit scope; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide commit scope.\nclarifications: Missing commit scope: Commit scope; Why required: Determines path group; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Maintainer; Next action: Provide commit scope; Expected evidence: Validated commit scope.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-commit-prep for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated commit scope"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated commit scope",
+            "Next action": "Provide commit scope",
+            "Owner": "Maintainer"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing commit scope": "Commit scope",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines path group"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Commit scope": "Commit scope",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide commit scope",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Commit scope is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: 20 disposition / reason entities rows; showing the first 8; full evidence linked.\nEvidence: validation.md:8\n\nprimary: Disposition: Include #1; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nprimary: Disposition: Include #2; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nprimary: Disposition: Include #3; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nprimary: Disposition: Include #4; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nprimary: Disposition: Include #5; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nprimary: Disposition: Include #6; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nprimary: Disposition: Include #7; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nprimary: Disposition: Include #8; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nprimary: Disposition: Include #9; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nprimary: Disposition: Include #10; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nprimary: Disposition: Include #11; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nprimary: Disposition: Include #12; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nprimary: Disposition: Include #13; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nprimary: Disposition: Include #14; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nprimary: Disposition: Include #15; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nprimary: Disposition: Include #16; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nprimary: Disposition: Include #17; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nprimary: Disposition: Include #18; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nprimary: Disposition: Include #19; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nprimary: Disposition: Include #20; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nactions: Owner: Maintainer; Next action: Validate commit scope with its owning workflow; Expected evidence: validation.md:8.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-commit-prep for payment-retry delivery: large",
+      "required_facts": [
+        "validation.md:8",
+        "src/payments.py",
+        "Include #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "validation.md:8",
+            "Next action": "Validate commit scope with its owning workflow",
+            "Owner": "Maintainer"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Disposition": "Include #1",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          },
+          {
+            "Disposition": "Include #2",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          },
+          {
+            "Disposition": "Include #3",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          },
+          {
+            "Disposition": "Include #4",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          },
+          {
+            "Disposition": "Include #5",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          },
+          {
+            "Disposition": "Include #6",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          },
+          {
+            "Disposition": "Include #7",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          },
+          {
+            "Disposition": "Include #8",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          },
+          {
+            "Disposition": "Include #9",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          },
+          {
+            "Disposition": "Include #10",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          },
+          {
+            "Disposition": "Include #11",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          },
+          {
+            "Disposition": "Include #12",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          },
+          {
+            "Disposition": "Include #13",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          },
+          {
+            "Disposition": "Include #14",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          },
+          {
+            "Disposition": "Include #15",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          },
+          {
+            "Disposition": "Include #16",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          },
+          {
+            "Disposition": "Include #17",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          },
+          {
+            "Disposition": "Include #18",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          },
+          {
+            "Disposition": "Include #19",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          },
+          {
+            "Disposition": "Include #20",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 path group records; 8 shown; inspect the linked full artifact.",
+          "Evidence": "validation.md:8",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: One path group result; scope and evidence are explicit.\nEvidence: validation.md:8\n\nprimary: Disposition: Include; Evidence: validation.md:8; Path group: src/payments.py; Reason: Implements AC-001; Verification: PASS.\nactions: Owner: Maintainer; Next action: Validate commit scope with its owning workflow; Expected evidence: validation.md:8.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-commit-prep for payment-retry delivery: small",
+      "required_facts": [
+        "validation.md:8",
+        "src/payments.py",
+        "Include"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "validation.md:8",
+            "Next action": "Validate commit scope with its owning workflow",
+            "Owner": "Maintainer"
+          }
+        ],
+        "primary": [
+          {
+            "Disposition": "Include",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One path group result; scope and evidence are explicit.",
+          "Evidence": "validation.md:8",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared disposition / reason entities; listed evidence satisfies this skill check.\nEvidence: validation.md:8\n\nprimary: Disposition: Include; Evidence: validation.md:8; Path group: src/payments.py | перенос\nстроки; Reason: Implements AC-001; Verification: PASS.\nactions: Owner: Maintainer; Next action: Validate commit scope with its owning workflow; Expected evidence: validation.md:8.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-commit-prep for payment-retry delivery: edge",
+      "required_facts": [
+        "validation.md:8",
+        "src/payments.py | перенос\nстроки",
+        "Include"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "validation.md:8",
+            "Next action": "Validate commit scope with its owning workflow",
+            "Owner": "Maintainer"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Disposition": "Include",
+            "Evidence": "validation.md:8",
+            "Path group": "src/payments.py | перенос\nстроки",
+            "Reason": "Implements AC-001",
+            "Verification": "PASS"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared disposition / reason entities; listed evidence satisfies this skill check.",
+          "Evidence": "validation.md:8",
+          "Status": "PASS"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-commit-prep"
+}

@@ -1,0 +1,436 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: PENDING\nDecision: Prepared next skill / reason entities; owner decision or execution remains pending.\nEvidence: requirements.md:8\n\nprimary: Evidence: requirements.md:8; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nactions: Owner: Engineer; Next action: Validate requested feature with its owning workflow; Expected evidence: requirements.md:8.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-navigator for payment-retry delivery: happy",
+      "required_facts": [
+        "requirements.md:8",
+        "1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "requirements.md:8",
+            "Next action": "Validate requested feature with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "requirements.md:8",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared rank result; owner decision or execution remains pending.",
+          "Evidence": "requirements.md:8",
+          "Status": "PENDING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Partial next skill / reason entities coverage; one dependency remains unverified.\nEvidence: requirements.md:8\n\nprimary: Evidence: requirements.md:8; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nprimary: Evidence: requirements.md:8 [pending case]; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nactions: Owner: Engineer; Next action: Validate requested feature with its owning workflow; Expected evidence: requirements.md:8.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-navigator for payment-retry delivery: partial",
+      "required_facts": [
+        "requirements.md:8",
+        "1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "requirements.md:8",
+            "Next action": "Validate requested feature with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "requirements.md:8",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          },
+          {
+            "Evidence": "requirements.md:8 [pending case]",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "requirements.md:8",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited next skill / reason entities review; source freshness must be confirmed.\nEvidence: requirements.md:8\n\nprimary: Evidence: requirements.md:8; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nactions: Owner: Engineer; Next action: Validate requested feature with its owning workflow; Expected evidence: requirements.md:8.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-navigator for payment-retry delivery: warning",
+      "required_facts": [
+        "requirements.md:8",
+        "1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "requirements.md:8",
+            "Next action": "Validate requested feature with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "requirements.md:8",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Result has limited source freshness; confirm it before downstream use.",
+          "Evidence": "requirements.md:8",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Requested feature is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Requested feature: Requested feature; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide requested feature.\nactions: Owner: Engineer; Next action: Provide requested feature; Expected evidence: Validated requested feature.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-navigator for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated requested feature"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated requested feature",
+            "Next action": "Provide requested feature",
+            "Owner": "Engineer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Requested feature": "Requested feature",
+            "Required action": "Provide requested feature",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Requested feature is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Requested feature is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Requested feature: Requested feature; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide requested feature.\nclarifications: Missing requested feature: Requested feature; Why required: Determines rank; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Engineer; Next action: Provide requested feature; Expected evidence: Validated requested feature.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-navigator for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated requested feature"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated requested feature",
+            "Next action": "Provide requested feature",
+            "Owner": "Engineer"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing requested feature": "Requested feature",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines rank"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Requested feature": "Requested feature",
+            "Required action": "Provide requested feature",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Requested feature is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PENDING\nDecision: 20 next skill / reason entities rows; showing the first 8; full evidence linked.\nEvidence: requirements.md:8\n\nprimary: Evidence: requirements.md:8 #1; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nprimary: Evidence: requirements.md:8 #2; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nprimary: Evidence: requirements.md:8 #3; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nprimary: Evidence: requirements.md:8 #4; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nprimary: Evidence: requirements.md:8 #5; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nprimary: Evidence: requirements.md:8 #6; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nprimary: Evidence: requirements.md:8 #7; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nprimary: Evidence: requirements.md:8 #8; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nprimary: Evidence: requirements.md:8 #9; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nprimary: Evidence: requirements.md:8 #10; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nprimary: Evidence: requirements.md:8 #11; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nprimary: Evidence: requirements.md:8 #12; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nprimary: Evidence: requirements.md:8 #13; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nprimary: Evidence: requirements.md:8 #14; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nprimary: Evidence: requirements.md:8 #15; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nprimary: Evidence: requirements.md:8 #16; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nprimary: Evidence: requirements.md:8 #17; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nprimary: Evidence: requirements.md:8 #18; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nprimary: Evidence: requirements.md:8 #19; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nprimary: Evidence: requirements.md:8 #20; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nactions: Owner: Engineer; Next action: Validate requested feature with its owning workflow; Expected evidence: requirements.md:8.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-navigator for payment-retry delivery: large",
+      "required_facts": [
+        "requirements.md:8",
+        "1",
+        "requirements.md:8 #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "requirements.md:8",
+            "Next action": "Validate requested feature with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Evidence": "requirements.md:8 #1",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          },
+          {
+            "Evidence": "requirements.md:8 #2",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          },
+          {
+            "Evidence": "requirements.md:8 #3",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          },
+          {
+            "Evidence": "requirements.md:8 #4",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          },
+          {
+            "Evidence": "requirements.md:8 #5",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          },
+          {
+            "Evidence": "requirements.md:8 #6",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          },
+          {
+            "Evidence": "requirements.md:8 #7",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          },
+          {
+            "Evidence": "requirements.md:8 #8",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          },
+          {
+            "Evidence": "requirements.md:8 #9",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          },
+          {
+            "Evidence": "requirements.md:8 #10",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          },
+          {
+            "Evidence": "requirements.md:8 #11",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          },
+          {
+            "Evidence": "requirements.md:8 #12",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          },
+          {
+            "Evidence": "requirements.md:8 #13",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          },
+          {
+            "Evidence": "requirements.md:8 #14",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          },
+          {
+            "Evidence": "requirements.md:8 #15",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          },
+          {
+            "Evidence": "requirements.md:8 #16",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          },
+          {
+            "Evidence": "requirements.md:8 #17",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          },
+          {
+            "Evidence": "requirements.md:8 #18",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          },
+          {
+            "Evidence": "requirements.md:8 #19",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          },
+          {
+            "Evidence": "requirements.md:8 #20",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 rank records; 8 shown; inspect the linked full artifact.",
+          "Evidence": "requirements.md:8",
+          "Status": "PENDING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PENDING\nDecision: One rank result; scope and evidence are explicit.\nEvidence: requirements.md:8\n\nprimary: Evidence: requirements.md:8; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1; Reason: Approved scope needs design.\nactions: Owner: Engineer; Next action: Validate requested feature with its owning workflow; Expected evidence: requirements.md:8.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-navigator for payment-retry delivery: small",
+      "required_facts": [
+        "requirements.md:8",
+        "1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "requirements.md:8",
+            "Next action": "Validate requested feature with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "requirements.md:8",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1",
+            "Reason": "Approved scope needs design"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One rank result; scope and evidence are explicit.",
+          "Evidence": "requirements.md:8",
+          "Status": "PENDING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PENDING\nDecision: Prepared next skill / reason entities; owner decision or execution remains pending.\nEvidence: requirements.md:8\n\nprimary: Evidence: requirements.md:8; Expected artifact: design.md; Next skill: ai-sdlc-sdd; Rank: 1 | перенос\nстроки; Reason: Approved scope needs design.\nactions: Owner: Engineer; Next action: Validate requested feature with its owning workflow; Expected evidence: requirements.md:8.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-navigator for payment-retry delivery: edge",
+      "required_facts": [
+        "requirements.md:8",
+        "1 | перенос\nстроки"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "requirements.md:8",
+            "Next action": "Validate requested feature with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "requirements.md:8",
+            "Expected artifact": "design.md",
+            "Next skill": "ai-sdlc-sdd",
+            "Rank": "1 | перенос\nстроки",
+            "Reason": "Approved scope needs design"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared next skill / reason entities; owner decision or execution remains pending.",
+          "Evidence": "requirements.md:8",
+          "Status": "PENDING"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-navigator"
+}

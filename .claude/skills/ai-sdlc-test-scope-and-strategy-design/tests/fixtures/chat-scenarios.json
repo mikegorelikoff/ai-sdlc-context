@@ -1,0 +1,435 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared risk / test approach entities; listed evidence satisfies this skill check.\nEvidence: fixture.toon:1\n\nprimary: Coverage target: Payment replay; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nactions: Owner: QA; Next action: Validate testable scope with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-test-scope-and-strategy-design for payment-retry delivery: happy",
+      "required_facts": [
+        "fixture.toon:1",
+        "Payment replay"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate testable scope with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "primary": [
+          {
+            "Coverage target": "Payment replay",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared coverage target result; evidence supports the reported result.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Partial risk / test approach entities coverage; one dependency remains unverified.\nEvidence: fixture.toon:1\n\nprimary: Coverage target: Payment replay; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nprimary: Coverage target: Payment replay [pending case]; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nactions: Owner: QA; Next action: Validate testable scope with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-test-scope-and-strategy-design for payment-retry delivery: partial",
+      "required_facts": [
+        "fixture.toon:1",
+        "Payment replay"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate testable scope with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "primary": [
+          {
+            "Coverage target": "Payment replay",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          },
+          {
+            "Coverage target": "Payment replay [pending case]",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "fixture.toon:1",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited risk / test approach entities review; source freshness must be confirmed.\nEvidence: fixture.toon:1\n\nprimary: Coverage target: Payment replay; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nactions: Owner: QA; Next action: Validate testable scope with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-test-scope-and-strategy-design for payment-retry delivery: warning",
+      "required_facts": [
+        "fixture.toon:1",
+        "Payment replay"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate testable scope with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "primary": [
+          {
+            "Coverage target": "Payment replay",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Result has limited source freshness; confirm it before downstream use.",
+          "Evidence": "fixture.toon:1",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Testable scope is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Testable scope: Testable scope; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide testable scope.\nactions: Owner: QA; Next action: Provide testable scope; Expected evidence: Validated testable scope.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-test-scope-and-strategy-design for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated testable scope"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated testable scope",
+            "Next action": "Provide testable scope",
+            "Owner": "QA"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide testable scope",
+            "Status": "BLOCKED",
+            "Testable scope": "Testable scope"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Testable scope is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Testable scope is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Testable scope: Testable scope; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide testable scope.\nclarifications: Missing testable scope: Testable scope; Why required: Determines coverage target; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: QA; Next action: Provide testable scope; Expected evidence: Validated testable scope.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-test-scope-and-strategy-design for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated testable scope"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated testable scope",
+            "Next action": "Provide testable scope",
+            "Owner": "QA"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing testable scope": "Testable scope",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines coverage target"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide testable scope",
+            "Status": "BLOCKED",
+            "Testable scope": "Testable scope"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Testable scope is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: 20 risk / test approach entities rows; showing the first 8; full evidence linked.\nEvidence: fixture.toon:1\n\nprimary: Coverage target: Payment replay #1; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nprimary: Coverage target: Payment replay #2; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nprimary: Coverage target: Payment replay #3; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nprimary: Coverage target: Payment replay #4; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nprimary: Coverage target: Payment replay #5; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nprimary: Coverage target: Payment replay #6; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nprimary: Coverage target: Payment replay #7; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nprimary: Coverage target: Payment replay #8; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nprimary: Coverage target: Payment replay #9; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nprimary: Coverage target: Payment replay #10; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nprimary: Coverage target: Payment replay #11; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nprimary: Coverage target: Payment replay #12; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nprimary: Coverage target: Payment replay #13; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nprimary: Coverage target: Payment replay #14; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nprimary: Coverage target: Payment replay #15; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nprimary: Coverage target: Payment replay #16; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nprimary: Coverage target: Payment replay #17; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nprimary: Coverage target: Payment replay #18; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nprimary: Coverage target: Payment replay #19; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nprimary: Coverage target: Payment replay #20; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nactions: Owner: QA; Next action: Validate testable scope with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-test-scope-and-strategy-design for payment-retry delivery: large",
+      "required_facts": [
+        "fixture.toon:1",
+        "Payment replay #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate testable scope with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Coverage target": "Payment replay #1",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          },
+          {
+            "Coverage target": "Payment replay #2",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          },
+          {
+            "Coverage target": "Payment replay #3",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          },
+          {
+            "Coverage target": "Payment replay #4",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          },
+          {
+            "Coverage target": "Payment replay #5",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          },
+          {
+            "Coverage target": "Payment replay #6",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          },
+          {
+            "Coverage target": "Payment replay #7",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          },
+          {
+            "Coverage target": "Payment replay #8",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          },
+          {
+            "Coverage target": "Payment replay #9",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          },
+          {
+            "Coverage target": "Payment replay #10",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          },
+          {
+            "Coverage target": "Payment replay #11",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          },
+          {
+            "Coverage target": "Payment replay #12",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          },
+          {
+            "Coverage target": "Payment replay #13",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          },
+          {
+            "Coverage target": "Payment replay #14",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          },
+          {
+            "Coverage target": "Payment replay #15",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          },
+          {
+            "Coverage target": "Payment replay #16",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          },
+          {
+            "Coverage target": "Payment replay #17",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          },
+          {
+            "Coverage target": "Payment replay #18",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          },
+          {
+            "Coverage target": "Payment replay #19",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          },
+          {
+            "Coverage target": "Payment replay #20",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 coverage target records; 8 shown; inspect the linked full artifact.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: One coverage target result; scope and evidence are explicit.\nEvidence: fixture.toon:1\n\nprimary: Coverage target: Payment replay; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nactions: Owner: QA; Next action: Validate testable scope with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-test-scope-and-strategy-design for payment-retry delivery: small",
+      "required_facts": [
+        "fixture.toon:1",
+        "Payment replay"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate testable scope with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "primary": [
+          {
+            "Coverage target": "Payment replay",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One coverage target result; scope and evidence are explicit.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared risk / test approach entities; listed evidence satisfies this skill check.\nEvidence: fixture.toon:1\n\nprimary: Coverage target: Payment replay | перенос\nстроки; Data / environment: Seeded ledger; Exit criterion: TC-001 passes; Risk: Duplicate debit; Test approach: Service regression.\nactions: Owner: QA; Next action: Validate testable scope with its owning workflow; Expected evidence: fixture.toon:1.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-test-scope-and-strategy-design for payment-retry delivery: edge",
+      "required_facts": [
+        "fixture.toon:1",
+        "Payment replay | перенос\nстроки"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate testable scope with its owning workflow",
+            "Owner": "QA"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Coverage target": "Payment replay | перенос\nстроки",
+            "Data / environment": "Seeded ledger",
+            "Exit criterion": "TC-001 passes",
+            "Risk": "Duplicate debit",
+            "Test approach": "Service regression"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared risk / test approach entities; listed evidence satisfies this skill check.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PASS"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-test-scope-and-strategy-design"
+}

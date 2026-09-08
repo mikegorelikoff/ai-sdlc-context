@@ -1,0 +1,37 @@
+{
+  "clarification": [
+    "Missing workflow rule",
+    "Why required",
+    "Known evidence",
+    "Options"
+  ],
+  "example": {
+    "Delivery impact": "Stories remain ambiguous",
+    "Evidence": "brd.md:16",
+    "Missing rule": "Duplicate callback behavior",
+    "Required action": "Define replay outcome",
+    "Workflow": "Retry settlement"
+  },
+  "failure": [
+    "Workflow rule",
+    "Status",
+    "Blocker",
+    "Evidence",
+    "Required action"
+  ],
+  "hide": "Secrets, raw logs, complete journals and unneeded internal tool steps. Keep full detail in the owning native artifact.",
+  "native_exception": "Keep machine artifacts, code, commands and diffs native; presentation does not replace validation.",
+  "primary": [
+    "Workflow",
+    "Missing rule",
+    "Delivery impact",
+    "Evidence",
+    "Required action"
+  ],
+  "priority": "Show unresolved blockers before nonblocking findings; a completed review is not delivery approval.",
+  "required_input": "Workflow rule",
+  "rows": "individual workflow records",
+  "schema": "ai-sdlc-chat-contract/v1",
+  "secondary": [],
+  "skill": "ai-sdlc-delivery-package-gap-review"
+}

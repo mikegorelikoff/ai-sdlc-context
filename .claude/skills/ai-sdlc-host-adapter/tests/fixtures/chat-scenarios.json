@@ -1,0 +1,441 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared host mapping / capability entities; listed evidence satisfies this skill check.\nEvidence: adapter.toon:9\n\nprimary: Capability: Read repository; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nactions: Owner: Engineer; Next action: Validate host capability with its owning workflow; Expected evidence: adapter.toon:9.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-host-adapter for payment-retry delivery: happy",
+      "required_facts": [
+        "adapter.toon:9",
+        "inspect diff",
+        "Read repository"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "adapter.toon:9",
+            "Next action": "Validate host capability with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Capability": "Read repository",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared operation result; evidence supports the reported result.",
+          "Evidence": "adapter.toon:9",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Partial host mapping / capability entities coverage; one dependency remains unverified.\nEvidence: adapter.toon:9\n\nprimary: Capability: Read repository; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nprimary: Capability: Read repository [pending case]; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nactions: Owner: Engineer; Next action: Validate host capability with its owning workflow; Expected evidence: adapter.toon:9.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-host-adapter for payment-retry delivery: partial",
+      "required_facts": [
+        "adapter.toon:9",
+        "inspect diff",
+        "Read repository"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "adapter.toon:9",
+            "Next action": "Validate host capability with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Capability": "Read repository",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          },
+          {
+            "Capability": "Read repository [pending case]",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "adapter.toon:9",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited host mapping / capability entities review; source freshness must be confirmed.\nEvidence: adapter.toon:9\n\nprimary: Capability: Read repository; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nactions: Owner: Engineer; Next action: Validate host capability with its owning workflow; Expected evidence: adapter.toon:9.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-host-adapter for payment-retry delivery: warning",
+      "required_facts": [
+        "adapter.toon:9",
+        "inspect diff",
+        "Read repository"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "adapter.toon:9",
+            "Next action": "Validate host capability with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Capability": "Read repository",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Result has limited source freshness; confirm it before downstream use.",
+          "Evidence": "adapter.toon:9",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Host capability is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Host capability: Host capability; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide host capability.\nactions: Owner: Engineer; Next action: Provide host capability; Expected evidence: Validated host capability.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-host-adapter for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated host capability"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated host capability",
+            "Next action": "Provide host capability",
+            "Owner": "Engineer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Host capability": "Host capability",
+            "Required action": "Provide host capability",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Host capability is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Host capability is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Host capability: Host capability; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide host capability.\nclarifications: Missing host capability: Host capability; Why required: Determines operation; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Engineer; Next action: Provide host capability; Expected evidence: Validated host capability.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-host-adapter for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated host capability"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated host capability",
+            "Next action": "Provide host capability",
+            "Owner": "Engineer"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing host capability": "Host capability",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines operation"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Host capability": "Host capability",
+            "Required action": "Provide host capability",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Host capability is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: 20 host mapping / capability entities rows; showing the first 8; full evidence linked.\nEvidence: adapter.toon:9\n\nprimary: Capability: Read repository #1; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nprimary: Capability: Read repository #2; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nprimary: Capability: Read repository #3; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nprimary: Capability: Read repository #4; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nprimary: Capability: Read repository #5; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nprimary: Capability: Read repository #6; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nprimary: Capability: Read repository #7; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nprimary: Capability: Read repository #8; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nprimary: Capability: Read repository #9; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nprimary: Capability: Read repository #10; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nprimary: Capability: Read repository #11; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nprimary: Capability: Read repository #12; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nprimary: Capability: Read repository #13; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nprimary: Capability: Read repository #14; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nprimary: Capability: Read repository #15; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nprimary: Capability: Read repository #16; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nprimary: Capability: Read repository #17; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nprimary: Capability: Read repository #18; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nprimary: Capability: Read repository #19; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nprimary: Capability: Read repository #20; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nactions: Owner: Engineer; Next action: Validate host capability with its owning workflow; Expected evidence: adapter.toon:9.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-host-adapter for payment-retry delivery: large",
+      "required_facts": [
+        "adapter.toon:9",
+        "inspect diff",
+        "Read repository #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "adapter.toon:9",
+            "Next action": "Validate host capability with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Capability": "Read repository #1",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          },
+          {
+            "Capability": "Read repository #2",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          },
+          {
+            "Capability": "Read repository #3",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          },
+          {
+            "Capability": "Read repository #4",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          },
+          {
+            "Capability": "Read repository #5",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          },
+          {
+            "Capability": "Read repository #6",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          },
+          {
+            "Capability": "Read repository #7",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          },
+          {
+            "Capability": "Read repository #8",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          },
+          {
+            "Capability": "Read repository #9",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          },
+          {
+            "Capability": "Read repository #10",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          },
+          {
+            "Capability": "Read repository #11",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          },
+          {
+            "Capability": "Read repository #12",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          },
+          {
+            "Capability": "Read repository #13",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          },
+          {
+            "Capability": "Read repository #14",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          },
+          {
+            "Capability": "Read repository #15",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          },
+          {
+            "Capability": "Read repository #16",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          },
+          {
+            "Capability": "Read repository #17",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          },
+          {
+            "Capability": "Read repository #18",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          },
+          {
+            "Capability": "Read repository #19",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          },
+          {
+            "Capability": "Read repository #20",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 operation records; 8 shown; inspect the linked full artifact.",
+          "Evidence": "adapter.toon:9",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: One operation result; scope and evidence are explicit.\nEvidence: adapter.toon:9\n\nprimary: Capability: Read repository; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff.\nactions: Owner: Engineer; Next action: Validate host capability with its owning workflow; Expected evidence: adapter.toon:9.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-host-adapter for payment-retry delivery: small",
+      "required_facts": [
+        "adapter.toon:9",
+        "inspect diff",
+        "Read repository"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "adapter.toon:9",
+            "Next action": "Validate host capability with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Capability": "Read repository",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One operation result; scope and evidence are explicit.",
+          "Evidence": "adapter.toon:9",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared host mapping / capability entities; listed evidence satisfies this skill check.\nEvidence: adapter.toon:9\n\nprimary: Capability: Read repository; Evidence: adapter.toon:9; Fallback: Direct read; Host mapping: git diff; Operation: inspect diff | перенос\nстроки.\nactions: Owner: Engineer; Next action: Validate host capability with its owning workflow; Expected evidence: adapter.toon:9.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-host-adapter for payment-retry delivery: edge",
+      "required_facts": [
+        "adapter.toon:9",
+        "inspect diff | перенос\nстроки",
+        "Read repository"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "adapter.toon:9",
+            "Next action": "Validate host capability with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Capability": "Read repository",
+            "Evidence": "adapter.toon:9",
+            "Fallback": "Direct read",
+            "Host mapping": "git diff",
+            "Operation": "inspect diff | перенос\nстроки"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared host mapping / capability entities; listed evidence satisfies this skill check.",
+          "Evidence": "adapter.toon:9",
+          "Status": "PASS"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-host-adapter"
+}

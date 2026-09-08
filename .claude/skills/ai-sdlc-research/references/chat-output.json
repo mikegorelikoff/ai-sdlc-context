@@ -1,0 +1,37 @@
+{
+  "clarification": [
+    "Missing research question",
+    "Why required",
+    "Known evidence",
+    "Options"
+  ],
+  "example": {
+    "Confidence": "High",
+    "Evidence": "schema.sql:18",
+    "Finding": "Unique key already stored",
+    "Limitation": "Retention window unknown",
+    "Question": "Can ledger deduplicate retries?"
+  },
+  "failure": [
+    "Research question",
+    "Status",
+    "Blocker",
+    "Evidence",
+    "Required action"
+  ],
+  "hide": "Secrets, raw logs, complete journals and unneeded internal tool steps. Keep full detail in the owning native artifact.",
+  "native_exception": "Keep machine artifacts, code, commands and diffs native; presentation does not replace validation.",
+  "primary": [
+    "Question",
+    "Finding",
+    "Confidence",
+    "Limitation",
+    "Evidence"
+  ],
+  "priority": "Show the user decision before detail; preserve source order and explicit authority.",
+  "required_input": "Research question",
+  "rows": "individual question records",
+  "schema": "ai-sdlc-chat-contract/v1",
+  "secondary": [],
+  "skill": "ai-sdlc-research"
+}

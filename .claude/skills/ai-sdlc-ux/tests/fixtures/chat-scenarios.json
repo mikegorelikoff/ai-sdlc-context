@@ -1,0 +1,467 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared actor / behavior entities; listed evidence satisfies this skill check.\nEvidence: wireframe.md:18\n\nprimary: Acceptance: AC-002; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nactions: Owner: Engineer; Next action: Validate journey actor with its owning workflow; Expected evidence: wireframe.md:18.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-ux for payment-retry delivery: happy",
+      "required_facts": [
+        "wireframe.md:18",
+        "Payment timeout",
+        "AC-002"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "wireframe.md:18",
+            "Next action": "Validate journey actor with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Acceptance": "AC-002",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared journey / state result; evidence supports the reported result.",
+          "Evidence": "wireframe.md:18",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Partial actor / behavior entities coverage; one dependency remains unverified.\nEvidence: wireframe.md:18\n\nprimary: Acceptance: AC-002; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nprimary: Acceptance: AC-002 [pending case]; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nactions: Owner: Engineer; Next action: Validate journey actor with its owning workflow; Expected evidence: wireframe.md:18.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-ux for payment-retry delivery: partial",
+      "required_facts": [
+        "wireframe.md:18",
+        "Payment timeout",
+        "AC-002"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "wireframe.md:18",
+            "Next action": "Validate journey actor with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Acceptance": "AC-002",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          },
+          {
+            "Acceptance": "AC-002 [pending case]",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "wireframe.md:18",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited actor / behavior entities review; source freshness must be confirmed.\nEvidence: wireframe.md:18\n\nprimary: Acceptance: AC-002; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nactions: Owner: Engineer; Next action: Validate journey actor with its owning workflow; Expected evidence: wireframe.md:18.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-ux for payment-retry delivery: warning",
+      "required_facts": [
+        "wireframe.md:18",
+        "Payment timeout",
+        "AC-002"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "wireframe.md:18",
+            "Next action": "Validate journey actor with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Acceptance": "AC-002",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Result has limited source freshness; confirm it before downstream use.",
+          "Evidence": "wireframe.md:18",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Journey actor is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Journey actor: Journey actor; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide journey actor.\nactions: Owner: Engineer; Next action: Provide journey actor; Expected evidence: Validated journey actor.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-ux for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated journey actor"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated journey actor",
+            "Next action": "Provide journey actor",
+            "Owner": "Engineer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Journey actor": "Journey actor",
+            "Required action": "Provide journey actor",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Journey actor is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Journey actor is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Journey actor: Journey actor; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide journey actor.\nclarifications: Missing journey actor: Journey actor; Why required: Determines journey / state; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Engineer; Next action: Provide journey actor; Expected evidence: Validated journey actor.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-ux for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated journey actor"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated journey actor",
+            "Next action": "Provide journey actor",
+            "Owner": "Engineer"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing journey actor": "Journey actor",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines journey / state"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Journey actor": "Journey actor",
+            "Required action": "Provide journey actor",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Journey actor is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: 20 actor / behavior entities rows; showing the first 8; full evidence linked.\nEvidence: wireframe.md:18\n\nprimary: Acceptance: AC-002 #1; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nprimary: Acceptance: AC-002 #2; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nprimary: Acceptance: AC-002 #3; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nprimary: Acceptance: AC-002 #4; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nprimary: Acceptance: AC-002 #5; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nprimary: Acceptance: AC-002 #6; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nprimary: Acceptance: AC-002 #7; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nprimary: Acceptance: AC-002 #8; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nprimary: Acceptance: AC-002 #9; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nprimary: Acceptance: AC-002 #10; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nprimary: Acceptance: AC-002 #11; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nprimary: Acceptance: AC-002 #12; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nprimary: Acceptance: AC-002 #13; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nprimary: Acceptance: AC-002 #14; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nprimary: Acceptance: AC-002 #15; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nprimary: Acceptance: AC-002 #16; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nprimary: Acceptance: AC-002 #17; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nprimary: Acceptance: AC-002 #18; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nprimary: Acceptance: AC-002 #19; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nprimary: Acceptance: AC-002 #20; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nactions: Owner: Engineer; Next action: Validate journey actor with its owning workflow; Expected evidence: wireframe.md:18.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-ux for payment-retry delivery: large",
+      "required_facts": [
+        "wireframe.md:18",
+        "Payment timeout",
+        "AC-002 #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "wireframe.md:18",
+            "Next action": "Validate journey actor with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Acceptance": "AC-002 #1",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          },
+          {
+            "Acceptance": "AC-002 #2",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          },
+          {
+            "Acceptance": "AC-002 #3",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          },
+          {
+            "Acceptance": "AC-002 #4",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          },
+          {
+            "Acceptance": "AC-002 #5",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          },
+          {
+            "Acceptance": "AC-002 #6",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          },
+          {
+            "Acceptance": "AC-002 #7",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          },
+          {
+            "Acceptance": "AC-002 #8",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          },
+          {
+            "Acceptance": "AC-002 #9",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          },
+          {
+            "Acceptance": "AC-002 #10",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          },
+          {
+            "Acceptance": "AC-002 #11",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          },
+          {
+            "Acceptance": "AC-002 #12",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          },
+          {
+            "Acceptance": "AC-002 #13",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          },
+          {
+            "Acceptance": "AC-002 #14",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          },
+          {
+            "Acceptance": "AC-002 #15",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          },
+          {
+            "Acceptance": "AC-002 #16",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          },
+          {
+            "Acceptance": "AC-002 #17",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          },
+          {
+            "Acceptance": "AC-002 #18",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          },
+          {
+            "Acceptance": "AC-002 #19",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          },
+          {
+            "Acceptance": "AC-002 #20",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 journey / state records; 8 shown; inspect the linked full artifact.",
+          "Evidence": "wireframe.md:18",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: One journey / state result; scope and evidence are explicit.\nEvidence: wireframe.md:18\n\nprimary: Acceptance: AC-002; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout; Recovery: Retry with same key.\nactions: Owner: Engineer; Next action: Validate journey actor with its owning workflow; Expected evidence: wireframe.md:18.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-ux for payment-retry delivery: small",
+      "required_facts": [
+        "wireframe.md:18",
+        "Payment timeout",
+        "AC-002"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "wireframe.md:18",
+            "Next action": "Validate journey actor with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Acceptance": "AC-002",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout",
+            "Recovery": "Retry with same key"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One journey / state result; scope and evidence are explicit.",
+          "Evidence": "wireframe.md:18",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared actor / behavior entities; listed evidence satisfies this skill check.\nEvidence: wireframe.md:18\n\nprimary: Acceptance: AC-002; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout | перенос\nстроки; Recovery: Retry with same key.\nactions: Owner: Engineer; Next action: Validate journey actor with its owning workflow; Expected evidence: wireframe.md:18.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-ux for payment-retry delivery: edge",
+      "required_facts": [
+        "wireframe.md:18",
+        "Payment timeout | перенос\nстроки",
+        "AC-002"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "wireframe.md:18",
+            "Next action": "Validate journey actor with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Acceptance": "AC-002",
+            "Actor": "Operator",
+            "Behavior": "Show pending charge",
+            "Evidence": "wireframe.md:18",
+            "Journey / state": "Payment timeout | перенос\nстроки",
+            "Recovery": "Retry with same key"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared actor / behavior entities; listed evidence satisfies this skill check.",
+          "Evidence": "wireframe.md:18",
+          "Status": "PASS"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-ux"
+}

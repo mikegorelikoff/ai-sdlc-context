@@ -1,0 +1,441 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: PENDING\nDecision: Prepared state / attempts entities; owner decision or execution remains pending.\nEvidence: state.toon:15\n\nprimary: Attempts: 0 / 2; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nactions: Owner: Maintainer; Next action: Validate run identity with its owning workflow; Expected evidence: state.toon:15.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-runtime for payment-retry delivery: happy",
+      "required_facts": [
+        "state.toon:15",
+        "T001",
+        "0 / 2"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "state.toon:15",
+            "Next action": "Validate run identity with its owning workflow",
+            "Owner": "Maintainer"
+          }
+        ],
+        "primary": [
+          {
+            "Attempts": "0 / 2",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared task id result; owner decision or execution remains pending.",
+          "Evidence": "state.toon:15",
+          "Status": "PENDING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Partial state / attempts entities coverage; one dependency remains unverified.\nEvidence: state.toon:15\n\nprimary: Attempts: 0 / 2; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nprimary: Attempts: 0 / 2 [pending case]; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nactions: Owner: Maintainer; Next action: Validate run identity with its owning workflow; Expected evidence: state.toon:15.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-runtime for payment-retry delivery: partial",
+      "required_facts": [
+        "state.toon:15",
+        "T001",
+        "0 / 2"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "state.toon:15",
+            "Next action": "Validate run identity with its owning workflow",
+            "Owner": "Maintainer"
+          }
+        ],
+        "primary": [
+          {
+            "Attempts": "0 / 2",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          },
+          {
+            "Attempts": "0 / 2 [pending case]",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "state.toon:15",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited state / attempts entities review; source freshness must be confirmed.\nEvidence: state.toon:15\n\nprimary: Attempts: 0 / 2; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nactions: Owner: Maintainer; Next action: Validate run identity with its owning workflow; Expected evidence: state.toon:15.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-runtime for payment-retry delivery: warning",
+      "required_facts": [
+        "state.toon:15",
+        "T001",
+        "0 / 2"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "state.toon:15",
+            "Next action": "Validate run identity with its owning workflow",
+            "Owner": "Maintainer"
+          }
+        ],
+        "primary": [
+          {
+            "Attempts": "0 / 2",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Result has limited source freshness; confirm it before downstream use.",
+          "Evidence": "state.toon:15",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Run identity is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Run identity: Run identity; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide run identity.\nactions: Owner: Maintainer; Next action: Provide run identity; Expected evidence: Validated run identity.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-runtime for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated run identity"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated run identity",
+            "Next action": "Provide run identity",
+            "Owner": "Maintainer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide run identity",
+            "Run identity": "Run identity",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Run identity is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Run identity is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Run identity: Run identity; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide run identity.\nclarifications: Missing run identity: Run identity; Why required: Determines task id; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Maintainer; Next action: Provide run identity; Expected evidence: Validated run identity.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-runtime for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated run identity"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated run identity",
+            "Next action": "Provide run identity",
+            "Owner": "Maintainer"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing run identity": "Run identity",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines task id"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide run identity",
+            "Run identity": "Run identity",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Run identity is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PENDING\nDecision: 20 state / attempts entities rows; showing the first 8; full evidence linked.\nEvidence: state.toon:15\n\nprimary: Attempts: 0 / 2 #1; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nprimary: Attempts: 0 / 2 #2; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nprimary: Attempts: 0 / 2 #3; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nprimary: Attempts: 0 / 2 #4; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nprimary: Attempts: 0 / 2 #5; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nprimary: Attempts: 0 / 2 #6; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nprimary: Attempts: 0 / 2 #7; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nprimary: Attempts: 0 / 2 #8; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nprimary: Attempts: 0 / 2 #9; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nprimary: Attempts: 0 / 2 #10; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nprimary: Attempts: 0 / 2 #11; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nprimary: Attempts: 0 / 2 #12; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nprimary: Attempts: 0 / 2 #13; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nprimary: Attempts: 0 / 2 #14; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nprimary: Attempts: 0 / 2 #15; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nprimary: Attempts: 0 / 2 #16; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nprimary: Attempts: 0 / 2 #17; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nprimary: Attempts: 0 / 2 #18; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nprimary: Attempts: 0 / 2 #19; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nprimary: Attempts: 0 / 2 #20; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nactions: Owner: Maintainer; Next action: Validate run identity with its owning workflow; Expected evidence: state.toon:15.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-runtime for payment-retry delivery: large",
+      "required_facts": [
+        "state.toon:15",
+        "T001",
+        "0 / 2 #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "state.toon:15",
+            "Next action": "Validate run identity with its owning workflow",
+            "Owner": "Maintainer"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Attempts": "0 / 2 #1",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          },
+          {
+            "Attempts": "0 / 2 #2",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          },
+          {
+            "Attempts": "0 / 2 #3",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          },
+          {
+            "Attempts": "0 / 2 #4",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          },
+          {
+            "Attempts": "0 / 2 #5",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          },
+          {
+            "Attempts": "0 / 2 #6",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          },
+          {
+            "Attempts": "0 / 2 #7",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          },
+          {
+            "Attempts": "0 / 2 #8",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          },
+          {
+            "Attempts": "0 / 2 #9",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          },
+          {
+            "Attempts": "0 / 2 #10",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          },
+          {
+            "Attempts": "0 / 2 #11",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          },
+          {
+            "Attempts": "0 / 2 #12",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          },
+          {
+            "Attempts": "0 / 2 #13",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          },
+          {
+            "Attempts": "0 / 2 #14",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          },
+          {
+            "Attempts": "0 / 2 #15",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          },
+          {
+            "Attempts": "0 / 2 #16",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          },
+          {
+            "Attempts": "0 / 2 #17",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          },
+          {
+            "Attempts": "0 / 2 #18",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          },
+          {
+            "Attempts": "0 / 2 #19",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          },
+          {
+            "Attempts": "0 / 2 #20",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 task id records; 8 shown; inspect the linked full artifact.",
+          "Evidence": "state.toon:15",
+          "Status": "PENDING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PENDING\nDecision: One task id result; scope and evidence are explicit.\nEvidence: state.toon:15\n\nprimary: Attempts: 0 / 2; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001.\nactions: Owner: Maintainer; Next action: Validate run identity with its owning workflow; Expected evidence: state.toon:15.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-runtime for payment-retry delivery: small",
+      "required_facts": [
+        "state.toon:15",
+        "T001",
+        "0 / 2"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "state.toon:15",
+            "Next action": "Validate run identity with its owning workflow",
+            "Owner": "Maintainer"
+          }
+        ],
+        "primary": [
+          {
+            "Attempts": "0 / 2",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One task id result; scope and evidence are explicit.",
+          "Evidence": "state.toon:15",
+          "Status": "PENDING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PENDING\nDecision: Prepared state / attempts entities; owner decision or execution remains pending.\nEvidence: state.toon:15\n\nprimary: Attempts: 0 / 2; Evidence: state.toon:15; Next transition: Claim task; State: ready; Task ID: T001 | перенос\nстроки.\nactions: Owner: Maintainer; Next action: Validate run identity with its owning workflow; Expected evidence: state.toon:15.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-runtime for payment-retry delivery: edge",
+      "required_facts": [
+        "state.toon:15",
+        "T001 | перенос\nстроки",
+        "0 / 2"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "state.toon:15",
+            "Next action": "Validate run identity with its owning workflow",
+            "Owner": "Maintainer"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Attempts": "0 / 2",
+            "Evidence": "state.toon:15",
+            "Next transition": "Claim task",
+            "State": "ready",
+            "Task ID": "T001 | перенос\nстроки"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared state / attempts entities; owner decision or execution remains pending.",
+          "Evidence": "state.toon:15",
+          "Status": "PENDING"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-runtime"
+}

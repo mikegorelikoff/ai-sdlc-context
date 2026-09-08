@@ -1,0 +1,490 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Review complete; resolve the reported blocker before delivery.\nEvidence: brief.md:18\n\nprimary: Evidence: brief.md:18; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nfailures: Planning scope: Planning scope; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: brief.md:18; Required action: Resolve the primary finding before handoff.\nactions: Owner: Product owner; Next action: Validate planning scope with its owning workflow; Expected evidence: brief.md:18.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-backlog-requirements-gap-review for payment-retry delivery: happy",
+      "required_facts": [
+        "brief.md:18",
+        "MVP boundary"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "brief.md:18",
+            "Next action": "Confirm pilot region",
+            "Owner": "Product owner"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "brief.md:18",
+            "Planning scope": "Planning scope",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "brief.md:18",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Review complete; resolve the reported blocker before delivery.",
+          "Evidence": "brief.md:18",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Partial gap / impact entities coverage; one dependency remains unverified.\nEvidence: brief.md:18\n\nprimary: Evidence: brief.md:18; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nprimary: Evidence: brief.md:18 [pending case]; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nfailures: Planning scope: Planning scope; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: brief.md:18; Required action: Resolve the primary finding before handoff.\nactions: Owner: Product owner; Next action: Validate planning scope with its owning workflow; Expected evidence: brief.md:18.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-backlog-requirements-gap-review for payment-retry delivery: partial",
+      "required_facts": [
+        "brief.md:18",
+        "MVP boundary"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "brief.md:18",
+            "Next action": "Confirm pilot region",
+            "Owner": "Product owner"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "brief.md:18",
+            "Planning scope": "Planning scope",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "brief.md:18",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          },
+          {
+            "Evidence": "brief.md:18 [pending case]",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "brief.md:18",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited gap / impact entities review; source freshness must be confirmed.\nEvidence: brief.md:18\n\nprimary: Evidence: brief.md:18; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nactions: Owner: Product owner; Next action: Validate planning scope with its owning workflow; Expected evidence: brief.md:18.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-backlog-requirements-gap-review for payment-retry delivery: warning",
+      "required_facts": [
+        "brief.md:18",
+        "MVP boundary"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "brief.md:18",
+            "Next action": "Confirm pilot region",
+            "Owner": "Product owner"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "brief.md:18",
+            "Planning scope": "Planning scope",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "brief.md:18",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Review complete with a blocking finding and a source-freshness warning.",
+          "Evidence": "brief.md:18",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Planning scope is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Planning scope: Planning scope; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide planning scope.\nactions: Owner: Product owner; Next action: Provide planning scope; Expected evidence: Validated planning scope.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-backlog-requirements-gap-review for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated planning scope"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated planning scope",
+            "Next action": "Provide planning scope",
+            "Owner": "Product owner"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Planning scope": "Planning scope",
+            "Required action": "Provide planning scope",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Planning scope is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Planning scope is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Planning scope: Planning scope; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide planning scope.\nclarifications: Missing planning scope: Planning scope; Why required: Determines planning dimension; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Product owner; Next action: Provide planning scope; Expected evidence: Validated planning scope.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-backlog-requirements-gap-review for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated planning scope"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated planning scope",
+            "Next action": "Provide planning scope",
+            "Owner": "Product owner"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing planning scope": "Planning scope",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines planning dimension"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Planning scope": "Planning scope",
+            "Required action": "Provide planning scope",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Planning scope is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: 20 gap / impact entities rows; 20 blocking findings; showing the first 8; full evidence linked.\nEvidence: brief.md:18\n\nprimary: Evidence: brief.md:18 #1; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nprimary: Evidence: brief.md:18 #2; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nprimary: Evidence: brief.md:18 #3; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nprimary: Evidence: brief.md:18 #4; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nprimary: Evidence: brief.md:18 #5; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nprimary: Evidence: brief.md:18 #6; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nprimary: Evidence: brief.md:18 #7; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nprimary: Evidence: brief.md:18 #8; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nprimary: Evidence: brief.md:18 #9; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nprimary: Evidence: brief.md:18 #10; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nprimary: Evidence: brief.md:18 #11; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nprimary: Evidence: brief.md:18 #12; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nprimary: Evidence: brief.md:18 #13; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nprimary: Evidence: brief.md:18 #14; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nprimary: Evidence: brief.md:18 #15; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nprimary: Evidence: brief.md:18 #16; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nprimary: Evidence: brief.md:18 #17; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nprimary: Evidence: brief.md:18 #18; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nprimary: Evidence: brief.md:18 #19; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nprimary: Evidence: brief.md:18 #20; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nfailures: Planning scope: Planning scope; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: brief.md:18; Required action: Resolve the primary finding before handoff.\nactions: Owner: Product owner; Next action: Validate planning scope with its owning workflow; Expected evidence: brief.md:18.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-backlog-requirements-gap-review for payment-retry delivery: large",
+      "required_facts": [
+        "brief.md:18",
+        "MVP boundary",
+        "brief.md:18 #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "brief.md:18",
+            "Next action": "Confirm pilot region",
+            "Owner": "Product owner"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "brief.md:18",
+            "Planning scope": "Planning scope",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Evidence": "brief.md:18 #1",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          },
+          {
+            "Evidence": "brief.md:18 #2",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          },
+          {
+            "Evidence": "brief.md:18 #3",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          },
+          {
+            "Evidence": "brief.md:18 #4",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          },
+          {
+            "Evidence": "brief.md:18 #5",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          },
+          {
+            "Evidence": "brief.md:18 #6",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          },
+          {
+            "Evidence": "brief.md:18 #7",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          },
+          {
+            "Evidence": "brief.md:18 #8",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          },
+          {
+            "Evidence": "brief.md:18 #9",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          },
+          {
+            "Evidence": "brief.md:18 #10",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          },
+          {
+            "Evidence": "brief.md:18 #11",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          },
+          {
+            "Evidence": "brief.md:18 #12",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          },
+          {
+            "Evidence": "brief.md:18 #13",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          },
+          {
+            "Evidence": "brief.md:18 #14",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          },
+          {
+            "Evidence": "brief.md:18 #15",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          },
+          {
+            "Evidence": "brief.md:18 #16",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          },
+          {
+            "Evidence": "brief.md:18 #17",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          },
+          {
+            "Evidence": "brief.md:18 #18",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          },
+          {
+            "Evidence": "brief.md:18 #19",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          },
+          {
+            "Evidence": "brief.md:18 #20",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 planning dimension records; 20 blockers; 8 shown; inspect the linked full artifact.",
+          "Evidence": "brief.md:18",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: One planning dimension result; scope and evidence are explicit.\nEvidence: brief.md:18\n\nprimary: Evidence: brief.md:18; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary; Required action: Confirm pilot region.\nfailures: Planning scope: Planning scope; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: brief.md:18; Required action: Resolve the primary finding before handoff.\nactions: Owner: Product owner; Next action: Validate planning scope with its owning workflow; Expected evidence: brief.md:18.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-backlog-requirements-gap-review for payment-retry delivery: small",
+      "required_facts": [
+        "brief.md:18",
+        "MVP boundary"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "brief.md:18",
+            "Next action": "Confirm pilot region",
+            "Owner": "Product owner"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "brief.md:18",
+            "Planning scope": "Planning scope",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "brief.md:18",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary",
+            "Required action": "Confirm pilot region"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One planning dimension result; scope and evidence are explicit.",
+          "Evidence": "brief.md:18",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Review complete; resolve the reported blocker before delivery.\nEvidence: brief.md:18\n\nprimary: Evidence: brief.md:18; Gap: Region rollout unspecified; Impact: Cannot slice pilot; Planning dimension: MVP boundary | перенос\nстроки; Required action: Confirm pilot region.\nfailures: Planning scope: Planning scope; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: brief.md:18; Required action: Resolve the primary finding before handoff.\nactions: Owner: Product owner; Next action: Validate planning scope with its owning workflow; Expected evidence: brief.md:18.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-backlog-requirements-gap-review for payment-retry delivery: edge",
+      "required_facts": [
+        "brief.md:18",
+        "MVP boundary | перенос\nстроки"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "brief.md:18",
+            "Next action": "Confirm pilot region",
+            "Owner": "Product owner"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "brief.md:18",
+            "Planning scope": "Planning scope",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Evidence": "brief.md:18",
+            "Gap": "Region rollout unspecified",
+            "Impact": "Cannot slice pilot",
+            "Planning dimension": "MVP boundary | перенос\nстроки",
+            "Required action": "Confirm pilot region"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Review complete; resolve the reported blocker before delivery.",
+          "Evidence": "brief.md:18",
+          "Status": "BLOCKED"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-backlog-requirements-gap-review"
+}

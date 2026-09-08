@@ -1,0 +1,37 @@
+{
+  "clarification": [
+    "Missing requirements package",
+    "Why required",
+    "Known evidence",
+    "Options"
+  ],
+  "example": {
+    "Contradiction / gap": "Retry window unresolved",
+    "Evidence": "brd.md:22",
+    "Readiness": "BLOCKED",
+    "Required action": "Resolve DEC-002",
+    "Requirement dimension": "Business rules"
+  },
+  "failure": [
+    "Requirements package",
+    "Status",
+    "Blocker",
+    "Evidence",
+    "Required action"
+  ],
+  "hide": "Secrets, raw logs, complete journals and unneeded internal tool steps. Keep full detail in the owning native artifact.",
+  "native_exception": "Keep machine artifacts, code, commands and diffs native; presentation does not replace validation.",
+  "primary": [
+    "Requirement dimension",
+    "Readiness",
+    "Contradiction / gap",
+    "Evidence",
+    "Required action"
+  ],
+  "priority": "Show unresolved blockers before nonblocking findings; a completed review is not delivery approval.",
+  "required_input": "Requirements package",
+  "rows": "individual requirement dimension records",
+  "schema": "ai-sdlc-chat-contract/v1",
+  "secondary": [],
+  "skill": "ai-sdlc-requirements-readiness-review"
+}

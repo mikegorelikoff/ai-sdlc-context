@@ -1,0 +1,441 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: PENDING\nDecision: Prepared owning skill / eligibility entities; owner decision or execution remains pending.\nEvidence: fixture.toon:1\n\nprimary: Dependency: Implementation evidence; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nactions: Owner: Engineer; Next action: Validate workflow intent with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-workflow for payment-retry delivery: happy",
+      "required_facts": [
+        "fixture.toon:1",
+        "Verification",
+        "Implementation evidence"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate workflow intent with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Dependency": "Implementation evidence",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared stage result; owner decision or execution remains pending.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PENDING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Partial owning skill / eligibility entities coverage; one dependency remains unverified.\nEvidence: fixture.toon:1\n\nprimary: Dependency: Implementation evidence; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nprimary: Dependency: Implementation evidence [pending case]; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nactions: Owner: Engineer; Next action: Validate workflow intent with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-workflow for payment-retry delivery: partial",
+      "required_facts": [
+        "fixture.toon:1",
+        "Verification",
+        "Implementation evidence"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate workflow intent with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Dependency": "Implementation evidence",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          },
+          {
+            "Dependency": "Implementation evidence [pending case]",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "fixture.toon:1",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited owning skill / eligibility entities review; source freshness must be confirmed.\nEvidence: fixture.toon:1\n\nprimary: Dependency: Implementation evidence; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nactions: Owner: Engineer; Next action: Validate workflow intent with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-workflow for payment-retry delivery: warning",
+      "required_facts": [
+        "fixture.toon:1",
+        "Verification",
+        "Implementation evidence"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate workflow intent with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Dependency": "Implementation evidence",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Result has limited source freshness; confirm it before downstream use.",
+          "Evidence": "fixture.toon:1",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Workflow intent is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Workflow intent: Workflow intent; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide workflow intent.\nactions: Owner: Engineer; Next action: Provide workflow intent; Expected evidence: Validated workflow intent.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-workflow for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated workflow intent"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated workflow intent",
+            "Next action": "Provide workflow intent",
+            "Owner": "Engineer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide workflow intent",
+            "Status": "BLOCKED",
+            "Workflow intent": "Workflow intent"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Workflow intent is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Workflow intent is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Workflow intent: Workflow intent; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide workflow intent.\nclarifications: Missing workflow intent: Workflow intent; Why required: Determines stage; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Engineer; Next action: Provide workflow intent; Expected evidence: Validated workflow intent.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-workflow for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated workflow intent"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated workflow intent",
+            "Next action": "Provide workflow intent",
+            "Owner": "Engineer"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing workflow intent": "Workflow intent",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines stage"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide workflow intent",
+            "Status": "BLOCKED",
+            "Workflow intent": "Workflow intent"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Workflow intent is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PENDING\nDecision: 20 owning skill / eligibility entities rows; showing the first 8; full evidence linked.\nEvidence: fixture.toon:1\n\nprimary: Dependency: Implementation evidence #1; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nprimary: Dependency: Implementation evidence #2; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nprimary: Dependency: Implementation evidence #3; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nprimary: Dependency: Implementation evidence #4; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nprimary: Dependency: Implementation evidence #5; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nprimary: Dependency: Implementation evidence #6; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nprimary: Dependency: Implementation evidence #7; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nprimary: Dependency: Implementation evidence #8; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nprimary: Dependency: Implementation evidence #9; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nprimary: Dependency: Implementation evidence #10; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nprimary: Dependency: Implementation evidence #11; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nprimary: Dependency: Implementation evidence #12; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nprimary: Dependency: Implementation evidence #13; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nprimary: Dependency: Implementation evidence #14; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nprimary: Dependency: Implementation evidence #15; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nprimary: Dependency: Implementation evidence #16; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nprimary: Dependency: Implementation evidence #17; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nprimary: Dependency: Implementation evidence #18; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nprimary: Dependency: Implementation evidence #19; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nprimary: Dependency: Implementation evidence #20; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nactions: Owner: Engineer; Next action: Validate workflow intent with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-workflow for payment-retry delivery: large",
+      "required_facts": [
+        "fixture.toon:1",
+        "Verification",
+        "Implementation evidence #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate workflow intent with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Dependency": "Implementation evidence #1",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          },
+          {
+            "Dependency": "Implementation evidence #2",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          },
+          {
+            "Dependency": "Implementation evidence #3",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          },
+          {
+            "Dependency": "Implementation evidence #4",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          },
+          {
+            "Dependency": "Implementation evidence #5",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          },
+          {
+            "Dependency": "Implementation evidence #6",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          },
+          {
+            "Dependency": "Implementation evidence #7",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          },
+          {
+            "Dependency": "Implementation evidence #8",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          },
+          {
+            "Dependency": "Implementation evidence #9",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          },
+          {
+            "Dependency": "Implementation evidence #10",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          },
+          {
+            "Dependency": "Implementation evidence #11",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          },
+          {
+            "Dependency": "Implementation evidence #12",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          },
+          {
+            "Dependency": "Implementation evidence #13",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          },
+          {
+            "Dependency": "Implementation evidence #14",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          },
+          {
+            "Dependency": "Implementation evidence #15",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          },
+          {
+            "Dependency": "Implementation evidence #16",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          },
+          {
+            "Dependency": "Implementation evidence #17",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          },
+          {
+            "Dependency": "Implementation evidence #18",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          },
+          {
+            "Dependency": "Implementation evidence #19",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          },
+          {
+            "Dependency": "Implementation evidence #20",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 stage records; 8 shown; inspect the linked full artifact.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PENDING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PENDING\nDecision: One stage result; scope and evidence are explicit.\nEvidence: fixture.toon:1\n\nprimary: Dependency: Implementation evidence; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification.\nactions: Owner: Engineer; Next action: Validate workflow intent with its owning workflow; Expected evidence: fixture.toon:1.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-workflow for payment-retry delivery: small",
+      "required_facts": [
+        "fixture.toon:1",
+        "Verification",
+        "Implementation evidence"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate workflow intent with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Dependency": "Implementation evidence",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One stage result; scope and evidence are explicit.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PENDING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PENDING\nDecision: Prepared owning skill / eligibility entities; owner decision or execution remains pending.\nEvidence: fixture.toon:1\n\nprimary: Dependency: Implementation evidence; Eligibility: Deferred; Expected artifact: validation.md; Owning skill: ai-sdlc-validation; Stage: Verification | перенос\nстроки.\nactions: Owner: Engineer; Next action: Validate workflow intent with its owning workflow; Expected evidence: fixture.toon:1.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-workflow for payment-retry delivery: edge",
+      "required_facts": [
+        "fixture.toon:1",
+        "Verification | перенос\nстроки",
+        "Implementation evidence"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "fixture.toon:1",
+            "Next action": "Validate workflow intent with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Dependency": "Implementation evidence",
+            "Eligibility": "Deferred",
+            "Expected artifact": "validation.md",
+            "Owning skill": "ai-sdlc-validation",
+            "Stage": "Verification | перенос\nстроки"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared owning skill / eligibility entities; owner decision or execution remains pending.",
+          "Evidence": "fixture.toon:1",
+          "Status": "PENDING"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-workflow"
+}

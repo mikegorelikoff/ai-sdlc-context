@@ -1,0 +1,37 @@
+{
+  "clarification": [
+    "Missing change summary",
+    "Why required",
+    "Known evidence",
+    "Options"
+  ],
+  "example": {
+    "Evidence": "commit-message.txt",
+    "Specification": "specs/payments",
+    "Subject": "fix(payments): deduplicate retries",
+    "Task ID": "T001",
+    "Validation": "PASS"
+  },
+  "failure": [
+    "Change summary",
+    "Status",
+    "Blocker",
+    "Evidence",
+    "Required action"
+  ],
+  "hide": "Secrets, raw logs, complete journals and unneeded internal tool steps. Keep full detail in the owning native artifact.",
+  "native_exception": "Keep the complete validated commit message in a fenced text block.",
+  "primary": [
+    "Subject",
+    "Specification",
+    "Task ID",
+    "Validation",
+    "Evidence"
+  ],
+  "priority": "Show the user decision before detail; preserve source order and explicit authority.",
+  "required_input": "Change summary",
+  "rows": "individual subject records",
+  "schema": "ai-sdlc-chat-contract/v1",
+  "secondary": [],
+  "skill": "ai-sdlc-conventional-commit"
+}

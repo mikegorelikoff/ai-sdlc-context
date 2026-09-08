@@ -47,7 +47,7 @@ description: AI SDLC Conventional Commit workflow. Use when an AI assistant draf
 
 ### 0.3 Output Rules
 
-- Keep output structured with headings and bullets.
+- Apply this skill’s Chat Output Contract to user-facing chat; keep native artifacts unchanged.
 - Make findings, gaps, risks, and blockers explicit.
 - Tie recommendations to evidence from the provided artifact, repository, `specs-refiniment/<feature-name>/<file.md>` workspace, or user context.
 - Include role ownership when the output creates follow-up work for BA, QA, Dev, PM, or Delivery.
@@ -171,7 +171,7 @@ Draft, validate, or repair an AI SDLC commit message that uses Conventional Comm
 
 ## Output Spec
 
-Return a complete commit message, not a paragraph about the message:
+Return the complete commit message unchanged in a native text block, with the local chat summary when framing is requested:
 
 ````text
 type(scope): imperative summary
@@ -261,3 +261,15 @@ Reject this because the subject is not Conventional Commit syntax, traceability 
 - Do not stage files or create commits; use `$ai-sdlc-commit-prep` for staging and commit execution.
 - Do not invent validation results; use `$ai-sdlc-validation` to choose and run checks.
 - Do not use this skill to summarize a diff unless the output is a commit message.
+
+## Chat Output Contract
+
+Primary: Subject / Specification / Task ID / Validation / Evidence.
+Rows represent individual subject records. Show the user decision before detail; preserve source order and explicit authority.
+Summary: Status / Decision / Evidence. Failure: Change summary / Status / Blocker / Evidence / Required action.
+Clarification: Missing change summary / Why required / Known evidence / Options. Next action: Owner / Next action / Expected evidence.
+Use PASS, FAIL, WARNING, BLOCKED, PENDING, N/A only for chat statuses; preserve native domain states.
+At most six columns, eight preview rows and 180 characters per cell; link full evidence and state omitted totals.
+No duplicate prose. Keep code, commands, commit messages and machine handoffs native.
+Apply [this skill’s schema and examples](references/chat-output.json) before any user-facing result, warning or question.
+Use the sibling `ai-sdlc-shared-runtime/scripts/chat_output.py` to render/check; [shared limits](../ai-sdlc-shared-runtime/references/chat-output.md) bound repair and preserve native outputs.

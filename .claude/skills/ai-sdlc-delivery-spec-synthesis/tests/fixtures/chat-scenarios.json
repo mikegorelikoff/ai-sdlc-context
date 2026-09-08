@@ -1,0 +1,441 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared behavior / interface entities; listed evidence satisfies this skill check.\nEvidence: ST-001\n\nprimary: Behavior: Return prior charge for same key; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nactions: Owner: Engineer; Next action: Validate accepted story with its owning workflow; Expected evidence: ST-001.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-delivery-spec-synthesis for payment-retry delivery: happy",
+      "required_facts": [
+        "ST-001",
+        "AC-001",
+        "Return prior charge for same key"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "ST-001",
+            "Next action": "Validate accepted story with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Behavior": "Return prior charge for same key",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared requirement id result; evidence supports the reported result.",
+          "Evidence": "ST-001",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Partial behavior / interface entities coverage; one dependency remains unverified.\nEvidence: ST-001\n\nprimary: Behavior: Return prior charge for same key; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nprimary: Behavior: Return prior charge for same key [pending case]; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nactions: Owner: Engineer; Next action: Validate accepted story with its owning workflow; Expected evidence: ST-001.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-delivery-spec-synthesis for payment-retry delivery: partial",
+      "required_facts": [
+        "ST-001",
+        "AC-001",
+        "Return prior charge for same key"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "ST-001",
+            "Next action": "Validate accepted story with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Behavior": "Return prior charge for same key",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          },
+          {
+            "Behavior": "Return prior charge for same key [pending case]",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "ST-001",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited behavior / interface entities review; source freshness must be confirmed.\nEvidence: ST-001\n\nprimary: Behavior: Return prior charge for same key; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nactions: Owner: Engineer; Next action: Validate accepted story with its owning workflow; Expected evidence: ST-001.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-delivery-spec-synthesis for payment-retry delivery: warning",
+      "required_facts": [
+        "ST-001",
+        "AC-001",
+        "Return prior charge for same key"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "ST-001",
+            "Next action": "Validate accepted story with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Behavior": "Return prior charge for same key",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Result has limited source freshness; confirm it before downstream use.",
+          "Evidence": "ST-001",
+          "Status": "WARNING"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Accepted story is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Accepted story: Accepted story; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide accepted story.\nactions: Owner: Engineer; Next action: Provide accepted story; Expected evidence: Validated accepted story.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-delivery-spec-synthesis for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated accepted story"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated accepted story",
+            "Next action": "Provide accepted story",
+            "Owner": "Engineer"
+          }
+        ],
+        "failures": [
+          {
+            "Accepted story": "Accepted story",
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide accepted story",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Accepted story is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Accepted story is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Accepted story: Accepted story; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide accepted story.\nclarifications: Missing accepted story: Accepted story; Why required: Determines requirement id; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Engineer; Next action: Provide accepted story; Expected evidence: Validated accepted story.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-delivery-spec-synthesis for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated accepted story"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated accepted story",
+            "Next action": "Provide accepted story",
+            "Owner": "Engineer"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing accepted story": "Accepted story",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines requirement id"
+          }
+        ],
+        "failures": [
+          {
+            "Accepted story": "Accepted story",
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide accepted story",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Accepted story is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: 20 behavior / interface entities rows; showing the first 8; full evidence linked.\nEvidence: ST-001\n\nprimary: Behavior: Return prior charge for same key #1; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nprimary: Behavior: Return prior charge for same key #2; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nprimary: Behavior: Return prior charge for same key #3; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nprimary: Behavior: Return prior charge for same key #4; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nprimary: Behavior: Return prior charge for same key #5; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nprimary: Behavior: Return prior charge for same key #6; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nprimary: Behavior: Return prior charge for same key #7; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nprimary: Behavior: Return prior charge for same key #8; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nprimary: Behavior: Return prior charge for same key #9; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nprimary: Behavior: Return prior charge for same key #10; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nprimary: Behavior: Return prior charge for same key #11; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nprimary: Behavior: Return prior charge for same key #12; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nprimary: Behavior: Return prior charge for same key #13; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nprimary: Behavior: Return prior charge for same key #14; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nprimary: Behavior: Return prior charge for same key #15; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nprimary: Behavior: Return prior charge for same key #16; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nprimary: Behavior: Return prior charge for same key #17; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nprimary: Behavior: Return prior charge for same key #18; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nprimary: Behavior: Return prior charge for same key #19; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nprimary: Behavior: Return prior charge for same key #20; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nactions: Owner: Engineer; Next action: Validate accepted story with its owning workflow; Expected evidence: ST-001.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-delivery-spec-synthesis for payment-retry delivery: large",
+      "required_facts": [
+        "ST-001",
+        "AC-001",
+        "Return prior charge for same key #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "ST-001",
+            "Next action": "Validate accepted story with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Behavior": "Return prior charge for same key #1",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          },
+          {
+            "Behavior": "Return prior charge for same key #2",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          },
+          {
+            "Behavior": "Return prior charge for same key #3",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          },
+          {
+            "Behavior": "Return prior charge for same key #4",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          },
+          {
+            "Behavior": "Return prior charge for same key #5",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          },
+          {
+            "Behavior": "Return prior charge for same key #6",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          },
+          {
+            "Behavior": "Return prior charge for same key #7",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          },
+          {
+            "Behavior": "Return prior charge for same key #8",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          },
+          {
+            "Behavior": "Return prior charge for same key #9",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          },
+          {
+            "Behavior": "Return prior charge for same key #10",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          },
+          {
+            "Behavior": "Return prior charge for same key #11",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          },
+          {
+            "Behavior": "Return prior charge for same key #12",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          },
+          {
+            "Behavior": "Return prior charge for same key #13",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          },
+          {
+            "Behavior": "Return prior charge for same key #14",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          },
+          {
+            "Behavior": "Return prior charge for same key #15",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          },
+          {
+            "Behavior": "Return prior charge for same key #16",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          },
+          {
+            "Behavior": "Return prior charge for same key #17",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          },
+          {
+            "Behavior": "Return prior charge for same key #18",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          },
+          {
+            "Behavior": "Return prior charge for same key #19",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          },
+          {
+            "Behavior": "Return prior charge for same key #20",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 requirement id records; 8 shown; inspect the linked full artifact.",
+          "Evidence": "ST-001",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: One requirement id result; scope and evidence are explicit.\nEvidence: ST-001\n\nprimary: Behavior: Return prior charge for same key; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001.\nactions: Owner: Engineer; Next action: Validate accepted story with its owning workflow; Expected evidence: ST-001.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-delivery-spec-synthesis for payment-retry delivery: small",
+      "required_facts": [
+        "ST-001",
+        "AC-001",
+        "Return prior charge for same key"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "ST-001",
+            "Next action": "Validate accepted story with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "primary": [
+          {
+            "Behavior": "Return prior charge for same key",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One requirement id result; scope and evidence are explicit.",
+          "Evidence": "ST-001",
+          "Status": "PASS"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: PASS\nDecision: Prepared behavior / interface entities; listed evidence satisfies this skill check.\nEvidence: ST-001\n\nprimary: Behavior: Return prior charge for same key; Constraint: One charge per key; Evidence: ST-001; Interface: POST /payments; Requirement ID: AC-001 | перенос\nстроки.\nactions: Owner: Engineer; Next action: Validate accepted story with its owning workflow; Expected evidence: ST-001.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-delivery-spec-synthesis for payment-retry delivery: edge",
+      "required_facts": [
+        "ST-001",
+        "AC-001 | перенос\nстроки",
+        "Return prior charge for same key"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "ST-001",
+            "Next action": "Validate accepted story with its owning workflow",
+            "Owner": "Engineer"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Behavior": "Return prior charge for same key",
+            "Constraint": "One charge per key",
+            "Evidence": "ST-001",
+            "Interface": "POST /payments",
+            "Requirement ID": "AC-001 | перенос\nстроки"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Prepared behavior / interface entities; listed evidence satisfies this skill check.",
+          "Evidence": "ST-001",
+          "Status": "PASS"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-delivery-spec-synthesis"
+}

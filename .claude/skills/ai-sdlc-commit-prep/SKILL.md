@@ -47,7 +47,7 @@ description: AI SDLC commit preparation workflow. Use when an AI assistant is as
 
 ### 0.3 Output Rules
 
-- Keep output structured with headings and bullets.
+- Apply this skill’s Chat Output Contract to user-facing chat; keep native artifacts unchanged.
 - Make findings, gaps, risks, and blockers explicit.
 - Tie recommendations to evidence from the provided artifact, repository, `specs-refiniment/<feature-name>/<file.md>` workspace, or user context.
 - Include role ownership when the output creates follow-up work for BA, QA, Dev, PM, or Delivery.
@@ -169,27 +169,8 @@ Prepare and create a safe AI SDLC commit by reviewing the branch and working tre
 
 ## Output Spec
 
-Return this final report:
-
-```text
-Commit:
-- Hash: full_hash
-- Subject: conventional subject
-- Branch: branch-name
-- Spec: specs/NNN-feature-name | none
-- Task: TNNN[, TNNN] | none
-
-Staging:
-- Included: path groups and why they belong.
-- Excluded: unrelated dirty paths or none.
-
-Validation:
-- command -> outcome
-
-Post-commit:
-- Working tree: clean | dirty with listed paths.
-- Residual risk: none | concrete issue.
-```
+For user-facing chat, use this skill’s Chat Output Contract. Preserve the
+owning artifacts, exact validation evidence, scope and unresolved risks.
 
 Quality gate:
 
@@ -200,12 +181,8 @@ Quality gate:
 
 Valid staging rationale:
 
-```text
-Staging:
-- Included: `skills/*/SKILL.md` because every file is part of the skill instruction upgrade.
-- Included: `specs/177-skill-instruction-upgrade/*` because the SDD package documents this change.
-- Excluded: `apps/web/.env.local` because it is unrelated and sensitive.
-```
+Chat example: use the normal, warning and blocked examples in
+`references/chat-examples.md`; their evidence comes from explicit scenario fixtures.
 
 Invalid counter-example:
 
@@ -229,3 +206,15 @@ Reject this when the working tree contains files not inspected for scope.
 - Do not draft commit message content without `$ai-sdlc-conventional-commit`.
 - Do not decide test coverage; use `$ai-sdlc-test-cases`, `$ai-sdlc-qa`, and `$ai-sdlc-validation`.
 - Do not revert user changes to make staging easier.
+
+## Chat Output Contract
+
+Primary: Path group / Disposition / Reason / Verification / Evidence; secondary: Commit / Branch / Task ID / Evidence.
+Rows represent individual path group records. Show the user decision before detail; preserve source order and explicit authority.
+Summary: Status / Decision / Evidence. Failure: Commit scope / Status / Blocker / Evidence / Required action.
+Clarification: Missing commit scope / Why required / Known evidence / Options. Next action: Owner / Next action / Expected evidence.
+Use PASS, FAIL, WARNING, BLOCKED, PENDING, N/A only for chat statuses; preserve native domain states.
+At most six columns, eight preview rows and 180 characters per cell; link full evidence and state omitted totals.
+No duplicate prose. Keep code, commands, commit messages and machine handoffs native.
+Apply [this skill’s schema and examples](references/chat-output.json) before any user-facing result, warning or question.
+Use the sibling `ai-sdlc-shared-runtime/scripts/chat_output.py` to render/check; [shared limits](../ai-sdlc-shared-runtime/references/chat-output.md) bound repair and preserve native outputs.

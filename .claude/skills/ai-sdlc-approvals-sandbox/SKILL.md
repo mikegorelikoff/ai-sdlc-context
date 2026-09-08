@@ -48,7 +48,7 @@ description: AI SDLC approvals, sandbox, and command rule workflow. Use when an 
 
 ### 0.3 Output Rules
 
-- Keep output structured with headings and bullets.
+- Apply this skill’s Chat Output Contract to user-facing chat; keep native artifacts unchanged.
 - Make findings, gaps, risks, and blockers explicit.
 - Tie recommendations to evidence from the provided artifact, repository, `specs-refiniment/<feature-name>/<file.md>` workspace, or user context.
 - Include role ownership when the output creates follow-up work for BA, QA, Dev, PM, or Delivery.
@@ -168,18 +168,8 @@ Decide, request, and report sandbox escalation for AI SDLC commands only when th
 
 ## Output Spec
 
-Return this decision record when escalation is requested, denied, or skipped:
-
-```text
-Sandbox decision:
-- Command: sanitized command with every secret-bearing value shown as <redacted>
-- Required for: task-specific reason
-- Sandbox issue: filesystem | network | listener | GUI | external service | destructive | none
-- Escalation: requested | not requested | denied | granted
-- Prefix rule: proposed rule | none and why
-- Result: passed | failed | skipped | blocked
-- Residual risk: none | concrete limitation
-```
+For user-facing chat, use this skill’s Chat Output Contract. Preserve the
+owning artifacts, exact validation evidence, scope and unresolved risks.
 
 Quality gate:
 
@@ -226,3 +216,15 @@ Reject this because the justification is vague and the prefix allows arbitrary s
 - Do not approve destructive commands on the user's behalf.
 - Do not weaken developer SDD, review, or validation requirements because sandbox permissions are inconvenient.
 - Do not replace the active runtime’s higher-priority sandbox and approval policies.
+
+## Chat Output Contract
+
+Primary: Command / Boundary / Escalation / Evidence.
+Rows represent individual command records. Show the user decision before detail; preserve source order and explicit authority.
+Summary: Status / Decision / Evidence. Failure: Blocked command / Status / Blocker / Evidence / Required action.
+Clarification: Missing blocked command / Why required / Known evidence / Options. Next action: Owner / Next action / Expected evidence.
+Use PASS, FAIL, WARNING, BLOCKED, PENDING, N/A only for chat statuses; preserve native domain states.
+At most six columns, eight preview rows and 180 characters per cell; link full evidence and state omitted totals.
+No duplicate prose. Keep code, commands, commit messages and machine handoffs native.
+Apply [this skill’s schema and examples](references/chat-output.json) before any user-facing result, warning or question.
+Use the sibling `ai-sdlc-shared-runtime/scripts/chat_output.py` to render/check; [shared limits](../ai-sdlc-shared-runtime/references/chat-output.md) bound repair and preserve native outputs.

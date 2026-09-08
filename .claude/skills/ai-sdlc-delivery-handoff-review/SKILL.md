@@ -47,7 +47,7 @@ description: Use after story and spec synthesis to perform a strict delivery han
 
 ### 0.3 Output Rules
 
-- Keep output structured with headings and bullets.
+- Apply this skill’s Chat Output Contract to user-facing chat; keep native artifacts unchanged.
 - Make findings, gaps, risks, and blockers explicit.
 - Tie recommendations to evidence from the provided artifact, `specs-refiniment/<feature-name>/<file.md>` workspace, or user context.
 - Include role ownership when the output creates follow-up work for BA, QA, Dev, PM, or Delivery.
@@ -185,3 +185,15 @@ Use `references/handoff-checklist.md`.
 - The readiness score is justified.
 - Remaining questions are actionable.
 - The recommendation is clear enough for delivery planning.
+
+## Chat Output Contract
+
+Primary: Delivery gate / Decision / Gap / Evidence / Required action.
+Rows represent individual delivery gate records. Show unresolved blockers before nonblocking findings; a completed review is not delivery approval.
+Summary: Status / Decision / Evidence. Failure: Delivery package / Status / Blocker / Evidence / Required action.
+Clarification: Missing delivery package / Why required / Known evidence / Options. Next action: Owner / Next action / Expected evidence.
+Use PASS, FAIL, WARNING, BLOCKED, PENDING, N/A only for chat statuses; preserve native domain states.
+At most six columns, eight preview rows and 180 characters per cell; link full evidence and state omitted totals.
+No duplicate prose. Keep code, commands, commit messages and machine handoffs native.
+Apply [this skill’s schema and examples](references/chat-output.json) before any user-facing result, warning or question.
+Use the sibling `ai-sdlc-shared-runtime/scripts/chat_output.py` to render/check; [shared limits](../ai-sdlc-shared-runtime/references/chat-output.md) bound repair and preserve native outputs.

@@ -47,7 +47,7 @@ description: Use when working-backwards discovery is complete and you need to sy
 
 ### 0.3 Output Rules
 
-- Keep output structured with headings and bullets.
+- Apply this skill’s Chat Output Contract to user-facing chat; keep native artifacts unchanged.
 - Make findings, gaps, risks, and blockers explicit.
 - Tie recommendations to evidence from the provided artifact, `specs-refiniment/<feature-name>/<file.md>` workspace, or user context.
 - Include role ownership when the output creates follow-up work for BA, QA, Dev, PM, or Delivery.
@@ -189,3 +189,15 @@ Use `references/prfaq-package-structures.md` for document sections and output sh
 - BRD links business goals, scope, scenarios, requirements, and acceptance criteria.
 - Assumptions, dependencies, risks, and open questions remain visible.
 - The package is ready for a strict readiness review.
+
+## Chat Output Contract
+
+Primary: Customer / Problem / Proposed outcome / Business evidence / Open decision; secondary: FAQ topic / Answer / Evidence / Unresolved choice.
+Rows represent individual customer records. Show the user decision before detail; preserve source order and explicit authority.
+Summary: Status / Decision / Evidence. Failure: Validated discovery / Status / Blocker / Evidence / Required action.
+Clarification: Missing validated discovery / Why required / Known evidence / Options. Next action: Owner / Next action / Expected evidence.
+Use PASS, FAIL, WARNING, BLOCKED, PENDING, N/A only for chat statuses; preserve native domain states.
+At most six columns, eight preview rows and 180 characters per cell; link full evidence and state omitted totals.
+No duplicate prose. Keep code, commands, commit messages and machine handoffs native.
+Apply [this skill’s schema and examples](references/chat-output.json) before any user-facing result, warning or question.
+Use the sibling `ai-sdlc-shared-runtime/scripts/chat_output.py` to render/check; [shared limits](../ai-sdlc-shared-runtime/references/chat-output.md) bound repair and preserve native outputs.

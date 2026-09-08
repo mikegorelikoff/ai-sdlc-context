@@ -48,7 +48,7 @@ description: AI SDLC repository specification-driven development workflow. Use w
 
 ### 0.3 Output Rules
 
-- Keep output structured with headings and bullets.
+- Apply this skill’s Chat Output Contract to user-facing chat; keep native artifacts unchanged.
 - Make findings, gaps, risks, and blockers explicit.
 - Tie recommendations to evidence from the provided artifact, repository, `specs-refiniment/<feature-name>/<file.md>` workspace, or user context.
 - Include role ownership when the output creates follow-up work for BA, QA, Dev, PM, or Delivery.
@@ -245,22 +245,8 @@ Create, update, validate, and enforce the AI SDLC SDD package for medium and lar
 
 ## Output Spec
 
-Use this completion report:
-
-```text
-SDD compliance:
-- Spec: specs/NNN-feature-name
-- Change size: small | medium | large
-- Requirements: updated | unchanged with reason
-- Design: updated | unchanged with reason
-- Test cases: updated | unchanged with reason
-- QA: updated | unchanged with reason
-- Tasks: completed task numbers and remaining task numbers
-- Plan: `_ai_sdlc/plan.toon` and `plan.md` updated | unchanged with reason
-- Validation: command -> outcome
-- Scope control: no drift | drift and spec update
-- Residual risk: none | concrete issue
-```
+For user-facing chat, use this skill’s Chat Output Contract. Preserve the
+owning artifacts, exact validation evidence, scope and unresolved risks.
 
 Quality gate:
 
@@ -284,20 +270,8 @@ specs/177-skill-instruction-upgrade/
 
 Completion report sample:
 
-```text
-SDD compliance:
-- Spec: specs/177-skill-instruction-upgrade
-- Change size: medium
-- Requirements: updated
-- Design: updated
-- Test cases: updated
-- QA: updated
-- Tasks: 1-10 completed
-- Plan: _ai_sdlc/plan.toon and plan.md updated
-- Validation: python3 skills/ai-sdlc-sdd/scripts/validate_spec.py specs/177-skill-instruction-upgrade -> passed
-- Scope control: no drift
-- Residual risk: none
-```
+Chat example: use the normal, warning and blocked examples in
+`references/chat-examples.md`; their evidence comes from explicit scenario fixtures.
 
 Invalid counter-example:
 
@@ -327,3 +301,15 @@ Reject this for medium and large work because the spec is the source of truth.
 - Do not replace BA, test-case, QA, review, security, validation, or commit-prep skills; route to them when their phase is needed.
 - Do not implement major features without requirements, design, test cases, QA, tasks, and plan.
 - Do not run broad validation by default; use `$ai-sdlc-validation` for command selection.
+
+## Chat Output Contract
+
+Primary: Artifact / Change / Requirement ID / Validation / Evidence; secondary: Component / Responsibility / Decision / Dependency / Evidence.
+Rows represent individual artifact records. Show the user decision before detail; preserve source order and explicit authority.
+Summary: Status / Decision / Evidence. Failure: Approved behavior / Status / Blocker / Evidence / Required action.
+Clarification: Missing approved behavior / Why required / Known evidence / Options. Next action: Owner / Next action / Expected evidence.
+Use PASS, FAIL, WARNING, BLOCKED, PENDING, N/A only for chat statuses; preserve native domain states.
+At most six columns, eight preview rows and 180 characters per cell; link full evidence and state omitted totals.
+No duplicate prose. Keep code, commands, commit messages and machine handoffs native.
+Apply [this skill’s schema and examples](references/chat-output.json) before any user-facing result, warning or question.
+Use the sibling `ai-sdlc-shared-runtime/scripts/chat_output.py` to render/check; [shared limits](../ai-sdlc-shared-runtime/references/chat-output.md) bound repair and preserve native outputs.

@@ -1,0 +1,495 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Review complete; resolve the reported blocker before delivery.\nEvidence: brd.md:22\n\nprimary: Contradiction / gap: Retry window unresolved; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nfailures: Requirements package: Requirements package; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: brd.md:22; Required action: Resolve the primary finding before handoff.\nactions: Owner: Product owner; Next action: Validate requirements package with its owning workflow; Expected evidence: brd.md:22.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-requirements-readiness-review for payment-retry delivery: happy",
+      "required_facts": [
+        "brd.md:22",
+        "Business rules",
+        "Retry window unresolved"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "brd.md:22",
+            "Next action": "Resolve DEC-002",
+            "Owner": "Product owner"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "brd.md:22",
+            "Required action": "Resolve the primary finding before handoff",
+            "Requirements package": "Requirements package",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [
+          {
+            "Contradiction / gap": "Retry window unresolved",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Review complete; resolve the reported blocker before delivery.",
+          "Evidence": "brd.md:22",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Partial readiness / contradiction / gap entities coverage; one dependency remains unverified.\nEvidence: brd.md:22\n\nprimary: Contradiction / gap: Retry window unresolved; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nprimary: Contradiction / gap: Retry window unresolved [pending case]; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nfailures: Requirements package: Requirements package; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: brd.md:22; Required action: Resolve the primary finding before handoff.\nactions: Owner: Product owner; Next action: Validate requirements package with its owning workflow; Expected evidence: brd.md:22.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-requirements-readiness-review for payment-retry delivery: partial",
+      "required_facts": [
+        "brd.md:22",
+        "Business rules",
+        "Retry window unresolved"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "brd.md:22",
+            "Next action": "Resolve DEC-002",
+            "Owner": "Product owner"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "brd.md:22",
+            "Required action": "Resolve the primary finding before handoff",
+            "Requirements package": "Requirements package",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [
+          {
+            "Contradiction / gap": "Retry window unresolved",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          },
+          {
+            "Contradiction / gap": "Retry window unresolved [pending case]",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "brd.md:22",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited readiness / contradiction / gap entities review; source freshness must be confirmed.\nEvidence: brd.md:22\n\nprimary: Contradiction / gap: Retry window unresolved; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nactions: Owner: Product owner; Next action: Validate requirements package with its owning workflow; Expected evidence: brd.md:22.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-requirements-readiness-review for payment-retry delivery: warning",
+      "required_facts": [
+        "brd.md:22",
+        "Business rules",
+        "Retry window unresolved"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "brd.md:22",
+            "Next action": "Resolve DEC-002",
+            "Owner": "Product owner"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "brd.md:22",
+            "Required action": "Resolve the primary finding before handoff",
+            "Requirements package": "Requirements package",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [
+          {
+            "Contradiction / gap": "Retry window unresolved",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Review complete with a blocking finding and a source-freshness warning.",
+          "Evidence": "brd.md:22",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Requirements package is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Requirements package: Requirements package; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide requirements package.\nactions: Owner: Product owner; Next action: Provide requirements package; Expected evidence: Validated requirements package.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-requirements-readiness-review for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated requirements package"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated requirements package",
+            "Next action": "Provide requirements package",
+            "Owner": "Product owner"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide requirements package",
+            "Requirements package": "Requirements package",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Requirements package is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Requirements package is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Requirements package: Requirements package; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide requirements package.\nclarifications: Missing requirements package: Requirements package; Why required: Determines requirement dimension; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Product owner; Next action: Provide requirements package; Expected evidence: Validated requirements package.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-requirements-readiness-review for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated requirements package"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated requirements package",
+            "Next action": "Provide requirements package",
+            "Owner": "Product owner"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing requirements package": "Requirements package",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines requirement dimension"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Required action": "Provide requirements package",
+            "Requirements package": "Requirements package",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Requirements package is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: 20 readiness / contradiction / gap entities rows; 20 blocking findings; showing the first 8; full evidence linked.\nEvidence: brd.md:22\n\nprimary: Contradiction / gap: Retry window unresolved #1; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nprimary: Contradiction / gap: Retry window unresolved #2; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nprimary: Contradiction / gap: Retry window unresolved #3; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nprimary: Contradiction / gap: Retry window unresolved #4; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nprimary: Contradiction / gap: Retry window unresolved #5; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nprimary: Contradiction / gap: Retry window unresolved #6; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nprimary: Contradiction / gap: Retry window unresolved #7; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nprimary: Contradiction / gap: Retry window unresolved #8; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nprimary: Contradiction / gap: Retry window unresolved #9; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nprimary: Contradiction / gap: Retry window unresolved #10; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nprimary: Contradiction / gap: Retry window unresolved #11; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nprimary: Contradiction / gap: Retry window unresolved #12; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nprimary: Contradiction / gap: Retry window unresolved #13; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nprimary: Contradiction / gap: Retry window unresolved #14; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nprimary: Contradiction / gap: Retry window unresolved #15; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nprimary: Contradiction / gap: Retry window unresolved #16; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nprimary: Contradiction / gap: Retry window unresolved #17; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nprimary: Contradiction / gap: Retry window unresolved #18; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nprimary: Contradiction / gap: Retry window unresolved #19; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nprimary: Contradiction / gap: Retry window unresolved #20; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nfailures: Requirements package: Requirements package; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: brd.md:22; Required action: Resolve the primary finding before handoff.\nactions: Owner: Product owner; Next action: Validate requirements package with its owning workflow; Expected evidence: brd.md:22.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-requirements-readiness-review for payment-retry delivery: large",
+      "required_facts": [
+        "brd.md:22",
+        "Business rules",
+        "Retry window unresolved #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "brd.md:22",
+            "Next action": "Resolve DEC-002",
+            "Owner": "Product owner"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "brd.md:22",
+            "Required action": "Resolve the primary finding before handoff",
+            "Requirements package": "Requirements package",
+            "Status": "BLOCKED"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Contradiction / gap": "Retry window unresolved #1",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          },
+          {
+            "Contradiction / gap": "Retry window unresolved #2",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          },
+          {
+            "Contradiction / gap": "Retry window unresolved #3",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          },
+          {
+            "Contradiction / gap": "Retry window unresolved #4",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          },
+          {
+            "Contradiction / gap": "Retry window unresolved #5",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          },
+          {
+            "Contradiction / gap": "Retry window unresolved #6",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          },
+          {
+            "Contradiction / gap": "Retry window unresolved #7",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          },
+          {
+            "Contradiction / gap": "Retry window unresolved #8",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          },
+          {
+            "Contradiction / gap": "Retry window unresolved #9",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          },
+          {
+            "Contradiction / gap": "Retry window unresolved #10",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          },
+          {
+            "Contradiction / gap": "Retry window unresolved #11",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          },
+          {
+            "Contradiction / gap": "Retry window unresolved #12",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          },
+          {
+            "Contradiction / gap": "Retry window unresolved #13",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          },
+          {
+            "Contradiction / gap": "Retry window unresolved #14",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          },
+          {
+            "Contradiction / gap": "Retry window unresolved #15",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          },
+          {
+            "Contradiction / gap": "Retry window unresolved #16",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          },
+          {
+            "Contradiction / gap": "Retry window unresolved #17",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          },
+          {
+            "Contradiction / gap": "Retry window unresolved #18",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          },
+          {
+            "Contradiction / gap": "Retry window unresolved #19",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          },
+          {
+            "Contradiction / gap": "Retry window unresolved #20",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 requirement dimension records; 20 blockers; 8 shown; inspect the linked full artifact.",
+          "Evidence": "brd.md:22",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: One requirement dimension result; scope and evidence are explicit.\nEvidence: brd.md:22\n\nprimary: Contradiction / gap: Retry window unresolved; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules.\nfailures: Requirements package: Requirements package; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: brd.md:22; Required action: Resolve the primary finding before handoff.\nactions: Owner: Product owner; Next action: Validate requirements package with its owning workflow; Expected evidence: brd.md:22.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-requirements-readiness-review for payment-retry delivery: small",
+      "required_facts": [
+        "brd.md:22",
+        "Business rules",
+        "Retry window unresolved"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "brd.md:22",
+            "Next action": "Resolve DEC-002",
+            "Owner": "Product owner"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "brd.md:22",
+            "Required action": "Resolve the primary finding before handoff",
+            "Requirements package": "Requirements package",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [
+          {
+            "Contradiction / gap": "Retry window unresolved",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One requirement dimension result; scope and evidence are explicit.",
+          "Evidence": "brd.md:22",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Review complete; resolve the reported blocker before delivery.\nEvidence: brd.md:22\n\nprimary: Contradiction / gap: Retry window unresolved; Evidence: brd.md:22; Readiness: BLOCKED; Required action: Resolve DEC-002; Requirement dimension: Business rules | перенос\nстроки.\nfailures: Requirements package: Requirements package; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: brd.md:22; Required action: Resolve the primary finding before handoff.\nactions: Owner: Product owner; Next action: Validate requirements package with its owning workflow; Expected evidence: brd.md:22.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-requirements-readiness-review for payment-retry delivery: edge",
+      "required_facts": [
+        "brd.md:22",
+        "Business rules | перенос\nстроки",
+        "Retry window unresolved"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "brd.md:22",
+            "Next action": "Resolve DEC-002",
+            "Owner": "Product owner"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "brd.md:22",
+            "Required action": "Resolve the primary finding before handoff",
+            "Requirements package": "Requirements package",
+            "Status": "BLOCKED"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Contradiction / gap": "Retry window unresolved",
+            "Evidence": "brd.md:22",
+            "Readiness": "BLOCKED",
+            "Required action": "Resolve DEC-002",
+            "Requirement dimension": "Business rules | перенос\nстроки"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Review complete; resolve the reported blocker before delivery.",
+          "Evidence": "brd.md:22",
+          "Status": "BLOCKED"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-requirements-readiness-review"
+}

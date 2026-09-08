@@ -1,0 +1,37 @@
+{
+  "clarification": [
+    "Missing changed reference",
+    "Why required",
+    "Known evidence",
+    "Options"
+  ],
+  "example": {
+    "Affected artifact": "test-cases.md",
+    "Changed reference": "AC-001",
+    "Evidence": "requirements.md:32",
+    "Reopen action": "Update TC-001",
+    "Staleness": "Stale retry expectation"
+  },
+  "failure": [
+    "Changed reference",
+    "Status",
+    "Blocker",
+    "Evidence",
+    "Required action"
+  ],
+  "hide": "Secrets, raw logs, complete journals and unneeded internal tool steps. Keep full detail in the owning native artifact.",
+  "native_exception": "Keep machine artifacts, code, commands and diffs native; presentation does not replace validation.",
+  "primary": [
+    "Changed reference",
+    "Affected artifact",
+    "Staleness",
+    "Evidence",
+    "Reopen action"
+  ],
+  "priority": "Show unresolved blockers before nonblocking findings; a completed review is not delivery approval.",
+  "required_input": "Changed reference",
+  "rows": "individual changed reference records",
+  "schema": "ai-sdlc-chat-contract/v1",
+  "secondary": [],
+  "skill": "ai-sdlc-change-impact"
+}

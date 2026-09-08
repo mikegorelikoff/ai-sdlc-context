@@ -47,7 +47,7 @@ description: AI SDLC backend validation workflow. Use when an AI assistant needs
 
 ### 0.3 Output Rules
 
-- Keep output structured with headings and bullets.
+- Apply this skill’s Chat Output Contract to user-facing chat; keep native artifacts unchanged.
 - Make findings, gaps, risks, and blockers explicit.
 - Tie recommendations to evidence from the provided artifact, repository, `specs-refiniment/<feature-name>/<file.md>` workspace, or user context.
 - Include role ownership when the output creates follow-up work for BA, QA, Dev, PM, or Delivery.
@@ -179,21 +179,8 @@ Select, run, and report focused deterministic validation checks for AI SDLC code
 
 ## Output Spec
 
-Use this format:
-
-```text
-Validation:
-- command: exact command
-  outcome: passed | failed | skipped | blocked
-  reason: why this command was selected or skipped
-
-Coverage:
-- Changed surface: files or package group.
-- Behavior covered: requirement, scenario, or risk covered by the command.
-
-Residual risk:
-- none | explicit unvalidated behavior and why it remains.
-```
+For user-facing chat, use this skill’s Chat Output Contract. Preserve the
+owning artifacts, exact validation evidence, scope and unresolved risks.
 
 Quality gate:
 
@@ -204,33 +191,8 @@ Quality gate:
 
 Focused Go package change:
 
-```text
-Validation:
-- command: GOCACHE=/tmp/ai-sdlc-go-cache go test ./internal/service -run 'TestLoanTransfer|TestReturnPreflight' -count=1
-  outcome: passed
-  reason: covers changed service behavior and preflight failure paths.
-- command: git diff --check
-  outcome: passed
-  reason: required whitespace validation for all changes.
-
-Residual risk:
-- none
-```
-
-Tool setup change:
-
-```text
-Validation:
-- command: PYTHONPYCACHEPREFIX=/tmp/ai-sdlc-harness-pycache python3 -m py_compile skills/ai-sdlc-validation/scripts/validation_plan.py
-  outcome: passed
-  reason: validates changed skill metadata.
-- command: python3 skills/ai-sdlc-sdd/scripts/sdd_status.py --spec specs/185-spec-kit-sdd-quality-gates
-  outcome: passed
-  reason: confirms the active governance spec is structurally valid and ready for implementation.
-- command: find skills -name SKILL.md -maxdepth 2
-  outcome: passed
-  reason: validates SDD governance shape.
-```
+Chat example: use the normal, warning and blocked examples in
+`references/chat-examples.md`; their evidence comes from explicit scenario fixtures.
 
 Invalid counter-example:
 
@@ -254,3 +216,15 @@ Reject this because it omits exact commands, changed surface coverage, and resid
 - Do not derive scenario matrices; use `$ai-sdlc-test-cases`.
 - Do not review code for findings; use `$ai-sdlc-code-review` or `$ai-sdlc-security-testing`.
 - Do not mark work done when validation is failed, blocked without disclosure, or unrelated to the changed surface.
+
+## Chat Output Contract
+
+Primary: Check / Expected / Actual / Status / Evidence.
+Rows represent individual check records. Show the user decision before detail; preserve source order and explicit authority.
+Summary: Status / Decision / Evidence. Failure: Verification command / Status / Blocker / Evidence / Required action.
+Clarification: Missing verification command / Why required / Known evidence / Options. Next action: Owner / Next action / Expected evidence.
+Use PASS, FAIL, WARNING, BLOCKED, PENDING, N/A only for chat statuses; preserve native domain states.
+At most six columns, eight preview rows and 180 characters per cell; link full evidence and state omitted totals.
+No duplicate prose. Keep code, commands, commit messages and machine handoffs native.
+Apply [this skill’s schema and examples](references/chat-output.json) before any user-facing result, warning or question.
+Use the sibling `ai-sdlc-shared-runtime/scripts/chat_output.py` to render/check; [shared limits](../ai-sdlc-shared-runtime/references/chat-output.md) bound repair and preserve native outputs.

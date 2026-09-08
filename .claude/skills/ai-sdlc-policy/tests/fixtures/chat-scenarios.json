@@ -1,0 +1,489 @@
+{
+  "scenarios": [
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Review complete; resolve the reported blocker before delivery.\nEvidence: policy.toon:14\n\nprimary: Action: change.apply; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nfailures: Policy layer: Policy layer; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: policy.toon:14; Required action: Resolve the primary finding before handoff.\nactions: Owner: Maintainer; Next action: Validate policy layer with its owning workflow; Expected evidence: policy.toon:14.\n",
+      "id": "happy",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-policy for payment-retry delivery: happy",
+      "required_facts": [
+        "policy.toon:14",
+        "change.apply"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "policy.toon:14",
+            "Next action": "change.apply",
+            "Owner": "Maintainer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "policy.toon:14",
+            "Policy layer": "Policy layer",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [
+          {
+            "Action": "change.apply",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Review complete; resolve the reported blocker before delivery.",
+          "Evidence": "policy.toon:14",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Partial matched rule / decision entities coverage; one dependency remains unverified.\nEvidence: policy.toon:14\n\nprimary: Action: change.apply; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nprimary: Action: change.apply [pending case]; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nfailures: Policy layer: Policy layer; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: policy.toon:14; Required action: Resolve the primary finding before handoff.\nactions: Owner: Maintainer; Next action: Validate policy layer with its owning workflow; Expected evidence: policy.toon:14.\n",
+      "id": "partial",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-policy for payment-retry delivery: partial",
+      "required_facts": [
+        "policy.toon:14",
+        "change.apply"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "policy.toon:14",
+            "Next action": "change.apply",
+            "Owner": "Maintainer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "policy.toon:14",
+            "Policy layer": "Policy layer",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [
+          {
+            "Action": "change.apply",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          },
+          {
+            "Action": "change.apply [pending case]",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Partial result: second case is unverified; do not infer full coverage.",
+          "Evidence": "policy.toon:14",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: WARNING\nDecision: Limited matched rule / decision entities review; source freshness must be confirmed.\nEvidence: policy.toon:14\n\nprimary: Action: change.apply; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nactions: Owner: Maintainer; Next action: Validate policy layer with its owning workflow; Expected evidence: policy.toon:14.\n",
+      "id": "warning",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-policy for payment-retry delivery: warning",
+      "required_facts": [
+        "policy.toon:14",
+        "change.apply"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "policy.toon:14",
+            "Next action": "change.apply",
+            "Owner": "Maintainer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "policy.toon:14",
+            "Policy layer": "Policy layer",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [
+          {
+            "Action": "change.apply",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Review complete with a blocking finding and a source-freshness warning.",
+          "Evidence": "policy.toon:14",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Policy layer is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Policy layer: Policy layer; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide policy layer.\nactions: Owner: Maintainer; Next action: Provide policy layer; Expected evidence: Validated policy layer.\n",
+      "id": "blocked",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-policy for payment-retry delivery: blocked",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated policy layer"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated policy layer",
+            "Next action": "Provide policy layer",
+            "Owner": "Maintainer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Policy layer": "Policy layer",
+            "Required action": "Provide policy layer",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Policy layer is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Policy layer is unavailable; dependent work has not run.\nEvidence: source-inventory.toon:missing\n\nfailures: Policy layer: Policy layer; Status: BLOCKED; Blocker: Required source is absent; Evidence: source-inventory.toon:missing; Required action: Provide policy layer.\nclarifications: Missing policy layer: Policy layer; Why required: Determines action; Known evidence: No supported assumption; Options: Supply source / narrow requested scope.\nactions: Owner: Maintainer; Next action: Provide policy layer; Expected evidence: Validated policy layer.\n",
+      "id": "missing-input",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-policy for payment-retry delivery: missing-input",
+      "required_facts": [
+        "source-inventory.toon:missing",
+        "Validated policy layer"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "Validated policy layer",
+            "Next action": "Provide policy layer",
+            "Owner": "Maintainer"
+          }
+        ],
+        "clarifications": [
+          {
+            "Known evidence": "No supported assumption",
+            "Missing policy layer": "Policy layer",
+            "Options": "Supply source / narrow requested scope",
+            "Why required": "Determines action"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Required source is absent",
+            "Evidence": "source-inventory.toon:missing",
+            "Policy layer": "Policy layer",
+            "Required action": "Provide policy layer",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Policy layer is unavailable; dependent work has not run.",
+          "Evidence": "source-inventory.toon:missing",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: 20 matched rule / decision entities rows; 20 blocking findings; showing the first 8; full evidence linked.\nEvidence: policy.toon:14\n\nprimary: Action: change.apply #1; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nprimary: Action: change.apply #2; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nprimary: Action: change.apply #3; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nprimary: Action: change.apply #4; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nprimary: Action: change.apply #5; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nprimary: Action: change.apply #6; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nprimary: Action: change.apply #7; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nprimary: Action: change.apply #8; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nprimary: Action: change.apply #9; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nprimary: Action: change.apply #10; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nprimary: Action: change.apply #11; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nprimary: Action: change.apply #12; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nprimary: Action: change.apply #13; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nprimary: Action: change.apply #14; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nprimary: Action: change.apply #15; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nprimary: Action: change.apply #16; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nprimary: Action: change.apply #17; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nprimary: Action: change.apply #18; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nprimary: Action: change.apply #19; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nprimary: Action: change.apply #20; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nfailures: Policy layer: Policy layer; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: policy.toon:14; Required action: Resolve the primary finding before handoff.\nactions: Owner: Maintainer; Next action: Validate policy layer with its owning workflow; Expected evidence: policy.toon:14.\n",
+      "id": "large",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-policy for payment-retry delivery: large",
+      "required_facts": [
+        "policy.toon:14",
+        "change.apply #1"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "policy.toon:14",
+            "Next action": "change.apply #1",
+            "Owner": "Maintainer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "policy.toon:14",
+            "Policy layer": "Policy layer",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED"
+          }
+        ],
+        "full_artifact": "full-result.toon",
+        "primary": [
+          {
+            "Action": "change.apply #1",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          },
+          {
+            "Action": "change.apply #2",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          },
+          {
+            "Action": "change.apply #3",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          },
+          {
+            "Action": "change.apply #4",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          },
+          {
+            "Action": "change.apply #5",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          },
+          {
+            "Action": "change.apply #6",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          },
+          {
+            "Action": "change.apply #7",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          },
+          {
+            "Action": "change.apply #8",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          },
+          {
+            "Action": "change.apply #9",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          },
+          {
+            "Action": "change.apply #10",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          },
+          {
+            "Action": "change.apply #11",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          },
+          {
+            "Action": "change.apply #12",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          },
+          {
+            "Action": "change.apply #13",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          },
+          {
+            "Action": "change.apply #14",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          },
+          {
+            "Action": "change.apply #15",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          },
+          {
+            "Action": "change.apply #16",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          },
+          {
+            "Action": "change.apply #17",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          },
+          {
+            "Action": "change.apply #18",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          },
+          {
+            "Action": "change.apply #19",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          },
+          {
+            "Action": "change.apply #20",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "20 action records; 20 blockers; 8 shown; inspect the linked full artifact.",
+          "Evidence": "policy.toon:14",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: One action result; scope and evidence are explicit.\nEvidence: policy.toon:14\n\nprimary: Action: change.apply; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nfailures: Policy layer: Policy layer; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: policy.toon:14; Required action: Resolve the primary finding before handoff.\nactions: Owner: Maintainer; Next action: Validate policy layer with its owning workflow; Expected evidence: policy.toon:14.\n",
+      "id": "small",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-policy for payment-retry delivery: small",
+      "required_facts": [
+        "policy.toon:14",
+        "change.apply"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "policy.toon:14",
+            "Next action": "change.apply",
+            "Owner": "Maintainer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "policy.toon:14",
+            "Policy layer": "Policy layer",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED"
+          }
+        ],
+        "primary": [
+          {
+            "Action": "change.apply",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "One action result; scope and evidence are explicit.",
+          "Evidence": "policy.toon:14",
+          "Status": "BLOCKED"
+        }
+      }
+    },
+    {
+      "baseline_response": "Result\nStatus: BLOCKED\nDecision: Review complete; resolve the reported blocker before delivery.\nEvidence: policy.toon:14\n\nprimary: Action: change.apply | перенос\nстроки; Decision: BLOCKED; Evidence: policy.toon:14; Matched rule: fresh-evidence; Required gate: Refresh stale report.\nfailures: Policy layer: Policy layer; Status: BLOCKED; Blocker: Unresolved behavior prevents the next stage; Evidence: policy.toon:14; Required action: Resolve the primary finding before handoff.\nactions: Owner: Maintainer; Next action: Validate policy layer with its owning workflow; Expected evidence: policy.toon:14.\n\nschema: fixture/v1\nstatus: pending\nsource: \"literal | value\"\n",
+      "id": "edge",
+      "provenance": "authored scenario from owning output fields; baseline is a simulation, not a recorded live response",
+      "request": "Simulate ai-sdlc-policy for payment-retry delivery: edge",
+      "required_facts": [
+        "policy.toon:14",
+        "change.apply | перенос\nстроки"
+      ],
+      "result": {
+        "actions": [
+          {
+            "Expected evidence": "policy.toon:14",
+            "Next action": "change.apply | перенос\nстроки",
+            "Owner": "Maintainer"
+          }
+        ],
+        "failures": [
+          {
+            "Blocker": "Unresolved behavior prevents the next stage",
+            "Evidence": "policy.toon:14",
+            "Policy layer": "Policy layer",
+            "Required action": "Resolve the primary finding before handoff",
+            "Status": "BLOCKED"
+          }
+        ],
+        "native": [
+          {
+            "content": "schema: fixture/v1\nstatus: pending\nsource: \"literal | value\"",
+            "language": "toon"
+          }
+        ],
+        "primary": [
+          {
+            "Action": "change.apply | перенос\nстроки",
+            "Decision": "BLOCKED",
+            "Evidence": "policy.toon:14",
+            "Matched rule": "fresh-evidence",
+            "Required gate": "Refresh stale report"
+          }
+        ],
+        "schema": "ai-sdlc-chat-result/v1",
+        "summary": {
+          "Decision": "Review complete; resolve the reported blocker before delivery.",
+          "Evidence": "policy.toon:14",
+          "Status": "BLOCKED"
+        }
+      }
+    }
+  ],
+  "schema": "ai-sdlc-chat-scenarios/v1",
+  "skill": "ai-sdlc-policy"
+}

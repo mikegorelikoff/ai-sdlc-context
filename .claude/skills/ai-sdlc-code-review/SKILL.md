@@ -47,7 +47,7 @@ description: AI SDLC code review workflow. Use when an AI assistant is asked to 
 
 ### 0.3 Output Rules
 
-- Keep output structured with headings and bullets.
+- Apply this skill’s Chat Output Contract to user-facing chat; keep native artifacts unchanged.
 - Make findings, gaps, risks, and blockers explicit.
 - Tie recommendations to evidence from the provided artifact, repository, `specs-refiniment/<feature-name>/<file.md>` workspace, or user context.
 - Include role ownership when the output creates follow-up work for BA, QA, Dev, PM, or Delivery.
@@ -154,26 +154,8 @@ Review AI SDLC code, diffs, branches, commits, or completed implementations for 
 
 ## Output Spec
 
-Use this format:
-
-```text
-Findings:
-- [CRITICAL|HIGH|MEDIUM|LOW] path:line - concise issue statement.
-  Why it matters: concrete failure, regression, or maintenance risk.
-  What should change: specific fix or test.
-
-Open questions:
-- Only blockers or assumptions that affect correctness, scope, or severity.
-
-Validation gaps:
-- Missing, failed, skipped, or stale checks.
-
-Secondary observations:
-- Deep-audit mode only; material non-blocking observations.
-
-Summary:
-- Brief change summary after findings.
-```
+For user-facing chat, use this skill’s Chat Output Contract. Preserve the
+owning artifacts, exact validation evidence, scope and unresolved risks.
 
 Quality gate:
 
@@ -184,25 +166,8 @@ Quality gate:
 
 Finding example:
 
-```text
-Findings:
-- [HIGH] internal/service/orders.go:218 - Accepted orders can be repriced after execution because the status guard excludes only cancelled orders.
-  Why it matters: A borrower could see a different rate after the lender accepted the order, violating the order contract.
-  What should change: Reject repricing unless the order is still in draft or requested state, and add a service test for accepted orders.
-```
-
-No-finding example:
-
-```text
-Findings:
-- None found.
-
-Validation gaps:
-- `go test ./internal/service` was not run, so service-level regressions remain unverified.
-
-Summary:
-- Reviewed the staged service diff against `specs/NNN-feature-name`; no material defects found.
-```
+Chat example: use the normal, warning and blocked examples in
+`references/chat-examples.md`; their evidence comes from explicit scenario fixtures.
 
 Invalid counter-example:
 
@@ -234,3 +199,15 @@ Reject this because it is not findings-first and does not mention validation.
 - Require review for non-trivial production code, repo-local automation logic, config, hook, workflow, provider, transport, schema, or test changes.
 - Recommend deep audit for high-churn surfaces, multiple risk categories, or changes spanning handlers, services, providers, and config.
 - Keep hook enforcement advisory-first; emit warnings before hard blocks.
+
+## Chat Output Contract
+
+Primary: Severity / Location / Finding / Evidence / Required fix; secondary: Check / Status / Evidence / Coverage gap.
+Rows represent individual severity records. Show unresolved blockers before nonblocking findings; a completed review is not delivery approval.
+Summary: Status / Decision / Evidence. Failure: Review diff / Status / Blocker / Evidence / Required action.
+Clarification: Missing review diff / Why required / Known evidence / Options. Next action: Owner / Next action / Expected evidence.
+Use PASS, FAIL, WARNING, BLOCKED, PENDING, N/A only for chat statuses; preserve native domain states.
+At most six columns, eight preview rows and 180 characters per cell; link full evidence and state omitted totals.
+No duplicate prose. Keep code, commands, commit messages and machine handoffs native.
+Apply [this skill’s schema and examples](references/chat-output.json) before any user-facing result, warning or question.
+Use the sibling `ai-sdlc-shared-runtime/scripts/chat_output.py` to render/check; [shared limits](../ai-sdlc-shared-runtime/references/chat-output.md) bound repair and preserve native outputs.

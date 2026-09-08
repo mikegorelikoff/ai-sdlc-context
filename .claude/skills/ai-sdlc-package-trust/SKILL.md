@@ -101,3 +101,15 @@ and input fingerprints; they never include paths, source, prompts, commands, or 
 - Do not install, execute, publish, sign, approve, or delete packages.
 - Do not upload metrics or collect content-bearing fields.
 - Do not weaken allowed origins, capabilities, or provenance policy.
+
+## Chat Output Contract
+
+Primary: Control / Expected / Observed / Decision / Evidence; secondary: Metric / Count / Evidence.
+Rows represent individual control records. Show the user decision before detail; preserve source order and explicit authority.
+Summary: Status / Decision / Evidence. Failure: Package manifest / Status / Blocker / Evidence / Required action.
+Clarification: Missing package manifest / Why required / Known evidence / Options. Next action: Owner / Next action / Expected evidence.
+Use PASS, FAIL, WARNING, BLOCKED, PENDING, N/A only for chat statuses; preserve native domain states.
+At most six columns, eight preview rows and 180 characters per cell; link full evidence and state omitted totals.
+No duplicate prose. Keep code, commands, commit messages and machine handoffs native.
+Apply [this skill’s schema and examples](references/chat-output.json) before any user-facing result, warning or question.
+Use the sibling `ai-sdlc-shared-runtime/scripts/chat_output.py` to render/check; [shared limits](../ai-sdlc-shared-runtime/references/chat-output.md) bound repair and preserve native outputs.

@@ -1,0 +1,37 @@
+{
+  "clarification": [
+    "Missing policy layer",
+    "Why required",
+    "Known evidence",
+    "Options"
+  ],
+  "example": {
+    "Action": "change.apply",
+    "Decision": "BLOCKED",
+    "Evidence": "policy.toon:14",
+    "Matched rule": "fresh-evidence",
+    "Required gate": "Refresh stale report"
+  },
+  "failure": [
+    "Policy layer",
+    "Status",
+    "Blocker",
+    "Evidence",
+    "Required action"
+  ],
+  "hide": "Secrets, raw logs, complete journals and unneeded internal tool steps. Keep full detail in the owning native artifact.",
+  "native_exception": "Keep machine artifacts, code, commands and diffs native; presentation does not replace validation.",
+  "primary": [
+    "Action",
+    "Matched rule",
+    "Decision",
+    "Required gate",
+    "Evidence"
+  ],
+  "priority": "Show unresolved blockers before nonblocking findings; a completed review is not delivery approval.",
+  "required_input": "Policy layer",
+  "rows": "individual action records",
+  "schema": "ai-sdlc-chat-contract/v1",
+  "secondary": [],
+  "skill": "ai-sdlc-policy"
+}

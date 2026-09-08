@@ -47,7 +47,7 @@ description: AI SDLC test-case-driven testing workflow. Use when an AI assistant
 
 ### 0.3 Output Rules
 
-- Keep output structured with headings and bullets.
+- Apply this skill’s Chat Output Contract to user-facing chat; keep native artifacts unchanged.
 - Make findings, gaps, risks, and blockers explicit.
 - Tie recommendations to evidence from the provided artifact, `specs-refiniment/<feature-name>/<file.md>` workspace, stakeholder context, or user-provided source material.
 - Include role ownership when the output creates follow-up work for BA, QA, Dev, PM, or Delivery.
@@ -183,7 +183,7 @@ Derive executable AI SDLC test scenarios from requirements or delivery context. 
 
 ## Output Spec
 
-Use this format:
+The native test-case artifact keeps this detailed matrix; chat uses the local Chat Output Contract:
 
 ```text
 Scope:
@@ -268,3 +268,15 @@ Reject this because it has no spec ref, the outcome is prose-only, and `Manual r
 - Do not choose final validation command execution; use `$ai-sdlc-validation`.
 - Do not implement production behavior from this skill alone; use `$ai-sdlc-sdd` and approved `tasks.md`.
 - Do not add broad snapshot tests when focused assertions can prove the behavior.
+
+## Chat Output Contract
+
+Primary: Test ID / Requirement ID / Setup / trigger / Expected result / Layer / Evidence.
+Rows represent individual test id records. Show the user decision before detail; preserve source order and explicit authority.
+Summary: Status / Decision / Evidence. Failure: Acceptance criterion / Status / Blocker / Evidence / Required action.
+Clarification: Missing acceptance criterion / Why required / Known evidence / Options. Next action: Owner / Next action / Expected evidence.
+Use PASS, FAIL, WARNING, BLOCKED, PENDING, N/A only for chat statuses; preserve native domain states.
+At most six columns, eight preview rows and 180 characters per cell; link full evidence and state omitted totals.
+No duplicate prose. Keep code, commands, commit messages and machine handoffs native.
+Apply [this skill’s schema and examples](references/chat-output.json) before any user-facing result, warning or question.
+Use the sibling `ai-sdlc-shared-runtime/scripts/chat_output.py` to render/check; [shared limits](../ai-sdlc-shared-runtime/references/chat-output.md) bound repair and preserve native outputs.

@@ -47,7 +47,7 @@ description: AI SDLC security testing workflow. Use when an AI assistant is aske
 
 ### 0.3 Output Rules
 
-- Keep output structured with headings and bullets.
+- Apply this skill’s Chat Output Contract to user-facing chat; keep native artifacts unchanged.
 - Make findings, gaps, risks, and blockers explicit.
 - Tie recommendations to evidence from the provided artifact, repository, `specs-refiniment/<feature-name>/<file.md>` workspace, or user context.
 - Include role ownership when the output creates follow-up work for BA, QA, Dev, PM, or Delivery.
@@ -157,28 +157,8 @@ Review AI SDLC diffs, endpoints, workflows, provider integrations, and configs f
 
 ## Output Spec
 
-Use this findings-first format:
-
-```text
-Findings:
-- [CRITICAL|HIGH|MEDIUM|LOW] path:line - concise issue statement.
-  Impact: exploitable outcome.
-  Evidence: code path, input, state, or missing check.
-  Fix: concrete remediation.
-
-Verified sources:
-- Required when the output uses OWASP or standards-based claims.
-- Include the current primary source link and the specific claim it supports.
-
-Open questions:
-- Trust-boundary or exploitability question that blocks severity or fix selection.
-
-Validation gaps:
-- Missing security test, QA check, or command and why it matters.
-
-Summary:
-- Brief security posture summary after findings.
-```
+For user-facing chat, use this skill’s Chat Output Contract. Preserve the
+owning artifacts, exact validation evidence, scope and unresolved risks.
 
 Quality gate:
 
@@ -189,23 +169,8 @@ Quality gate:
 
 Finding example:
 
-```text
-Findings:
-- [HIGH] internal/transport/http/v1/handlers/transfers.go:142 - Transfer lookup does not verify organization ownership before returning wallet metadata.
-  Impact: A user with access to one organization could enumerate another organization's provider wallet labels.
-  Evidence: Handler uses transfer ID from the route and returns provider details before checking org ownership.
-  Fix: Load the transfer through an organization-scoped query or compare `transfer.OrganizationID` before building the response.
-```
-
-No-finding example:
-
-```text
-Findings:
-- None found.
-
-Validation gaps:
-- No automated test covers replay of duplicate webhook IDs; add a service-level idempotency test before release.
-```
+Chat example: use the normal, warning and blocked examples in
+`references/chat-examples.md`; their evidence comes from explicit scenario fixtures.
 
 Invalid counter-example:
 
@@ -231,3 +196,15 @@ Reject this because it omits reviewed boundaries, findings status, and validatio
 - Do not expose sensitive values in findings, tests, comments.
 - Do not decide business acceptance; use `$ai-sdlc-ba` and `$ai-sdlc-qa`.
 - Do not cite OWASP categories, ASVS controls, or standards versions from memory when current-source verification is required.
+
+## Chat Output Contract
+
+Primary: Severity / Trust boundary / Finding / Evidence / Remediation; secondary: Source / Supported claim / Freshness / Evidence.
+Rows represent individual severity records. Show unresolved blockers before nonblocking findings; a completed review is not delivery approval.
+Summary: Status / Decision / Evidence. Failure: Trust boundary / Status / Blocker / Evidence / Required action.
+Clarification: Missing trust boundary / Why required / Known evidence / Options. Next action: Owner / Next action / Expected evidence.
+Use PASS, FAIL, WARNING, BLOCKED, PENDING, N/A only for chat statuses; preserve native domain states.
+At most six columns, eight preview rows and 180 characters per cell; link full evidence and state omitted totals.
+No duplicate prose. Keep code, commands, commit messages and machine handoffs native.
+Apply [this skill’s schema and examples](references/chat-output.json) before any user-facing result, warning or question.
+Use the sibling `ai-sdlc-shared-runtime/scripts/chat_output.py` to render/check; [shared limits](../ai-sdlc-shared-runtime/references/chat-output.md) bound repair and preserve native outputs.

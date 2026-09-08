@@ -47,7 +47,7 @@ description: Use when requirements are testable enough and you need to define QA
 
 ### 0.3 Output Rules
 
-- Keep output structured with headings and bullets.
+- Apply this skill’s Chat Output Contract to user-facing chat; keep native artifacts unchanged.
 - Make findings, gaps, risks, and blockers explicit.
 - Tie recommendations to evidence from the provided artifact, `specs-refiniment/<feature-name>/<file.md>` workspace, stakeholder context, or user-provided source material.
 - Include role ownership when the output creates follow-up work for BA, QA, Dev, PM, or Delivery.
@@ -184,3 +184,15 @@ Use `references/test-strategy-structures.md`.
 - High-risk areas and critical paths are prioritized.
 - Required suites, data, and environment needs are identified.
 - The QA plan is detailed enough to drive case synthesis.
+
+## Chat Output Contract
+
+Primary: Coverage target / Risk / Test approach / Data / environment / Exit criterion.
+Rows represent individual coverage target records. Show the user decision before detail; preserve source order and explicit authority.
+Summary: Status / Decision / Evidence. Failure: Testable scope / Status / Blocker / Evidence / Required action.
+Clarification: Missing testable scope / Why required / Known evidence / Options. Next action: Owner / Next action / Expected evidence.
+Use PASS, FAIL, WARNING, BLOCKED, PENDING, N/A only for chat statuses; preserve native domain states.
+At most six columns, eight preview rows and 180 characters per cell; link full evidence and state omitted totals.
+No duplicate prose. Keep code, commands, commit messages and machine handoffs native.
+Apply [this skill’s schema and examples](references/chat-output.json) before any user-facing result, warning or question.
+Use the sibling `ai-sdlc-shared-runtime/scripts/chat_output.py` to render/check; [shared limits](../ai-sdlc-shared-runtime/references/chat-output.md) bound repair and preserve native outputs.

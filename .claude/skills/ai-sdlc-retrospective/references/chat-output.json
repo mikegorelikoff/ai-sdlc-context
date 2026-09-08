@@ -1,0 +1,42 @@
+{
+  "clarification": [
+    "Missing observation evidence",
+    "Why required",
+    "Known evidence",
+    "Options"
+  ],
+  "example": {
+    "Decision status": "Proposed",
+    "Evidence": "incident.md:8",
+    "Improvement proposal": "Add replay fixture",
+    "Observation": "Retries lack scenario coverage",
+    "Owner": "QA"
+  },
+  "failure": [
+    "Observation evidence",
+    "Status",
+    "Blocker",
+    "Evidence",
+    "Required action"
+  ],
+  "hide": "Secrets, raw logs, complete journals and unneeded internal tool steps. Keep full detail in the owning native artifact.",
+  "native_exception": "Keep machine artifacts, code, commands and diffs native; presentation does not replace validation.",
+  "primary": [
+    "Observation",
+    "Evidence",
+    "Improvement proposal",
+    "Decision status",
+    "Owner"
+  ],
+  "priority": "Show the user decision before detail; preserve source order and explicit authority.",
+  "required_input": "Observation evidence",
+  "rows": "individual observation records",
+  "schema": "ai-sdlc-chat-contract/v1",
+  "secondary": [
+    "Proposal",
+    "Decision reference",
+    "Next action",
+    "Owner"
+  ],
+  "skill": "ai-sdlc-retrospective"
+}

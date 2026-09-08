@@ -1,0 +1,12 @@
+Result
+Status: PASS
+Decision: Prepared actor / behavior entities; listed evidence satisfies this skill check.
+Evidence: wireframe.md:18
+
+primary: Acceptance: AC-002; Actor: Operator; Behavior: Show pending charge; Evidence: wireframe.md:18; Journey / state: Payment timeout | перенос
+строки; Recovery: Retry with same key.
+actions: Owner: Engineer; Next action: Validate journey actor with its owning workflow; Expected evidence: wireframe.md:18.
+
+schema: fixture/v1
+status: pending
+source: "literal | value"

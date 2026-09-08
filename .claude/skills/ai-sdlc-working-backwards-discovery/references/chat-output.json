@@ -1,0 +1,42 @@
+{
+  "clarification": [
+    "Missing customer problem",
+    "Why required",
+    "Known evidence",
+    "Options"
+  ],
+  "example": {
+    "Decision impact": "MVP priority",
+    "Discovery topic": "Customer pain",
+    "Known evidence": "Duplicate refunds reported",
+    "Owner": "Product",
+    "Unresolved question": "How many per month?"
+  },
+  "failure": [
+    "Customer problem",
+    "Status",
+    "Blocker",
+    "Evidence",
+    "Required action"
+  ],
+  "hide": "Secrets, raw logs, complete journals and unneeded internal tool steps. Keep full detail in the owning native artifact.",
+  "native_exception": "Keep machine artifacts, code, commands and diffs native; presentation does not replace validation.",
+  "primary": [
+    "Discovery topic",
+    "Known evidence",
+    "Unresolved question",
+    "Decision impact",
+    "Owner"
+  ],
+  "priority": "Show the user decision before detail; preserve source order and explicit authority.",
+  "required_input": "Customer problem",
+  "rows": "individual discovery topic records",
+  "schema": "ai-sdlc-chat-contract/v1",
+  "secondary": [
+    "Assumption",
+    "Validation method",
+    "Owner",
+    "Evidence"
+  ],
+  "skill": "ai-sdlc-working-backwards-discovery"
+}

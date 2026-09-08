@@ -1,0 +1,41 @@
+{
+  "clarification": [
+    "Missing package manifest",
+    "Why required",
+    "Known evidence",
+    "Options"
+  ],
+  "example": {
+    "Control": "Archive checksum",
+    "Decision": "PASS",
+    "Evidence": "manifest.json",
+    "Expected": "Published SHA-256",
+    "Observed": "Matching digest"
+  },
+  "failure": [
+    "Package manifest",
+    "Status",
+    "Blocker",
+    "Evidence",
+    "Required action"
+  ],
+  "hide": "Secrets, raw logs, complete journals and unneeded internal tool steps. Metrics remain aggregate-only, without source paths or prompt content.",
+  "native_exception": "Keep machine artifacts, code, commands and diffs native; presentation does not replace validation.",
+  "primary": [
+    "Control",
+    "Expected",
+    "Observed",
+    "Decision",
+    "Evidence"
+  ],
+  "priority": "Show the user decision before detail; preserve source order and explicit authority.",
+  "required_input": "Package manifest",
+  "rows": "individual control records",
+  "schema": "ai-sdlc-chat-contract/v1",
+  "secondary": [
+    "Metric",
+    "Count",
+    "Evidence"
+  ],
+  "skill": "ai-sdlc-package-trust"
+}

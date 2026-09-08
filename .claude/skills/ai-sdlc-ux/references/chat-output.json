@@ -1,0 +1,39 @@
+{
+  "clarification": [
+    "Missing journey actor",
+    "Why required",
+    "Known evidence",
+    "Options"
+  ],
+  "example": {
+    "Acceptance": "AC-002",
+    "Actor": "Operator",
+    "Behavior": "Show pending charge",
+    "Evidence": "wireframe.md:18",
+    "Journey / state": "Payment timeout",
+    "Recovery": "Retry with same key"
+  },
+  "failure": [
+    "Journey actor",
+    "Status",
+    "Blocker",
+    "Evidence",
+    "Required action"
+  ],
+  "hide": "Secrets, raw logs, complete journals and unneeded internal tool steps. Keep full detail in the owning native artifact.",
+  "native_exception": "Keep machine artifacts, code, commands and diffs native; presentation does not replace validation.",
+  "primary": [
+    "Journey / state",
+    "Actor",
+    "Behavior",
+    "Recovery",
+    "Acceptance",
+    "Evidence"
+  ],
+  "priority": "Show the user decision before detail; preserve source order and explicit authority.",
+  "required_input": "Journey actor",
+  "rows": "individual journey / state records",
+  "schema": "ai-sdlc-chat-contract/v1",
+  "secondary": [],
+  "skill": "ai-sdlc-ux"
+}

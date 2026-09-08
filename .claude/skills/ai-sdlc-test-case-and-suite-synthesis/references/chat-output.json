@@ -1,0 +1,39 @@
+{
+  "clarification": [
+    "Missing qa strategy",
+    "Why required",
+    "Known evidence",
+    "Options"
+  ],
+  "example": {
+    "Evidence": "test-cases.md:12",
+    "Expected result": "One ledger entry",
+    "Requirement ID": "AC-001",
+    "Scenario": "Duplicate callback",
+    "Suite": "Regression",
+    "Test ID": "TC-001"
+  },
+  "failure": [
+    "QA strategy",
+    "Status",
+    "Blocker",
+    "Evidence",
+    "Required action"
+  ],
+  "hide": "Secrets, raw logs, complete journals and unneeded internal tool steps. Keep full detail in the owning native artifact.",
+  "native_exception": "Keep machine artifacts, code, commands and diffs native; presentation does not replace validation.",
+  "primary": [
+    "Test ID",
+    "Requirement ID",
+    "Scenario",
+    "Suite",
+    "Expected result",
+    "Evidence"
+  ],
+  "priority": "Show the user decision before detail; preserve source order and explicit authority.",
+  "required_input": "QA strategy",
+  "rows": "individual test id records",
+  "schema": "ai-sdlc-chat-contract/v1",
+  "secondary": [],
+  "skill": "ai-sdlc-test-case-and-suite-synthesis"
+}

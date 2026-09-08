@@ -156,3 +156,15 @@ invalid without registered sources, boundary, or confidence.
 - Do not provide legal or regulatory conclusions without qualified review.
 - Do not hide conflicting or low-confidence evidence.
 - Use `$ai-sdlc-change-impact` when accepted research changes downstream artifacts.
+
+## Chat Output Contract
+
+Primary: Question / Finding / Confidence / Limitation / Evidence.
+Rows represent individual question records. Show the user decision before detail; preserve source order and explicit authority.
+Summary: Status / Decision / Evidence. Failure: Research question / Status / Blocker / Evidence / Required action.
+Clarification: Missing research question / Why required / Known evidence / Options. Next action: Owner / Next action / Expected evidence.
+Use PASS, FAIL, WARNING, BLOCKED, PENDING, N/A only for chat statuses; preserve native domain states.
+At most six columns, eight preview rows and 180 characters per cell; link full evidence and state omitted totals.
+No duplicate prose. Keep code, commands, commit messages and machine handoffs native.
+Apply [this skill’s schema and examples](references/chat-output.json) before any user-facing result, warning or question.
+Use the sibling `ai-sdlc-shared-runtime/scripts/chat_output.py` to render/check; [shared limits](../ai-sdlc-shared-runtime/references/chat-output.md) bound repair and preserve native outputs.
