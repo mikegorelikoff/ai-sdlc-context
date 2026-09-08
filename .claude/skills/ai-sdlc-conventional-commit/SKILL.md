@@ -262,6 +262,13 @@ Reject this because the subject is not Conventional Commit syntax, traceability 
 - Do not invent validation results; use `$ai-sdlc-validation` to choose and run checks.
 - Do not use this skill to summarize a diff unless the output is a commit message.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/validate_commit_msg.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for Conventional Commit subject/body with traceability and validation summary; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Subject / Specification / Task ID / Validation / Evidence.

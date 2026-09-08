@@ -200,6 +200,13 @@ Use `references/planning-gap-review-framework.md`.
 - MVP boundaries and major planning blockers are either clarified or explicitly marked.
 - The package is specific enough to support capability and epic mapping without inventing intent.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/backlog_gap_scan.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for Backlog-blocking gaps, assumptions, open questions, and readiness decision; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Planning dimension / Gap / Impact / Evidence / Required action.

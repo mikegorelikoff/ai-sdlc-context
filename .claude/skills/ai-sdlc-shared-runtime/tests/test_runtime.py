@@ -1,46 +1,31 @@
-"""Forward tests for the installable AI SDLC shared runtime."""
-
-from __future__ import annotations
-
+"""Exercise the actual packaged helpers from an isolated skill-only installation."""
+from pathlib import Path
+import shutil
 import subprocess
 import sys
+import tempfile
 import unittest
-from pathlib import Path
 
-
-ROOT = Path(__file__).resolve().parents[3]
-SKILLS = ROOT / "skills"
-SYNC = SKILLS / "_shared" / "sync_installed_runtime.py"
-INSTALL_SMOKE = SKILLS / "_shared" / "ai_sdlc_install_smoke.py"
+SKILLS = Path(__file__).resolve().parents[2]
 
 
 class InstalledRuntimeTests(unittest.TestCase):
-    """Prove scripts work after skill-only installation, without source shared."""
+    def test_sdd_scaffold_is_independent_of_removed_shared_source(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for name in ('ai-sdlc-shared-runtime', 'ai-sdlc-sdd'):
+                shutil.copytree(SKILLS/name, root/'skills'/name, ignore=shutil.ignore_patterns('__pycache__'))
+            script = root/'skills/ai-sdlc-sdd/scripts/sdd_artifact_scaffold.py'
+            command = [sys.executable, str(script), str(root/'specs/001-fixture'), '--artifact', 'requirements', '--section', 'Goal', '--quick-flow']
+            result = subprocess.run(command, input='Preserve explicit fixture evidence.\n', cwd=root, capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            artifact = root/'specs/001-fixture/requirements.md'
+            self.assertIn('Preserve explicit fixture evidence.', artifact.read_text(encoding='utf-8'))
+            self.assertFalse((root/'skills/_shared').exists())
+            before = artifact.read_bytes()
+            repeated = subprocess.run(command, input='Preserve explicit fixture evidence.\n', cwd=root, capture_output=True, text=True)
+            self.assertEqual(repeated.returncode, 0, repeated.stdout + repeated.stderr)
+            self.assertEqual(before, artifact.read_bytes())
 
-    def test_generated_runtime_matches_canonical_helpers(self) -> None:
-        result = subprocess.run(
-            [sys.executable, str(SYNC), "--check"],
-            cwd=ROOT,
-            check=False,
-            text=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-        )
-        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertIn("20 canonical helpers", result.stdout)
-
-    def test_sdd_scaffold_runs_from_skill_only_installation(self) -> None:
-        result = subprocess.run(
-            [sys.executable, str(INSTALL_SMOKE), "--mode", "emulated"],
-            cwd=ROOT,
-            check=False,
-            text=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-        )
-        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertIn("installed runtime, complete SDD gates, and commit readiness passed", result.stdout)
-
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

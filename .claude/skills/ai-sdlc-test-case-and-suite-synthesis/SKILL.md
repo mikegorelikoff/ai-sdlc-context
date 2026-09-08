@@ -187,6 +187,13 @@ Use `references/test-case-structures.md`.
 - Separate smoke, regression, and UAT suites exist.
 - The cases are executable without hidden interpretation.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/suite_outline.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for Executable test cases plus smoke, regression, and UAT suites; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Test ID / Requirement ID / Scenario / Suite / Expected result / Evidence.

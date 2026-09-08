@@ -190,6 +190,13 @@ Use `references/prfaq-package-structures.md` for document sections and output sh
 - Assumptions, dependencies, risks, and open questions remain visible.
 - The package is ready for a strict readiness review.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/prfaq_outline.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for PRFAQ, FAQ package, and BRD-style requirements summary; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Customer / Problem / Proposed outcome / Business evidence / Open decision; secondary: FAQ topic / Answer / Evidence / Unresolved choice.

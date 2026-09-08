@@ -106,29 +106,19 @@ description: Portable AI SDLC shared-helper runtime. Use when an AI assistant in
 
 ## References
 
-- `scripts/` is a deterministic mirror of non-test Python helpers from
-  `skills/_shared/`.
-- The source mirror is maintained by
-  `python3 skills/_shared/sync_installed_runtime.py`.
-- Downstream scripts first use source `skills/_shared/` when present and then
-  fall back to this installed sibling package.
+- `scripts/` owns the packaged helpers. Resolve this sibling package from the selected skill root.
+- Context Guard contributor skills live in `.claude/skills/`; installed consumers retain their declared skill root.
+- Legacy source fallback in older helpers is compatibility behavior, not a requirement to recreate `_shared`.
 
 ## Script Usage
 
-- Verify the generated mirror in a harness source checkout:
+Run the isolated installation check from the Context Guard repository:
 
-  ```bash
-  python3 skills/_shared/sync_installed_runtime.py --check
-  ```
+```bash
+python3 .claude/skills/ai-sdlc-shared-runtime/tests/test_runtime.py
+```
 
-- Verify an installed downstream helper from a consumer repository:
-
-  ```bash
-  python3 .agents/skills/ai-sdlc-sdd/scripts/sdd_artifact_scaffold.py --help
-  ```
-
-- A missing `ai-sdlc-shared-runtime/scripts/` directory, stale mirror, import
-  traceback, or non-zero helper smoke result is a blocker.
+The check copies the actual runtime and SDD packages into a temporary consumer, writes a native requirements section, and verifies an identical rerun. Missing packaged helpers, import failures or failed checks block the dependent workflow.
 
 ## Purpose
 
@@ -203,6 +193,13 @@ incompatible runtime bytes.
 This skill verifies the portable runtime dependency. It does not select product
 work, approve network access, change policy, implement features, repair Git,
 publish releases, or mutate authoritative lifecycle evidence.
+
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/ai_sdlc_state_machine.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for Read-only runtime verification or an explicit installation blocker; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
 
 ## Chat Output Contract
 

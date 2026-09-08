@@ -231,6 +231,13 @@ Reject this because it has no actor, trigger, or observable result.
 - Do not write implementation tasks except when translating accepted BA output into requirements context.
 - Do not claim assumptions are confirmed without evidence from the user, artifact, `specs-refiniment/<feature-name>/<file.md>`, code, or docs.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/ba_context_scaffold.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for Business context, rules, assumptions, out-of-scope items, acceptance criteria, and open questions; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Requirement ID / Actor / Business rule / Acceptance / Evidence; secondary: Assumption / Validation question / Owner / Evidence.

@@ -269,6 +269,13 @@ Reject this because it has no spec ref, the outcome is prose-only, and `Manual r
 - Do not implement production behavior from this skill alone; use `$ai-sdlc-sdd` and approved `tasks.md`.
 - Do not add broad snapshot tests when focused assertions can prove the behavior.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/case_matrix.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for Scenario matrix with requirement refs, verifiable outcomes, automation paths, and execution order; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Test ID / Requirement ID / Setup / trigger / Expected result / Layer / Evidence.

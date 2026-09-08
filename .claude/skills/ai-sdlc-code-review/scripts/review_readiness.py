@@ -127,11 +127,12 @@ def collect_diff_check_errors(base: str | None, full_repo: bool) -> list[str]:
     return errors
 
 
-def skill_metadata_warnings(files: list[str], full_repo: bool) -> list[str]:
+def skill_metadata_warnings(files: list[str], full_repo: bool, *, repository: Path | None = None) -> list[str]:
     """Warn when skill changes need metadata/script validation beyond code review."""
     if full_repo:
         return []
 
+    repository = repository or Path.cwd()
     warnings: list[str] = []
     changed_skills = sorted(
         {
@@ -144,21 +145,9 @@ def skill_metadata_warnings(files: list[str], full_repo: bool) -> list[str]:
         skill_dir = Path("skills") / skill
         changed_python = sorted(
             file for file in files
-            if file.startswith(f"{skill_dir}/") and file.endswith(".py") and Path(file).is_file()
+            if file.startswith(f"{skill_dir}/") and file.endswith(".py") and (repository / file).is_file()
         )
-        if skill == "_shared":
-            if changed_python:
-                warnings.append(
-                    "shared helper change detected; run "
-                    "PYTHONPYCACHEPREFIX=/tmp/ai-sdlc-harness-pycache python3 -m py_compile "
-                    + " ".join(changed_python)
-                )
-            warnings.append(
-                "shared helper change detected; run python3 "
-                "skills/_shared/sync_installed_runtime.py --check"
-            )
-            continue
-        if not (skill_dir / "SKILL.md").is_file():
+        if not (repository / skill_dir / "SKILL.md").is_file():
             warnings.append(f"skill change detected but {skill_dir / 'SKILL.md'} is missing")
         else:
             warnings.append(f"skill change detected; inspect {skill_dir}/SKILL.md")

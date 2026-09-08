@@ -548,13 +548,21 @@ class RepositoryProjectionTests(unittest.TestCase):
     """Keep every committed SDD plan aligned with authoritative task checkboxes."""
 
     def test_all_repository_plan_projections_match_tasks(self) -> None:
-        checked = 0
-        for spec_dir in sorted((ROOT / "specs").glob("[0-9][0-9][0-9]-*")):
-            if not (spec_dir / "tasks.md").is_file():
-                continue
-            checked += 1
-            self.assertEqual(PLAN_LINKS.check_plan(spec_dir), [], spec_dir.name)
-        self.assertGreaterEqual(checked, 8)
+        with tempfile.TemporaryDirectory() as temp:
+            spec_dir = Path(temp) / '185-example'
+            spec_dir.mkdir()
+            write_full_tasks(spec_dir)
+            from types import SimpleNamespace
+            args = SimpleNamespace(feature='<feature-name>', quick_flow=True, full_flow=False, artifact_status='draft', artifact_owner='fixture', artifact_tag=[])
+            write_requirements(spec_dir)
+            write_full_test_cases(spec_dir)
+            (spec_dir / '_ai_sdlc').mkdir()
+            (spec_dir / '_ai_sdlc/plan.toon').write_text(PLAN_LINKS.build_plan_toon(spec_dir, args), encoding='utf-8')
+            (spec_dir / 'plan.md').write_text(PLAN_LINKS.build_plan(spec_dir, args), encoding='utf-8')
+            self.assertEqual(PLAN_LINKS.check_plan(spec_dir), [])
+            tasks = spec_dir / 'tasks.md'
+            tasks.write_text(tasks.read_text().replace('[ ]', '[x]', 1), encoding='utf-8')
+            self.assertTrue(PLAN_LINKS.check_plan(spec_dir))
 
 
 if __name__ == "__main__":

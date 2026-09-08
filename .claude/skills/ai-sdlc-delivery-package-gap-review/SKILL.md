@@ -185,6 +185,13 @@ Use `references/gap-review-framework.md`.
 - Delivery blockers are identified and either clarified or explicitly left open with impact.
 - The package is specific enough to support story decomposition without fiction.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/delivery_gap_scan.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for Delivery gaps, contradictions, missing business rules, and handoff blockers; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Workflow / Missing rule / Delivery impact / Evidence / Required action.

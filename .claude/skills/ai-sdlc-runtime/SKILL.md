@@ -154,6 +154,13 @@ record also returns the existing outcome without another event.
 - Do not run two mutating runtime commands concurrently for one run.
 - Declarative workflow steps and host execution belong to later workflow and adapter layers.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/runtime.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for `_ai_sdlc/runs/<run-id>/journal.jsonl`, exact `state.json`, and; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Task ID / State / Attempts / Evidence / Next transition.

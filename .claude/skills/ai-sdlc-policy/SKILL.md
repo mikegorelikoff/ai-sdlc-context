@@ -155,6 +155,13 @@ those gates or turn a protected `require` into `allow`.
 - Do not let user or project layers weaken protected organization minimums.
 - Do not execute the evaluated action; return the decision to its owning workflow.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/policy.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for `_ai_sdlc/policy-resolution.{toon,json}` or fingerprint-addressed TOON/JSON records; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Action / Matched rule / Decision / Required gate / Evidence.

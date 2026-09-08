@@ -185,6 +185,13 @@ Use `references/backlog-structures.md`.
 - Cross-functional tasks are visible instead of being implicit.
 - Oversized or non-estimable items are flagged for splitting or spikes.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/backlog_matrix.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for Features, user stories, acceptance summaries, and cross-functional delivery tasks; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Task ID / Story / Scope / Depends on / Verification; secondary: Story ID / Actor / Outcome / Acceptance.

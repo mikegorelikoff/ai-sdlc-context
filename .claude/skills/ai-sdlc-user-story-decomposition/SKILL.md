@@ -186,6 +186,13 @@ Use `references/story-structures.md`.
 - Dependencies and open questions are visible.
 - The story set is consistent with MVP scope and business goals.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/story_map.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for Epics, user stories, acceptance criteria, scenario coverage, and priority signals; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Story ID / Actor / Desired outcome / Acceptance / Dependency.

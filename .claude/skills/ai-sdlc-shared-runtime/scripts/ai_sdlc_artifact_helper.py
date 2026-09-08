@@ -715,6 +715,10 @@ def emit_profile_report(
         }
     )
 
+    if stdin_action and artifact_path != decision_log_path:
+        # The same operation creates this journal; include it on the first write.
+        local_related = sorted(set(local_related) | {decision_log_path})
+
     if stdin_action:
         artifact_file = Path(artifact_path)
         legacy_artifact_file = next(

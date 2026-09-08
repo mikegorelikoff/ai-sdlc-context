@@ -186,6 +186,13 @@ Use `references/handoff-checklist.md`.
 - Remaining questions are actionable.
 - The recommendation is clear enough for delivery planning.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/handoff_readiness_score.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for Handoff readiness score, remaining blockers, contradictions, and execution risks; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Delivery gate / Decision / Gap / Evidence / Required action.

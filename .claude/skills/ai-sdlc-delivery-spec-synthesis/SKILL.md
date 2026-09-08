@@ -185,6 +185,13 @@ Use `references/spec-structures.md`.
 - Dependencies, assumptions, and open questions are visible.
 - The document is usable as a delivery handoff artifact.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/delivery_spec_scaffold.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for Structured delivery specification for engineering and cross-functional planning; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Requirement ID / Behavior / Interface / Constraint / Evidence.

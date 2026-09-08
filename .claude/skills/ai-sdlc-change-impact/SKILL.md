@@ -170,6 +170,13 @@ which durable source changed or which downstream artifacts are stale.
 - Do not approve recovery actions on behalf of artifact owners.
 - Use `$ai-sdlc-navigator` when the owning workflow is unclear.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/change_impact.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for `change-impact.md` and `_ai_sdlc/change-impact.toon`; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Changed reference / Affected artifact / Staleness / Evidence / Reopen action.

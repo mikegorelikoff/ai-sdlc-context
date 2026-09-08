@@ -218,6 +218,13 @@ Reject this because it lacks setup, action, expected result, evidence, and risk.
 - Do not approve product scope; use `$ai-sdlc-ba` for unresolved business decisions.
 - Do not claim release readiness when validation, manual checks, or signoff are incomplete.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/qa_plan_scaffold.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for QA acceptance plan, regression targets, manual checks, validation evidence, and residual risks; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Scenario ID / Actor / setup / Action / Expected result / Execution status / Evidence; secondary: Regression target / Risk / Execution status / Evidence.

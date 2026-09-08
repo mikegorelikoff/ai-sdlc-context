@@ -203,6 +203,13 @@ acceptance criterion. A following `Refs: AC-004` under `T006` creates a task
 - Do not treat graph generation as approval, validation evidence, or release.
 - Do not overwrite producer manifests or evidence artifacts during indexing.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/delivery_graph.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for complete `_ai_sdlc/delivery-graph.toon` for agents, plus; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Requirement ID / Task ID / Test ID / Coverage / Evidence.

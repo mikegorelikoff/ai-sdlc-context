@@ -147,6 +147,13 @@ no actor, behavior, evidence, or testable outcome.
 - Do not mark accessibility conformance from intent alone.
 - Use `$ai-sdlc-change-impact` when accepted UX behavior invalidates downstream work.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/ux.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for `ux-spec.md` and `_ai_sdlc/ux-spec.toon`; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Journey / state / Actor / Behavior / Recovery / Acceptance / Evidence.

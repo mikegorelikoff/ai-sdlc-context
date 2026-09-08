@@ -103,6 +103,7 @@ nav:
       - Inspect evidence: guides/inspect-evidence.md
   - Reference:
       - Overview: reference/index.md
+      - Deterministic execution: reference/determinism.md
       - CLI: reference/cli.md
       - Packaged policy: reference/policy.md
       - Receipts and artifacts: reference/receipts-artifacts.md

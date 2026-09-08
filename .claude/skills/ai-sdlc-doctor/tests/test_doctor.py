@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import subprocess
 import tempfile
+import sys
 import unittest
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
@@ -12,15 +13,23 @@ SCRIPT = SKILL / "scripts/doctor.py"
 FIXTURES = SKILL / "references/fixtures"
 class DoctorTests(unittest.TestCase):
     def cli(self, repository: Path, *args: str) -> subprocess.CompletedProcess[str]:
-        return subprocess.run(["python3", str(SCRIPT), str(repository), *args], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
+        return subprocess.run([sys.executable, str(SCRIPT), str(repository), *args], cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False)
     def test_repository_doctor_is_deterministic_and_healthy(self) -> None:
-        first = self.cli(ROOT, "--doctor", "--format", "json")
-        second = self.cli(ROOT, "--doctor", "--format", "json")
-        self.assertEqual(first.returncode, 0, first.stdout + first.stderr)
-        self.assertEqual(first.stdout, second.stdout)
-        value = json.loads(first.stdout)
-        self.assertEqual(value["status"], "healthy")
-        self.assertEqual({item["status"] for item in value["checks"]}, {"pass"})
+        with tempfile.TemporaryDirectory() as temp:
+            repository = Path(temp)
+            for directory in ('skills/example', 'modules/example', 'docs'):
+                (repository / directory).mkdir(parents=True)
+            for filename in ('README.md', 'mkdocs.yml', 'requirements-docs.txt', 'skills/example/SKILL.md'):
+                (repository / filename).write_text('fixture\n', encoding='utf-8')
+            manifest = {'schema': 'ai-sdlc-module/v1', 'id': 'example', 'skills': [{'path': 'skills/example'}]}
+            (repository / 'modules/example/module.json').write_text(json.dumps(manifest), encoding='utf-8')
+            first = self.cli(repository, '--doctor', '--format', 'json')
+            second = self.cli(repository, '--doctor', '--format', 'json')
+            self.assertEqual(first.returncode, 0, first.stdout + first.stderr)
+            self.assertEqual(first.stdout, second.stdout)
+            value = json.loads(first.stdout)
+            self.assertEqual(value['status'], 'healthy')
+            self.assertEqual({item['status'] for item in value['checks']}, {'pass'})
     def test_broken_layout_has_actionable_failures_without_repair(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             repository = Path(temp)

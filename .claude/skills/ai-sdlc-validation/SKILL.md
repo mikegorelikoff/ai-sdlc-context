@@ -217,6 +217,13 @@ Reject this because it omits exact commands, changed surface coverage, and resid
 - Do not review code for findings; use `$ai-sdlc-code-review` or `$ai-sdlc-security-testing`.
 - Do not mark work done when validation is failed, blocked without disclosure, or unrelated to the changed surface.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/run_validation.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for Focused validation commands, outcomes, coverage notes, and residual risk; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Check / Expected / Actual / Status / Evidence.

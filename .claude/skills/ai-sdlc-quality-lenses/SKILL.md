@@ -172,6 +172,13 @@ trace target, owner, status, or executable next action.
 - Do not advance lifecycle state or weaken protected rigor gates.
 - Use `$ai-sdlc-navigator` when the owning remediation workflow is unclear.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/quality_lens_report.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for `quality-lens-report.md` and `_ai_sdlc/quality-lens-report.toon`; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Lens / Severity / Finding / Requirement ID / Evidence / Next action.

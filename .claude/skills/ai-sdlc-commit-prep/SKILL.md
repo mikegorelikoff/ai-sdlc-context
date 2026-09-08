@@ -207,6 +207,13 @@ Reject this when the working tree contains files not inspected for scope.
 - Do not decide test coverage; use `$ai-sdlc-test-cases`, `$ai-sdlc-qa`, and `$ai-sdlc-validation`.
 - Do not revert user changes to make staging easier.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/check_commit_ready.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for Safe staged set, validated commit readiness, conventional commit message, and post-commit traceability; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Path group / Disposition / Reason / Verification / Evidence; secondary: Commit / Branch / Task ID / Evidence.

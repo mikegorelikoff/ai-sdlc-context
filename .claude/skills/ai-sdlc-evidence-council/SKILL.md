@@ -169,6 +169,13 @@ only as `simulated`, never `independent`.
 - Do not hide conflicts, dissent, missing evidence, or unanswered questions.
 - Use `$ai-sdlc-change-impact` after owners accept a proposal that changes delivery truth.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/evidence_council.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for `evidence-council.md` and `_ai_sdlc/evidence-council.toon`; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Topic / Position / Agreement / conflict / Reviewer mode / Evidence.

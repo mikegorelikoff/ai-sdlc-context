@@ -184,6 +184,13 @@ Use `references/mapping-structures.md`.
 - The planning structure supports downstream feature/story decomposition.
 - Weakly justified or over-broad planning areas are challenged and corrected.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/goal_capability_map.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for Goal-to-capability map and outcome-oriented epics; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Goal / Actor / Capability / Epic / Success measure; secondary: Capability / Dependency / Owner / Evidence.

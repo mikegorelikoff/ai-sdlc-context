@@ -128,6 +128,13 @@ Quality gate:
 - Do not grant capabilities, approvals, isolation, or concurrency implicitly.
 - Do not mutate policy, feature state, runtime state, or canonical artifacts.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/workflow.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for `_ai_sdlc/workflows/<workflow-id>/plan.{toon,json,md}`; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Stage / Owning skill / Eligibility / Dependency / Expected artifact.

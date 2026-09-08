@@ -18,8 +18,8 @@ import textwrap
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[2]
-README = ROOT / "README.md"
+ROOT = Path(__file__).resolve().parents[3]
+SOURCE_FIXTURE = Path(__file__).resolve().parents[1] / "SKILL.md"
 
 
 def _write(path: Path, text: str) -> None:
@@ -99,7 +99,7 @@ def run_skill_script_contract(skill_dir: Path) -> None:
                     flag,
                     "--emit-template",
                     "--emit-decision-log-entry",
-                    str(README),
+                    str(SOURCE_FIXTURE),
                 )
                 if result.returncode != 0:
                     raise AssertionError(f"{script.relative_to(ROOT)} {flag} failed:\n{result.stderr}")

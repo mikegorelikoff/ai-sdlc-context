@@ -187,6 +187,13 @@ Use `references/release-and-readiness-structures.md`.
 - Traceability and readiness gaps are visible.
 - The package is strong enough for backlog refinement and planning.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/release_slice_plan.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for MVP/release slices, sequencing, readiness score, and planning risks; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Release slice / Included stories / Dependency / Exit criterion / Evidence.

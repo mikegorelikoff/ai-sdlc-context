@@ -74,3 +74,17 @@ The contract registry (`evals/chat/registry.md`) records each design and its eig
 executed simulation scenarios. Baselines are authored simulations, not recorded
 provider runs; semantic review by the implementing assistant is recorded separately.
 Normal product tests execute output regression checks.
+
+## 2026-09-08 — Deterministic execution reinforcement
+
+- Add explicit deterministic/semantic boundaries to all 44 skills, linked to their existing Python entry points.
+- Preserve punctuation and control characters in state/TOON, reject ambiguous keys and malformed state, make unchanged atomic writes no-ops, and bound repeated assumptions.
+- Add fixed-date state inputs and hash-seed, working-directory, round-trip and failure-atomicity regressions.
+
+The canonical execution boundary and product-specific reproducibility limits are documented in [Reference](../reference/determinism.md). Native formats and release authority remain unchanged. Structural tests do not claim semantic correctness or live model evaluation.
+
+- Restore hidden contributor-skill regressions to the normal test command, replace removed `_shared` test routes with the owning runtime, and use isolated installation/layout fixtures. Remove obsolete mirror-sync instructions and suggested commands.
+
+## 2026-09-08 — Release 0.1.4
+
+Publish the user-authorized determinism reinforcement from feature 026. Keep native artifact formats and existing approval boundaries. Structural and fixture-based tests do not establish live model reliability. Roll back by pinning 0.1.3; do not rewrite published tags.

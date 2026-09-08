@@ -197,6 +197,13 @@ Reject this because it omits reviewed boundaries, findings status, and validatio
 - Do not decide business acceptance; use `$ai-sdlc-ba` and `$ai-sdlc-qa`.
 - Do not cite OWASP categories, ASVS controls, or standards versions from memory when current-source verification is required.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/security_review_matrix.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for Security findings, trust-boundary analysis, standards-backed notes, validation gaps, and fixes; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Severity / Trust boundary / Finding / Evidence / Remediation; secondary: Source / Supported claim / Freshness / Evidence.

@@ -200,6 +200,13 @@ Reject this because it is not findings-first and does not mention validation.
 - Recommend deep audit for high-churn surfaces, multiple risk categories, or changes spanning handlers, services, providers, and config.
 - Keep hook enforcement advisory-first; emit warnings before hard blocks.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/review_readiness.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for Findings-first review with severity, path, impact, fix, validation gaps, and residual risk; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Severity / Location / Finding / Evidence / Required fix; secondary: Check / Status / Evidence / Coverage gap.

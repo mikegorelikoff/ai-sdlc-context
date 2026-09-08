@@ -302,6 +302,13 @@ Reject this for medium and large work because the spec is the source of truth.
 - Do not implement major features without requirements, design, test cases, QA, tasks, and plan.
 - Do not run broad validation by default; use `$ai-sdlc-validation` for command selection.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/sdd_context.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for SDD package, Markdown execution plan, TOON machine plan, validation status, task alignment, and implementation handoff; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Artifact / Change / Requirement ID / Validation / Evidence; secondary: Component / Responsibility / Decision / Dependency / Evidence.

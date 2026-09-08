@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.1.4 - 2026-09-08
+
+### Changed
+
+- Restore hidden contributor-skill regressions to the normal test command, replace removed `_shared` test routes with the owning runtime, and use isolated installation/layout fixtures. Remove obsolete mirror-sync instructions and suggested commands.
+
+- Add explicit deterministic/semantic boundaries to all 44 skills, linked to their existing Python entry points.
+- Preserve punctuation and control characters in state/TOON, reject ambiguous keys and malformed state, make unchanged atomic writes no-ops, and bound repeated assumptions.
+- Add fixed-date state inputs and hash-seed, working-directory, round-trip and failure-atomicity regressions.
+
 ## v0.1.3 - 2026-09-08
 
 ### Changed

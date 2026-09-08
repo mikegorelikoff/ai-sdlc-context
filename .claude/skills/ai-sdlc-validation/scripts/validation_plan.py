@@ -121,11 +121,7 @@ def main() -> int:
         # changes should compile without relying on __pycache__ writes in-tree.
         changed_skills = sorted({Path(file).parts[1] for file in files if file.startswith("skills/") and len(Path(file).parts) > 1})
         for skill in changed_skills:
-            if skill == "_shared":
-                continue
             commands.append(f"test -f skills/{skill}/SKILL.md")
-        if "_shared" in changed_skills:
-            commands.append("python3 skills/_shared/sync_installed_runtime.py --check")
     compile_targets = python_compile_targets(files)
     if compile_targets:
         commands.append(

@@ -189,6 +189,13 @@ Use `references/interview-framework.md` for the staged question structure.
 - Business objective and MVP are defined.
 - Success metrics, risks, and dependencies are materially captured.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/discovery_interview_plan.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for Structured discovery notes, clarified assumptions, open questions, and PRFAQ-ready facts; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Discovery topic / Known evidence / Unresolved question / Decision impact / Owner; secondary: Assumption / Validation method / Owner / Evidence.

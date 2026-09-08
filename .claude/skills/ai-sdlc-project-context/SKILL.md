@@ -245,6 +245,13 @@ Reject unsupported inference without repository evidence.
   task-pack budget.
 - Use `$ai-sdlc-navigator` for downstream workflow selection.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/project_context.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for `project-context.md`, `_ai_sdlc/project-context.toon`, and optional; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Context fact / Value / Source / Freshness / Use.

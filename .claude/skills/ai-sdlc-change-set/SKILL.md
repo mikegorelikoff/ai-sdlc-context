@@ -225,6 +225,13 @@ must remain repository-relative and cannot traverse outside the repository.
   change. It validates record consistency, not external identity or authority;
   it may apply and archive only after the host organization enforces approval.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/change_set.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for `changes/<change-id>/` with proposal, design, tasks, delta and; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Target / Operation / Before / after / Authority / Evidence.

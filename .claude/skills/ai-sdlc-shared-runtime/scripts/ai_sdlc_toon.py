@@ -23,9 +23,19 @@ def _primitive(value: Any) -> bool:
     return value is None or isinstance(value, (str, int, float, bool))
 
 
+def _quote(value: str) -> str:
+    """Keep Unicode line separators escaped in a single TOON scalar."""
+    result = json.dumps(value, ensure_ascii=False)
+    for character in ("\x85", "\u2028", "\u2029"):
+        result = result.replace(character, "\\u%04x" % ord(character))
+    return result
+
+
 def _key(value: Any) -> str:
-    text = str(value)
-    return text if _BARE_KEY.fullmatch(text) else json.dumps(text, ensure_ascii=False)
+    if not isinstance(value, str):
+        raise TypeError("TOON mapping keys must be strings")
+    text = value
+    return text if _BARE_KEY.fullmatch(text) else _quote(text)
 
 
 def _string(value: str) -> str:
@@ -35,9 +45,10 @@ def _string(value: str) -> str:
         or value.lower() in _RESERVED
         or bool(_NUMBER.fullmatch(value))
         or value.startswith("-")
+        or any(ord(character) < 0x20 or character in "\x85\u2028\u2029" for character in value)
         or any(character in value for character in ':,"[]{}\n\r\t\\')
     )
-    return json.dumps(value, ensure_ascii=False) if needs_quotes else value
+    return _quote(value) if needs_quotes else value
 
 
 def _scalar(value: Any) -> str:

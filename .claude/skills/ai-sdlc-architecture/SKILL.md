@@ -148,6 +148,13 @@ because they scale” is invalid without evidence, boundary, alternatives, or tr
 - Do not hide unresolved architecture risks.
 - Use `$ai-sdlc-change-impact` when an accepted design changes downstream work.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/architecture.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for `architecture.md` and `_ai_sdlc/architecture.toon`; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Component / Responsibility / Decision / Dependency / Evidence; secondary: Decision ID / Alternative / Consequence / Evidence.

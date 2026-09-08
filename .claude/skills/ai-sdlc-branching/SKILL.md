@@ -253,6 +253,13 @@ mutation for implementation work.
 - Do not stage files or create commits; use `$ai-sdlc-commit-prep`.
 - Do not draft commit messages; use `$ai-sdlc-conventional-commit`.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/branch_plan.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for Branching decision, branch name, base branch, dirty-tree assessment, and next handoff; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Current branch / Expected branch / Base revision / Worktree / Decision.

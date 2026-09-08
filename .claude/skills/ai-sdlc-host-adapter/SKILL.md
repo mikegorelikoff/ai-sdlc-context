@@ -116,6 +116,13 @@ Quality gate:
 - Do not claim capabilities not declared by the adapter.
 - Do not silently drop workflow steps or required gates.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/adapter.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for `_ai_sdlc/adapters/<adapter-id>/negotiation.{toon,json,md}`; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Operation / Host mapping / Capability / Fallback / Evidence.

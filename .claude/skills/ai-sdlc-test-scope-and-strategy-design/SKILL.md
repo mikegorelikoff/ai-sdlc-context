@@ -185,6 +185,13 @@ Use `references/test-strategy-structures.md`.
 - Required suites, data, and environment needs are identified.
 - The QA plan is detailed enough to drive case synthesis.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/strategy_scaffold.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for QA scope, coverage priorities, suite strategy, data needs, and risk-based execution plan; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Coverage target / Risk / Test approach / Data / environment / Exit criterion.

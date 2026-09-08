@@ -161,6 +161,13 @@ mixes observation and policy mutation and has no evidence or decision.
 - Do not advance feature lifecycle or hide failed proposals.
 - Use `$ai-sdlc-navigator` to route accepted implementation work.
 
+## Deterministic Execution Contract
+
+- D: use [the owning Python entry point](scripts/retrospective.py) with explicit inputs; success covers only executed checks.
+- S: interpret sources for `retrospective.md` and `_ai_sdlc/retrospective.toon`; cite unresolved decisions.
+- H: validate native outputs before handoff. Runtime owns IDs, counts, routing and completion; confidence/chat grants no approval.
+- Read explicit paths; reuse only current evidence. At most two repairs; then report BLOCKED with failed check, evidence and action.
+
 ## Chat Output Contract
 
 Primary: Observation / Evidence / Improvement proposal / Decision status / Owner; secondary: Proposal / Decision reference / Next action / Owner.
